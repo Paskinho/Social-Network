@@ -1,7 +1,13 @@
 import React from 'react';
 import s from './Post.module.css'
 
-export const Post = (props: string) => {
+type MessageType ={
+    message: string
+    like: string
+}
+
+
+export const Post = (props: MessageType) => {
     return (
         <div className={s.item}>
             <img src="https://img.a.transfermarkt.technology/portrait/big/139208-1620651710.jpg?lm=1"/>

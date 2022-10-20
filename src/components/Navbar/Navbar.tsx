@@ -3,7 +3,7 @@ import s from './Navbar.module.css'
 
 
 
-const Navbar = () => {
+export const Navbar = () => {
     return <nav className={s.nav}>
         <div className={s.item}>
             <a>Profile</a>
@@ -23,4 +23,3 @@ const Navbar = () => {
     </nav>
 }
 
-export default Navbar
