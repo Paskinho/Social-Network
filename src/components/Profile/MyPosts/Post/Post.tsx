@@ -17,9 +17,6 @@ export const Post = (props: MessageType) => {
     </div>
         </div>
 
-
-
-
     )
 }
 

@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+.app-wrapper-content {
+  grid-area: c;
+  background-color: cornflowerblue;
+}
