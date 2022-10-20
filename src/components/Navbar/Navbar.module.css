@@ -1,0 +1,12 @@
+
+.sidebar {
+    grid-area: nav;
+    background-color: coral;
+
+}
+
+.item {
+    color: brown;
+    background-color: hotpink;
+    height: 50px;
+}
