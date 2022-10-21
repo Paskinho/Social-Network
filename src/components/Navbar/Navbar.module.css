@@ -1,12 +1,13 @@
 
-.sidebar {
-    grid-area: nav;
-    background-color: coral;
-
+.nav {
+    grid-area: n;
+    background-color: burlywood;
 }
 
 .item {
-    color: brown;
-    background-color: hotpink;
-    height: 50px;
+    color: white;
+}
+
+.item a.active {
+    color: gold;
 }
