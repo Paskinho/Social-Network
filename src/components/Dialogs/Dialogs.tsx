@@ -14,22 +14,22 @@ const Message =(props) => {
 }
 
 
-export const Dialogs = () => {
+export const Dialogs = (props) => {
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
-                <DialogItem name ="Trent" id = "1">
-                <DialogItem name ="Virgil" id = "2">
-                <DialogItem name ="Mohamed" id = "3">
-                <DialogItem name ="Darwin" id = "4">
-                <DialogItem name ="Roberto" id = "5">
-                <DialogItem name ="Thiago" id = "6">
+                <DialogItem name ="Trent" id = "1"/>
+                <DialogItem name ="Virgil" id = "2"/>
+                <DialogItem name ="Mohamed" id = "3"/>
+                <DialogItem name ="Darwin" id = "4"/>
+                <DialogItem name ="Roberto" id = "5"/>
+                <DialogItem name ="Thiago" id = "6"/>
             </div>
-            <div className="messages">
+            <div className={s.message}>
                 <Message message="Hi"/>
                 <Message message="How are you IT-Kamasutra"/>
                 <Message message="YO"/>
-            Dialogs
+            {/*Dialogs*/}
         </div>
     )
 }
