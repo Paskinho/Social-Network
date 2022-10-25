@@ -9,6 +9,8 @@ export const MyPosts = () => {
 
     ]
 
+    let postsElements = myPostsData.map (p=> <Post message={p.message} like={p.like})
+
     return (
         <div className={s.postsBlock}>
             <h3>My posts</h3>
@@ -23,10 +25,7 @@ export const MyPosts = () => {
             </div>
             <div className={s.posts}>
                 <div className={s.item}>
-                    <Post message={myPostsData[0].message} like={myPostsData[0].like}/>
-                    <Post message={myPostsData[1].message} like={myPostsData[1].like}/>
-
-
+                    {postsElements}
                 </div>
             </div>
         </div>
