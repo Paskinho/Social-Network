@@ -9,13 +9,17 @@ import {BrowserRouter, Route, Routes} from "react-router-dom"
 import {Music} from "./components/Music/Music";
 import {News} from "./components/News/News";
 import {Settings} from "./components/Settings/Settings";
-
-// type ApppropsType = {
-//     state: State
-// }
+import {state} from "./redux/state";
 
 
-function App (props) {
+
+
+type AppPropsType = {
+    state: []
+}
+
+
+function App (props: ApppropsType) {
 
 
 }
@@ -27,9 +31,9 @@ function App (props) {
     <div className = "app-wrapper-content">
         <Routes>
             <Route path="/"
-                   element={<Profile posts={props.posts}}/>}/>
+                   element={<Profile state={props.profilePage.posts}}/>}/>
             <Route path="/dialogs"
-                   element={<Dialogs dialogs={props.dialogs} messages={props.messages}/>}/>
+                   element={<Dialogs state={props.state.dialogsPage.dialogs} messages={props.state.dialogsPage.messages}/>}/>
 
 
 
