@@ -27,6 +27,7 @@ export let state = {
             {id: 5, name: "Roberto"},
             {id: 6, name: "Thiago"},
         ],
-    }
+    },
+    sidebar: {}
     }
 
