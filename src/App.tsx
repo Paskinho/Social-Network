@@ -15,7 +15,10 @@ import {Settings} from "./components/Settings/Settings";
 // }
 
 
-function App (props: ApppropsType) {
+function App (props) {
+
+
+}
   return (
       <BrowserRouter>
     <div className="app-wrapper">
@@ -24,10 +27,9 @@ function App (props: ApppropsType) {
     <div className = "app-wrapper-content">
         <Routes>
             <Route path="/"
-                   element={<Profile postData={props.state.profilePage.postData}/>}/>
+                   element={<Profile posts={props.posts}}/>}/>
             <Route path="/dialogs"
-                   element={<Dialogs users={props.state.messagesPage.users}
-                                     messages={props.state.messagesPage.messages}/>}/>
+                   element={<Dialogs dialogs={props.dialogs} messages={props.messages}/>}/>
 
 
 
