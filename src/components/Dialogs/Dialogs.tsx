@@ -23,6 +23,10 @@ import {Message} from "./Message/Message";
 //     return <div className={s.dialog}>{props.message}</div>
 // }
 
+type DialogsersPropsType = {
+    users: Array<Users>
+    messages: Array<Messages>
+}
 
 export const Dialogs = () => {
     let dialogsData = [
