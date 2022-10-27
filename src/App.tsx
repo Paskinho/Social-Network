@@ -19,7 +19,7 @@ type AppPropsType = {
 }
 
 
-function App (props: ApppropsType) {
+function App (props: AppPropsType) {
 
 
 }
@@ -31,11 +31,10 @@ function App (props: ApppropsType) {
     <div className = "app-wrapper-content">
         <Routes>
             <Route path="/"
-                   element={<Profile state={props.profilePage.posts}}/>}/>
+                   element={<Profile postData={props.state.profilePage.postData}/>}/>
             <Route path="/dialogs"
-                   element={<Dialogs state={props.state.dialogsPage.dialogs} messages={props.state.dialogsPage.messages}/>}/>
-
-
+                   element={<Dialogs users={props.state.messagesPage.users}
+                                     messages={props.state.messagesPage.messages}/>}/>
 
         {/*<Route path={'/dialogs'} render={()=><Dialogs/> }/>*/}
         {/*<Route path={'/profile'} render={()=><Profile/>}/>*/}

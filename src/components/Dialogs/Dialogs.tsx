@@ -28,12 +28,25 @@ type DialogsersPropsType = {
     messages: Array<Messages>
 }
 
-export const Dialogs = (props) => {
+export const Dialogs = (props: DialogsersPropsType) => {
+
+    console.log('dialog', props)
+
+    //MAP USERS
+    let messageUser = props.users
+        .map(user =>
+            (<Dialogusers name={user.name} id={user.id}  />)
+        )
+    //MAP MESSAGES
+
+    let messagesMap =
+        props.messages
+            .map(m => (<Message message={m.message} />))
 
 
 
-    let dialogsElements = props.state.dialogs.map(d => <DialogItem name={d.name} id={dialog.id}/>);
-    let messagesElements = props.state.messages.map(m => <Message message={m.message}/>)
+    // let dialogsElements = props.state.dialogs.map(d => <DialogItem name={d.name} id={dialog.id}/>);
+    // let messagesElements = props.state.messages.map(m => <Message message={m.message}/>)
 
     return (
         <div className={s.dialogs}>
