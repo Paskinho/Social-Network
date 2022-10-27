@@ -1,6 +1,48 @@
 import React from "react";
 
 
+export type State = {
+    profilePage:Profilepage
+    messagesPage:Messagespage
+    sideBar:Sidebartype
+}
+
+//------------profilePage
+export type Profilepage = {
+    postData: Array<Postdata>
+}
+
+export type Postdata = {
+    postText : string
+    likesCount : number
+}
+
+
+//---------messagesPage
+
+export type Messagespage = {
+    users : Array<Users>
+    messages : Array<Messages>
+}
+
+
+export type Users = {
+    name: string
+    id: number
+}
+
+
+export type Messages = {
+    message : string
+}
+
+//------sideBar
+export type Sidebartype = {
+    user1 :string
+    user2 :string
+    user3 :string
+}
+
 export let state = {
     profilePage: {
         posts: [  //myPostsData

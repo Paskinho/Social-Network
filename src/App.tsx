@@ -10,19 +10,18 @@ import {Music} from "./components/Music/Music";
 import {News} from "./components/News/News";
 import {Settings} from "./components/Settings/Settings";
 import {state} from "./redux/state";
-
-
+import {State} from "./redux/state";
 
 
 type AppPropsType = {
-    state: []
+    state: State
 }
 
 
 function App (props: AppPropsType) {
 
 
-}
+
   return (
       <BrowserRouter>
     <div className="app-wrapper">
@@ -33,8 +32,8 @@ function App (props: AppPropsType) {
             <Route path="/"
                    element={<Profile postData={props.state.profilePage.postData}/>}/>
             <Route path="/dialogs"
-                   element={<Dialogs users={props.state.messagesPage.users}
-                                     messages={props.state.messagesPage.messages}/>}/>
+                   element={<Dialogs users={props.state.dialogsPage.users}
+                                     messages={props.state.dialogsPage.messages}/>}/>
 
         {/*<Route path={'/dialogs'} render={()=><Dialogs/> }/>*/}
         {/*<Route path={'/profile'} render={()=><Profile/>}/>*/}

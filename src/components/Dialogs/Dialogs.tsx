@@ -51,11 +51,12 @@ export const Dialogs = (props: DialogsersPropsType) => {
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
-                {
-                    {dialogsElements}
-                }
+
+                    {messageUser}
+
             </div>
             <div className={s.message}>
+                {messagesMap}
                 {/*<Message message={messageData[0].message}/>*/}
                 {/*<Message message={messageData[1].message}/>*/}
                 {/*<Message message={messageData[2].message}/>*/}
