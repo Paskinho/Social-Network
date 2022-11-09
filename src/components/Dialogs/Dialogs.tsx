@@ -4,32 +4,43 @@ import {NavLink} from "react-router-dom";
 
 
 
-export type dialogItemPropsType = {
-    id: number
+export type DialogItemPropsType = {
+    id: string
     name: string
-    message: string
+    // DialogItem: (id: string, name: string, message: string)=> void
 }
 
 
-const DialogItem = (props:dialogItemPropsType) => {
+const DialogItem = (props:DialogItemPropsType) => {
   let path = "/dialogs/1" + props.id;
+  return(
     <div className={s.dialog + " " + s.active}>
         <NavLink to={path}> {props.name} </NavLink>
     </div>
+  )
+
 }
 
-const Message =(props: dialogItemPropsType) => {
+type MessagePropsType = {
+    message: string
+}
+
+const Message =(props: MessagePropsType) => {
     return <div className={s.dialog}>{props.message}</div>
 }
 
+type DialogsPropsType= {
+    DialogItem: (name: string)=> void
+}
 
-export const Dialogs = (props: dialogItemPropsType) => {
+
+export const Dialogs: React.FC<DialogsPropsType> = (props) => {
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
                 <DialogItem name ="Trent" id = "1"/>
                 <DialogItem name ="Virgil" id = "2"/>
-                <DialogItem name ="Mohamed" id = "3"/>
+                <DialogItem name ="Mohamed" id = "3" />
                 <DialogItem name ="Darwin" id = "4"/>
                 <DialogItem name ="Roberto" id = "5"/>
                 <DialogItem name ="Thiago" id = "6"/>
