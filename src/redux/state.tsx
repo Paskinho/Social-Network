@@ -1,75 +1,74 @@
 import React from "react";
 
 
-export type State = {
-    profilePage:Profilepage
-    messagesPage:Messagespage
-    sideBar:Sidebartype
+ type myPostsPageType = {
+    postData:Array<PostDataType>
 }
 
-//------------profilePage
-export type Profilepage = {
-    postData: Array<Postdata>
+type dialogsPageType ={
+    users: Array<UsersType>
+    messages: Array<MessagesType>
 }
 
-export type Postdata = {
-    postText : string
-    likesCount : number
+type PostDataType ={
+     // id: number
+    postText: string
+    like: number
 }
 
-
-//---------messagesPage
-
-export type Messagespage = {
-    users : Array<Users>
-    messages : Array<Messages>
-}
-
-
-export type Users = {
+type UsersType = {
     name: string
     id: number
+
 }
 
-
-export type Messages = {
-    message : string
+type MessagesType = {
+    message: string
 }
 
-//------sideBar
-export type Sidebartype = {
-    user1 :string
-    user2 :string
-    user3 :string
+type SidebarType={}
+
+
+
+ type RootStateType = {
+    dialogsPage: dialogsPageType
+    myPostsPage: myPostsPageType
 }
 
-export let state = {
-    profilePage: {
-        posts: [  //myPostsData
-            {id: 1, like: "5", message: "Hello, how are you?"},
-            {id: 2, like: "10", message: "This is my first post)?"},
+export const state: RootStateType = {
 
+    dialogsPage: {
+        users: [
+            {name: "Trent", id: 0},
+            {name: "Virgil", id: 1},
+            {name: "Mohamed", id: 2},
+            {name: "Darwin", id: 3},
+            {name: "Roberto", id: 4},
+            {name: "Thiago", id: 5}
         ],
-
-    },
-   dialogsPage: {
         messages: [
-            {id: 1, message: "Hi"},
-            {id: 2, message: "How are you IT-Kamasutra"},
-            {id: 3, message: "YO"},
-            {id: 4, message: "YO"},
-            {id: 5, message: "YO"},
-            {id: 6, message: "YO"},
-        ],
-        dialogs: [
-            {id: 1, name: "Trent"},
-            {id: 2, name: "Virgil"},
-            {id: 3, name: "Mohamed"},
-            {id: 4, name: "Darwin"},
-            {id: 5, name: "Roberto"},
-            {id: 6, name: "Thiago"},
-        ],
-    },
-    sidebar: {}
-    }
+            {message: "Hi"},
+            {message: "How are you IT-Kamasutra"},
+            {message: "YO"}
 
+        ]
+    },
+
+    myPostsPage: {
+        postData: [
+        {postText: "Hello, how are you?", like: 5},
+        {postText: "This is my first post)", like: 10},
+    ]
+}
+
+}
+
+export const addPost =(postText:string) => {
+     const newPost: PostDataType  = {
+         // id:5,
+      postText: postText,
+         like: 0
+     };
+
+     state.myPostsPage.postData.push(newPost)
+}

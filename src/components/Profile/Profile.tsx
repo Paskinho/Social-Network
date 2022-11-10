@@ -4,18 +4,12 @@ import {MyPosts} from "./MyPosts/MyPosts";
 import {Post} from "./MyPosts/Post/Post";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 
-type PostDataType = {
-    postData : Array<Postdata>
-}
 
-
-
-export const Profile = (props: PostDataType) => {
-
+export const Profile = () => {
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts posts={props.postData}/>
+            <MyPosts addPostCallback={()=>{'Hello'}} message={"Hi"}/>
         </div>
     )
 }

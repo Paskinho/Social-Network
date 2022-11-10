@@ -1,70 +1,56 @@
 import React from "react";
 import s from './Dialogs.module.css';
 import {NavLink} from "react-router-dom";
-import{DialogItem} from "./DialogItem/DiaolgItem";
-import {Message} from "./Message/Message";
-
-// type DialogItemPropsType = {
-//     id: number;
-//     name: string;
-//     message: string
-// }
-//
-//
-// export function DialogItem(props: DialogItemPropsType) {
-//     let path = "/dialogs/1" + props.id;
-//     <div className={s.dialog + " " + s.active}>
-//         <NavLink to={path}> {props.name} </NavLink>
-//     </div>
-// }
 
 
-// export function Message(props: DialogItemPropsType) {
-//     return <div className={s.dialog}>{props.message}</div>
-// }
 
-type DialogsersPropsType = {
-    users: Array<Users>
-    messages: Array<Messages>
+export type DialogItemPropsType = {
+    id: string
+    name: string
+    // DialogItem: (id: string, name: string, message: string)=> void
 }
 
-export const Dialogs = (props: DialogsersPropsType) => {
 
-    console.log('dialog', props)
+const DialogItem = (props:DialogItemPropsType) => {
+  let path = "/dialogs/1" + props.id;
+  return(
+    <div className={s.dialog + " " + s.active}>
+        <NavLink to={path}> {props.name} </NavLink>
+    </div>
+  )
 
-    //MAP USERS
-    let messageUser = props.users
-        .map(user =>
-            (<Dialogusers name={user.name} id={user.id}  />)
-        )
-    //MAP MESSAGES
+}
 
-    let messagesMap =
-        props.messages
-            .map(m => (<Message message={m.message} />))
+type MessagePropsType = {
+    message: string
+}
+
+const Message =(props: MessagePropsType) => {
+    return <div className={s.dialog}>{props.message}</div>
+}
+
+type DialogsPropsType= {
+    DialogItem: (name: string)=> void
+}
 
 
-
-    // let dialogsElements = props.state.dialogs.map(d => <DialogItem name={d.name} id={dialog.id}/>);
-    // let messagesElements = props.state.messages.map(m => <Message message={m.message}/>)
-
+export const Dialogs: React.FC<DialogsPropsType> = (props) => {
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
-
-                    {messageUser}
-
+                <DialogItem name ="Trent" id = "1"/>
+                <DialogItem name ="Virgil" id = "2"/>
+                <DialogItem name ="Mohamed" id = "3" />
+                <DialogItem name ="Darwin" id = "4"/>
+                <DialogItem name ="Roberto" id = "5"/>
+                <DialogItem name ="Thiago" id = "6"/>
             </div>
             <div className={s.message}>
-                {messagesMap}
-                {/*<Message message={messageData[0].message}/>*/}
-                {/*<Message message={messageData[1].message}/>*/}
-                {/*<Message message={messageData[2].message}/>*/}
-                {/*<Message message={messageData[3].message}/>*/}
-                {/*<Message message={messageData[4].message}/>*/}
-                {/*<Message message={messageData[5].message}/>*/}
-                {/*Message*/}
-            </div>
+                <Message message="Hi"/>
+                <Message message="How are you IT-Kamasutra"/>
+                <Message message="YO"/>
+            {/*Dialogs*/}
+        </div>
         </div>
     )
 }
