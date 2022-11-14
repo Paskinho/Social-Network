@@ -16,6 +16,7 @@ import {addPost} from "./Redux/state";
 type appPropsType = {
     state: typeof state
     addPost: (postText: string) => void
+    updateNewPostText: ()=> void
 }
 
 const App =(props: appPropsType) => {
@@ -27,8 +28,10 @@ const App =(props: appPropsType) => {
     <div className = "app-wrapper-content">
         <Routes>
         <Route path='/dialogs' element={<Dialogs state={props.state.dialogsPage}/>} />
-        <Route path='/profile' element={<Profile state={props.state.myPostsPage}
-        addPost = {props.addPost}/>}/>
+        <Route path='/profile' element={<Profile myPostsPage={props.state.myPostsPage}
+        newPostText={props.state.dialogsPage.newPostText}
+        addPost = {props.addPost}
+        updateNewPostText ={props.updateNewPostText}/>}/>
         <Route path='/news' element={<News key={2}/>}/>
         <Route path='/music' element={<Music key={3}/>}/>
         <Route path='/settings' element={<Settings key={4}/>}/>

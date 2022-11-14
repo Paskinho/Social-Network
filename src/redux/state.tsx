@@ -1,19 +1,21 @@
 import React from "react";
+import {rerenderEntireTree} from "../render";
 
-
- type myPostsPageType = {
+type myPostsPageType = {
     postData:Array<PostDataType>
 }
 
 type dialogsPageType ={
     users: Array<UsersType>
     messages: Array<MessagesType>
+    newPostText: string
 }
 
-type PostDataType ={
+export type PostDataType ={
      // id: number
     postText: string
     like: number
+
 }
 
 type UsersType = {
@@ -30,14 +32,18 @@ type SidebarType={}
 
 
 
- type RootStateType = {
+ export type RootStateType = {
     dialogsPage: dialogsPageType
     myPostsPage: myPostsPageType
+     sidebar: SidebarType
+
+
 }
 
 export const state: RootStateType = {
 
     dialogsPage: {
+        newPostText: "it-kamasutra",
         users: [
             {name: "Trent", id: 0},
             {name: "Virgil", id: 1},
@@ -58,17 +64,24 @@ export const state: RootStateType = {
         postData: [
         {postText: "Hello, how are you?", like: 5},
         {postText: "This is my first post)", like: 10},
-    ]
-}
+    ],
 
+},
+sidebar:{}
 }
 
 export const addPost =(postText:string) => {
      const newPost: PostDataType  = {
          // id:5,
-      postText: postText,
+      postText: state.myPostsPage.newPostText,
          like: 0
      };
 
      state.myPostsPage.postData.push(newPost)
+    rerenderEntireTree(state)
+}
+
+export const updateNewPostText =(newText:string) => {
+    state.myPostsPage.newPostText = newText
+    rerenderEntireTree(state)
 }
