@@ -8,9 +8,10 @@ import {PostDataType} from "../../../Redux/state";
 type MessageType = {
     message: string
     posts:Array<PostDataType>
-    addPostCallback: (postText:string) => void
+    // addPostCallback: (postText:string) => void
     onPostChangeCallBack: (newText: string) => void
     updateNewPostText: (newText: string) => void
+    addPost: (postMessage: string) => void
 }
 
 export const MyPosts = (props: MessageType) => {
@@ -20,11 +21,11 @@ export const MyPosts = (props: MessageType) => {
     const postMessageRef = React.createRef<HTMLTextAreaElement>()
 
     const addPost = () => {
-
-        props.addPostCallback(props.message)
-        // let text = newPostElement.current?.value
-        // if (text) props.addPost(text)
-        // if (newPostElement.current) newPostElement.current.value = '
+        //
+        // props.addPostCallback(props.message)
+        let text = postMessageRef.current?.value
+        if (text) props.addPost(text)
+        if (postMessageRef.current) postMessageRef.current.value = ''
     }
 
     const onPostChangeCallBack = () => {

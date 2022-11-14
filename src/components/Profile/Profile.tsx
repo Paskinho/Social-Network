@@ -17,8 +17,8 @@ export const Profile = (props: ProfileType) => {
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts addPostCallback={props.myPostPage.postData}
-                     message={props.myPostPage.postData}
+            <MyPosts myPostPage={props.myPostPage}
+                     addPost={props.addPost}
                      // addPost={props.addPost}
                      updateNewPostText={props.updateNewPostText}
             />
