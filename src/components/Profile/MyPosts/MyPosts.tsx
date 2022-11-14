@@ -10,6 +10,7 @@ type MessageType = {
     posts:Array<PostDataType>
     addPostCallback: (postText:string) => void
     onPostChangeCallBack: (newText: string) => void
+    updateNewPostText: (newText: string) => void
 }
 
 export const MyPosts = (props: MessageType) => {
@@ -21,11 +22,14 @@ export const MyPosts = (props: MessageType) => {
     const addPost = () => {
 
         props.addPostCallback(props.message)
+        // let text = newPostElement.current?.value
+        // if (text) props.addPost(text)
+        // if (newPostElement.current) newPostElement.current.value = '
     }
 
     const onPostChangeCallBack = () => {
 const text = postMessageRef.current?.value;
-      props.updateNewPostText();
+      text ? props.updateNewPostText(text) : props.updateNewPostText('');
     }
 
 
@@ -38,9 +42,7 @@ const text = postMessageRef.current?.value;
                 {/*key={p.i} добавить в дивку*/}
             </hr>
             <div>
-                <textarea onChange={(e)=> {
-                    props.onPostChangeCallBack(e.currentTarget.value);
-                }} value={props.message}/>
+                <textarea onChange={onPostChangeCallBack} value={props.message}/>
             </div>
             <div>
                 <button onClick={addPost}>Add post</button>
@@ -59,4 +61,3 @@ const text = postMessageRef.current?.value;
         </div>
     )
 }
-
