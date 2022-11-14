@@ -16,7 +16,7 @@ import {addPost} from "./Redux/state";
 type appPropsType = {
     state: RootStateType
     addPost: (postText: string) => void
-    updateNewPostText: () => void
+    updateNewPostText: (newText: string) => void
 }
 
 const App = (props: appPropsType) => {
@@ -31,7 +31,7 @@ const App = (props: appPropsType) => {
                             state={props.state.dialogsPage}
                             newPostText={props.state.dialogsPage.newPostText}/>}/>
                         <Route path='/profile' element={<Profile
-                            myPostsPage={props.state.myPostsPage}
+                            myPostPage={props.state.myPostsPage}
                             addPost={props.addPost}
                             updateNewPostText={props.updateNewPostText}/>}/>
                         <Route path='/news' element={<News key={2}/>}/>
