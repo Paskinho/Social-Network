@@ -1,9 +1,15 @@
 import React from 'react';
 import s from './Myposts.module.css'
 import {Post} from "./Post/Post";
+import {PostDataType} from "../../../Redux/state";
+
+
+
 type MessageType = {
     message: string
+    posts:Array<PostDataType>
     addPostCallback: (postText:string) => void
+    onPostChangeCallBack: (newText: string) => void
 }
 
 export const MyPosts = (props: MessageType) => {
@@ -14,14 +20,27 @@ export const MyPosts = (props: MessageType) => {
 
     const addPost = () => {
 
-        props.addPostCallback(postMessageRef.current ? postMessageRef.current.value: '----')
+        props.addPostCallback(props.message)
     }
+
+    const onPostChangeCallBack = () => {
+const text = postMessageRef.current?.value;
+      props.updateNewPostText();
+    }
+
 
     return (
         <div className={s.postsBlock}>
             <h3>My posts</h3>
+            {props.posts}
+            <hr>
+            {props.posts.map(p=> <div><b>{p.postText}</b></div>)}
+                {/*key={p.i} добавить в дивку*/}
+            </hr>
             <div>
-                <textarea ref={postMessageRef}></textarea>
+                <textarea onChange={(e)=> {
+                    props.onPostChangeCallBack(e.currentTarget.value);
+                }} value={props.message}/>
             </div>
             <div>
                 <button onClick={addPost}>Add post</button>

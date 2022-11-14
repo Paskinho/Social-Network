@@ -9,7 +9,11 @@ export const Profile = () => {
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts addPostCallback={()=>{'Hello'}} message={"Hi"}/>
+            <MyPosts addPostCallback={props.myPostsPage.postText}
+                     message={props.myPostsPage.postText}
+                     // addPost={props.addPost}
+                     updateNewPostText={props.updateNewPostText}
+            />
         </div>
     )
 }
