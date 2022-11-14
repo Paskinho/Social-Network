@@ -32,7 +32,7 @@ const Message =(props: MessagePropsType) => {
 
 type DialogsPropsType= {
     DialogItem: (name: string)=> void
-    state: Array<RootStateType> // уточнить
+    state: RootStateType // уточнить
 }
 
 

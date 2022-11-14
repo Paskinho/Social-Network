@@ -29,7 +29,7 @@ const App = (props: appPropsType) => {
                     <Routes>
                         <Route path='/dialogs' element={<Dialogs
                             state={props.state.dialogsPage}
-                            newPostText={props.state.dialogsPage.newPostText}/>}/>
+                            newPostText={props.state.myPostsPage.newPostText}/>}/>
                         <Route path='/profile' element={<Profile
                             myPostPage={props.state.myPostsPage}
                             addPost={props.addPost}

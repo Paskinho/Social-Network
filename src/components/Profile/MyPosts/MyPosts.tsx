@@ -1,17 +1,19 @@
 import React from 'react';
 import s from './Myposts.module.css'
 import {Post} from "./Post/Post";
-import {PostDataType} from "../../../Redux/state";
+import {dialogsPageType, myPostsPageType} from "../../../Redux/state";
 
 
 
 type MessageType = {
-    message: string
-    posts:Array<PostDataType>
+    // message: string
+    // posts:Array<PostDataType>
     // addPostCallback: (postText:string) => void
-    onPostChangeCallBack: (newText: string) => void
+    // onPostChangeCallBack: (newText: string) => void
     updateNewPostText: (newText: string) => void
     addPost: (postMessage: string) => void
+    myPostPage: myPostsPageType
+    // dialogsPage: dialogsPageType
 }
 
 export const MyPosts = (props: MessageType) => {
@@ -37,13 +39,12 @@ const text = postMessageRef.current?.value;
     return (
         <div className={s.postsBlock}>
             <h3>My posts</h3>
-            {props.posts}
-            <hr>
-            {props.posts.map(p=> <div><b>{p.postText}</b></div>)}
-                {/*key={p.i} добавить в дивку*/}
-            </hr>
+            {/*<hr>*/}
+            {/*{props.posts.map(p=> <div><b>{p.postText}</b></div>)}*/}
+            {/*    /!*key={p.i} добавить в дивку*!/*/}
+            {/*</hr>*/}
             <div>
-                <textarea onChange={onPostChangeCallBack} value={props.message}/>
+                <textarea onChange={onPostChangeCallBack} value={props.myPostPage.newPostText}/>
             </div>
             <div>
                 <button onClick={addPost}>Add post</button>
