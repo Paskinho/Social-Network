@@ -6,7 +6,9 @@ import {state} from "./Redux/state";
 
 
 test('renders learn react link', () => {
-  render(<App state={state}/>);
+  render(<App state={state}
+              addPost={(postText)=>{}}
+              updateNewPostText = {()=>{}}/>);
   const linkElement = screen.getByText(/learn react/i);
   expect(linkElement).toBeInTheDocument();
 });

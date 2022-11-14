@@ -9,12 +9,12 @@ import {BrowserRouter, Route, Routes} from "react-router-dom"
 import {Music} from "./components/Music/Music";
 import {News} from "./components/News/News";
 import {Settings} from "./components/Settings/Settings";
-import {state} from "./Redux/state";
+import {RootStateType, state} from "./Redux/state";
 import {addPost} from "./Redux/state";
 
 
 type appPropsType = {
-    state: typeof state
+    state: RootStateType
     addPost: (postText: string) => void
     updateNewPostText: ()=> void
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import s from './Dialogs.module.css';
 import {NavLink} from "react-router-dom";
+import {RootStateType} from "../../Redux/state";
 
 
 
@@ -31,6 +32,7 @@ const Message =(props: MessagePropsType) => {
 
 type DialogsPropsType= {
     DialogItem: (name: string)=> void
+    state: Array<RootStateType> // уточнить
 }
 
 
