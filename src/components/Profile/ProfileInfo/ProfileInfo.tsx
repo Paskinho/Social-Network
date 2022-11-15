@@ -10,7 +10,7 @@ export const ProfileInfo = () => {
         <div className="s.img">
             <img src="https://backend.liverpoolfc.com/sites/default/files/styles/lg/public/2021-06/placeholder.jpg?itok=nhe1dpvk"/>
         </div>
-    <div className={s.descroptionBlock}>
+    <div className="s.descriptionBlock">
         ava+description
     </div>
         </div>
