@@ -28,6 +28,7 @@ const App = (props: appPropsType) => {
                 <div className="app-wrapper-content">
                     <Routes>
                         <Route path='/dialogs' element={<Dialogs
+
                             state={props.state.dialogsPage}
                             newPostText={props.state.myPostsPage.newPostText}/>}/>
                         <Route path='/profile' element={<Profile

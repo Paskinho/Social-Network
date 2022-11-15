@@ -1,14 +1,22 @@
-import React from "react";
-import {rerenderEntireTree} from "../render";
 
-type myPostsPageType = {
-    postData:Array<PostDataType>
+
+let rerenderEntireTree = (state: RootStateType)=> {
+    console.log("state changed")
 }
 
-type dialogsPageType ={
+export type SubscribeType = (observer: RootStateType)=>void
+
+export type myPostsPageType = {
+    postData:Array<PostDataType>
+    newPostText: string
+
+
+}
+
+export type dialogsPageType ={
     users: Array<UsersType>
     messages: Array<MessagesType>
-    newPostText: string
+
 }
 
 export type PostDataType ={
@@ -28,14 +36,14 @@ type MessagesType = {
     message: string
 }
 
-type SidebarType={}
+// type SidebarType={}
 
 
 
  export type RootStateType = {
     dialogsPage: dialogsPageType
     myPostsPage: myPostsPageType
-     sidebar: SidebarType
+     // sidebar: SidebarType
 
 
 }
@@ -43,7 +51,7 @@ type SidebarType={}
 export const state: RootStateType = {
 
     dialogsPage: {
-        newPostText: "it-kamasutra",
+
         users: [
             {name: "Trent", id: 0},
             {name: "Virgil", id: 1},
@@ -65,15 +73,16 @@ export const state: RootStateType = {
         {postText: "Hello, how are you?", like: 5},
         {postText: "This is my first post)", like: 10},
     ],
+        newPostText: "it-kamasutra",
 
 },
-sidebar:{}
+// sidebar:{}
 }
 
 export const addPost =(postText:string) => {
      const newPost: PostDataType  = {
          // id:5,
-      postText: state.myPostsPage.newPostText,
+      postText: postText,
          like: 0
      };
 
@@ -85,3 +94,9 @@ export const updateNewPostText =(newText:string) => {
     state.myPostsPage.newPostText = newText
     rerenderEntireTree(state)
 }
+
+export const subscribe = (observer: SubscribeType) => {
+rerenderEntireTree=observer
+}
+
+//store
