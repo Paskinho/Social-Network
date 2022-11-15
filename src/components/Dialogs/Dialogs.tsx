@@ -1,7 +1,7 @@
 import React from "react";
 import s from './Dialogs.module.css';
 import {NavLink} from "react-router-dom";
-import {RootStateType} from "../../Redux/state";
+import {dialogsPageType, RootStateType} from "../../Redux/state";
 
 
 
@@ -31,8 +31,9 @@ const Message =(props: MessagePropsType) => {
 }
 
 type DialogsPropsType= {
-    DialogItem: (name: string)=> void
-    state: RootStateType // уточнить
+    // DialogItem: (name: string)=> void
+    state: dialogsPageType // уточнить
+    newPostText: string
 }
 
 
