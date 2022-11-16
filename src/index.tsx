@@ -9,7 +9,8 @@ import {BrowserRouter} from "react-router-dom";
 const rerenderEntireTree = (state: RootStateType) => {
     ReactDOM.render(
         <React.StrictMode>
-            <App state={state} addPost={store.addPost.bind(store)} updateNewPostText={store.updateNewPostText.bind(store)}/>
+            <App store={store} state={state} addPost={store.addPost.bind(store)} updateNewPostText={store.updateNewPostText.bind(store)}/>
+            {/*// store={store}*/}
         </React.StrictMode>,
         document.getElementById("root")
     );

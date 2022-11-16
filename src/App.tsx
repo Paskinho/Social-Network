@@ -9,7 +9,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom"
 import {Music} from "./components/Music/Music";
 import {News} from "./components/News/News";
 import {Settings} from "./components/Settings/Settings";
-import {RootStateType} from "./Redux/state";
+import {RootStateType, StoreType} from "./Redux/state";
 import {store} from "./Redux/state";
 
 
@@ -17,9 +17,13 @@ type appPropsType = {
     state: RootStateType
     addPost: (postText: string) => void
     updateNewPostText: (newText: string) => void
+    store: StoreType
 }
 
 const App = (props: appPropsType) => {
+
+    const state = props.store.getState();
+
     return (
         <BrowserRouter>
             <div className="app-wrapper">
@@ -29,12 +33,12 @@ const App = (props: appPropsType) => {
                     <Routes>
                         <Route path='/dialogs' element={<Dialogs
 
-                            state={props.state.dialogsPage}
-                            newPostText={props.state.myPostsPage.newPostText}/>}/>
+                            state={state.dialogsPage}
+                            newPostText={state.myPostsPage.newPostText}/>}/>
                         <Route path='/profile' element={<Profile
                             myPostPage={props.state.myPostsPage}
-                            addPost={props.addPost}
-                            updateNewPostText={props.updateNewPostText}/>}/>
+                            addPost={props.store.addPost.bind(props.store)}
+                            updateNewPostText={props.store.updateNewPostText.bind(props.store)}/>}/>
                         <Route path='/news' element={<News key={2}/>}/>
                         <Route path='/music' element={<Music key={3}/>}/>
                         <Route path='/settings' element={<Settings key={4}/>}/>
