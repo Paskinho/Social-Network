@@ -1,8 +1,5 @@
 
 
-let rerenderEntireTree = (state: RootStateType)=> {
-    console.log("state changed")
-}
 
 export type SubscribeType = (observer: RootStateType)=>void
 
@@ -48,55 +45,113 @@ type MessagesType = {
 
 }
 
-export const state: RootStateType = {
 
-    dialogsPage: {
 
-        users: [
-            {name: "Trent", id: 0},
-            {name: "Virgil", id: 1},
-            {name: "Mohamed", id: 2},
-            {name: "Darwin", id: 3},
-            {name: "Roberto", id: 4},
-            {name: "Thiago", id: 5}
-        ],
-        messages: [
-            {message: "Hi"},
-            {message: "How are you IT-Kamasutra"},
-            {message: "YO"}
 
-        ]
+
+
+
+
+export type StoreType = {
+    _state: RootStateType
+    onChange: () => void
+    addPost: (postText: string) => void
+    updateNewPostText: (newText: string) => void
+    subscribe: (observer: () => void) => void
+    getState: () => RootStateType
+    dispatch: (action: AddPostActionType | UpdateNewTextActionType)=>void
+}
+
+type AddPostActionType = {
+    type: "ADD-POST"
+    postText: string
+}
+type UpdateNewTextActionType = {
+    type: "UPDATE-NEW-POST-TEXT"
+    newPostText: string
+}
+
+export type ActionsTypes = AddPostActionType | UpdateNewTextActionType
+
+
+
+export const store: StoreType ={
+    _state: {
+
+        dialogsPage: {
+
+            users: [
+                {name: "Trent", id: 0},
+                {name: "Virgil", id: 1},
+                {name: "Mohamed", id: 2},
+                {name: "Darwin", id: 3},
+                {name: "Roberto", id: 4},
+                {name: "Thiago", id: 5}
+            ],
+            messages: [
+                {message: "Hi"},
+                {message: "How are you IT-Kamasutra"},
+                {message: "YO"}
+
+            ]
+        },
+
+        myPostsPage: {
+            postData: [
+                {postText: "Hello, how are you?", like: 5},
+                {postText: "This is my first post)", like: 10},
+            ],
+            newPostText: "New message",
+
+        },
+// sidebar:{}
+    },
+    getState(){
+        return this._state
+    },
+    onChange (){
+        console.log("state changed")
+    },
+    addPost (postText:string) {
+        const newPost: PostDataType  = {
+            // id:5,
+            postText: this._state.myPostsPage.newPostText,  //postText
+            like: 0
+        };
+
+        this._state.myPostsPage.postData.push(newPost)
+        this._state.myPostsPage.newPostText = ""
+        this.onChange()
+        // this._onChange()
+    },
+    updateNewPostText (newText:string) {
+        this._state.myPostsPage.newPostText = newText
+        this.onChange()
+        // this._onChange()
+    },
+    subscribe (observer) {
+        this.onChange=observer
     },
 
-    myPostsPage: {
-        postData: [
-        {postText: "Hello, how are you?", like: 5},
-        {postText: "This is my first post)", like: 10},
-    ],
-        newPostText: "it-kamasutra",
+    dispatch (action) {
+    if (action.type === "ADD-POST"){
+        const newPost: PostDataType  = {
+            // id: new Date() getTime(),
+            postText: action.postText,  //postText
+            like: 0
+        };
 
-},
-// sidebar:{}
+        this._state.myPostsPage.postData.push(newPost)
+        this._state.myPostsPage.newPostText = ""
+        this.onChange()
+        // this._onChange()
+    } else if (action.type === "UPDATE-NEW-POST-TEXT") {
+        this._state.myPostsPage.newPostText = action.newPostText;
+        this.onChange()
+    }
+    }
+
 }
 
-export const addPost =(postText:string) => {
-     const newPost: PostDataType  = {
-         // id:5,
-      postText: postText,
-         like: 0
-     };
-
-     state.myPostsPage.postData.push(newPost)
-    rerenderEntireTree(state)
-}
-
-export const updateNewPostText =(newText:string) => {
-    state.myPostsPage.newPostText = newText
-    rerenderEntireTree(state)
-}
-
-export const subscribe = (observer: SubscribeType) => {
-rerenderEntireTree=observer
-}
 
 //store

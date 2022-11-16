@@ -7,10 +7,10 @@ import s from './ProfileInfo.module.css'
 export const ProfileInfo = () => {
     return (
         <div>
-        <div className="s.img">
+        <div className={s.img}>
             <img src="https://backend.liverpoolfc.com/sites/default/files/styles/lg/public/2021-06/placeholder.jpg?itok=nhe1dpvk"/>
         </div>
-    <div className="s.descriptionBlock">
+    <div className={s.descriptionBlock}>
         ava+description
     </div>
         </div>
