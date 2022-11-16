@@ -2,14 +2,14 @@ import React from 'react';
 import './index.css';
 import ReactDOM from 'react-dom';
 import App from './App';
-import {store, RootStateTypeЪ from "./Redux/state";
+import {store, RootStateType} from "./Redux/state";
 import {BrowserRouter} from "react-router-dom";
 
 
 const rerenderEntireTree = (state: RootStateType) => {
     ReactDOM.render(
         <React.StrictMode>
-            <App state={store.getState()} addPost={store.addPost} updateNewPostText={store.updateNewPostText}/>
+            <App state={state} addPost={store.addPost.bind(store)} updateNewPostText={store.updateNewPostText.bind(store)}/>
         </React.StrictMode>,
         document.getElementById("root")
     );
@@ -18,9 +18,9 @@ const rerenderEntireTree = (state: RootStateType) => {
 
 
 
-rerenderEntireTree(store._state)
+rerenderEntireTree(store.getState())
 
-store.subscribe(store.rerenderEntireTree)
+store.subscribe(store.onChange)
 
 // const root = ReactDOM.createRoot(
 //   document.getElementById('root') as HTMLElement
