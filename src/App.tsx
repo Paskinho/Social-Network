@@ -38,9 +38,7 @@ const App = (props: appPropsType) => {
                             newPostText={state.myPostsPage.newPostText}/>}/>
                         <Route path='/profile' element={<Profile
                             myPostPage={props.state.myPostsPage}
-                            addPost={props.store.addPost.bind(props.store)}
-                            dispatch = {store.dispatch.bind(props.store)}
-                            updateNewPostText={props.store.updateNewPostText.bind(props.store)}/>}/>
+                            dispatch={props.dispatch}/>}/>
                         <Route path='/news' element={<News key={2}/>}/>
                         <Route path='/music' element={<Music key={3}/>}/>
                         <Route path='/settings' element={<Settings key={4}/>}/>

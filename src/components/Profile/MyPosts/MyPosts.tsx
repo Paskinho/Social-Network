@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Myposts.module.css'
 import {Post} from "./Post/Post";
-import {dialogsPageType, myPostsPageType} from "../../../Redux/state";
+import {ActionsTypes, dialogsPageType, myPostsPageType} from "../../../Redux/state";
 
 
 
@@ -10,8 +10,7 @@ type MessageType = {
     // posts:Array<PostDataType>
     // addPostCallback: (postText:string) => void
     // onPostChangeCallBack: (newText: string) => void
-    updateNewPostText: (newText: string) => void
-    addPost: (postMessage: string) => void
+    dispatch: (action: any) => void
     myPostPage: myPostsPageType
     // dialogsPage: dialogsPageType
 }
@@ -26,13 +25,13 @@ export const MyPosts = (props: MessageType) => {
         //
         // props.addPostCallback(props.message)
         let text = postMessageRef.current?.value
-        if (text) props.addPost(text)
+        if (text) props.dispatch({type: "ADD-POST"})
         if (postMessageRef.current) postMessageRef.current.value = ''
     }
 
     const onPostChangeCallBack = () => {
 const text = postMessageRef.current?.value;
-      text ? props.updateNewPostText(text) : props.updateNewPostText('');
+      text ? props.dispatch({type: "UPDATE-NEW-POST-TEXT", newPostText: text}) : props.dispatch('');
     }
 
 
