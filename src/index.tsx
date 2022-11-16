@@ -6,10 +6,11 @@ import {store, RootStateType} from "./Redux/state";
 import {BrowserRouter} from "react-router-dom";
 
 
+
 const rerenderEntireTree = (state: RootStateType) => {
     ReactDOM.render(
         <React.StrictMode>
-            <App store={store} state={state} addPost={store.addPost.bind(store)} updateNewPostText={store.updateNewPostText.bind(store)}/>
+            <App store={store} state={state} dispatch={store.dispatch.bind(store)}/>
             {/*// store={store}*/}
         </React.StrictMode>,
         document.getElementById("root")
@@ -18,10 +19,12 @@ const rerenderEntireTree = (state: RootStateType) => {
 }
 
 
-
 rerenderEntireTree(store.getState())
 
 store.subscribe(store.onChange)
+
+
+//нужно посмотреть по компоненте(функции) store, нужно удалить
 
 // const root = ReactDOM.createRoot(
 //   document.getElementById('root') as HTMLElement

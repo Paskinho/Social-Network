@@ -3,13 +3,14 @@ import s from './Profile.module.css'
 import {MyPosts} from "./MyPosts/MyPosts";
 import {Post} from "./MyPosts/Post/Post";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
-import {myPostsPageType} from "../../Redux/state";
+import {ActionsTypes, myPostsPageType} from "../../Redux/state";
 
 
 type ProfileType = {
     myPostPage: myPostsPageType
     addPost: (postMessage: string) => void
     updateNewPostText: (newText: string) => void
+    dispatch: (action: ActionsTypes) => void
 }
 
 

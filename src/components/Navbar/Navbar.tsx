@@ -12,13 +12,13 @@ export const Navbar = () => {
             <NavLink to="/dialogs">Message</NavLink>
         </div>
         <div className={s.item}>
-            <a>News</a>
+            <NavLink to="/news">News</NavLink>
         </div>
         <div className={s.item}>
-            <a>Music</a>
+            <NavLink to="/music">Music</NavLink>
         </div>
         <div className={s.item}>
-            <a>Settings</a>
+            <NavLink to="/settings">Settings</NavLink>
         </div>
     </nav>
 }

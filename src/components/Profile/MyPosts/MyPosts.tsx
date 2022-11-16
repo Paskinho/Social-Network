@@ -54,8 +54,8 @@ const text = postMessageRef.current?.value;
             </div>
             <div className={s.posts}>
                 <div className={s.item}>
-                    <Post message='Hello, how are you?' like='5'/>
-                    <Post message='This is my first post)' like='10'/>
+                    <Post message='Im best player in the world' like='5'/>
+                    <Post message='Реакт/Редакс знать будешь круууто' like='10'/>
 
 
                 </div>
