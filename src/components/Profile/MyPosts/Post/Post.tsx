@@ -12,7 +12,9 @@ export const Post = (props: MessagePostType) => {
     return (
         <div className={s.item}>
             <img src="https://img.a.transfermarkt.technology/portrait/big/139208-1620651710.jpg?lm=1"/>
-            {props.message}
+            <div className={s.itemText}>
+                {props.message}
+            </div>
         <div>
         <span>{props.like} likes</span>
     </div>
