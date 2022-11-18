@@ -2,20 +2,7 @@ import React from 'react';
 import s from './Myposts.module.css'
 import {Post} from "./Post/Post";
 import {ActionsTypes, dialogsPageType, myPostsPageType} from "../../../Redux/state";
-import {text} from "stream/consumers";
-
-const addPostActionCreation = ()=> {
-    return {
-        type: "ADD-POST"
-    }
-}
-
-const onPostActionCreator = () => {
-    return {
-        type: "UPDATE-NEW-POST-TEXT",
-        newPostText: text
-    }
-}
+import {addPostActionCreation,onPostActionCreator} from "../../../Redux/state";
 
 
 type MessageType = {
