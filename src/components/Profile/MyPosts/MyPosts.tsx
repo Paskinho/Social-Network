@@ -4,6 +4,18 @@ import {Post} from "./Post/Post";
 import {ActionsTypes, dialogsPageType, myPostsPageType} from "../../../Redux/state";
 import {text} from "stream/consumers";
 
+const addPostActionCreation = ()=> {
+    return {
+        type: "ADD-POST"
+    }
+}
+
+const onPostActionUpdate = () => {
+    return {
+        type: "UPDATE-NEW-POST-TEXT",
+        newPostText: text
+    }
+}
 
 
 type MessageType = {
@@ -26,13 +38,13 @@ export const MyPosts = (props: MessageType) => {
         //
         // props.addPostCallback(props.message)
         let text = postMessageRef.current?.value
-        if (text) props.dispatch({type: "ADD-POST"})
+        if (text) props.dispatch({addPostActionCreation})
         if (postMessageRef.current) postMessageRef.current.value = ''
     }
 
     const onPostChangeCallBack = () => {
 const text = postMessageRef.current?.value;
-      text ? props.dispatch({type: "UPDATE-NEW-POST-TEXT", newPostText: text}) : props.dispatch('');
+      text ? props.dispatch({onPostActionUpdate}) : props.dispatch('');
     }
 
 
