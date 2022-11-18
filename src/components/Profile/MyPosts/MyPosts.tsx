@@ -10,7 +10,7 @@ const addPostActionCreation = ()=> {
     }
 }
 
-const onPostActionUpdate = () => {
+const onPostActionCreator = () => {
     return {
         type: "UPDATE-NEW-POST-TEXT",
         newPostText: text
@@ -44,7 +44,7 @@ export const MyPosts = (props: MessageType) => {
 
     const onPostChangeCallBack = () => {
 const text = postMessageRef.current?.value;
-      text ? props.dispatch({onPostActionUpdate}) : props.dispatch('');
+      text ? props.dispatch({onPostActionCreator}) : props.dispatch('');
     }
 
 
