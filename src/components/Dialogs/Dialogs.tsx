@@ -53,7 +53,10 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
                 <Message message="How are you IT-Kamasutra"/>
                 <Message message="YO"/>
             {/*Dialogs*/}
+                <textarea>Hello</textarea>
+                <button>Add</button>
         </div>
+
         </div>
     )
 }
