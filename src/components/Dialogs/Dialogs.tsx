@@ -1,7 +1,7 @@
 import React from "react";
 import s from './Dialogs.module.css';
 import {NavLink} from "react-router-dom";
-import {dialogsPageType, RootStateType, sendMessageCreator, updateNewMessageBodyCreator} from "../../Redux/state";
+import {dialogsPageType, addMessageCreator, onMessagePostCreator, ActionsTypes} from "../../Redux/state";
 
 
 
@@ -78,7 +78,7 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
             {/*Dialogs*/}
                 <div>
                     <div><textarea
-                        value={newMessageBody}
+                        value={props.state.newMessageText}
                         onChange={onNewMessageChange}
                         placeholder="Enter you message">Hello</textarea></div>
                     <div> <button onClick={onSendMessagesClick}>Add</button></div>
