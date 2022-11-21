@@ -1,7 +1,7 @@
 import React from "react";
 import s from './Dialogs.module.css';
 import {NavLink} from "react-router-dom";
-import {dialogsPageType, RootStateType} from "../../Redux/state";
+import {dialogsPageType, RootStateType, sendMessageCreator, updateNewMessageBodyCreator} from "../../Redux/state";
 
 
 
@@ -34,10 +34,28 @@ type DialogsPropsType= {
     // DialogItem: (name: string)=> void
     state: dialogsPageType // уточнить
     newPostText: string
+    store: ()=> void
 }
 
 
+
 export const Dialogs: React.FC<DialogsPropsType> = (props) => {
+
+    // const dialogsElements = props.state.messages.map(m => <DialogItem id={m.id} name={m.name})
+    // const messagesElements = props.state.users.map(m => <DialogItem id={m.id} name={m.name})
+    // const newMessageBody = props.newPostText
+
+    const onSendMessagesClick = ()=> {
+        props.store.dispatch(sendMessageCreator)
+    }
+
+ const onNewMessageChange = (e)=> {
+        const body = e.target.value;
+        props.store.dispatch(updateNewMessageBodyCreator(body))
+    }
+
+
+
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
@@ -47,14 +65,21 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
                 <DialogItem name ="Darwin" id = "4"/>
                 <DialogItem name ="Roberto" id = "5"/>
                 <DialogItem name ="Thiago" id = "6"/>
+                {/*//{dialogsElements}*/}
             </div>
             <div className={s.message}>
                 <Message message="Hi"/>
                 <Message message="How are you IT-Kamasutra"/>
                 <Message message="YO"/>
+                {/*<div>{messagesElements}</div>* /}
             {/*Dialogs*/}
-                <textarea>Hello</textarea>
-                <button>Add</button>
+                <div>
+                    <div><textarea
+                        value={newMessageBody}
+                        onChange={onNewMessageChange}
+                        placeholder="Enter you message">Hello</textarea></div>
+                    <div> <button onClick={onSendMessagesClick}>Add</button></div>
+                </div>
         </div>
 
         </div>
