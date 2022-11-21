@@ -71,7 +71,26 @@ type UpdateNewTextActionType = {
     newPostText: string
 }
 
-export type ActionsTypes = AddPostActionType | UpdateNewTextActionType
+type UpdateNewMessageBody = {
+    type: "UPDATE_NEW-MESSAGE_BODY"
+}
+
+export type ActionsTypes = AddPostActionType | UpdateNewTextActionType | UpdateNewMessageBody
+
+const ADD_POST = "ADD-POST"
+
+const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
+
+const UPDATE_NEW_MESSAGE_BODY = "UPDATE_NEW-MESSAGE_BODY"
+
+export const addPostActionCreation = (postText: string): AddPostActionType=> ({
+    type: ADD_POST, postText: postText
+})
+
+export const onPostActionCreator = (newPostText:string):UpdateNewTextActionType => ({
+    type: UPDATE_NEW_POST_TEXT,
+    newPostText: newPostText
+})
 
 
 
@@ -93,7 +112,9 @@ export const store: StoreType ={
                 {message: "How are you IT-Kamasutra"},
                 {message: "YO"}
 
-            ]
+            ],
+
+            newMessageBody = ""
         },
 
         myPostsPage: {
@@ -134,7 +155,7 @@ export const store: StoreType ={
     },
 
     dispatch (action) {
-    if (action.type === "ADD-POST"){
+    if (action.type === ADD_POST){
         const newPost: PostDataType  = {
             // id: new Date() getTime(),
             postText: action.postText,  //postText
@@ -145,13 +166,21 @@ export const store: StoreType ={
         this._state.myPostsPage.newPostText = ""
         this.onChange()
         // this._onChange()
-    } else if (action.type === "UPDATE-NEW-POST-TEXT") {
+    } else if (action.type === UPDATE_NEW_POST_TEXT) {
         this._state.myPostsPage.newPostText = action.newPostText;
         this.onChange()
     }
+    else if (action.type === UPDATE_NEW_MESSAGE_TEXT_BODY)  {
+        this._state.dialogsPage.newMessageBody
+    }
+
+
+
     }
 
 }
+
+
 
 
 //store
