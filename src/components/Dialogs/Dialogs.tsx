@@ -41,6 +41,9 @@ type DialogsPropsType= {
 
 export const Dialogs: React.FC<DialogsPropsType> = (props) => {
 
+
+    let state = props.store.getState().dialogsPage
+
     // const dialogsElements = props.state.messages.map(m => <DialogItem id={m.id} name={m.name})
     // const messagesElements = props.state.users.map(m => <DialogItem id={m.id} name={m.name})
     // const newMessageBody = props.newPostText
