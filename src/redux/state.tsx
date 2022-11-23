@@ -1,4 +1,4 @@
-
+import {myPostsPageReducer} from "./myPostsPage-reducer";
 
 
 export type SubscribeType = (observer: RootStateType)=>void
@@ -30,8 +30,9 @@ type UsersType = {
 
 }
 
-type MessagesType = {
+export type MessagesType = {
     message: string
+    id: number
 }
 
 // type SidebarType={}
@@ -61,6 +62,7 @@ export type StoreType = {
     subscribe: (observer: () => void) => void
     getState: () => RootStateType
     dispatch: (action: any)=>void
+
 }
 
 //action creator
@@ -118,14 +120,14 @@ export const store: StoreType ={
                 {name: "Thiago", id: 5}
             ],
             messages: [
-                {message: "Hi"},
-                {message: "How are you IT-Kamasutra"},
-                {message: "YO"}
+                {message: "Hi", id:1},
+                {message: "How are you IT-Kamasutra", id:2},
+                {message: "YO", id:3}
 
             ],
             newMessageText: ""
         },
-        // sidebar: {}
+        // sidebar: {},
 
         myPostsPage: {
             postData: [
@@ -143,52 +145,40 @@ export const store: StoreType ={
     onChange (){
         console.log("state changed")
     },
-    addPost (postText:string) {
-        const newPost: PostDataType  = {
-            // id:5,
-            postText: this._state.myPostsPage.newPostText,  //postText
-            like: 0
-        };
 
-        this._state.myPostsPage.postData.push(newPost)
-        this._state.myPostsPage.newPostText = ""
-        this.onChange()
-        // this._onChange()
-    },
-    updateNewPostText (newText:string) {
-        this._state.myPostsPage.newPostText = newText
-        this.onChange()
-        // this._onChange()
-    },
     subscribe (observer) {
         this.onChange=observer
     },
 
     dispatch (action) {
-        if (action.type === "ADD_POST") {
-            let newPost: PostDataType = {
-                id: new Date().getTime(),
-                message: action.newText,
-                likesCount: 12
-            }
-            this._state.myPostsPage.postData.push(newPost)
-            this._state.myPostsPage.newPostText = ""
+
+        this._state.myPostsPage = myPostsPageReducer(this._state.myPostsPage, action);
+        this._state.dialogsPage = myPostsPageReducer(this._state.dialogsPage, action);
+
+        // if (action.type === "ADD_POST") {
+        //     let newPost: PostDataType = {
+        //         id: new Date().getTime(),
+        //         postText: action.newText,
+        //         like: 10
+        //     }
+        //     this._state.myPostsPage.postData.push(newPost)
+        //     this._state.myPostsPage.newPostText = ""
+        //     this.onChange(this._state)
+        // } else if (action.type === "UPDATE_NEW_POST_TEXT") {
+        //     this._state.myPostsPage.newPostText = action.newText
+        //     this.onChange(this._state)
+        // } else if (action.type === "ADD_MESSAGE") {
+        //     let newMessage: MessagesType = {
+        //         id: new Date().getTime(),
+        //         message: action.newMessage,
+        //     }
+        //     this._state.dialogsPage.messages.push(newMessage)
+        //     this._state.dialogsPage.newMessageText = ""
+        //     this.onChange(this._state)
+        // } else if (action.type === "UPDATE_NEW_MESSAGE_TEXT") {
+        //     this._state.dialogsPage.newMessageText = action.newMessage
             this.onChange(this._state)
-        } else if (action.type === "UPDATE_NEW_POST_TEXT") {
-            this._state.myPostsPage.newPostText = action.newText
-            this.onChange(this._state)
-        } else if (action.type === "ADD_MESSAGE") {
-            let newMessage: MessageType = {
-                id: new Date().getTime(),
-                message: action.newMessage,
-            }
-            this._state.dialogsPage.messages.push(newMessage)
-            this._state.dialogsPage.newMessageText = ""
-            this.onChange(this._state)
-        } else if (action.type === "UPDATE_NEW_MESSAGE_TEXT") {
-            this._state.dialogsPage.newMessageText = action.newMessage
-            this.onChange(this._state)
-        }
+
     }
 
 }
