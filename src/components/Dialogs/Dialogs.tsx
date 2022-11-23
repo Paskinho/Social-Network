@@ -6,7 +6,7 @@ import {dialogsPageType, addMessageCreator, onMessagePostCreator, ActionsTypes} 
 
 
 export type DialogItemPropsType = {
-    id: string
+    id: number
     name: string
     // DialogItem: (id: string, name: string, message: string)=> void
 }
@@ -35,6 +35,7 @@ type DialogsPropsType= {
     state: dialogsPageType // уточнить
     newPostText: string
     store: ()=> void
+    dispatch:(action: any)=>void
 }
 
 
@@ -57,18 +58,19 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
         props.store.dispatch(updateNewMessageBodyCreator(body))
     }
 
+    const dialogsItem = props.state.users.map(u => <DialogItem name={u.name} id={u.id}/>)
 
 
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
-                <DialogItem name ="Trent" id = "1"/>
-                <DialogItem name ="Virgil" id = "2"/>
-                <DialogItem name ="Mohamed" id = "3" />
-                <DialogItem name ="Darwin" id = "4"/>
-                <DialogItem name ="Roberto" id = "5"/>
-                <DialogItem name ="Thiago" id = "6"/>
-                {/*//{dialogsElements}*/}
+                {/*<DialogItem name ="Trent" id = "1"/>*/}
+                {/*<DialogItem name ="Virgil" id = "2"/>*/}
+                {/*<DialogItem name ="Mohamed" id = "3" />*/}
+                {/*<DialogItem name ="Darwin" id = "4"/>*/}
+                {/*<DialogItem name ="Roberto" id = "5"/>*/}
+                {/*<DialogItem name ="Thiago" id = "6"/>*/}
+                {dialogsItem}
             </div>
             <div className={s.message}>
                 <Message message="Hi"/>

@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Myposts.module.css'
 import {Post} from "./Post/Post";
 import {ActionsTypes, dialogsPageType, myPostsPageType} from "../../../Redux/state";
-import {addPostActionCreation,onPostActionCreator} from "../../../Redux/state";
+import {addMessageCreator, addPostCreator, onMessagePostCreator, store, updateNewPostTextCreator} from "../../../Redux/state";
 
 
 type MessageType = {
@@ -25,13 +25,13 @@ export const MyPosts = (props: MessageType) => {
         //
         // props.addPostCallback(props.message)
         let text = postMessageRef.current?.value
-        if (text) props.dispatch({addPostActionCreation})
+        if (text) props.dispatch({addPostCreator})
         if (postMessageRef.current) postMessageRef.current.value = ''
     }
 
     const onPostChangeCallBack = () => {
 const text = postMessageRef.current?.value;
-      text ? props.dispatch({onPostActionCreator}) : props.dispatch('');
+      text ? props.dispatch({updateNewPostTextCreator}) : props.dispatch('');
     }
 
 

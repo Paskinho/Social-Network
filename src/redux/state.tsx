@@ -13,11 +13,12 @@ export type myPostsPageType = {
 export type dialogsPageType ={
     users: Array<UsersType>
     messages: Array<MessagesType>
+    newMessageText: string
 
 }
 
 export type PostDataType ={
-     // id: number
+     id: number
     postText: string
     like: number
 
@@ -54,43 +55,52 @@ type MessagesType = {
 
 export type StoreType = {
     _state: RootStateType
-    onChange: () => void
-    addPost: (postText: string) => void
-    updateNewPostText: (newText: string) => void
+    onChange: (state: RootStateType) => void
+    // addPost: (postText: string) => void
+    // updateNewPostText: (newText: string) => void
     subscribe: (observer: () => void) => void
     getState: () => RootStateType
-    dispatch: (action: AddPostActionType | UpdateNewTextActionType)=>void
+    dispatch: (action: any)=>void
 }
 
-type AddPostActionType = {
-    type: "ADD-POST"
-    postText: string
-}
-type UpdateNewTextActionType = {
-    type: "UPDATE-NEW-POST-TEXT"
-    newPostText: string
-}
+//action creator
 
-type UpdateNewMessageBody = {
-    type: "UPDATE_NEW-MESSAGE_BODY"
+export type addPostCreatorType = ReturnType<typeof addPostCreator>
+export const addPostCreator = (newText: string) => {
+    return {
+        type: "ADD_POST",
+        newText: newText
+    } as const
 }
 
-export type ActionsTypes = AddPostActionType | UpdateNewTextActionType | UpdateNewMessageBody
 
-const ADD_POST = "ADD-POST"
+export type updateNewPostTextCreatorType = ReturnType<typeof updateNewPostTextCreator>
+export const updateNewPostTextCreator = (newText: string) => {
+    return {
+        type: "UPDATE_NEW_POST_TEXT",
+        newText: newText
+    } as const
+}
 
-const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
+export type onMessagePostCreatorType = ReturnType<typeof onMessagePostCreator>
+export const onMessagePostCreator = (newMessage: string) => {
+    return {
+        type: "UPDATE_NEW_MESSAGE_TEXT",
+        newMessage: newMessage
+    } as const
+}
 
-const UPDATE_NEW_MESSAGE_BODY = "UPDATE_NEW-MESSAGE_BODY"
+export type addMessageCreatorType = ReturnType<typeof addMessageCreator>
+export const addMessageCreator = (newMessage: string) => {
+    return {
+        type: "ADD_MESSAGE",
+        newMessage: newMessage
+    } as const
+}
 
-export const addPostActionCreation = (postText: string): AddPostActionType=> ({
-    type: ADD_POST, postText: postText
-})
+export type ActionsTypes = addPostCreatorType | updateNewPostTextCreatorType | onMessagePostCreatorType | addMessageCreatorType
 
-export const onPostActionCreator = (newPostText:string):UpdateNewTextActionType => ({
-    type: UPDATE_NEW_POST_TEXT,
-    newPostText: newPostText
-})
+
 
 
 
@@ -113,14 +123,14 @@ export const store: StoreType ={
                 {message: "YO"}
 
             ],
-
-            newMessageBody = ""
+            newMessageText: ""
         },
+        // sidebar: {}
 
         myPostsPage: {
             postData: [
-                {postText: "Hello, how are you?", like: 5},
-                {postText: "This is my first post)", like: 10},
+                {postText: "Hello, how are you?", like: 5, id: 1},
+                {postText: "This is my first post)", like: 10, id: 2},
             ],
             newPostText: "New message",
 
@@ -155,27 +165,30 @@ export const store: StoreType ={
     },
 
     dispatch (action) {
-    if (action.type === ADD_POST){
-        const newPost: PostDataType  = {
-            // id: new Date() getTime(),
-            postText: action.postText,  //postText
-            like: 0
-        };
-
-        this._state.myPostsPage.postData.push(newPost)
-        this._state.myPostsPage.newPostText = ""
-        this.onChange()
-        // this._onChange()
-    } else if (action.type === UPDATE_NEW_POST_TEXT) {
-        this._state.myPostsPage.newPostText = action.newPostText;
-        this.onChange()
-    }
-    else if (action.type === UPDATE_NEW_MESSAGE_TEXT_BODY)  {
-        this._state.dialogsPage.newMessageBody
-    }
-
-
-
+        if (action.type === "ADD_POST") {
+            let newPost: PostDataType = {
+                id: new Date().getTime(),
+                message: action.newText,
+                likesCount: 12
+            }
+            this._state.myPostsPage.postData.push(newPost)
+            this._state.myPostsPage.newPostText = ""
+            this.onChange(this._state)
+        } else if (action.type === "UPDATE_NEW_POST_TEXT") {
+            this._state.myPostsPage.newPostText = action.newText
+            this.onChange(this._state)
+        } else if (action.type === "ADD_MESSAGE") {
+            let newMessage: MessageType = {
+                id: new Date().getTime(),
+                message: action.newMessage,
+            }
+            this._state.dialogsPage.messages.push(newMessage)
+            this._state.dialogsPage.newMessageText = ""
+            this.onChange(this._state)
+        } else if (action.type === "UPDATE_NEW_MESSAGE_TEXT") {
+            this._state.dialogsPage.newMessageText = action.newMessage
+            this.onChange(this._state)
+        }
     }
 
 }
