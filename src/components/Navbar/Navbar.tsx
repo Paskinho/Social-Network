@@ -6,7 +6,11 @@ import {NavLink} from "react-router-dom";
 export const Navbar = () => {
     return <nav className={s.nav}>
         <div className={s.item}>
-            <NavLink to="/profile">Profile</NavLink>
+            <NavLink to="/profile"
+            style={(params)=> {
+                return {color: params.isActive ? "red" : "black"}
+            }
+            }>Profile</NavLink>
         </div>
         <div className={s.item}>
             <NavLink to="/dialogs">Message</NavLink>
