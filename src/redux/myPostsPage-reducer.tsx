@@ -1,29 +1,30 @@
-import {ActionsTypes, dialogsPageType, PostDataType} from "./state";
+import {ActionsTypes, dialogsPageType, myPostsPageType, PostDataType} from "./state";
 
 
 
 
-export const myPostsPageReducer = (state: dialogsPageType, action: ActionsTypes) => {
+export const myPostsPageReducer = (state: myPostsPageType, action: ActionsTypes) => {
 
     switch (action.type) {
-        case "ADD_POST":
-    }
-
-    if (action.type === "ADD_POST") {
-        let newPost: PostDataType = {
-            id: new Date().getTime(),
-            postText: action.newText,
-            like: 10
+        case "ADD_POST": {
+            let newPost: PostDataType = {
+                id: new Date().getTime(),
+                postText: action.newText,
+                like: 10
+            }
+            state.postData.push(newPost)
+            state.newPostText = ""
+            return state
         }
-        state.postData.push(newPost)
-    state.newPostText = ""
+        case "UPDATE_NEW_POST_TEXT": {
+            state.newPostText = action.newText
 
-    } else if (action.type === "UPDATE_NEW_POST_TEXT") {
-        state.newPostText = action.newText
-
-
-        return state
+            return state
+        }
+        default:
+            return state
     }
+
 }
 
 export type addPostCreatorType = ReturnType<typeof addPostCreator>

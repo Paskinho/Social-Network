@@ -1,4 +1,4 @@
-import {MessagesType} from "./state";
+import {ActionsTypes, dialogsPageType, MessagesType} from "./state";
 
 export type onMessagePostCreatorType = ReturnType<typeof onMessagePostCreator>
 export const onMessagePostCreator = (newMessage: string) => {
@@ -16,18 +16,22 @@ export const addMessageCreator = (newMessage: string) => {
     } as const
 }
 
-const dialogsReducer = (state, action) => {
- if (action.type === "ADD_MESSAGE") {
-    let newMessage: MessagesType = {
-        id: new Date().getTime(),
-        message: action.newMessage,
+export const dialogsReducer = (state: dialogsPageType, action: ActionsTypes) => {
+
+    switch (action.type) {
+        case "ADD_MESSAGE":{
+            let newMessage: MessagesType = {
+                id: new Date().getTime(),
+                message: action.newMessage,
+            }
+            state.messages.push(newMessage)
+            state.newMessageText = ""
+            return state
+        }
+        case "UPDATE_NEW_MESSAGE_TEXT": {
+            state.newMessageText = action.newMessage
+
+        }
+            return state
     }
-state.messages.push(newMessage)
- state.newMessageText = ""
-
-} else if (action.type === "UPDATE_NEW_MESSAGE_TEXT") {
-    state.newMessageText = action.newMessage
-
-}
-    return state
 }

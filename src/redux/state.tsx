@@ -1,4 +1,5 @@
 import {myPostsPageReducer} from "./myPostsPage-reducer";
+import {dialogsReducer} from "./dialogs-reducer";
 
 
 export type SubscribeType = (observer: RootStateType)=>void
@@ -153,7 +154,7 @@ export const store: StoreType ={
     dispatch (action) {
 
         this._state.myPostsPage = myPostsPageReducer(this._state.myPostsPage, action);
-        this._state.dialogsPage = myPostsPageReducer(this._state.dialogsPage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
 
         // if (action.type === "ADD_POST") {
         //     let newPost: PostDataType = {
