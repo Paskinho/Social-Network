@@ -86,7 +86,7 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
                     <div><textarea
                         value={props.state.newMessageText}
                         onChange={onMessagePost}
-                        placeholder="Enter you message">Hello</textarea></div>
+                        placeholder="Enter you message...">Hello</textarea></div>
                     <div> <button onClick={addMessage}>Add</button></div>
                 </div>
         </div>
