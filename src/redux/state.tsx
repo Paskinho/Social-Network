@@ -113,12 +113,24 @@ export const store: StoreType ={
         dialogsPage: {
 
             users: [
-                {name: "Trent", id: 0},
-                {name: "Virgil", id: 1},
-                {name: "Mohamed", id: 2},
-                {name: "Darwin", id: 3},
-                {name: "Roberto", id: 4},
-                {name: "Thiago", id: 5}
+                {
+                    name: "Trent",
+                    id: 0},
+                {
+                    name: "Virgil",
+                    id: 1},
+                {
+                    name: "Mohamed",
+                    id: 2},
+                {
+                    name: "Darwin",
+                    id: 3},
+                {
+                    name: "Roberto",
+                    id: 4},
+                {
+                    name: "Thiago",
+                    id: 5}
             ],
             messages: [
                 {message: "Hi", id:1},
@@ -128,6 +140,7 @@ export const store: StoreType ={
             ],
             newMessageText: ""
         },
+
         // sidebar: {},
 
         myPostsPage: {
