@@ -16,51 +16,51 @@ export const addMessageCreator = (newMessage: string) => {
     } as const
 }
 
-let initialState: any = {
-    _state: {
+// let initialState: any = {
+//     _state: {
+//
+//         dialogsPage: {
+//
+//             users: [
+//                 {
+//                     name: "Trent",
+//                     id: 0
+//                 },
+//                 {
+//                     name: "Virgil",
+//                     id: 1
+//                 },
+//                 {
+//                     name: "Mohamed",
+//                     id: 2
+//                 },
+//                 {
+//                     name: "Darwin",
+//                     id: 3
+//                 },
+//                 {
+//                     name: "Roberto",
+//                     id: 4
+//                 },
+//                 {
+//                     name: "Thiago",
+//                     id: 5
+//                 }
+//             ],
+//             messages: [
+//                 {message: "Hi", id: 1},
+//                 {message: "How are you IT-Kamasutra", id: 2},
+//                 {message: "YO", id: 3}
+//
+//             ],
+//             newMessageText: "",
+//         },
+//
+//         // sidebar: {},
+//         // }
 
-        dialogsPage: {
 
-            users: [
-                {
-                    name: "Trent",
-                    id: 0
-                },
-                {
-                    name: "Virgil",
-                    id: 1
-                },
-                {
-                    name: "Mohamed",
-                    id: 2
-                },
-                {
-                    name: "Darwin",
-                    id: 3
-                },
-                {
-                    name: "Roberto",
-                    id: 4
-                },
-                {
-                    name: "Thiago",
-                    id: 5
-                }
-            ],
-            messages: [
-                {message: "Hi", id: 1},
-                {message: "How are you IT-Kamasutra", id: 2},
-                {message: "YO", id: 3}
-
-            ],
-            newMessageText: ""
-        },
-
-        // sidebar: {},
-        // }
-
-
-export const dialogsReducer = (state: dialogsPageType = initialState, action: ActionsTypes) => {
+export const dialogsReducer = (state: dialogsPageType , action: ActionsTypes) => {
 
     switch (action.type) {
         case "ADD_MESSAGE":{
@@ -69,13 +69,15 @@ export const dialogsReducer = (state: dialogsPageType = initialState, action: Ac
                 message: action.newMessage,
             }
             state.messages.push(newMessage)
-            state.newMessageText = ""
-            return state
+            state.newMessageText = "";
+            return state;
         }
         case "UPDATE_NEW_MESSAGE_TEXT": {
             state.newMessageText = action.newMessage
 
         }
             return state
+        default: return state
     }
-},
+
+}
