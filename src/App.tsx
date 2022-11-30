@@ -36,7 +36,7 @@ const App = (props: appPropsType) => {
                             state={state.dialogsPage}
                           />}/>
                         <Route path='/profile' element={<Profile
-                            myPostPage={props.state.myPostsPage}
+                            profilePage={props.state.profilePage}
                             dispatch={props.dispatch}/>}/>
                         <Route path='/news' element={<News key={2}/>}/>
                         <Route path='/music' element={<Music key={3}/>}/>

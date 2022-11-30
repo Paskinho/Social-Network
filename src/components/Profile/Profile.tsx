@@ -3,11 +3,11 @@ import s from './Profile.module.css'
 import {MyPosts} from "./MyPosts/MyPosts";
 import {Post} from "./MyPosts/Post/Post";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
-import {ActionsTypes, myPostsPageType} from "../../Redux/store";
+import {ActionsTypes, profilePageType} from "../../Redux/store";
 
 
 type ProfileType = {
-    myPostPage: myPostsPageType
+    profilePage: profilePageType
     dispatch: (action: ActionsTypes) => void
 }
 
@@ -16,7 +16,7 @@ export const Profile = (props: ProfileType) => {
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts myPostPage={props.myPostPage}
+            <MyPosts profilePage={props.profilePage}
                      dispatch={props.dispatch}
             />
         </div>

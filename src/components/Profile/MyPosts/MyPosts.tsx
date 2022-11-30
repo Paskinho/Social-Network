@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Myposts.module.css'
 import {Post} from "./Post/Post";
-import {ActionsTypes, dialogsPageType, myPostsPageType} from "../../../Redux/store";
+import {ActionsTypes, dialogsPageType, profilePageType} from "../../../Redux/store";
 import {addMessageCreator, addPostCreator, onMessagePostCreator, store, updateNewPostTextCreator} from "../../../Redux/store";
 
 
@@ -11,7 +11,7 @@ type MessageType = {
     // addPostCallback: (postText:string) => void
     // onPostChangeCallBack: (newText: string) => void
     dispatch: (action: any) => void
-    myPostPage: myPostsPageType
+    profilePage: profilePageType
     // dialogsPage: dialogsPageType
 }
 
@@ -43,7 +43,7 @@ const text = postMessageRef.current?.value;
             {/*    /!*key={p.i} добавить в дивку*!/*/}
             {/*</hr>*/}
             <div>
-                <textarea onChange={onPostChangeCallBack} value={props.myPostPage.newPostText}/>
+                <textarea onChange={onPostChangeCallBack} value={props.profilePage.newPostText}/>
             </div>
             <div>
                 <button onClick={addPost}>Add post</button>

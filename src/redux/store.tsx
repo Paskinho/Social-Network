@@ -1,10 +1,11 @@
-import {myPostsPageReducer} from "./myPostsPage-reducer";
+import {profileReducer} from "./profile-reducer";
 import {dialogsReducer} from "./dialogs-reducer";
+import {sidebarReducer} from "./sidebar-reducer";
 
 
 export type SubscribeType = (observer: RootStateType)=>void
 
-export type myPostsPageType = {
+export type profilePageType = {
     postData:Array<PostDataType>
     newPostText: string
 
@@ -42,7 +43,7 @@ export type MessagesType = {
 
  export type RootStateType = {
     dialogsPage: dialogsPageType
-    myPostsPage: myPostsPageType
+     profilePage: profilePageType
      // sidebar: SidebarType
 
 
@@ -143,7 +144,7 @@ export const store: StoreType ={
 
         // sidebar: {},
 
-        myPostsPage: {
+        profilePage: {
             postData: [
                 {postText: "Hello, how are you?", like: 5, id: 1},
                 {postText: "This is my first post)", like: 10, id: 2},
@@ -166,9 +167,9 @@ export const store: StoreType ={
 
     dispatch (action) {
 
-        this._state.myPostsPage = myPostsPageReducer(this._state.myPostsPage, action);
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
-
+// this._state.sidebar = sidebarReducer(this._state,sidebar, action)
         // if (action.type === "ADD_POST") {
         //     let newPost: PostDataType = {
         //         id: new Date().getTime(),

@@ -1,4 +1,4 @@
-import {ActionsTypes, dialogsPageType, MessagesType} from "./state";
+import {ActionsTypes, dialogsPageType, MessagesType} from "./store";
 
 export type onMessagePostCreatorType = ReturnType<typeof onMessagePostCreator>
 export const onMessagePostCreator = (newMessage: string) => {
@@ -16,7 +16,51 @@ export const addMessageCreator = (newMessage: string) => {
     } as const
 }
 
-export const dialogsReducer = (state: dialogsPageType, action: ActionsTypes) => {
+let initialState: any = {
+    _state: {
+
+        dialogsPage: {
+
+            users: [
+                {
+                    name: "Trent",
+                    id: 0
+                },
+                {
+                    name: "Virgil",
+                    id: 1
+                },
+                {
+                    name: "Mohamed",
+                    id: 2
+                },
+                {
+                    name: "Darwin",
+                    id: 3
+                },
+                {
+                    name: "Roberto",
+                    id: 4
+                },
+                {
+                    name: "Thiago",
+                    id: 5
+                }
+            ],
+            messages: [
+                {message: "Hi", id: 1},
+                {message: "How are you IT-Kamasutra", id: 2},
+                {message: "YO", id: 3}
+
+            ],
+            newMessageText: ""
+        },
+
+        // sidebar: {},
+        // }
+
+
+export const dialogsReducer = (state: dialogsPageType = initialState, action: ActionsTypes) => {
 
     switch (action.type) {
         case "ADD_MESSAGE":{
@@ -34,4 +78,4 @@ export const dialogsReducer = (state: dialogsPageType, action: ActionsTypes) => 
         }
             return state
     }
-}
+},
