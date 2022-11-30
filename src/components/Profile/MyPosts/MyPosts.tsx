@@ -1,8 +1,8 @@
 import React from 'react';
 import s from './Myposts.module.css'
 import {Post} from "./Post/Post";
-import {ActionsTypes, dialogsPageType, myPostsPageType} from "../../../Redux/state";
-import {addMessageCreator, addPostCreator, onMessagePostCreator, store, updateNewPostTextCreator} from "../../../Redux/state";
+import {ActionsTypes, dialogsPageType, myPostsPageType} from "../../../Redux/store";
+import {addMessageCreator, addPostCreator, onMessagePostCreator, store, updateNewPostTextCreator} from "../../../Redux/store";
 
 
 type MessageType = {

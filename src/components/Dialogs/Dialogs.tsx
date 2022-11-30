@@ -1,7 +1,7 @@
 import React, {useRef} from "react";
 import s from './Dialogs.module.css';
 import {NavLink} from "react-router-dom";
-import {dialogsPageType, addMessageCreator, onMessagePostCreator, ActionsTypes} from "../../Redux/state";
+import {dialogsPageType, addMessageCreator, onMessagePostCreator, ActionsTypes} from "../../Redux/store";
 
 
 
