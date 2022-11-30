@@ -2,26 +2,33 @@ import React from 'react';
 import './index.css';
 import ReactDOM from 'react-dom';
 import App from './App';
-import {store, RootStateType} from "./Redux/redux-store";
+import {store} from "./Redux/redux-store";
+import {RootStateType} from "./Redux/store";
 import {BrowserRouter} from "react-router-dom";
 
 
 
 const rerenderEntireTree = (state: RootStateType) => {
     ReactDOM.render(
-        <React.StrictMode>
+        <BrowserRouter>
             <App store={store} state={state} dispatch={store.dispatch.bind(store)}/>
             {/*// store={store}*/}
-        </React.StrictMode>,
+        </BrowserRouter>,
         document.getElementById("root")
     );
 
 }
 
+store.subscribe(rerenderEntireTree)
+rerenderEntireTree()
 
-rerenderEntireTree(store.getState())
 
-store.subscribe(store.onChange)
+// rerenderEntireTree(store.getState())
+
+// store.subscribe(()=> {
+//     let state = store.getState()
+//     rerenderEntireTree(state);
+// })
 
 
 //нужно посмотреть по компоненте(функции) store, нужно удалить
