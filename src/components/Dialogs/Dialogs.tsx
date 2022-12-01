@@ -33,7 +33,7 @@ const Message =(props: MessagePropsType) => {
 
 type DialogsPropsType= {
     // DialogItem: (name: string)=> void
-    state: dialogsPageType // уточнить
+    dialogsState: dialogsPageType // уточнить
     // newPostText: string
     // store: ()=> void
     dispatch:(action: any)=>void
@@ -63,8 +63,8 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
             props.dispatch(onMessagePostCreator(""));
     }
 
-    const dialogsItem = props.state.users.map(u => <DialogItem name={u.name} id={u.id}/>)
-    const message = props.state.messages.map(m => <Message message={m.message} id={m.id}/>)
+    const dialogsItem = props.dialogsState.users.map(u => <DialogItem name={u.name} id={u.id}/>)
+    const message = props.dialogsState.messages.map(m => <Message message={m.message} id={m.id}/>)
 
     return (
         <div className={s.dialogs}>
@@ -83,7 +83,7 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
             {/*Dialogs*/}
                 <div>
                     <div><textarea
-                        value={props.state.newMessageText}
+                        value={props.dialogsState.newMessageText}
                         onChange={onMessagePost}
                         placeholder="Enter you message...">Hello</textarea></div>
                     <div> <button onClick={addMessage}>Add</button></div>
