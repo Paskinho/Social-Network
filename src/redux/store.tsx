@@ -1,6 +1,6 @@
 import {profileReducer} from "./profile-reducer";
 import {dialogsReducer} from "./dialogs-reducer";
-import {sidebarReducer} from "./sidebar-reducer";
+// import {sidebarReducer} from "./sidebar-reducer";
 
 
 export type SubscribeType = (observer: RootStateType)=>void
@@ -56,7 +56,7 @@ export type MessagesType = {
 
 
 
-export type StoreType = {
+type StoreType = {
     _state: RootStateType
     onChange: (state: RootStateType) => void
     // addPost: (postText: string) => void
@@ -64,6 +64,7 @@ export type StoreType = {
     subscribe: (observer: () => void) => void
     getState: () => RootStateType
     dispatch: (action: any)=>void
+
 
 }
 

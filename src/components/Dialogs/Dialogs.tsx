@@ -45,7 +45,6 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
 
 
 
-
     const newMessageElement = useRef<HTMLTextAreaElement>(null);
 
     const addMessage = () => {

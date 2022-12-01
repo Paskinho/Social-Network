@@ -5,11 +5,12 @@ import {Header} from "./components/Header/Header";
 import {Navbar} from "./components/Navbar/Navbar";
 import {Profile} from "./components/Profile/Profile";
 import {Dialogs} from "./components/Dialogs/Dialogs";
-import {BrowserRouter, Route, Routes} from "react-router-dom"
+import  {Route, Routes} from "react-router-dom"
 import {Music} from "./components/Music/Music";
 import {News} from "./components/News/News";
 import {Settings} from "./components/Settings/Settings";
-import {ActionsTypes, RootStateType, StoreType} from "./Redux/store";
+import {ActionsTypes, RootStateType} from "./Redux/store";
+import {StoreType} from "./Redux/redux-store";
 import {store} from "./Redux/store";
 
 
@@ -24,16 +25,16 @@ const App = (props: appPropsType) => {
     const state = props.store.getState();
 
     return (
-        <BrowserRouter>
+
             <div className="app-wrapper">
                 <Header/>
                 <Navbar/>
                 <div className="app-wrapper-content">
                     <Routes>
-                        <Route path='/dialogs' element={<Dialogs
+                        <Route path='/dialogs'  element={<Dialogs
                             // store={props.store}
                             dispatch={props.dispatch}
-                            state={state.dialogsPage}
+                            state={state.dialogsReducer} // уточнить
                           />}/>
                         <Route path='/profile' element={<Profile
                             profilePage={props.state.profilePage}
@@ -46,7 +47,7 @@ const App = (props: appPropsType) => {
 
 
             </div>
-        </BrowserRouter>
+
     );
 }
 
