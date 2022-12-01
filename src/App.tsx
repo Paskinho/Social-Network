@@ -11,7 +11,7 @@ import {News} from "./components/News/News";
 import {Settings} from "./components/Settings/Settings";
 import {ActionsTypes, RootStateType} from "./Redux/store";
 import {StoreType} from "./Redux/redux-store";
-import {store} from "./Redux/store";
+
 
 
 type appPropsType = {

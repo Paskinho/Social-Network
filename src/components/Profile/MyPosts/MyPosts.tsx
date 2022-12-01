@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Myposts.module.css'
 import {Post} from "./Post/Post";
 import {ActionsTypes, dialogsPageType, profilePageType} from "../../../Redux/store";
-import {addMessageCreator, addPostCreator, onMessagePostCreator, store, updateNewPostTextCreator} from "../../../Redux/store";
+import {addMessageCreator, addPostCreator, onMessagePostCreator, updateNewPostTextCreator} from "../../../Redux/store";
 
 
 type MessageType = {
