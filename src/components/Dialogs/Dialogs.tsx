@@ -4,7 +4,6 @@ import {NavLink} from "react-router-dom";
 import {dialogsPageType, addMessageCreator, onMessagePostCreator, ActionsTypes} from "../../Redux/store";
 
 
-
 export type DialogItemPropsType = {
     id: number
     name: string
@@ -12,13 +11,13 @@ export type DialogItemPropsType = {
 }
 
 
-const DialogItem = (props:DialogItemPropsType) => {
-  let path = "/dialogs/1" + props.id;
-  return(
-    <div className={s.dialog + " " + s.active}>
-        <NavLink to={path}> {props.name} </NavLink>
-    </div>
-  )
+const DialogItem = (props: DialogItemPropsType) => {
+    let path = "/dialogs/1" + props.id;
+    return (
+        <div className={s.dialog + " " + s.active}>
+            <NavLink to={path}> {props.name} </NavLink>
+        </div>
+    )
 
 }
 
@@ -27,23 +26,20 @@ type MessagePropsType = {
     id: number
 }
 
-const Message =(props: MessagePropsType) => {
+const Message = (props: MessagePropsType) => {
     return <div className={s.dialog}>{props.message}</div>
 }
 
-type DialogsPropsType= {
+type DialogsPropsType = {
     // DialogItem: (name: string)=> void
     dialogsState: dialogsPageType // уточнить
     // newPostText: string
     // store: ()=> void
-    dispatch:(action: any)=>void
+    dispatch: (action: any) => void
 }
 
 
-
 export const Dialogs: React.FC<DialogsPropsType> = (props) => {
-
-
 
     const newMessageElement = useRef<HTMLTextAreaElement>(null);
 
@@ -86,9 +82,11 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
                         value={props.dialogsState.newMessageText}
                         onChange={onMessagePost}
                         placeholder="Enter you message...">Hello</textarea></div>
-                    <div> <button onClick={addMessage}>Add</button></div>
+                    <div>
+                        <button onClick={addMessage}>Add</button>
+                    </div>
                 </div>
-        </div>
+            </div>
 
         </div>
     )
