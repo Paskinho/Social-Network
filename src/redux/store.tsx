@@ -3,7 +3,7 @@ import {dialogsReducer} from "./dialogs-reducer";
 // import {sidebarReducer} from "./sidebar-reducer";
 
 
-export type SubscribeType = (observer: RootStateType)=>void
+// export type SubscribeType = (observer: RootStateType)=>void
 
 export type profilePageType = {
     postData:Array<PostDataType>
@@ -41,7 +41,7 @@ export type MessagesType = {
 
 
 
- export type RootStateType = {
+type RootStateType = {
     dialogsPage: dialogsPageType
      profilePage: profilePageType
      // sidebar: SidebarType
@@ -58,7 +58,7 @@ export type MessagesType = {
 
 type StoreType = {
     _state: RootStateType
-    onChange: (state: RootStateType) => void
+    _onChange: () => void
     // addPost: (postText: string) => void
     // updateNewPostText: (newText: string) => void
     subscribe: (observer: () => void) => void
@@ -109,68 +109,70 @@ export type ActionsTypes = addPostCreatorType | updateNewPostTextCreatorType | o
 
 
 
-export const store: StoreType ={
-    _state: {
+// const store: StoreType ={
+//     _state: {
 
-        dialogsPage: {
-
-            users: [
-                {
-                    name: "Trent",
-                    id: 0},
-                {
-                    name: "Virgil",
-                    id: 1},
-                {
-                    name: "Mohamed",
-                    id: 2},
-                {
-                    name: "Darwin",
-                    id: 3},
-                {
-                    name: "Roberto",
-                    id: 4},
-                {
-                    name: "Thiago",
-                    id: 5}
-            ],
-            messages: [
-                {message: "Hi", id:1},
-                {message: "How are you IT-Kamasutra", id:2},
-                {message: "YO", id:3}
-
-            ],
-            newMessageText: ""
-        },
+        // dialogsPage: {
+        //
+        //     users: [
+        //         {
+        //             name: "Trent",
+        //             id: 0},
+        //         {
+        //             name: "Virgil",
+        //             id: 1},
+        //         {
+        //             name: "Mohamed",
+        //             id: 2},
+        //         {
+        //             name: "Darwin",
+        //             id: 3},
+        //         {
+        //             name: "Roberto",
+        //             id: 4},
+        //         {
+        //             name: "Thiago",
+        //             id: 5}
+        //     ],
+        //     messages: [
+        //         {message: "Hi", id:1},
+        //         {message: "How are you IT-Kamasutra", id:2},
+        //         {message: "YO", id:3}
+        //
+        //     ],
+        //     newMessageText: ""
+        // },
 
         // sidebar: {},
 
-        profilePage: {
-            postData: [
-                {postText: "Hello, how are you?", like: 5, id: 1},
-                {postText: "This is my first post)", like: 10, id: 2},
-            ],
-            newPostText: "New message",
-
-        },
+        // profilePage: {
+        //     postData: [
+        //         {postText: "Hello, how are you?", like: 5, id: 1},
+        //         {postText: "This is my first post)", like: 10, id: 2},
+        //     ],
+        //     newPostText: "New message",
+        //
+        // },
 // sidebar:{}
-    },
-    getState(){
-        return this._state
-    },
-    onChange (){
-        console.log("state changed")
-    },
-
-    subscribe (observer) {
-        this.onChange=observer
-    },
-
-    dispatch (action) {
-
-        this._state.profilePage = profileReducer(this._state.profilePage, action);
-        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
-// this._state.sidebar = sidebarReducer(this._state,sidebar, action)
+//     },
+//     getState(){
+//         return this._state
+//     },
+//     _onChange (){
+//         console.log("state changed")
+//     },
+//
+//     subscribe (observer) {
+//         this._onChange=observer
+//     },
+//
+//     dispatch (action) {
+//
+//         this._state.profilePage = profileReducer(this._state.profilePage, action);
+//         // this._state.sidebar = sidebarReducer(this._state,sidebar, action)
+//         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+//         this._onChange(this._state)
+// //
         // if (action.type === "ADD_POST") {
         //     let newPost: PostDataType = {
         //         id: new Date().getTime(),
@@ -193,11 +195,11 @@ export const store: StoreType ={
         //     this.onChange(this._state)
         // } else if (action.type === "UPDATE_NEW_MESSAGE_TEXT") {
         //     this._state.dialogsPage.newMessageText = action.newMessage
-            this.onChange(this._state)
-
-    }
-
-}
+//
+//
+//     }
+//
+// }
 
 
 
