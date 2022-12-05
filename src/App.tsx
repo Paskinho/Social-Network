@@ -11,12 +11,12 @@ import {News} from "./components/News/News";
 import {Settings} from "./components/Settings/Settings";
 import {ActionsTypes} from "./Redux/store";
 import {StoreType} from "./Redux/redux-store";
+import {RootStateType} from "./Redux/store";
 
 
-
-type appPropsType = {
+export  type appPropsType = {
     store: StoreType
-    // state: RootStateType
+    state: RootStateType
     dispatch: (action: ActionsTypes) => void
 }
 

@@ -1,8 +1,8 @@
 import React, {Provider} from 'react';
 import './index.css';
 import ReactDOM from 'react-dom';
-import App from './App';
-import {store} from "./Redux/redux-store";
+import App, {appPropsType} from './App';
+import store from "./Redux/redux-store";
 import {BrowserRouter} from "react-router-dom";
 
 
@@ -10,7 +10,7 @@ import {BrowserRouter} from "react-router-dom";
 const rerenderEntireTree = () => {
     ReactDOM.render(
         <BrowserRouter>
-            <App store={store}  dispatch={store.dispatch.bind(store)}/>
+            <App store={store}  state={s} dispatch={store.dispatch.bind(store) }/>
             {/*<Provider store={store}> <App/>*/}
             {/*</Provider>*/}
             {/*// store={store}*/}
