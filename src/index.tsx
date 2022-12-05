@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Provider} from 'react';
 import './index.css';
 import ReactDOM from 'react-dom';
 import App from './App';
@@ -11,6 +11,8 @@ const rerenderEntireTree = () => {
     ReactDOM.render(
         <BrowserRouter>
             <App store={store}  dispatch={store.dispatch.bind(store)}/>
+            {/*<Provider store={store}> <App/>*/}
+            {/*</Provider>*/}
             {/*// store={store}*/}
         </BrowserRouter>,
         document.getElementById("root")
