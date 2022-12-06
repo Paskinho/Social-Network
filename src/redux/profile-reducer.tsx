@@ -1,5 +1,10 @@
 import {ActionsTypes, dialogsPageType, profilePageType, PostDataType} from "./store";
 
+
+
+
+
+
 let initialState = {
     postData: [
         {postText: "Hello, how are you?", like: 5, id: 1},

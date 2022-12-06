@@ -16,7 +16,7 @@ export const addMessageCreator = (newMessage: string) => {
     } as const
 }
 
-let initialState: any = {
+const initialState: any = {
 
         dialogsPage: {
 
@@ -60,13 +60,13 @@ let initialState: any = {
     }
 
 
-export const dialogsReducer = (state: dialogsPageType=initialState , action: ActionsTypes) => {
+export const dialogsReducer = (state: dialogsPageType=initialState , action: ActionsTypes) : dialogsPageType => {
 
     switch (action.type) {
         case "ADD_MESSAGE":{
             let newMessage: MessagesType = {
-                id: new Date().getTime(),
-                message: action.newMessage,
+                id: state.messages.length + 1,
+                message: state.newMessageText
             }
             state.messages.push(newMessage)
             state.newMessageText = "";

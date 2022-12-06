@@ -41,7 +41,7 @@ export type MessagesType = {
 
 
 
-type RootStateType = {
+export type RootStateType = {
     dialogsPage: dialogsPageType
      profilePage: profilePageType
      // sidebar: SidebarType
@@ -63,7 +63,7 @@ type StoreType = {
     // updateNewPostText: (newText: string) => void
     subscribe: (observer: () => void) => void
     getState: () => RootStateType
-    dispatch: (action: any)=>void
+    dispatch: (action: ActionsTypes)=>void
 
 
 }

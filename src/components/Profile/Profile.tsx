@@ -16,7 +16,8 @@ export const Profile = (props: ProfileType) => {
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts profilePage={props.profilePage}
+            <MyPosts posts={props.profilePage.postData}
+                profilePage={props.profilePage}
                      dispatch={props.dispatch}
             />
         </div>
