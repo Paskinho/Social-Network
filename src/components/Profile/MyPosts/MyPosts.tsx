@@ -1,10 +1,15 @@
 import React from 'react';
 import s from './Myposts.module.css'
 import {Post} from "./Post/Post";
-import {ActionsTypes, dialogsPageType, PostDataType, profilePageType} from "../../../Redux/store";
+import {ActionsTypes, dialogsPageType, profilePageType} from "../../../Redux/store";
 import {addMessageCreator, addPostCreator, onMessagePostCreator, updateNewPostTextCreator} from "../../../Redux/store";
 
+type PostDataType ={
+    id: number
+    postText: string
+    like: number
 
+}
 type MessageType = {
     // message: string
     posts:Array<PostDataType>
@@ -15,7 +20,7 @@ type MessageType = {
     // dialogsPage: dialogsPageType
 }
 
-export const MyPosts: React.FC<MessageType> = ({posts,}) => {
+export const MyPosts: React.FC<MessageType> = ({posts,dispatch}) => {
 
 const postsElements =
     posts.map(p=> <Post message={p.postText} like={p.like}/>)
@@ -26,7 +31,7 @@ const postsElements =
         //
         // props.addPostCallback(props.message)
         let text = postMessageRef.current?.value
-        if (text) props.dispatch({addPostCreator})
+        if (text) dispatch({addPostCreator})
         if (postMessageRef.current) postMessageRef.current.value = ''
         // в пути самурая : props.addPost()
     }
@@ -35,7 +40,7 @@ const postsElements =
         // В пути самурая let text = newPostElement.current.value
         // props.updateNewPostText(text)
 const text = postMessageRef.current?.value;
-      text ? props.dispatch({updateNewPostTextCreator}) : props.dispatch('');
+      text ? dispatch({updateNewPostTextCreator}) : dispatch('');
     }
 
 

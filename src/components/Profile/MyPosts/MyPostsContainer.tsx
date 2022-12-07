@@ -26,6 +26,7 @@ const postsElements =
         if (text) props.dispatch({addPostCreator})
         if (postMessageRef.current) postMessageRef.current.value = ''
         // в пути самурая : props.addPost()
+        //props.store.dispatch(addPostActionCreator())
     }
 
     const onPostChangeCallBack = () => {
