@@ -16,7 +16,7 @@ import {RootStateType} from "./Redux/store";
 
 export  type appPropsType = {
     store: StoreType
-    state: RootStateType
+    // state: RootStateType
     dispatch: (action: ActionsTypes) => void
 }
 

@@ -15,10 +15,10 @@ type MessageType = {
     // dialogsPage: dialogsPageType
 }
 
-export const MyPosts = (props: MessageType) => {
+export const MyPosts: React.FC<MessageType> = ({posts,}) => {
 
 const postsElements =
-    props.posts.map(p=> <Post message={p.postText} like={p.like})
+    posts.map(p=> <Post message={p.postText} like={p.like}/>)
 
     const postMessageRef = React.createRef<HTMLTextAreaElement>()
 
@@ -66,3 +66,34 @@ const text = postMessageRef.current?.value;
         </div>
     )
 }
+
+// const allPosts = posts.map(p => <Post name={p.title}
+//                                       description={p.description}
+//                                       likesCount={p.likesCount}
+//                                       id={p.id}
+//                                       key={p.id}
+//                                       addLike={addLike}/>)
+//
+// const onSetPost = (e: ChangeEvent<HTMLTextAreaElement>) => {
+//     setPost(e.currentTarget.value)
+// }
+//
+// const onAddNewPost = () => {
+//     addNewPost()
+// }
+//
+// return (
+//     <div className={s.content}>
+//         <div className={s.postsBlock}>
+//             <h3>Posts</h3>
+//             <div>
+//                 <textarea cols={30} rows={5} value={newPostText} onChange={onSetPost}></textarea>
+//                 <button onClick={onAddNewPost}>Add post</button>
+//             </div>
+//             <div>
+//                 {allPosts}
+//             </div>
+//         </div>
+//     </div>
+// );
+// };

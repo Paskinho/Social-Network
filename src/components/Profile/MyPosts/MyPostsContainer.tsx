@@ -3,8 +3,8 @@ import s from './Myposts.module.css'
 import {Post} from "./Post/Post";
 import {ActionsTypes, dialogsPageType, PostDataType, profilePageType} from "../../../Redux/store";
 import {addMessageCreator, addPostCreator, onMessagePostCreator, updateNewPostTextCreator} from "../../../Redux/store";
-import {MyPosts} from "../MyPosts";
-import {StoreType} from "../../../../Redux/redux-store";
+import {MyPosts} from "./MyPosts";
+import {StoreType} from "../../../Redux/redux-store";
 
 
 
