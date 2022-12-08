@@ -1,8 +1,8 @@
 import React from 'react';
 import s from './Myposts.module.css'
 import {Post} from "./Post/Post";
-import {ActionsTypes, dialogsPageType, PostDataType, profilePageType} from "../../../Redux/store";
-import {addMessageCreator, addPostCreator, onMessagePostCreator, updateNewPostTextCreator} from "../../../Redux/store";
+import {ActionsTypes, dialogsPageType, PostDataType, profilePageType} from "../../../redux/store";
+import {addMessageCreator, addPostCreator, onMessagePostCreator, updateNewPostTextCreator} from "../../../redux/store";
 import {MyPosts} from "./MyPosts";
 import {StoreType} from "../../../redux/redux-store";
 
@@ -13,6 +13,8 @@ type MessageType = {
 }
 
 export const MyPostsContainer : React.FC<MessageType> = (props)=> {
+
+    const MyPostsState = props.store.getState()
 
 const postsElements =
     props.posts.map(p=> <Post message={p.postText} like={p.like}/>)
@@ -38,6 +40,7 @@ const text = postMessageRef.current?.value;
 
 
     return (
-       <MyPosts posts={} dispatch={} profilePage={}/>
+       <MyPosts posts={MyPostsState.profileReducer.postData} postText={MyPostsState.dialogsReducer.newMessageText}
+       dispatch={}/>
     )
 }
