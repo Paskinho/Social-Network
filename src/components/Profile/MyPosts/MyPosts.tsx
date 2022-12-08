@@ -19,6 +19,7 @@ type MessageType = {
     // profilePage: profilePageType
     postText: string
     // dialogsPage: dialogsPageType
+    addNewPost:(newText:string)=>void
 }
 
 export const MyPosts: React.FC<MessageType> = ({posts,dispatch, postText}) => {

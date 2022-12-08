@@ -22,7 +22,7 @@ export const MyPostsContainer : React.FC<MessageType> = (props)=> {
 
 
     return (
-       <MyPosts posts={MyPostsState.profileReducer.postData} postText={MyPostsState.dialogsReducer.newMessageText}
-       dispatch={}/>
+       <MyPosts addNewPost={addNewPost} posts={MyPostsState.profileReducer.postData} postText={MyPostsState.dialogsReducer.newMessageText}
+       dispatch={props.store.dispatch}/>
     )
 }
