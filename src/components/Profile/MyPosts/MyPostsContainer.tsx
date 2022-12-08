@@ -1,11 +1,7 @@
 import React from 'react';
-import s from './Myposts.module.css'
-import {Post} from "./Post/Post";
-import {ActionsTypes, dialogsPageType, PostDataType, profilePageType} from "../../../redux/store";
-import {addMessageCreator, addPostCreator, onMessagePostCreator, updateNewPostTextCreator} from "../../../redux/store";
 import {MyPosts} from "./MyPosts";
 import {StoreType} from "../../../redux/redux-store";
-
+import {addPostCreator, updateNewPostTextCreator} from "../../../redux/profile-reducer";
 
 
 type MessageType = {
@@ -14,28 +10,14 @@ type MessageType = {
 
 export const MyPostsContainer : React.FC<MessageType> = (props)=> {
 
-    const MyPostsState = props.store.getState()
+    const MyPostsState = props.store.getState();
 
-const postsElements =
-    props.posts.map(p=> <Post message={p.postText} like={p.like}/>)
-
-    const postMessageRef = React.createRef<HTMLTextAreaElement>()
-
-    const addPost = () => {
-        //
-        // props.addPostCallback(props.message)
-        let text = postMessageRef.current?.value
-        if (text) props.dispatch({addPostCreator})
-        if (postMessageRef.current) postMessageRef.current.value = ''
-        // в пути самурая : props.addPost()
-        //props.store.dispatch(addPostActionCreator())
+    const onPostChange = (post: string) => {
+        props.store.dispatch(updateNewPostTextCreator(post))
     }
 
-    const onPostChangeCallBack = () => {
-        // В пути самурая let text = newPostElement.current.value
-        // props.updateNewPostText(text)
-const text = postMessageRef.current?.value;
-      text ? props.dispatch({updateNewPostTextCreator}) : props.dispatch('');
+    const addNewPost = (newText:string) => {
+        props.store.dispatch(addPostCreator(newText))
     }
 
 
