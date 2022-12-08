@@ -23,6 +23,7 @@ export const MyPostsContainer : React.FC<MessageType> = (props)=> {
 
     return (
        <MyPosts addNewPost={addNewPost} posts={MyPostsState.profileReducer.postData} postText={MyPostsState.dialogsReducer.newMessageText}
-       dispatch={props.store.dispatch}/>
+       dispatch={props.store.dispatch} onPost={onPostChange}/>
+        //setPost={setPost} У меня onPost={onPostChange}
     )
 }

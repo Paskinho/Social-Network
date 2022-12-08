@@ -21,7 +21,7 @@ export  type appPropsType = {
 }
 
 const App = (props: appPropsType) => {
-    const ProfileWithProps = () => <Profile profilePage={state.profileReducer} dispatch={props.dispatch}/>
+    const ProfileWithProps = () => <Profile store={props.store}/>
     const DialogsWithProps = () => <Dialogs dialogsState={state.dialogsReducer} dispatch={props.dispatch}/>
 
     const state = props.store.getState();
