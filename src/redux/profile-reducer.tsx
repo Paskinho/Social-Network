@@ -5,10 +5,10 @@ import {ActionsTypes, dialogsPageType, profilePageType, PostDataType} from "./st
 
 
 
-let initialState = {
+const initialState = {
     postData: [
-        {postText: "Hello, how are you?", like: 5, id: 1},
-        {postText: "This is my first post)", like: 10, id: 2},
+        {title: "Hello, how are you?", like: 5, id: 1},
+        {title: "This is my first post)", like: 10, id: 2},
     ],
     newPostText: "New message",
 };
@@ -19,8 +19,8 @@ export const profileReducer = (state: profilePageType = initialState, action: Ac
         case "ADD_POST": {
             let newPost: PostDataType = {
                 id: new Date().getTime(),
-                postText: action.newText,
-                like: 10
+                title: `Post ${state.postData.length + 1}`,
+                like: 0,
             }
             state.postData.push(newPost)
             state.newPostText = ""

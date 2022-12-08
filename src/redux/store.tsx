@@ -1,13 +1,22 @@
-import {profileReducer} from "./profile-reducer";
-import {dialogsReducer} from "./dialogs-reducer";
-// import {sidebarReducer} from "./sidebar-reducer";
+// import {profileReducer} from "./profile-reducer";
+// import {dialogsReducer} from "./dialogs-reducer";
+// // import {sidebarReducer} from "./sidebar-reducer";
 
 
 // export type SubscribeType = (observer: RootStateType)=>void
 
+export type PostDataType ={
+    id: number
+    like: number
+    title: string
+
+
+}
+
 export type profilePageType = {
     postData:Array<PostDataType>
     newPostText: string
+
 
 
 }
@@ -19,12 +28,7 @@ export type dialogsPageType ={
 
 }
 
-export type PostDataType ={
-     id: number
-    postText: string
-    like: number
 
-}
 
 type UsersType = {
     name: string

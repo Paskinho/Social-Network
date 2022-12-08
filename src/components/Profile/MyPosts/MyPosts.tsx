@@ -1,12 +1,12 @@
 import React from 'react';
 import s from './Myposts.module.css'
 import {Post} from "./Post/Post";
-import {ActionsTypes, dialogsPageType, profilePageType} from "../../../Redux/store";
-import {addMessageCreator, addPostCreator, onMessagePostCreator, updateNewPostTextCreator} from "../../../Redux/store";
+import {ActionsTypes, dialogsPageType, profilePageType} from "../../../redux/store";
+import {addMessageCreator, addPostCreator, onMessagePostCreator, updateNewPostTextCreator} from "../../../redux/store";
 
 type PostDataType ={
     id: number
-    postText: string
+title: string
     like: number
 
 }
@@ -16,14 +16,20 @@ type MessageType = {
     // addPostCallback: (postText:string) => void
     // onPostChangeCallBack: (newText: string) => void
     dispatch: (action: any) => void
-    profilePage: profilePageType
+    // profilePage: profilePageType
+    postText: string
     // dialogsPage: dialogsPageType
 }
 
-export const MyPosts: React.FC<MessageType> = ({posts,dispatch}) => {
+export const MyPosts: React.FC<MessageType> = ({posts,dispatch, postText}) => {
 
 const postsElements =
-    posts.map(p=> <Post message={p.postText} like={p.like}/>)
+    posts.map(p=> <Post name={p.title}
+                        like={p.like}
+                        id={p.id}
+                        key={p.id}
+                        dispatch={dispatch}
+                        />)
 
     const postMessageRef = React.createRef<HTMLTextAreaElement>()
 
@@ -52,21 +58,13 @@ const text = postMessageRef.current?.value;
             {/*    /!*key={p.i} добавить в дивку*!/*/}
             {/*</hr>*/}
             <div>
-                <textarea onChange={onPostChangeCallBack} value={props.profilePage.newPostText}/>
+                <textarea onChange={onPostChangeCallBack} value={postText}/>
             </div>
             <div>
                 <button onClick={addPost}>Add post</button>
             </div>
             <div>
                 New posts
-            </div>
-            <div className={s.posts}>
-                <div className={s.item}>
-                    <Post message='Im best player in the world' like='5'/>
-                    <Post message='Реакт/Редакс знать будешь круууто' like='10'/>
-
-
-                </div>
             </div>
         </div>
     )
