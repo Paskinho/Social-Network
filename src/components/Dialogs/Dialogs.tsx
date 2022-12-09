@@ -1,20 +1,14 @@
 import React, {useRef} from "react";
 import s from './Dialogs.module.css';
-import {NavLink} from "react-router-dom";
+
 import {dialogsPageType, addMessageCreator, onMessagePostCreator, ActionsTypes} from "../../redux/store";
 import {DialogItem} from "./DialogItem";
+import {Message} from "./Message/Message";
 
 
 
 
-type MessagePropsType = {
-    message: string
-    id: number
-}
 
-const Message = (props: MessagePropsType) => {
-    return <div className={s.dialog}>{props.message}</div>
-}
 
 type DialogsPropsType = {
     // DialogItem: (name: string)=> void
@@ -26,6 +20,9 @@ type DialogsPropsType = {
 
 
 export const Dialogs: React.FC<DialogsPropsType> = (props) => {
+
+    const dialogsItem = props.dialogsState.users.map(u => <DialogItem key={u.id} name={u.name} id={u.id}/>)
+    const message = props.dialogsState.messages.map(m => <Message key={m.id} message={m.message} id={m.id}/>)
 
     const newMessageElement = useRef<HTMLTextAreaElement>(null);
 
@@ -45,24 +42,16 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
             props.dispatch(onMessagePostCreator(""));
     }
 
-    const dialogsItem = props.dialogsState.users.map(u => <DialogItem name={u.name} id={u.id}/>)
-    const message = props.dialogsState.messages.map(m => <Message message={m.message} id={m.id}/>)
+
 
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
-                {/*<DialogItem name ="Trent" id = "1"/>*/}
-                {/*<DialogItem name ="Virgil" id = "2"/>*/}
-                {/*<DialogItem name ="Mohamed" id = "3" />*/}
-                {/*<DialogItem name ="Darwin" id = "4"/>*/}
-                {/*<DialogItem name ="Roberto" id = "5"/>*/}
-                {/*<DialogItem name ="Thiago" id = "6"/>*/}
                 {dialogsItem}
             </div>
             <div className={s.message}>
                 {message}
-                {/*<div>{messagesElements}</div>* /}
-            {/*Dialogs*/}
+
                 <div>
                     <div><textarea
                         value={props.dialogsState.newMessageText}
