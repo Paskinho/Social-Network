@@ -3,6 +3,8 @@
     grid-area: n;
     background-color: burlywood;
     padding: 20px;
+    border-radius: 5px;
+    width: 200px;
 }
 
 .item {
