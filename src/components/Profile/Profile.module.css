@@ -1,12 +1,16 @@
+
+.item {
+color: #61dafb;
+}
+
+.img {
+    max-width: 100%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+}
+
 .content {
     grid-area: content;
     background-color: gold;
-}
-
-.content img {
-    width: 500px;
-}
-
-.item {
-
 }
