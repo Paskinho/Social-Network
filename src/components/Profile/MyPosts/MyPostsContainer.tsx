@@ -2,6 +2,7 @@ import React from 'react';
 import {MyPosts} from "./MyPosts";
 import {StoreType} from "../../../redux/redux-store";
 import {addPostCreator, updateNewPostTextCreator} from "../../../redux/profile-reducer";
+import StoreContext from "../../../redux/StoreContext";
 
 
 type MessageType = {
@@ -22,6 +23,7 @@ export const MyPostsContainer : React.FC<MessageType> = (props)=> {
 
 
     return (
+        //<StoreContext></StoreContext>
        <MyPosts addNewPost={addNewPost} posts={MyPostsState.profileReducer.postData} postText={MyPostsState.dialogsReducer.newMessageText}
        dispatch={props.store.dispatch} onPost={onPostChange}/>
         //setPost={setPost} У меня onPost={onPostChange}
