@@ -100,10 +100,10 @@ export const onMessagePostCreator = (newMessage: string) => {
 }
 
 export type addMessageCreatorType = ReturnType<typeof addMessageCreator>
-export const addMessageCreator = (newMessage: string) => {
+export const addMessageCreator = () => {
     return {
-        type: "ADD_MESSAGE",
-        newMessage: newMessage
+        type: "ADD_MESSAGE"
+
     } as const
 }
 

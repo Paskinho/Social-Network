@@ -9,12 +9,10 @@ export const onMessagePostCreator = (newMessage: string) => {
 }
 
 export type addMessageCreatorType = ReturnType<typeof addMessageCreator>
-export const addMessageCreator = (newMessage: string) => {
-    return {
-        type: "ADD_MESSAGE",
-        newMessage: newMessage
-    } as const
+export const addMessageCreator = () => {
+    return {type: 'ADD_MESSAGE'} as const
 }
+
 
 const initialState: any = {
 

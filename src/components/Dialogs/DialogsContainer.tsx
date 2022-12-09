@@ -15,14 +15,14 @@ export const DialogsContainer: React.FC<DialogsPropsType> = (props) => {
 
     const DialogsState = props.store.getState()
 
-    const addMessage = (newMessage:string) => {
-        props.store.dispatch(addMessageCreator(newMessage))
+    const addMessage = () => {
+        props.store.dispatch(addMessageCreator())
     }
 
     const onMessage = (message: string) => {
         props.store.dispatch(onMessagePostCreator(message))
     }
 
-    return <Dialogs dialogsState={DialogsState.dialogsReducer} dispatch={}/>
+    return <Dialogs dialogsState={DialogsState.dialogsReducer} addMessage={addMessage} setMessage={onMessage}/>
 
 }

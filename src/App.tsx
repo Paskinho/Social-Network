@@ -12,17 +12,18 @@ import {Settings} from "./components/Settings/Settings";
 import {ActionsTypes} from "./redux/store";
 import {StoreType} from "./redux/redux-store";
 import {RootStateType} from "./redux/store";
+import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
 
 
 export  type appPropsType = {
     store: StoreType
     // state: RootStateType
-    dispatch: (action: ActionsTypes) => void
+    // dispatch: (action: ActionsTypes) => void
 }
 
 const App = (props: appPropsType) => {
     const ProfileWithProps = () => <Profile store={props.store}/>
-    const DialogsWithProps = () => <Dialogs dialogsState={state.dialogsReducer} dispatch={props.dispatch}/>
+    const DialogsWithProps = () => <DialogsContainer store={props.store}/>
     //store={props.store}
 
     const state = props.store.getState();
