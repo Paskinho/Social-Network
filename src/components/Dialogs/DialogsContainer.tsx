@@ -2,6 +2,7 @@ import React, {useRef} from "react";
 import s from './Dialogs.module.css';
 import {NavLink} from "react-router-dom";
 import {dialogsPageType, addMessageCreator, onMessagePostCreator, ActionsTypes} from "../../redux/store";
+import {Dialogs} from "./Dialogs";
 import {DialogItem} from "./DialogItem";
 
 
@@ -25,7 +26,7 @@ type DialogsPropsType = {
 }
 
 
-export const Dialogs: React.FC<DialogsPropsType> = (props) => {
+export const DialogsContainer: React.FC<DialogsPropsType> = (props) => {
 
     const newMessageElement = useRef<HTMLTextAreaElement>(null);
 
@@ -48,32 +49,6 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
     const dialogsItem = props.dialogsState.users.map(u => <DialogItem name={u.name} id={u.id}/>)
     const message = props.dialogsState.messages.map(m => <Message message={m.message} id={m.id}/>)
 
-    return (
-        <div className={s.dialogs}>
-            <div className={s.dialogsItems}>
-                {/*<DialogItem name ="Trent" id = "1"/>*/}
-                {/*<DialogItem name ="Virgil" id = "2"/>*/}
-                {/*<DialogItem name ="Mohamed" id = "3" />*/}
-                {/*<DialogItem name ="Darwin" id = "4"/>*/}
-                {/*<DialogItem name ="Roberto" id = "5"/>*/}
-                {/*<DialogItem name ="Thiago" id = "6"/>*/}
-                {dialogsItem}
-            </div>
-            <div className={s.message}>
-                {message}
-                {/*<div>{messagesElements}</div>* /}
-            {/*Dialogs*/}
-                <div>
-                    <div><textarea
-                        value={props.dialogsState.newMessageText}
-                        onChange={onMessagePost}
-                        placeholder="Enter you message...">Hello</textarea></div>
-                    <div>
-                        <button onClick={addMessage}>Add</button>
-                    </div>
-                </div>
-            </div>
+    return <Dialogs dialogsState={} dispatch={}/>
 
-        </div>
-    )
 }
