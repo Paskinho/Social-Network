@@ -13,21 +13,7 @@ type DialogsPropsType = {
 }
 
 
-export const DialogsContainer: React.FC<DialogsPropsType> = (props) => {
 
-    const DialogsState = props.store.getState()
-
-    const addMessage = () => {
-        props.store.dispatch(addMessageCreator())
-    }
-
-    const onMessage = (message: string) => {
-        props.store.dispatch(onMessagePostCreator(message))
-    }
-
-    return <Dialogs dialogsState={DialogsState.dialogsReducer} addMessage={addMessage} setMessage={onMessage}/>
-
-}
 const mapStateToProps = (state: RootStateType) => {
     return {
         dialogsState: state.dialogsPage
@@ -48,4 +34,6 @@ const mapDispatchToProps = (dispatch: any) => {
 
 
 
-const SuperDialogsContainer = connect (mapStateToProps,mapDispatchToProps) (Dialogs)
+const DialogsContainer = connect (mapStateToProps,mapDispatchToProps) (Dialogs);
+
+export default DialogsContainer;

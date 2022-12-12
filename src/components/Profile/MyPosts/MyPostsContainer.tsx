@@ -2,6 +2,7 @@ import React from 'react';
 import {MyPosts} from "./MyPosts";
 import {StoreType} from "../../../redux/redux-store";
 import {addPostCreator, updateNewPostTextCreator} from "../../../redux/profile-reducer";
+import {connect} from "react-redux";
 
 
 
@@ -29,3 +30,18 @@ export const MyPostsContainer : React.FC<MessageType> = (props)=> {
         //setPost={setPost} У меня onPost={onPostChange}
     )
 }
+
+const f1 = ()=> {
+    return {
+
+}
+}
+const f2 = ()=> {
+    return {
+
+}
+}
+
+
+
+const SuperMyPostsContainer = connect (f1,f2 )()

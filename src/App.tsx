@@ -12,7 +12,7 @@ import {Settings} from "./components/Settings/Settings";
 import {ActionsTypes} from "./redux/store";
 import {StoreType} from "./redux/redux-store";
 import {RootStateType} from "./redux/store";
-import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 
 export  type appPropsType = {
