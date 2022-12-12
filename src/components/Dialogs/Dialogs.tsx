@@ -27,7 +27,7 @@ export const Dialogs: React.FC<DialogsPropsType> = ({dialogsState,addMessage,set
     const dialogsItem = dialogsState.users.map(u => <DialogItem key={u.id} name={u.name} id={u.id}/>)
     const message = dialogsState.messages.map(m => <Message key={m.id} message={m.message} id={m.id}/>)
 
-    const newMessageElement = useRef<HTMLTextAreaElement>(null);
+    const newMessageElement = useRef<HTMLTextAreaElement>(null); //????
 
     const onClickAddMessage = () => {
         addMessage()
