@@ -7,6 +7,11 @@ import {RootStateType} from "../../../redux/store";
 import {addMessageCreator, onMessagePostCreator} from "../../../redux/dialogs-reducer";
 
 
+type MapStatePropsType = {
+    posts
+    postText
+}
+
 
 type MessageType = {
     store: StoreType
@@ -15,7 +20,8 @@ type MessageType = {
 const mapStateToProps = (state: RootStateType) => {
     return {
         posts: state.profilePage.postData,
-        postText: state.profilePage.newPostText
+        postText: state.profilePage.newPostText,
+
     }
 }
 
