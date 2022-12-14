@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.css';
 import ReactDOM from 'react-dom';
-import App, {appPropsType} from './App';
+import App from './App';
 import store from "./redux/redux-store";
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
@@ -14,7 +14,7 @@ import {Provider} from "react-redux";
         <BrowserRouter>
             <Provider store={store}>
 
-                <App store={store}/>
+                <App/>
             </Provider>
 
         </BrowserRouter>,

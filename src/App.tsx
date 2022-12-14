@@ -14,19 +14,19 @@ import {StoreType} from "./redux/redux-store";
 import {RootStateType} from "./redux/store";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
+//
+// export  type appPropsType = {
+//     store: StoreType
+//     // state: RootStateType
+//     // dispatch: (action: ActionsTypes) => void
+// }
 
-export  type appPropsType = {
-    store: StoreType
-    // state: RootStateType
-    // dispatch: (action: ActionsTypes) => void
-}
-
-const App = (props: appPropsType) => {
-    const ProfileWithProps = () => <Profile store={props.store}/>
-    const DialogsWithProps = () => <DialogsContainer store={props.store}/>
+const App: React.FC = () => {
+    const ProfileWithProps = () => <Profile/>
+    const DialogsWithProps = () => <DialogsContainer/>
     //store={props.store}
 
-    const state = props.store.getState();
+
 
     return (
 
