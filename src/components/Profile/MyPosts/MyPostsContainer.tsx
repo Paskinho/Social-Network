@@ -13,9 +13,9 @@ type MapStatePropsType = {
 }
 
 
-type MessageType = {
-    store: StoreType
-}
+// type MessageType = {
+//     store: StoreType
+// }
 
 const mapStateToProps = (state: RootStateType) : MapStatePropsType => {
     return {

@@ -57,6 +57,7 @@ const initialState: any = {
         // }
     }
 
+export type InitialStateType = typeof initialState
 
 export const dialogsReducer = (state: dialogsPageType=initialState , action: ActionsTypes) : dialogsPageType => {
 

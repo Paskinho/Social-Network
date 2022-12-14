@@ -4,28 +4,29 @@ import s from './Dialogs.module.css';
 import {dialogsPageType, addMessageCreator, onMessagePostCreator, ActionsTypes} from "../../redux/store";
 import {DialogItem} from "./DialogItem";
 import {Message} from "./Message/Message";
+import {DialogsPropsType} from "./DialogsContainer";
 
 
 
 
 
 
-type DialogsPropsType = {
-    // DialogItem: (name: string)=> void
-    dialogsState: dialogsPageType // уточнить
-    // newPostText: string
-    // store: ()=> void
-    // dispatch: (action: any) => void
-    addMessage: ()=> void
-    setMessage:(message: string) => void
+// type DialogsPropsType = {
+//     // DialogItem: (name: string)=> void
+//     dialogsState: dialogsPageType // уточнить
+//     // newPostText: string
+//     // store: ()=> void
+//     // dispatch: (action: any) => void
+//     addMessage: ()=> void
+//     setMessage:(message: string) => void
+//
+// }
 
-}
 
+export const Dialogs: React.FC<DialogsPropsType> = ({dialogsState,addMessage,onMessage}) => {
 
-export const Dialogs: React.FC<DialogsPropsType> = ({dialogsState,addMessage,setMessage}) => {
-
-    const dialogsItem = dialogsState.users.map(u => <DialogItem key={u.id} name={u.name} id={u.id}/>)
-    const message = dialogsState.messages.map(m => <Message key={m.id} message={m.message} id={m.id}/>)
+    const dialogsItem = dialogsState.users.map((d:any) => <DialogItem key={d.id} name={d.name} id={d.id}/>)
+    const message = dialogsState.messages.map((m: any) => <Message key={m.id} message={m.message} id={m.id}/>)
 
     const newMessageElement = useRef<HTMLTextAreaElement>(null); //????
 
@@ -34,7 +35,7 @@ export const Dialogs: React.FC<DialogsPropsType> = ({dialogsState,addMessage,set
     }
 
     const onMessagePost = (e:ChangeEvent<HTMLTextAreaElement>) => {
-        setMessage(e.currentTarget.value)
+        onMessage(e.currentTarget.value)
     }
 
 
