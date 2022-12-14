@@ -6,18 +6,18 @@ import {connect} from "react-redux";
 import {RootStateType} from "../../../redux/store";
 import {addMessageCreator, onMessagePostCreator} from "../../../redux/dialogs-reducer";
 
-
-type MapStatePropsType = {
-    posts
-    postText
-}
+//
+// type MapStatePropsType = {
+//     posts: string
+//     postText: string
+// }
 
 
 type MessageType = {
     store: StoreType
 }
 
-const mapStateToProps = (state: RootStateType) => {
+const mapStateToProps = (state: RootStateType) => { // : MapStatePropsType
     return {
         posts: state.profilePage.postData,
         postText: state.profilePage.newPostText,
