@@ -23,12 +23,6 @@ import {Provider} from "react-redux";
 
 
 
-// store.subscribe(rerenderEntireTree)
-// rerenderEntireTree()
-
-
-// rerenderEntireTree(store.getState())
-
 // store.subscribe(()=> {
 //     let state = store.getState()
 //     rerenderEntireTree(state);
