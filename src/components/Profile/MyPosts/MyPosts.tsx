@@ -66,7 +66,7 @@ const text = postMessageRef.current?.value;
                 <button onClick={addPost}>Add post</button>
             </div>
             <div>
-                New posts
+                {postsElements}
             </div>
         </div>
     )

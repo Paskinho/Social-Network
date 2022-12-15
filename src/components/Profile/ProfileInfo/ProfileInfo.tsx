@@ -4,7 +4,7 @@ import s from './ProfileInfo.module.css'
 // import {Post} from "./MyPosts/Post/Post";
 
 
-export const ProfileInfo = () => {
+export const ProfileInfo: React.FC = () => {
     return (
         <div>
         <div className={s.img}>
