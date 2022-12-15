@@ -13,6 +13,8 @@ export type AppStateType = ReturnType<typeof rootReducer>
 
 export type StoreType = typeof store
 
-const store = createStore(rootReducer)
+const store = createStore(rootReducer);
+
+// window.store = store;
 
 export default store;
