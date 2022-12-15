@@ -23,15 +23,16 @@ export const profileReducer = (state: profilePageType = initialState, action: Ac
                 like: 0,
             }
             let stateCopy = {...state}
-            stateCopy.postData=[...state.postData]
+            stateCopy.postData=[...state.postData] // глубокая копия
             stateCopy.postData.push(newPost)
             stateCopy.newPostText = ""
             return stateCopy
         }
         case "UPDATE_NEW_POST_TEXT": {
-            state.newPostText = action.newText
+            let stateCopy = {...state}
+            stateCopy.newPostText = action.newText
 
-            return state
+            return stateCopy
         }
         default:
             return state
