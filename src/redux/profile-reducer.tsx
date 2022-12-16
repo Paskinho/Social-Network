@@ -21,7 +21,9 @@ const initialState = {
     newPostText: "New message",
 };
 
-export const profileReducer = (state: profilePageType = initialState, action: ActionsTypes) => {
+export type InitialStateType = typeof initialState
+
+export const profileReducer = (state: InitialStateType = initialState, action: ActionsTypes) => {
 
     switch (action.type) {
         case "ADD_POST": {
@@ -48,7 +50,7 @@ export const profileReducer = (state: profilePageType = initialState, action: Ac
 
 }
 
-export type addPostCreatorType = ReturnType<typeof addPostCreator>
+// export type addPostCreatorType = ReturnType<typeof addPostCreator>
 export const addPostCreator = (newText: string) => {
     return {
         type: "ADD_POST",
@@ -56,7 +58,7 @@ export const addPostCreator = (newText: string) => {
     } as const
 }
 
-export type updateNewPostTextCreatorType = ReturnType<typeof updateNewPostTextCreator>
+// export type updateNewPostTextCreatorType = ReturnType<typeof updateNewPostTextCreator>
 export const updateNewPostTextCreator = (newText: string) => {
     return {
         type: "UPDATE_NEW_POST_TEXT",
