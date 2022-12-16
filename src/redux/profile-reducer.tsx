@@ -1,7 +1,15 @@
-import {ActionsTypes, dialogsPageType, profilePageType, PostDataType} from "./store";
+import {ActionsTypes, dialogsPageType} from "./store";
 
 
-
+export type PostDataType ={
+    id: number
+    like: number
+    title: string
+}
+export type profilePageType = {
+    postData:Array<PostDataType>
+    newPostText: string
+}
 
 
 

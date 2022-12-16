@@ -5,21 +5,11 @@
 
 // export type SubscribeType = (observer: RootStateType)=>void
 
-export type PostDataType ={
-    id: number
-    like: number
-    title: string
-
-
-}
-
-export type profilePageType = {
-    postData:Array<PostDataType>
-    newPostText: string
 
 
 
-}
+
+import {profilePageType} from "./profile-reducer";
 
 export type dialogsPageType ={
     users: Array<UsersType>

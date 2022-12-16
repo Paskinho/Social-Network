@@ -3,7 +3,8 @@ import {MyPosts} from "./MyPosts";
 import {StoreType} from "../../../redux/redux-store";
 import {addPostCreator, updateNewPostTextCreator} from "../../../redux/profile-reducer";
 import {connect} from "react-redux";
-import {PostDataType, RootStateType} from "../../../redux/store";
+import { RootStateType} from "../../../redux/store";
+import {PostDataType} from "../../../redux/profile-reducer";
 import {addMessageCreator, onMessagePostCreator} from "../../../redux/dialogs-reducer";
 
 
