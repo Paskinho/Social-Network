@@ -60,25 +60,25 @@ const initialState: any = {
 export type InitialStateType = typeof initialState
 
 export const dialogsReducer = (state: dialogsPageType=initialState , action: ActionsTypes) : dialogsPageType => {
-    const stateCopy = {
-        ...state,
-        messages: [...state.messages]
-    };
+
     switch (action.type) {
         case "ADD_MESSAGE":{
             let newMessage: MessagesType = {
                 id: state.messages.length + 1,
                 message: state.newMessageText
             }
+            return {
+                ...state,
+                newMessageText : "",
+                messages: [...state.messages, {id: 6, message: state.newMessageText}]
+            };
 
-            stateCopy.messages.push(newMessage)
-            stateCopy.newMessageText = "";
-            return stateCopy;
         }
         case "UPDATE_NEW_MESSAGE_TEXT": {
+            return {
+                ...state,
+                newMessageText : action.newMessage};
 
-            stateCopy.newMessageText = action.newMessage
-            return stateCopy
         }
 
         default: return state
