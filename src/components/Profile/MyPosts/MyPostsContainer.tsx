@@ -7,12 +7,10 @@ import { RootStateType} from "../../../redux/store";
 import {PostDataType} from "../../../redux/profile-reducer";
 import {addMessageCreator, onMessagePostCreator} from "../../../redux/dialogs-reducer";
 
-
 type MapStatePropsType = {
     posts: PostDataType[]
     postText: string
 }
-
 
 // type MessageType = {
 //     store: StoreType
