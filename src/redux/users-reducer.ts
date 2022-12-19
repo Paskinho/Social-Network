@@ -16,46 +16,13 @@ export const addMessageCreator = () => {
 
 const initialState: any = {
 
-        dialogsPage: {
 
-            users: [
-                {
-                    name: "Trent",
-                    id: 0
-                },
-                {
-                    name: "Virgil",
-                    id: 1
-                },
-                {
-                    name: "Mohamed",
-                    id: 2
-                },
-                {
-                    name: "Darwin",
-                    id: 3
-                },
-                {
-                    name: "Roberto",
-                    id: 4
-                },
-                {
-                    name: "Thiago",
-                    id: 5
-                }
-            ],
-            messages: [
-                {message: "Hi", id: 1},
-                {message: "How are you IT-Kamasutra", id: 2},
-                {message: "YO", id: 3}
-
-            ],
-            newMessageText: "",
-        },
-
-        // sidebar: {},
-        // }
-    }
+    users: [
+        {id: 1, fullName: 'Steven', status: 'Im a former Liverpool player and captain', location: {city: 'Liverpool', country: 'England'}},
+        {id: 2, fullName: 'Kenny', status: 'Im a former Liverpool player and best of all time maybe', location: {city: 'Glasgow', country: 'Scotland'}},
+        {id: 3, fullName: 'Luis', status: 'Im a former Liverpool player and topscorer', location: {city: 'Montevideo', country: 'Uruguay'}}
+    ]
+}
 
 export type InitialStateType = typeof initialState
 
