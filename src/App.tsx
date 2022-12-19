@@ -13,6 +13,7 @@ import {ActionsTypes} from "./redux/store";
 import {StoreType} from "./redux/redux-store";
 import {RootStateType} from "./redux/store";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import {Users} from "./components/Users/Users";
 
 //
 // export  type appPropsType = {
@@ -39,7 +40,7 @@ const App: React.FC = () => {
                         <Route path='/news' element={<News key={2}/>}/>
                         <Route path='/music' element={<Music key={3}/>}/>
                         <Route path='/settings' element={<Settings key={4}/>}/>
-                        <Route path='/users' element={<div>users</div>}/>
+                        <Route path='/users' element={<Users/>}/>
                     </Routes>
                 </div>
 
