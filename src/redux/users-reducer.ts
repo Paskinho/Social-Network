@@ -1,26 +1,16 @@
 import {ActionsTypes, dialogsPageType, MessagesType} from "./store";
 
-export type onMessagePostCreatorType = ReturnType<typeof onMessagePostCreator>
-export const onMessagePostCreator = (newMessage: string) => {
-    return {
-        type: "UPDATE_NEW_MESSAGE_TEXT",
-        newMessage: newMessage
-    } as const
-}
-
-export type addMessageCreatorType = ReturnType<typeof addMessageCreator>
-export const addMessageCreator = () => {
-    return {type: 'ADD_MESSAGE'} as const
-}
+export const FOLLOW = "FOLLOW";
+export const UNFOLLOW = "UNFOLLOW";
 
 
 const initialState: any = {
 
 
     users: [
-        {id: 1, fullName: 'Steven', status: 'Im a former Liverpool player and captain', location: {city: 'Liverpool', country: 'England'}},
-        {id: 2, fullName: 'Kenny', status: 'Im a former Liverpool player and best of all time maybe', location: {city: 'Glasgow', country: 'Scotland'}},
-        {id: 3, fullName: 'Luis', status: 'Im a former Liverpool player and topscorer', location: {city: 'Montevideo', country: 'Uruguay'}}
+        {id: 1, followed: true, fullName: 'Steven', status: 'Im a former Liverpool player and captain', location: {city: 'Liverpool', country: 'England'}},
+        {id: 2, followed: true, fullName: 'Kenny', status: 'Im a former Liverpool player and best of all time maybe', location: {city: 'Glasgow', country: 'Scotland'}},
+        {id: 3, followed: false, fullName: 'Luis', status: 'Im a former Liverpool player and owner golden boot in season 13/14', location: {city: 'Montevideo', country: 'Uruguay'}}
     ]
 }
 
@@ -35,3 +25,6 @@ export const usersReducer = (state: dialogsPageType=initialState , action: Actio
     }
 
 }
+
+export const followAC =  () => ({type: FOLLOW})
+export const unfollowAC =  () => ({type: UNFOLLOW})

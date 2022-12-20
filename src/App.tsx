@@ -32,7 +32,6 @@ const App: React.FC = () => {
                 <Header/>
                 <Navbar/>
                 <div className="app-wrapper-content">
-
                     <Routes>
                         <Route path='/dialogs' element={<DialogsContainer/>} // уточнить
                           />
