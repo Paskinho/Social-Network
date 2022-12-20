@@ -1,7 +1,13 @@
-import {ActionsTypes, dialogsPageType, MessagesType} from "./store";
+
+
 
 export const FOLLOW = "FOLLOW";
 export const UNFOLLOW = "UNFOLLOW";
+
+type FollowType = ReturnType<typeof followAC>
+type UnfollowType = ReturnType<typeof unfollowAC>
+
+type ActionsTypes = FollowType | UnfollowType
 
 
 const initialState: any = {
@@ -16,15 +22,19 @@ const initialState: any = {
 
 export type InitialStateType = typeof initialState
 
-export const usersReducer = (state: dialogsPageType=initialState , action: ActionsTypes) : dialogsPageType => {
+export const usersReducer = (state =initialState , action: ActionsTypes)=> {
 
     switch (action.type) {
+        case FOLLOW:
 
+        case UNFOLLOW:
 
         default: return state
     }
 
 }
 
-export const followAC =  () => ({type: FOLLOW})
-export const unfollowAC =  () => ({type: UNFOLLOW})
+
+
+export const followAC =  (userId: string) => ({type: FOLLOW, userId})
+export const unfollowAC =  (userId: string) => ({type: UNFOLLOW, userId})
