@@ -1,5 +1,17 @@
 
+export type usersPageType = {
+    users: Array<UsersType>
+}
 
+type UsersType = {
+    id: number,
+    followed: boolean,
+    fullName: string,
+    status: string,
+    location:
+        {city: string,
+            country: string}
+}
 
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";

@@ -10,6 +10,7 @@
 
 
 import {profilePageType} from "./profile-reducer";
+import {usersPageType} from "./users-reducer";
 
 export type dialogsPageType ={
     users: Array<UsersType>
@@ -44,19 +45,7 @@ export type RootStateType = {
 
 }
 
-type usersPageType = {
-    users: Array<UsersFriensType>
-}
 
-type UsersFriensType = {
-    id: number,
-    followed: boolean,
-    fullName: string,
-    status: string,
-    location:
-        {city: string,
-            country: string}
-}
 
 
 
