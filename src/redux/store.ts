@@ -38,12 +38,25 @@ export type MessagesType = {
 export type RootStateType = {
     dialogsPage: dialogsPageType
      profilePage: profilePageType
+    usersPage: usersPageType
      // sidebar: SidebarType
 
 
 }
 
+type usersPageType = {
+    users: Array<UsersFriensType>
+}
 
+type UsersFriensType = {
+    id: number,
+    followed: boolean,
+    fullName: string,
+    status: string,
+    location:
+        {city: string,
+            country: string}
+}
 
 
 
