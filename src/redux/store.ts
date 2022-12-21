@@ -1,7 +1,7 @@
 // import {profileReducer} from "./profile-reducer";
 // import {dialogsReducer} from "./dialogs-reducer";
 // // import {sidebarReducer} from "./sidebar-reducer";
-
+import {UserType} from "./users-reducer";
 
 // export type SubscribeType = (observer: RootStateType)=>void
 
@@ -10,7 +10,7 @@
 
 
 import {profilePageType} from "./profile-reducer";
-import {usersPageType} from "./users-reducer";
+
 
 export type dialogsPageType ={
     users: Array<UsersType>
@@ -39,7 +39,7 @@ export type MessagesType = {
 export type RootStateType = {
     dialogsPage: dialogsPageType
      profilePage: profilePageType
-    usersPage: usersPageType
+    usersPage: UserType
      // sidebar: SidebarType
 
 

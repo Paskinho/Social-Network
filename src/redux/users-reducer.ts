@@ -1,4 +1,6 @@
 import {v1} from "uuid";
+import {profilePageType} from "./profile-reducer";
+import {dialogsPageType} from "./store";
 
 
 
@@ -23,9 +25,9 @@ export type InitialStateType = {
 
 
 
-export const followAC = (userId: string) => ({type: "FOLLOW",  payload: userId})
-export const unfollowAC = (userId: string) => ({type: "UNFOLLOW", payload: userId})
-export const setUsersAC = (users: Array<UserType>) => ({type: "SET_USERS",  payload: {newState: users} })
+export const followAC = (userId: string) => ({type: "FOLLOW",  payload: userId} as const)
+export const unfollowAC = (userId: string) => ({type: "UNFOLLOW", payload: userId} as const)
+export const setUsersAC = (users: Array<UserType>) => ({type: "SET_USERS",  payload: {newState: users} } as const)
 
 type FollowType = ReturnType<typeof followAC>
 type UnfollowType = ReturnType<typeof unfollowAC>
