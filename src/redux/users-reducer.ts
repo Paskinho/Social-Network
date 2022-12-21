@@ -34,30 +34,7 @@ const initialState: any = {
 
 
     users: [
-        {
-            id: v1(),
-            photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9taqqKhtz24VcVBYynLYkOpZbjC7Dwoy0joiVjptEDFkkiyMZo90jc_Pzm4UKRTYGXvI&usqp=CAU' ,
-            followed: true,
-            fullName: 'Steven',
-            status: 'Im a former Liverpool player and captain',
-            location: {city: 'Liverpool', country: 'England'}
-        },
-        {
-            id: v1(),
-            photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdFhh05cvsAAfEWJk1ylo5qcvxhzXqUpSnHlLH487xwoZEGJEuLGcr7wtJTJn5HfNcqX0&usqp=CAU',
-            followed: true,
-            fullName: 'Kenny',
-            status: 'Im a former Liverpool player and best of all time maybe',
-            location: {city: 'Glasgow', country: 'Scotland'}
-        },
-        {
-            id: v1(),
-            photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd3BoIJxTrBChzeTZh5kfgHTARphaB4F_sRw&usqp=CAU' ,
-            followed: false,
-            fullName: 'Luis',
-            status: 'Im a former Liverpool player and owner golden boot in season 13/14',
-            location: {city: 'Montevideo', country: 'Uruguay'}
-        }
+
     ]
 }
 
