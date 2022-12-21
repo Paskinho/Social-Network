@@ -1,6 +1,6 @@
 import React from "react";
 import s from './Users.module.css'
-import {UsersType} from "../../redux/users-reducer";
+import {UserType} from "../../redux/users-reducer";
 import {v1} from "uuid";
 
 

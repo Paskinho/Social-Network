@@ -37,7 +37,7 @@ const initialState: InitialStateType = {
 
 
 
-export const usersReducer = (state = initialState, action: ActionsTypes) => {
+export const usersReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
 
     switch (action.type) {
         case FOLLOW:
@@ -76,4 +76,4 @@ export const usersReducer = (state = initialState, action: ActionsTypes) => {
 
 export const followAC = (userId: string) => ({type: FOLLOW, userId})
 export const unfollowAC = (userId: string) => ({type: UNFOLLOW, userId})
-export const setUsersAC = (users: []) => ({type: UNFOLLOW, users})
+export const setUsersAC = (users: Array<UserType>) => ({type: UNFOLLOW, users})
