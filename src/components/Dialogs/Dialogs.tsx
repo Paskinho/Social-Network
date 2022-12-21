@@ -7,10 +7,6 @@ import {Message} from "./Message/Message";
 import {DialogsPropsType} from "./DialogsContainer";
 
 
-
-
-
-
 // type DialogsPropsType = {
 //     // DialogItem: (name: string)=> void
 //     dialogsState: dialogsPageType // уточнить

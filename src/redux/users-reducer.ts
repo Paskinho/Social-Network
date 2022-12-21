@@ -3,7 +3,6 @@ import {profilePageType} from "./profile-reducer";
 import {dialogsPageType} from "./store";
 
 
-
 export type UserType = {
     id: string,
     photoUrl: string,
@@ -23,11 +22,12 @@ export type InitialStateType = {
 }
 
 
-
-
-export const followAC = (userId: string) => ({type: "FOLLOW",  payload: userId} as const)
-export const unfollowAC = (userId: string) => ({type: "UNFOLLOW", payload: userId} as const)
-export const setUsersAC = (users: Array<UserType>) => ({type: "SET_USERS",  payload: {newState: users} } as const)
+export const followAC = (userId: string) => (
+    {type: "FOLLOW",  payload: userId} as const)
+export const unfollowAC = (userId: string) => (
+    {type: "UNFOLLOW", payload: userId} as const)
+export const setUsersAC = (users: Array<UserType>) => (
+    {type: "SET_USERS",  payload: {newState: users} } as const)
 
 type FollowType = ReturnType<typeof followAC>
 type UnfollowType = ReturnType<typeof unfollowAC>
@@ -35,11 +35,9 @@ type SetUsersType = ReturnType<typeof setUsersAC>
 
 type UsersActionsTypes = FollowType | UnfollowType | SetUsersType
 
-
 const initialState: InitialStateType = {
     users: []
 }
-
 
 
 export const usersReducer = (state:InitialStateType = initialState, action: UsersActionsTypes): InitialStateType => {
