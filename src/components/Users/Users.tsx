@@ -6,7 +6,7 @@ import {UsersType} from "../../redux/users-reducer";
 export const Users: React.FC = () => {
     return <div>
         {
-            users.map (u => <div> key={u.id}
+            users.map ((u:any) => <div> key={u.id}
 <span>
 <div>
     <img src ={u.photoUrl}/>
@@ -17,12 +17,12 @@ export const Users: React.FC = () => {
 </span>
                 <span>
                     <span>
-                        <div></div>
-                        <div></div>
+                        <div>{u.fullName}</div>
+                        <div>{u.status}</div>
                     </span>
                     <span>
-                        <div></div>
-                        <div></div>
+                        <div>{u.location.country}</div>
+                        <div>{u.location.city}</div>
                     </span>
                 </span>
 
