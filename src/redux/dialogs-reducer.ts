@@ -19,37 +19,19 @@ const initialState: any = {
         dialogsPage: {
 
             users: [
-                {
-                    name: "Trent",
-                    id: 0
-                },
-                {
-                    name: "Virgil",
-                    id: 1
-                },
-                {
-                    name: "Mohamed",
-                    id: 2
-                },
-                {
-                    name: "Darwin",
-                    id: 3
-                },
-                {
-                    name: "Roberto",
-                    id: 4
-                },
-                {
-                    name: "Thiago",
-                    id: 5
-                }
+                { name: "Trent",  id: 0 },
+                {name: "Virgil",  id: 1 },
+                {name: "Mohamed",  id: 2},
+                {name: "Darwin", id: 3},
+                {name: "Roberto", id: 4},
+                {name: "Thiago", id: 5}
             ],
             messages: [
                 {message: "Hi", id: 1},
                 {message: "How are you IT-Kamasutra", id: 2},
                 {message: "YO", id: 3}
 
-            ],
+            ] as Array<MessagesType>, // рекомендуемая типизация
             newMessageText: "",
         },
 

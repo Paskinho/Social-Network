@@ -1,11 +1,16 @@
 import React from "react";
 import s from './Users.module.css'
-import {UserType} from "../../redux/users-reducer";
 import {v1} from "uuid";
+import {UserType} from "../../redux/users-reducer";
+import {UsersPropsType} from "./UsersContainer";
 
 
-export const Users: React.FC = () => {
-    if (props.users.length === 0) {
+
+
+
+
+export const Users = (props: UsersPropsType) => {
+    if (props.usersPage.users.length === 0) {
     props.setUsers(
         [
             {
@@ -38,7 +43,7 @@ export const Users: React.FC = () => {
 
     return <div>
         {
-            users.map ((u:any) => <div> key={u.id}
+            props.usersPage.users.map ((u:any) => <div> key={u.id}
 <span>
 <div>
     <img src ={u.photoUrl} className={s.userPhoto}/>
