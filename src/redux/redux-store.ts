@@ -3,11 +3,11 @@ import {profileReducer} from "./profile-reducer";
 import {dialogsReducer} from "./dialogs-reducer";
 import {usersReducer} from "./users-reducer";
 
-let rootReducer = combineReducers({
+export const rootReducer = combineReducers({
     profileReducer, //profilePage: profileReducer
     dialogsReducer,
 // sidebarReducer,
-    usersReducer
+    users: usersReducer
 })
 
 

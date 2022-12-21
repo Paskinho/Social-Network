@@ -1,10 +1,8 @@
 import {v1} from "uuid";
 
-export type usersPageType = {
-    users: Array<UsersType>
-}
 
-export type UsersType = {
+
+export type UserType = {
     id: string,
     photoUrl: string,
     followed: boolean,
@@ -18,6 +16,9 @@ type LocationType = {
     country: string
 
 }
+export type InitialStateType = {
+    users: Array<UserType>
+}
 
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
@@ -30,15 +31,11 @@ type SetUsersType = ReturnType<typeof setUsersAC>
 type ActionsTypes = FollowType | UnfollowType | SetUsersType
 
 
-const initialState: any = {
-
-
-    users: [
-
-    ]
+const initialState: InitialStateType = {
+    users: []
 }
 
-export type InitialStateType = typeof initialState
+
 
 export const usersReducer = (state = initialState, action: ActionsTypes) => {
 
