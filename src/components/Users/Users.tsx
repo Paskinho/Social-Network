@@ -1,8 +1,8 @@
 import React from "react";
 import s from './Users.module.css'
-import {v1} from "uuid";
-
+import axios from 'axios';
 import {UsersPropsType} from "./UsersContainer";
+import userPhoto from "../../assets/images/user.png"
 
 
 
@@ -12,35 +12,9 @@ import {UsersPropsType} from "./UsersContainer";
 export const Users = (props: UsersPropsType) => {
     if (props.usersPage.users.length === 0) {
 
-        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response=> {
-            props.setUsers(
-                [
-                    {
-                        id: v1(),
-                        photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9taqqKhtz24VcVBYynLYkOpZbjC7Dwoy0joiVjptEDFkkiyMZo90jc_Pzm4UKRTYGXvI&usqp=CAU' ,
-                        followed: true,
-                        fullName: 'Steven',
-                        status: 'Im a former Liverpool player and captain',
-                        location: {city: 'Liverpool', country: 'England'}
-                    },
-                    {
-                        id: v1(),
-                        photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdFhh05cvsAAfEWJk1ylo5qcvxhzXqUpSnHlLH487xwoZEGJEuLGcr7wtJTJn5HfNcqX0&usqp=CAU',
-                        followed: true,
-                        fullName: 'Kenny',
-                        status: 'Im a former Liverpool player and best of all time maybe',
-                        location: {city: 'Glasgow', country: 'Scotland'}
-                    },
-                    {
-                        id: v1(),
-                        photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd3BoIJxTrBChzeTZh5kfgHTARphaB4F_sRw&usqp=CAU' ,
-                        followed: false,
-                        fullName: 'Luis',
-                        status: 'Im a former Liverpool player and owner golden boot in season 13/14',
-                        location: {city: 'Montevideo', country: 'Uruguay'}
-                    }
-                ]
-            )
+        axios.get('https://social-network.samuraijs.com/api/1.0/users').then((response:any)=> {
+            props.setUsers(response.data.items);
+
         })
 
 
@@ -51,7 +25,7 @@ export const Users = (props: UsersPropsType) => {
             props.usersPage.users.map ((u:any) => <div> key={u.id}
 <span>
 <div>
-    <img src ={u.photoUrl} className={s.userPhoto}/>
+    <img src ={u.photos.small != null ? u.photos.small : userPhoto} className={s.userPhoto}/>
 </div>
 <div>
     {u.followed ?
@@ -63,12 +37,12 @@ export const Users = (props: UsersPropsType) => {
 </span>
                 <span>
                     <span>
-                        <div>{u.fullName}</div>
+                        <div>{u.name}</div>
                         <div>{u.status}</div>
                     </span>
                     <span>
-                        <div>{u.location.country}</div>
-                        <div>{u.location.city}</div>
+                        <div>{"u.location.country"}</div>
+                        <div>{"u.location.city"}</div>
                     </span>
                 </span>
 
