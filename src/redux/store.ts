@@ -12,12 +12,12 @@ import {UserType} from "./users-reducer";
 import {profilePageType} from "./profile-reducer";
 
 
-export type dialogsPageType ={
-    users: Array<UsersType>
-    messages: Array<MessagesType>
-    newMessageText: string
-
-}
+// type dialogsPageType ={
+//     users: Array<UsersType>
+//     messages: Array<MessagesType>
+//     newMessageText: string
+//
+// }
 
 
 
@@ -27,10 +27,7 @@ type UsersType = {
 
 }
 
-export type MessagesType = {
-    message: string
-    id: number
-}
+
 
 // type SidebarType={}
 

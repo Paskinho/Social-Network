@@ -1,6 +1,6 @@
 import React, {useRef} from "react";
 import {Dialogs} from "./Dialogs";
-import {StoreType} from "../../redux/redux-store";
+import {AppStateType, StoreType} from "../../redux/redux-store";
 import {addMessageCreator, InitialStateType, onMessagePostCreator} from "../../redux/dialogs-reducer";
 import {connect} from "react-redux";
 import {RootStateType} from "../../redux/store";
@@ -20,9 +20,9 @@ type MapDispatchPropsType = {
 }
 
 
-const mapStateToProps = (state: RootStateType): MapStatePropsType => {
+const mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
-        dialogsState: state.dialogsPage
+        dialogsState: state.dialogsReducer // state.dialogsPage
     }
 }
 

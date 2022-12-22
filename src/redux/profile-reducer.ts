@@ -1,4 +1,4 @@
-import {ActionsTypes, dialogsPageType} from "./store";
+import {ActionsTypes} from "./store";
 
 
 export type PostDataType ={

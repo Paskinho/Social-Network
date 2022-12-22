@@ -1,6 +1,6 @@
 import {v1} from "uuid";
 import {profilePageType} from "./profile-reducer";
-import {dialogsPageType} from "./store";
+
 
 
 export type UserType = {

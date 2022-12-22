@@ -1,7 +1,6 @@
 import React, {ChangeEvent, useRef} from "react";
 import s from './Dialogs.module.css';
 
-import {dialogsPageType, addMessageCreator, onMessagePostCreator, ActionsTypes} from "../../redux/store";
 import {DialogItem} from "./DialogItem";
 import {Message} from "./Message/Message";
 import {DialogsPropsType} from "./DialogsContainer";

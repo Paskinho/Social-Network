@@ -1,16 +1,22 @@
-import {dialogsPageType, MessagesType} from "./store";
+
 
 
 type DialogsActionsType = onMessagePostCreatorType | addMessageCreatorType
-
-
+export type MessagesType = {
+    message: string
+    id: number
+}
+export type DialogType = {
+    name: string
+    id: number
+}
 
 
 export type onMessagePostCreatorType = ReturnType<typeof onMessagePostCreator>
-export const onMessagePostCreator = (newMessage: string) => {
+export const onMessagePostCreator = (newMessageText: string) => {
     return {
         type: "UPDATE_NEW_MESSAGE_TEXT",
-        newMessage: newMessage
+        newMessageText: newMessageText
     } as const
 }
 
@@ -31,14 +37,15 @@ const initialState = {
                 {name: "Darwin", id: 3},
                 {name: "Roberto", id: 4},
                 {name: "Thiago", id: 5}
-            ],
+            ] as Array<DialogType>,
+            newMessageText: "",
             messages: [
                 {message: "Hi", id: 1},
                 {message: "How are you IT-Kamasutra", id: 2},
                 {message: "YO", id: 3}
 
             ] as Array<MessagesType>, // рекомендуемая типизация
-            newMessageText: "",
+
         },
 
         // sidebar: {},
@@ -57,7 +64,7 @@ export const dialogsReducer = (state: InitialStateType=initialState , action: Di
             }
             return {
                 ...state,
-                newMessageText : "",
+                newMessageText: "",
                 messages: [...state.dialogsPage.messages, newMessage]
             };
 
@@ -65,8 +72,7 @@ export const dialogsReducer = (state: InitialStateType=initialState , action: Di
         case "UPDATE_NEW_MESSAGE_TEXT": {
             return {
                 ...state,
-                newMessageText : action.newMessage
-
+                newMessageText: action.newMessage
         }
         }
 
