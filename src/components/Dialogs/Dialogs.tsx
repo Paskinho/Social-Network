@@ -20,8 +20,8 @@ import {DialogsPropsType} from "./DialogsContainer";
 
 export const Dialogs: React.FC<DialogsPropsType> = ({dialogsState,addMessage,onMessage}) => {
 
-    const dialogsItem = dialogsState.dialogsPage.users.map((d:any) => <DialogItem key={d.id} name={d.name} id={d.id}/>)
-    const message = dialogsState.dialogsPage.messages.map((m: any) => <Message key={m.id} message={m.message} id={m.id}/>)
+    const dialogsItem = dialogsState.users.map((d:any) => <DialogItem key={d.id} name={d.name} id={d.id}/>)
+    const message = dialogsState.messages.map((m: any) => <Message key={m.id} message={m.message} id={m.id}/>)
 
     // const newMessageElement = useRef<HTMLTextAreaElement>(null); //????
 
@@ -45,7 +45,7 @@ export const Dialogs: React.FC<DialogsPropsType> = ({dialogsState,addMessage,onM
 
                 <div>
                     <div><textarea
-                        value={dialogsState.dialogsPage.newMessageText}
+                        value={dialogsState.newMessageText}
                         onChange={onMessagePost}
                         placeholder="Enter you message...">Hello</textarea></div>
                     <div>

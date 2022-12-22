@@ -33,14 +33,13 @@ type UsersType = {
 
 
 
-export type RootStateType = {
-    dialogsPage: dialogsPageType
-     profilePage: profilePageType
-    usersPage: UserType
+// export type RootStateType = {
+//     dialogsPage: dialogsPageType
+//      profilePage: profilePageType
+//     usersPage: UserType
      // sidebar: SidebarType
 
 
-}
 
 
 
@@ -49,17 +48,18 @@ export type RootStateType = {
 
 
 
-type StoreType = {
-    _state: RootStateType
-    _onChange: () => void
-    // addPost: (postText: string) => void
-    // updateNewPostText: (newText: string) => void
-    subscribe: (observer: () => void) => void
-    getState: () => RootStateType
-    dispatch: (action: ActionsTypes)=>void
 
-
-}
+// type StoreType = {
+//     _state: RootStateType
+//     _onChange: () => void
+//     // addPost: (postText: string) => void
+//     // updateNewPostText: (newText: string) => void
+//     subscribe: (observer: () => void) => void
+//     getState: () => RootStateType
+//     dispatch: (action: ActionsTypes)=>void
+//
+//
+// }
 
 //action creator
 

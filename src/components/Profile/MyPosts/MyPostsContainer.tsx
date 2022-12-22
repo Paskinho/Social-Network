@@ -3,9 +3,8 @@ import {MyPosts} from "./MyPosts";
 import {StoreType} from "../../../redux/redux-store";
 import {addPostCreator, updateNewPostTextCreator} from "../../../redux/profile-reducer";
 import {connect} from "react-redux";
-import { RootStateType} from "../../../redux/store";
+import {AppStateType} from "../../../redux/redux-store";
 import {PostDataType} from "../../../redux/profile-reducer";
-import {addMessageCreator, onMessagePostCreator} from "../../../redux/dialogs-reducer";
 
 type MapStatePropsType = {
     posts: PostDataType[]
@@ -16,10 +15,10 @@ type MapStatePropsType = {
 //     store: StoreType
 // }
 
-const mapStateToProps = (state: RootStateType) : MapStatePropsType => {
+const mapStateToProps = (state: AppStateType) : MapStatePropsType => {
     return {
-        posts: state.profilePage.postData,
-        postText: state.profilePage.newPostText,
+        posts: state.profileReducer.postData, // уточнить
+        postText: state.profileReducer.newPostText, // уточнить
 
     }
 }

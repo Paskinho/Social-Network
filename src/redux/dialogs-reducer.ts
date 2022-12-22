@@ -1,6 +1,5 @@
 
 
-
 type DialogsActionsType = onMessagePostCreatorType | addMessageCreatorType
 export type MessagesType = {
     message: string
@@ -10,6 +9,7 @@ export type DialogType = {
     name: string
     id: number
 }
+
 
 
 export type onMessagePostCreatorType = ReturnType<typeof onMessagePostCreator>
@@ -27,9 +27,6 @@ export const addMessageCreator = () => {
 
 
 const initialState = {
-
-        dialogsPage: {
-
             users: [
                 {name: "Trent",  id: 0 },
                 {name: "Virgil",  id: 1 },
@@ -38,7 +35,7 @@ const initialState = {
                 {name: "Roberto", id: 4},
                 {name: "Thiago", id: 5}
             ] as Array<DialogType>,
-            newMessageText: "",
+            newMessageText: ""  ,
             messages: [
                 {message: "Hi", id: 1},
                 {message: "How are you IT-Kamasutra", id: 2},
@@ -46,11 +43,11 @@ const initialState = {
 
             ] as Array<MessagesType>, // рекомендуемая типизация
 
-        },
+        }
 
         // sidebar: {},
         // }
-    }
+
 
 export type InitialStateType = typeof initialState
 
@@ -59,23 +56,19 @@ export const dialogsReducer = (state: InitialStateType=initialState , action: Di
     switch (action.type) {
         case "ADD_MESSAGE":{
             let newMessage: MessagesType = {
-                id: state.dialogsPage.messages.length + 1,
-                message: state.dialogsPage.newMessageText
+                id: state.messages.length + 1,
+                message: state.newMessageText
             }
-            return {
-                ...state,
+            return {...state,
                 newMessageText: "",
-                messages: [...state.dialogsPage.messages, newMessage]
+                messages: [...state.messages, newMessage]
             };
 
         }
-        case "UPDATE_NEW_MESSAGE_TEXT": {
+        case "UPDATE_NEW_MESSAGE_TEXT":
             return {
                 ...state,
-                newMessageText: action.newMessage
-        }
-        }
-
-        default: return state
+                newMessageText: action.newMessageText}
+        default: return state;
 
 }}
