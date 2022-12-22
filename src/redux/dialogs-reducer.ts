@@ -65,11 +65,11 @@ export const dialogsReducer = (state: InitialStateType=initialState , action: Di
         case "UPDATE_NEW_MESSAGE_TEXT": {
             return {
                 ...state,
-                newMessageText : action.newMessage;
+                newMessageText : action.newMessage
 
+        }
         }
 
         default: return state
-    }
 
-}
+}}
