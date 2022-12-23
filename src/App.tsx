@@ -28,7 +28,7 @@ const App: React.FC = () => {
 
     return (
 
-            <div className="app-wrapper">
+            <div className="App">
                 <Header/>
                 <Navbar/>
                 <div className="app-wrapper-content">
