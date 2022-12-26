@@ -9,23 +9,23 @@ import userPhoto from "../../assets/images/user.png"
 
 
 
-class Users extends Component<UsersPropsType> {
+export class Users extends Component<UsersPropsType> {
 
-    getUsers = () => {
-        debugger
+
+    componentDidMount() {
         axios.get('https://social-network.samuraijs.com/api/1.0/users').then((response) => {
             debugger
             this.props.usersPage.users.length ? alert('No more new users') : this.props.setUsers(response.data.items)
         })
 
     }
+
     // showMore = () => this.props.showMore()
 
     render() {
         // const filteredUser = this.props.usersPage.users.filter((u, i) => i < this.props.usersPage.count)
 
     return <div>
-        <button onClick={this.getUsers}>Get Users</button>
         {
             this.props.usersPage.users.map ((u:any) => <div> key={u.id}
 <span>
@@ -58,4 +58,4 @@ class Users extends Component<UsersPropsType> {
 }
 
 
-export default Users;
+
