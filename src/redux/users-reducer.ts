@@ -19,6 +19,8 @@ type LocationType = {
 }
 export type InitialStateType = {
     users: Array<UserType>
+    pageSize: number
+    totalUsersCount: number
 }
 
 
@@ -36,7 +38,9 @@ type SetUsersType = ReturnType<typeof setUsersAC>
 type UsersActionsTypes = FollowType | UnfollowType | SetUsersType
 
 const initialState: InitialStateType = {
-    users: []
+    users: [],
+    pageSize: 5,
+    totalUsersCount: 0
 }
 
 

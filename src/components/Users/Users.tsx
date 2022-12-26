@@ -14,8 +14,7 @@ export class Users extends Component<UsersPropsType> {
 
     componentDidMount() {
         axios.get('https://social-network.samuraijs.com/api/1.0/users').then((response) => {
-            debugger
-            this.props.usersPage.users.length ? alert('No more new users') : this.props.setUsers(response.data.items)
+            this.props.setUsers(response.data.items)
         })
 
     }
@@ -26,6 +25,13 @@ export class Users extends Component<UsersPropsType> {
         // const filteredUser = this.props.usersPage.users.filter((u, i) => i < this.props.usersPage.count)
 
     return <div>
+        <div>
+            <span>1</span>
+            <span>2</span>
+            <span className={s.selectedPage}>3</span>
+            <span>4</span>
+            <span>5</span>
+        </div>
         {
             this.props.usersPage.users.map ((u:any) => <div> key={u.id}
 <span>

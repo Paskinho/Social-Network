@@ -8,6 +8,7 @@ export const rootReducer = combineReducers({
     dialogsReducer,
 // sidebarReducer,
     users: usersReducer
+
 })
 
 
