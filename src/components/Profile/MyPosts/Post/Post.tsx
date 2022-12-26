@@ -1,12 +1,10 @@
 import React from 'react';
 import s from './Post.module.css'
-import {ActionsTypes} from "../../../../redux/store";
 
 type MessagePostType ={
     name: string
     like: number
     id: number
-    dispatch: (action: ActionsTypes) => void
 }
 
 

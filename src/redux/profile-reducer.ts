@@ -1,6 +1,8 @@
 import {ActionsTypes} from "./store";
 
 
+
+
 export type PostDataType ={
     id: number
     like: number
@@ -52,10 +54,9 @@ export const profileReducer = (state: InitialStateType = initialState, action: A
 }
 
 // export type addPostCreatorType = ReturnType<typeof addPostCreator>
-export const addPostCreator = (newText: string) => {
+export const addPostCreator = () => {
     return {
-        type: "ADD_POST",
-        newText: newText
+        type: "ADD_POST"
     } as const
 }
 

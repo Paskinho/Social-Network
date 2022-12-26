@@ -21,11 +21,7 @@ import {profilePageType} from "./profile-reducer";
 
 
 
-type UsersType = {
-    name: string
-    id: number
 
-}
 
 
 

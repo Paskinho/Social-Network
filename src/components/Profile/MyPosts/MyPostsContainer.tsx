@@ -24,18 +24,25 @@ const mapStateToProps = (state: AppStateType) : MapStatePropsType => {
     }
 }
 
-const mapDispatchToProps = (dispatch: Dispatch) => {
+
+type MapDispatchPropsType = {
+    onPost: (post: string) => void
+    addNewPost: () => void
+}
+
+const mapDispatchToProps = (dispatch: Dispatch):MapDispatchPropsType  => {
     return {
         onPost: (post: string) => {
             dispatch(updateNewPostTextCreator(post))
         },
-        addNewPost: (newText: string) => {
-            dispatch(addPostCreator(newText))
+        addNewPost: () => {
+            dispatch(addPostCreator())
         },
-        dispatch: dispatch
+
     }
 }
 //уточнить пропсы
 
+export type MyPostsType =  MapStatePropsType & MapDispatchPropsType
 
 export const MyPostsContainer = connect (mapStateToProps,mapDispatchToProps )(MyPosts);

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import s from './Myposts.module.css'
 import {Post} from "./Post/Post";
 
 import {addMessageCreator, addPostCreator, onMessagePostCreator, updateNewPostTextCreator} from "../../../redux/store";
+import {MyPostsType} from "./MyPostsContainer";
 
 type PostDataType ={
     id: number
@@ -23,27 +24,25 @@ type MessageType = {
     onPost: (post:string) => void
 }
 
-export const MyPosts: React.FC<MessageType> = ({posts,dispatch, postText,addNewPost}) => {
+export const MyPosts: React.FC<MyPostsType> = ({posts, postText,addNewPost, onPost}) => {
 
 const postsElements =
     posts.map(p=> <Post name={p.title}
                         like={p.like}
                         id={p.id}
                         key={p.id}
-                        dispatch={dispatch}
+
                         />)
 
-    const postMessageRef = React.createRef<HTMLTextAreaElement>()
 
     const addPost = () => {
         addNewPost()
     }
 
-    const onPostChangeCallBack = () => {
+    const onPostChangeCallBack = (e: ChangeEvent<HTMLTextAreaElement>) => {
         // В пути самурая let text = newPostElement.current.value
         // props.updateNewPostText(text)
-const text = postMessageRef.current?.value;
-      text ? dispatch({updateNewPostTextCreator}) : dispatch('');
+        onPost(e.currentTarget.value)
     }
 
 
