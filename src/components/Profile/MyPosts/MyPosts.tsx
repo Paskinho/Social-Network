@@ -19,11 +19,11 @@ type MessageType = {
     // profilePage: profilePageType
     postText: string
     // dialogsPage: dialogsPageType
-    addNewPost:(newText:string)=>void
+    addNewPost:()=>void
     onPost: (post:string) => void
 }
 
-export const MyPosts: React.FC<MessageType> = ({posts,dispatch, postText}) => {
+export const MyPosts: React.FC<MessageType> = ({posts,dispatch, postText,addNewPost}) => {
 
 const postsElements =
     posts.map(p=> <Post name={p.title}
@@ -36,12 +36,7 @@ const postsElements =
     const postMessageRef = React.createRef<HTMLTextAreaElement>()
 
     const addPost = () => {
-        //
-        // props.addPostCallback(props.message)
-        let text = postMessageRef.current?.value
-        if (text) dispatch({addPostCreator})
-        if (postMessageRef.current) postMessageRef.current.value = ''
-        // в пути самурая : props.addPost()
+        addNewPost()
     }
 
     const onPostChangeCallBack = () => {

@@ -5,6 +5,7 @@ import {addPostCreator, updateNewPostTextCreator} from "../../../redux/profile-r
 import {connect} from "react-redux";
 import {AppStateType} from "../../../redux/redux-store";
 import {PostDataType} from "../../../redux/profile-reducer";
+import {Dispatch} from "redux";
 
 type MapStatePropsType = {
     posts: PostDataType[]
@@ -23,7 +24,7 @@ const mapStateToProps = (state: AppStateType) : MapStatePropsType => {
     }
 }
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
         onPost: (post: string) => {
             dispatch(updateNewPostTextCreator(post))
