@@ -2,7 +2,7 @@ import React, {ChangeEvent} from 'react';
 import s from './Myposts.module.css'
 import {Post} from "./Post/Post";
 
-import {addMessageCreator, addPostCreator, onMessagePostCreator, updateNewPostTextCreator} from "../../../redux/store";
+
 import {MyPostsType} from "./MyPostsContainer";
 
 type PostDataType ={

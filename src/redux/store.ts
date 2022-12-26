@@ -59,40 +59,40 @@ import {profilePageType} from "./profile-reducer";
 
 //action creator
 
-export type addPostCreatorType = ReturnType<typeof addPostCreator>
-export const addPostCreator = (newText: string) => {
-    return {
-        type: "ADD_POST",
-        newText: newText
-    } as const
-}
-
-
-export type updateNewPostTextCreatorType = ReturnType<typeof updateNewPostTextCreator>
-export const updateNewPostTextCreator = (newText: string) => {
-    return {
-        type: "UPDATE_NEW_POST_TEXT",
-        newText: newText
-    } as const
-}
-
-export type onMessagePostCreatorType = ReturnType<typeof onMessagePostCreator>
-export const onMessagePostCreator = (newMessage: string) => {
-    return {
-        type: "UPDATE_NEW_MESSAGE_TEXT",
-        newMessage: newMessage
-    } as const
-}
-
-export type addMessageCreatorType = ReturnType<typeof addMessageCreator>
-export const addMessageCreator = () => {
-    return {
-        type: "ADD_MESSAGE"
-
-    } as const
-}
-
-export type ActionsTypes = addPostCreatorType | updateNewPostTextCreatorType | onMessagePostCreatorType | addMessageCreatorType
+// export type addPostCreatorType = ReturnType<typeof addPostCreator>
+// export const addPostCreator = (newText: string) => {
+//     return {
+//         type: "ADD_POST",
+//         newText: newText
+//     } as const
+// }
+//
+//
+// export type updateNewPostTextCreatorType = ReturnType<typeof updateNewPostTextCreator>
+// export const updateNewPostTextCreator = (newText: string) => {
+//     return {
+//         type: "UPDATE_NEW_POST_TEXT",
+//         newText: newText
+//     } as const
+// }
+//
+// export type onMessagePostCreatorType = ReturnType<typeof onMessagePostCreator>
+// export const onMessagePostCreator = (newMessage: string) => {
+//     return {
+//         type: "UPDATE_NEW_MESSAGE_TEXT",
+//         newMessage: newMessage
+//     } as const
+// }
+//
+// export type addMessageCreatorType = ReturnType<typeof addMessageCreator>
+// export const addMessageCreator = () => {
+//     return {
+//         type: "ADD_MESSAGE"
+//
+//     } as const
+// }
+//
+// export type ActionsTypes = addPostCreatorType | updateNewPostTextCreatorType | onMessagePostCreatorType | addMessageCreatorType
 
 
 

@@ -1,6 +1,10 @@
-import {ActionsTypes} from "./store";
 
 
+export type addPostCreatorType = ReturnType<typeof addPostCreator>
+
+export type updateNewPostTextCreatorType = ReturnType<typeof updateNewPostTextCreator>
+
+export type ProfileActionsType = addPostCreatorType | updateNewPostTextCreatorType
 
 
 export type PostDataType ={
@@ -25,7 +29,7 @@ const initialState = {
 
 export type InitialStateType = typeof initialState
 
-export const profileReducer = (state: InitialStateType = initialState, action: ActionsTypes) => {
+export const profileReducer = (state: InitialStateType = initialState, action: ProfileActionsType) => {
 
     switch (action.type) {
         case "ADD_POST": {
@@ -53,14 +57,14 @@ export const profileReducer = (state: InitialStateType = initialState, action: A
 
 }
 
-// export type addPostCreatorType = ReturnType<typeof addPostCreator>
+
 export const addPostCreator = () => {
     return {
         type: "ADD_POST"
     } as const
 }
 
-// export type updateNewPostTextCreatorType = ReturnType<typeof updateNewPostTextCreator>
+
 export const updateNewPostTextCreator = (newText: string) => {
     return {
         type: "UPDATE_NEW_POST_TEXT",
