@@ -24,13 +24,24 @@ export class Users extends Component<UsersPropsType> {
     render() {
         // const filteredUser = this.props.usersPage.users.filter((u, i) => i < this.props.usersPage.count)
 
+        const  pagesCount = this.props.totalUsersCount / this.props.pageSize
+
+        const pages = [];
+        for (let i= 1; i <= pagesCount; i++) {
+            pages.push(i)
+        }
+
+
+
+
     return <div>
         <div>
-            <span>1</span>
-            <span>2</span>
-            <span className={s.selectedPage}>3</span>
-            <span>4</span>
-            <span>5</span>
+            <div>
+                {pages.map(p => {
+                    return <span className={this.props.currentPage === p ? s.selectedPage : ""}>{p}</span>
+                })}
+
+            </div>
         </div>
         {
             this.props.usersPage.users.map ((u:any) => <div> key={u.id}

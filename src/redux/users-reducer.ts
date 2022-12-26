@@ -21,6 +21,7 @@ export type InitialStateType = {
     users: Array<UserType>
     pageSize: number
     totalUsersCount: number
+    currentPage: number
 }
 
 
@@ -40,7 +41,8 @@ type UsersActionsTypes = FollowType | UnfollowType | SetUsersType
 const initialState: InitialStateType = {
     users: [],
     pageSize: 5,
-    totalUsersCount: 0
+    totalUsersCount: 20,
+    currentPage: 2
 }
 
 

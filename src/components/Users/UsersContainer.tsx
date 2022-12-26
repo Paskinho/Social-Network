@@ -9,6 +9,7 @@ type MapStateToPropsType = {
     usersPage: InitialStateType
     pageSize: number
     totalUsersCount: number
+    currentPage: number
 }
 
 type MapDispatchToPropsType = {
@@ -23,8 +24,9 @@ export type UsersPropsType = MapStateToPropsType & MapDispatchToPropsType
 const mapStateToProps = (state: AppStateType): MapStateToPropsType=>{
 return {
     usersPage: state.users,
-    pageSize: 5, // тут через стейт state.usersPage.pageSize у димычы
-    totalUsersCount: 0 // тут через стейт state.usersPage.totalUsersCount
+    pageSize: state.users.pageSize,
+    totalUsersCount: state.users.totalUsersCount,
+    currentPage: state.users.currentPage
 
 }
 }
