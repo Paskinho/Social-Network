@@ -1,5 +1,4 @@
 import React from 'react';
-// import logo from './logo.svg';
 import './App.css';
 import {Header} from "./components/Header/Header";
 import {Navbar} from "./components/Navbar/Navbar";
@@ -32,9 +31,9 @@ const App: React.FC = () => {
                         <Route path='/dialogs' element={<DialogsContainer/>} // уточнить
                           />
                         <Route path='/profile' element={<Profile/>}/>
-                        <Route path='/news' element={<News key={2}/>}/>
-                        <Route path='/music' element={<Music key={3}/>}/>
-                        <Route path='/settings' element={<Settings key={4}/>}/>
+                        <Route path='/news' element={<News/>}/>
+                        <Route path='/music' element={<Music/>}/>
+                        <Route path='/settings' element={<Settings/>}/>
                         <Route path='/users' element={<UsersContainer/>}/>
                     </Routes>
                 </div>

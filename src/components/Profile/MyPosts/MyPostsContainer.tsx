@@ -1,6 +1,5 @@
 import React from 'react';
 import {MyPosts} from "./MyPosts";
-import {StoreType} from "../../../redux/redux-store";
 import {addPostCreator, updateNewPostTextCreator} from "../../../redux/profile-reducer";
 import {connect} from "react-redux";
 import {AppStateType} from "../../../redux/redux-store";
@@ -41,7 +40,7 @@ const mapDispatchToProps = (dispatch: Dispatch):MapDispatchPropsType  => {
 
     }
 }
-//уточнить пропсы
+
 
 export type MyPostsType =  MapStatePropsType & MapDispatchPropsType
 

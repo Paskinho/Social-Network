@@ -1,28 +1,9 @@
 import React, {ChangeEvent} from 'react';
 import s from './Myposts.module.css'
 import {Post} from "./Post/Post";
-
-
 import {MyPostsType} from "./MyPostsContainer";
 
-type PostDataType ={
-    id: number
-title: string
-    like: number
 
-}
-type MessageType = {
-    // message: string
-    posts:Array<PostDataType>
-    // addPostCallback: (postText:string) => void
-    // onPostChangeCallBack: (newText: string) => void
-    dispatch: (action: any) => void
-    // profilePage: profilePageType
-    postText: string
-    // dialogsPage: dialogsPageType
-    addNewPost:()=>void
-    onPost: (post:string) => void
-}
 
 export const MyPosts: React.FC<MyPostsType> = ({posts, postText,addNewPost, onPost}) => {
 
@@ -54,7 +35,7 @@ const postsElements =
             {/*    /!*key={p.i} добавить в дивку*!/*/}
             {/*</hr>*/}
             <div>
-                <textarea onChange={onPostChangeCallBack} value={postText}/>
+                <textarea value={postText} onChange={onPostChangeCallBack}></textarea>
             </div>
             <div>
                 <button onClick={addPost}>Add post</button>

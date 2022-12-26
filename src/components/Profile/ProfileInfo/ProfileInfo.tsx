@@ -1,7 +1,6 @@
 import React from 'react';
 import s from './ProfileInfo.module.css'
-// import {MyPosts} from "./MyPosts/MyPosts";
-// import {Post} from "./MyPosts/Post/Post";
+
 
 
 export const ProfileInfo: React.FC = () => {

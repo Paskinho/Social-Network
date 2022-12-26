@@ -35,13 +35,13 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
         case "ADD_POST": {
             let newPost: PostDataType = {
                 id: state.postData.length + 1,
-                title: `Post ${state.postData.length + 1}`,
+                title: state.newPostText,
                 like: 0,
             }
             return {
                 ...state,
-                postData: [...state.postData, newPost],
-                newPostText : ""
+                newPostText : "",
+                postData: [...state.postData, newPost]
             }
 
 
