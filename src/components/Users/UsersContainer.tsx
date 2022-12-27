@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-
 import {
     followAC,
     InitialStateType,
@@ -11,11 +10,10 @@ import {
 } from "../../redux/users-reducer";
 import {AppStateType} from "../../redux/redux-store";
 import { Dispatch } from "redux";
-import axios from "axios/index";
 import {Users} from "./Users";
+import axios from "axios";
 
-
-export class UsersAPIComponent extends Component<UsersPropsType> {
+ class UsersContainer extends Component<UsersPropsType> {
 
 
     componentDidMount() {
@@ -99,4 +97,4 @@ return {
 }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersAPIComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer)
