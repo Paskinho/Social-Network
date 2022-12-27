@@ -31,18 +31,21 @@ export const unfollowAC = (userId: string) => (
     {type: "UNFOLLOW", payload: userId} as const)
 export const setUsersAC = (users: Array<UserType>) => (
     {type: "SET_USERS",  payload: {newState: users} } as const)
+export const setCurrentPageAC = (currentPage: number) => (
+    {type: "SET_CURRENT_PAGE", payload: currentPage} as const)
 
 type FollowType = ReturnType<typeof followAC>
 type UnfollowType = ReturnType<typeof unfollowAC>
 type SetUsersType = ReturnType<typeof setUsersAC>
+type SetCurrentPageType = ReturnType<typeof setCurrentPageAC>
 
-type UsersActionsTypes = FollowType | UnfollowType | SetUsersType
+type UsersActionsTypes = FollowType | UnfollowType | SetUsersType | SetCurrentPageType
 
 const initialState: InitialStateType = {
     users: [],
     pageSize: 5,
     totalUsersCount: 20,
-    currentPage: 2
+    currentPage: 1
 }
 
 
@@ -74,6 +77,10 @@ export const usersReducer = (state:InitialStateType = initialState, action: User
         case 'SET_USERS':
             return {
                 ...state, users: [...state.users, ...action.payload.newState]
+            }
+        case "SET_CURRENT_PAGE":
+            return {
+                ...state,currentPage: action.payload
             }
 
         default:
