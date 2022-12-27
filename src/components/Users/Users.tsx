@@ -21,6 +21,13 @@ export class Users extends Component<UsersPropsType> {
 
     // showMore = () => this.props.showMore()
 
+
+    onPageChanged = (pageNumber: number) => {
+        this.props.setCurrentPage(pageNumber);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}$count=${this.props.pageSize}`).then((response) => {
+            this.props.setUsers(response.data.items);})
+    }
+
     render() {
         // const filteredUser = this.props.usersPage.users.filter((u, i) => i < this.props.usersPage.count)
 
@@ -39,7 +46,7 @@ export class Users extends Component<UsersPropsType> {
             <div>
                 {pages.map(p => {
                     return <span className={this.props.currentPage === p ? s.selectedPage : ""}
-                    onClick={()=> {this.props.setCurrentPage(p)}}>{p}</span>
+                    onClick={(e)=> {this.onPageChanged(p)}}>{p}</span>
                 })}
 
             </div>
