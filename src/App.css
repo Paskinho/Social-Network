@@ -1,5 +1,6 @@
 .App {
-  width: 1280px;
+  /*width: 1280px;*/
+  max-width: 100%;
   margin: 0 0;
   padding: 20px;
   display: grid;
@@ -13,7 +14,7 @@
 .app-wrapper-content {
   grid-area: content;
   background-color: burlywood;
-  max-width: 1280px;
+  max-width: 1500px;
   min-width: 700px;
   border-radius: 20px;
 
