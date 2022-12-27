@@ -4,7 +4,7 @@ import {Users} from "./Users";
 import {
     followAC,
     InitialStateType,
-    setCurrentPageAC,
+    setCurrentPageAC, setTotalUsersCountAC,
     setUsersAC,
     unfollowAC,
     UserType
@@ -24,6 +24,7 @@ type MapDispatchToPropsType = {
     unfollow: (userId: string) => void
     setUsers: (users: Array<UserType>)=> void
     setCurrentPage: (p: number)=> void
+    setTotalUsersCount:(count: number) => void
 
 }
 
@@ -54,6 +55,9 @@ return {
     },
     setCurrentPage: (pageNumber:number)=> {
         dispatch(setCurrentPageAC(pageNumber))
+    },
+    setTotalUsersCount: (totalCount:number)=> {
+        dispatch(setTotalUsersCountAC(totalCount))
     }
 }
 }

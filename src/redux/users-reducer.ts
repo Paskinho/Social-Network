@@ -33,18 +33,21 @@ export const setUsersAC = (users: Array<UserType>) => (
     {type: "SET_USERS",  payload: {newState: users} } as const)
 export const setCurrentPageAC = (currentPage: number) => (
     {type: "SET_CURRENT_PAGE", payload: currentPage} as const)
+export const setTotalUsersCountAC = (totalCount: number) => (
+    {type: "SET_TOTAL_USERS_COUNT", payload: totalCount} as const)
 
 type FollowType = ReturnType<typeof followAC>
 type UnfollowType = ReturnType<typeof unfollowAC>
 type SetUsersType = ReturnType<typeof setUsersAC>
 type SetCurrentPageType = ReturnType<typeof setCurrentPageAC>
+type SetTotalUsersCountTyoe = ReturnType<typeof setTotalUsersCountAC>
 
-type UsersActionsTypes = FollowType | UnfollowType | SetUsersType | SetCurrentPageType
+type UsersActionsTypes = FollowType | UnfollowType | SetUsersType | SetCurrentPageType | SetTotalUsersCountTyoe
 
 const initialState: InitialStateType = {
     users: [],
     pageSize: 5,
-    totalUsersCount: 20,
+    totalUsersCount: 0,
     currentPage: 1
 }
 
@@ -81,6 +84,10 @@ export const usersReducer = (state:InitialStateType = initialState, action: User
         case "SET_CURRENT_PAGE":
             return {
                 ...state,currentPage: action.payload
+            }
+        case "SET_TOTAL_USERS_COUNT" :
+            return {
+                ...state,totalUsersCount: action.payload
             }
 
         default:
