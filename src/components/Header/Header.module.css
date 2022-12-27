@@ -1,12 +1,12 @@
 .header {
     grid-area: header;
-    background-color: aqua;
+    background-color: darkred;
     padding: 10px;
     display: flex;
     border-radius: 5px;
 
 }
 .header img {
-    width: 50px;
+    width: 40px;
 }
 
