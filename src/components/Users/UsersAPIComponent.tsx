@@ -37,7 +37,14 @@ export class UsersAPIComponent extends Component<UsersPropsType> {
 
 
 
-    return <Users/>
+    return <Users totalUsersCount={this.props.totalUsersCount}
+                  pageSize={this.props.pageSize}
+                  currentPage={this.props.currentPage}
+                  unfollow={this.props.unfollow}
+                  follow={this.props.unfollow}
+                  onPageChanged={this.onPageChanged}
+                  usersPage={this.props.usersPage}
+    />
 }
 }
 
