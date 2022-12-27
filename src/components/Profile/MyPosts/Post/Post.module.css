@@ -1,11 +1,13 @@
 .item {
- color: gold;
+ color: darkred;
  display:grid;
  grid-template-columns: 1fr 6fr;
  border: dotted thin;
+ border-color: black;
  border-radius: 5px;
  padding-left: 10px;
  margin: 10px 0px;
+
 }
 
 .item img {

@@ -14,8 +14,8 @@
 .app-wrapper-content {
   grid-area: content;
   background-color: burlywood;
-  max-width: 1500px;
+  max-width: 100%;
   min-width: 700px;
-  border-radius: 20px;
+  border-radius: 5px;
 
 }
