@@ -6,9 +6,11 @@
 
 .img {
 
-    max-width: 100%;
+    width: 1000px;
+    height: 500px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 
 }
+
 
