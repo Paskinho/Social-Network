@@ -8,6 +8,7 @@ export type MessagesType = {
 export type DialogType = {
     name: string
     id: number
+    avatar: string
 }
 
 
@@ -28,7 +29,7 @@ export const addMessageCreator = () => {
 
 const initialState = {
             users: [
-                {name: "Trent",  id: 0 },
+                {name: "Trent",  id: 0, avatar: 'https://www.thisisanfield.com/wp-content/uploads/P2022-10-09-Arsenal_Liverpool-6.jpg' },
                 {name: "Virgil",  id: 1 },
                 {name: "Mohamed",  id: 2},
                 {name: "Darwin", id: 3},
