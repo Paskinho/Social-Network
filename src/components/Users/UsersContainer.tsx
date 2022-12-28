@@ -1,11 +1,11 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {
-    followAC,
+    follow,
     InitialStateType,
-    setCurrentPageAC, setTotalUsersCountAC,
-    setUsersAC, toggleIsFetchingAC,
-    unfollowAC,
+    setCurrentPage, setTotalUsersCount,
+    setUsers, toggleIsFetching,
+    unfollow,
     UserType
 } from "../../redux/users-reducer";
 import {AppStateType} from "../../redux/redux-store";
@@ -89,35 +89,35 @@ return {
 }
 
 
-
-const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToPropsType => {
-return {
-    follow: (userId: string) => {
-        dispatch(followAC(userId))
-    },
-    unfollow: (userId: string) => {
-        dispatch(unfollowAC(userId))
-    },
-    setUsers: (users: Array<UserType>)  => {
-        dispatch(setUsersAC(users))
-    },
-    setCurrentPage: (pageNumber:number)=> {
-        dispatch(setCurrentPageAC(pageNumber))
-    },
-    setTotalUsersCount: (totalCount:number)=> {
-        dispatch(setTotalUsersCountAC(totalCount))
-    },
-    toggleIsFetching: (isFetching: boolean) => {
-        dispatch(toggleIsFetchingAC(isFetching))
-    }
-}
-}
+//
+// const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToPropsType => {
+// return {
+//     follow: (userId: string) => {
+//         dispatch(followAC(userId))
+//     },
+//     unfollow: (userId: string) => {
+//         dispatch(unfollowAC(userId))
+//     },
+//     setUsers: (users: Array<UserType>)  => {
+//         dispatch(setUsersAC(users))
+//     },
+//     setCurrentPage: (pageNumber:number)=> {
+//         dispatch(setCurrentPageAC(pageNumber))
+//     },
+//     setTotalUsersCount: (totalCount:number)=> {
+//         dispatch(setTotalUsersCountAC(totalCount))
+//     },
+//     toggleIsFetching: (isFetching: boolean) => {
+//         dispatch(toggleIsFetchingAC(isFetching))
+//     }
+// }
+// }
 
 export default connect(mapStateToProps, {
-    follow: followAC,
-    unfollow: unfollowAC,
-    setUsers: setUsersAC,
-    setCurrentPage: setCurrentPageAC,
-    setTotalUsersCount: setTotalUsersCountAC,
-    toggleIsFetching: toggleIsFetchingAC
+    follow: follow,
+    unfollow: unfollow,
+    setUsers: setUsers,
+    setCurrentPage: setCurrentPage,
+    setTotalUsersCount: setTotalUsersCount,
+    toggleIsFetching: toggleIsFetching
 })(UsersContainer)

@@ -27,26 +27,26 @@ export type InitialStateType = {
 }
 
 
-export const followAC = (userId: string) => (
+export const follow = (userId: string) => (
     {type: "FOLLOW",  payload: userId} as const)
-export const unfollowAC = (userId: string) => (
+export const unfollow = (userId: string) => (
     {type: "UNFOLLOW", payload: userId} as const)
-export const setUsersAC = (users: Array<UserType>) => (
+export const setUsers = (users: Array<UserType>) => (
     {type: "SET_USERS",  payload: {newState: users} } as const)
-export const setCurrentPageAC = (currentPage: number) => (
+export const setCurrentPage = (currentPage: number) => (
     {type: "SET_CURRENT_PAGE", payload: currentPage} as const)
-export const setTotalUsersCountAC = (totalCount: number) => (
+export const setTotalUsersCount = (totalCount: number) => (
     {type: "SET_TOTAL_USERS_COUNT", payload: totalCount} as const)
-export const toggleIsFetchingAC = (isFetching: boolean) => (
+export const toggleIsFetching = (isFetching: boolean) => (
     {type: 'TOGGLE_IS_FETCHING', payload: isFetching} as const
 )
 
-type FollowType = ReturnType<typeof followAC>
-type UnfollowType = ReturnType<typeof unfollowAC>
-type SetUsersType = ReturnType<typeof setUsersAC>
-type SetCurrentPageType = ReturnType<typeof setCurrentPageAC>
-type SetTotalUsersCountType = ReturnType<typeof setTotalUsersCountAC>
-type ToggleIsFetchingType = ReturnType<typeof toggleIsFetchingAC>
+type FollowType = ReturnType<typeof follow>
+type UnfollowType = ReturnType<typeof unfollow>
+type SetUsersType = ReturnType<typeof setUsers>
+type SetCurrentPageType = ReturnType<typeof setCurrentPage>
+type SetTotalUsersCountType = ReturnType<typeof setTotalUsersCount>
+type ToggleIsFetchingType = ReturnType<typeof toggleIsFetching>
 
 type UsersActionsTypes = FollowType | UnfollowType | SetUsersType | SetCurrentPageType | SetTotalUsersCountType | ToggleIsFetchingType
 
