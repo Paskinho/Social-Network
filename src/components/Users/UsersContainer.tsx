@@ -12,6 +12,10 @@ import {AppStateType} from "../../redux/redux-store";
 import { Dispatch } from "redux";
 import {Users} from "./Users";
 import axios from "axios";
+import preloader from "../../assets/images/preloader.gif"
+
+
+
 
  class UsersContainer extends Component<UsersPropsType> {
 
@@ -34,7 +38,8 @@ import axios from "axios";
     }
 
     render() {
-        // const filteredUser = this.props.usersPage.users.filter((u, i) => i < this.props.usersPage.count)
+   return <>
+       {this.props.isFetching ? <img src={preloader}/> : null}
         return <Users totalUsersCount={this.props.totalUsersCount}
                       pageSize={this.props.pageSize}
                       currentPage={this.props.currentPage}
@@ -43,7 +48,8 @@ import axios from "axios";
                       onPageChanged={this.onPageChanged}
                       usersPage={this.props.usersPage}
         />
-    }
+</>
+       }
 }
 
 
@@ -52,6 +58,7 @@ type MapStateToPropsType = {
     pageSize: number
     totalUsersCount: number
     currentPage: number
+    isFetching: boolean
 }
 
 type MapDispatchToPropsType = {
@@ -70,8 +77,8 @@ return {
     usersPage: state.users,
     pageSize: state.users.pageSize,
     totalUsersCount: state.users.totalUsersCount,
-    currentPage: state.users.currentPage
-
+    currentPage: state.users.currentPage,
+    isFetching: state.users.isFetching
 }
 }
 
