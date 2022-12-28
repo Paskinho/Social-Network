@@ -4,7 +4,7 @@ import {
     followAC,
     InitialStateType,
     setCurrentPageAC, setTotalUsersCountAC,
-    setUsersAC,
+    setUsersAC, toggleIsFetchingAC,
     unfollowAC,
     UserType
 } from "../../redux/users-reducer";
@@ -21,6 +21,7 @@ import preloader from "../../assets/images/preloader.gif"
 
 
     componentDidMount() {
+        this.props.toggleIsFetching(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}$count=${this.props.pageSize}`).then((response) => {
             this.props.setUsers(response.data.items)
             this.props.setTotalUsersCount(response.data.totalCount)
@@ -67,6 +68,7 @@ type MapDispatchToPropsType = {
     setUsers: (users: Array<UserType>)=> void
     setCurrentPage: (p: number)=> void
     setTotalUsersCount:(count: number) => void
+    toggleIsFetching: (isFetching: boolean) => void
 
 }
 
@@ -100,6 +102,9 @@ return {
     },
     setTotalUsersCount: (totalCount:number)=> {
         dispatch(setTotalUsersCountAC(totalCount))
+    },
+    toggleIsFetching: (isFetching: boolean) => {
+        dispatch(toggleIsFetchingAC(isFetching))
     }
 }
 }
