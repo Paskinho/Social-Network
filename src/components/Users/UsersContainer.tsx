@@ -12,7 +12,8 @@ import {AppStateType} from "../../redux/redux-store";
 import { Dispatch } from "redux";
 import {Users} from "./Users";
 import axios from "axios";
-import preloader from "../../assets/images/preloader.gif"
+
+import {Preloader} from "../common/Preloader/Preloader";
 
 
 
@@ -43,8 +44,8 @@ import preloader from "../../assets/images/preloader.gif"
 
     render() {
    return <>
-       {this.props.isFetching ? <img src={preloader}/> : null}
-        return <Users totalUsersCount={this.props.totalUsersCount}
+       {this.props.isFetching ? <Preloader/> : null}
+       <Users totalUsersCount={this.props.totalUsersCount}
                       pageSize={this.props.pageSize}
                       currentPage={this.props.currentPage}
                       unfollow={this.props.unfollow}
