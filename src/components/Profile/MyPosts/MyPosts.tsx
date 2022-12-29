@@ -35,7 +35,7 @@ const postsElements =
             {/*    /!*key={p.i} добавить в дивку*!/*/}
             {/*</hr>*/}
             <div>
-                <textarea placeholder='New post' value={postText} onChange={onPostChangeCallBack}></textarea>
+                <textarea placeholder='New post' onChange={onPostChangeCallBack}></textarea>
             </div>
             <div>
                 <button onClick={addPost}>Add post</button>
