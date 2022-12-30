@@ -4,7 +4,9 @@ export type addPostCreatorType = ReturnType<typeof addPostCreator>
 
 export type updateNewPostTextCreatorType = ReturnType<typeof updateNewPostTextCreator>
 
-export type ProfileActionsType = addPostCreatorType | updateNewPostTextCreatorType
+export type setUserProfileType = ReturnType<typeof setUserProfileCreator>
+
+export type ProfileActionsType = addPostCreatorType | updateNewPostTextCreatorType | setUserProfileType
 
 
 export type PostDataType ={
@@ -51,6 +53,13 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
                newPostText : action.newText
            }
         }
+        case "SET_USER_PROFILE": {
+            return {...state,
+                profile: action.profile
+            }
+        }
+
+
         default:
             return state
     }
@@ -70,4 +79,13 @@ export const updateNewPostTextCreator = (newText: string) => {
         type: "UPDATE_NEW_POST_TEXT",
         newText: newText
     } as const
+}
+
+export const setUserProfileCreator = (profile: string) => {
+
+    return {
+        type: "SET_USER_PROFILE",
+        profile: profile
+    } as const
+
 }
