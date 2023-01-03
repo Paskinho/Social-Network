@@ -4,7 +4,8 @@ import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
 import {Profile} from "./Profile";
 import axios from "axios";
 import {connect} from "react-redux";
-import {setUserProfileCreator} from "../../redux/profile-reducer";
+import {ServerProfileType, setUserProfileCreator} from "../../redux/profile-reducer";
+import {AppStateType} from "../../redux/redux-store";
 
 
 
@@ -20,15 +21,28 @@ import {setUserProfileCreator} from "../../redux/profile-reducer";
 
     render () {
     return (
-        <Profile {...this.props} profile={this.props.profile}/>
+        <Profile profile={this.props.profile}/>
     )
     }
 }
 
+type MapStateType = {
+    profile: ServerProfileType | null
+}
+const actions = {
+    setUserProfileCreator
+}
 
-let mapStateToProps = () => ({
-    profile: state.profilePage.profile
+type MapDispatchType = typeof actions
+
+let mapStateToProps = (state: AppStateType) => ({
+    profile: state.profileReducer.profile
 })
+
+type ProfileContainerType = MapStateType & MapDispatchType
+
+export type ProfileType = MapStateType
+
 
 
 export default connect(mapStateToProps, {setUserProfileCreator} ) (ProfileContainer)
