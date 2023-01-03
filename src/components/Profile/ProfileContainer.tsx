@@ -13,7 +13,7 @@ import {setUserProfileCreator} from "../../redux/profile-reducer";
  class ProfileContainer extends React.Component<any , any>{
     componentDidMount() {
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`).then((response) => {
-            this.props.setUserProfile(response.data)
+            this.props.setUserProfileCreator(response.data)
         })
 
     }
@@ -31,4 +31,4 @@ let mapStateToProps = () => ({
 })
 
 
-export default connect(mapStateToProps, setUserProfileCreator ) (ProfileContainer)
+export default connect(mapStateToProps, {setUserProfileCreator} ) (ProfileContainer)

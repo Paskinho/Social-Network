@@ -27,7 +27,7 @@ const initialState = {
         {title: "This is my first post)", like: 10, id: 2},
     ],
     newPostText: "New message",
-    profile: null
+    profile: ''
 };
 
 export type InitialStateType = typeof initialState
