@@ -20,14 +20,14 @@ import {setUserProfileCreator} from "../../redux/profile-reducer";
 
     render () {
     return (
-        <Profile {...this.props}/>
+        <Profile {...this.props} profile={this.props.profile}/>
     )
     }
 }
 
 
 let mapStateToProps = () => ({
-    a: 13
+    profile: state.profilePage.profile
 })
 
 
