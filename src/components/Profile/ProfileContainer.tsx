@@ -4,6 +4,7 @@ import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
 import {Profile} from "./Profile";
 import axios from "axios";
 import {connect} from "react-redux";
+import {setUserProfileCreator} from "../../redux/profile-reducer";
 
 
 
@@ -30,4 +31,4 @@ let mapStateToProps = () => ({
 })
 
 
-export default connect(mapStateToProps, ) (ProfileContainer)
+export default connect(mapStateToProps, setUserProfileCreator ) (ProfileContainer)
