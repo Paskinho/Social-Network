@@ -6,6 +6,7 @@ import axios from "axios";
 import {connect} from "react-redux";
 import {ServerProfileType, setUserProfileCreator} from "../../redux/profile-reducer";
 import {AppStateType} from "../../redux/redux-store";
+import {withRouter} from "react-router-dom"
 
 
 
@@ -43,6 +44,6 @@ type ProfileContainerType = MapStateType & MapDispatchType
 
 export type ProfileType = MapStateType
 
-
+const WithUrlDataContainerComponent = withRouter(ProfileContainer)
 
 export default connect(mapStateToProps, {setUserProfileCreator} ) (ProfileContainer)

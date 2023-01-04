@@ -31,7 +31,7 @@ const App: React.FC = () => {
                     <Routes>
                         <Route path='/dialogs' element={<DialogsContainer/>} // уточнить
                           />
-                        <Route path='/profile' element={<ProfileContainer/>}/>
+                        <Route path='/profile/userId' element={<ProfileContainer/>}/>
                         <Route path='/news' element={<News/>}/>
                         <Route path='/music' element={<Music/>}/>
                         <Route path='/settings' element={<Settings/>}/>
