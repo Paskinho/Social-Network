@@ -4,7 +4,6 @@ import {Preloader} from "../../common/Preloader/Preloader";
 import {ProfileType} from "../ProfileContainer";
 
 
-
 export const ProfileInfo: React.FC<ProfileType>= (props) => {
     if (!props.profile) {
         return <Preloader/>
