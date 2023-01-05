@@ -8,7 +8,10 @@ import {ServerProfileType, setUserProfileCreator} from "../../redux/profile-redu
 import {AppStateType} from "../../redux/redux-store";
 import { useParams } from 'react-router-dom';
 
+type withRouterType = {
+    Children: string
 
+}
 
 export function withRouter(Children:any) {
     return (props: any) => {
@@ -19,7 +22,7 @@ export function withRouter(Children:any) {
 }
 
 
-    class ProfileContainer extends React.Component<any , any>{
+    class ProfileContainer extends React.Component<ProfileContainerType>{
 
  //    let userId = this.props.match.params.userId;
  //    if(!userId) {
