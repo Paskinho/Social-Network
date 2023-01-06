@@ -21,7 +21,6 @@ export function withRouter(Children:any) {
     }
 }
 
-
     class ProfileContainer extends React.Component<ProfileContainerType>{
 
  //    let userId = this.props.match.params.userId;
