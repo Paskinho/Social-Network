@@ -8,10 +8,10 @@ import {ServerProfileType, setUserProfileCreator} from "../../redux/profile-redu
 import {AppStateType} from "../../redux/redux-store";
 import { useParams } from 'react-router-dom';
 
-type withRouterType = {
-    Children: string
-
-}
+// type withRouterType = {
+//     Children: string
+//
+// }
 
 export function withRouter(Children:any) {
     return (props: any) => {
