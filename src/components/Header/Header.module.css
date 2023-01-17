@@ -11,3 +11,13 @@
 
 }
 
+.loginBlock {
+    align-self: center;
+    justify-self: center;
+
+}
+
+.loginBlock a {
+    color: white;
+}
+
