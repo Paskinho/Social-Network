@@ -17,12 +17,13 @@ type LocationType = {
     country: string
 
 }
+
+
 export type InitialStateType = {
+    userId: any,
+    email: any,
+    login: any
     users: Array<UserType>
-    pageSize: number
-    totalUsersCount: number
-    currentPage: number
-    isFetching: boolean
 
 }
 
@@ -41,15 +42,14 @@ type UnfollowType = ReturnType<typeof unfollow>
 type UsersActionsTypes = FollowType | UnfollowType
 
 const initialState: InitialStateType = {
-    users: [],
-    pageSize: 5,
-    totalUsersCount: 0,
-    currentPage: 1,
-    isFetching: true
+    users:[],
+   userId: null,
+    email: null,
+    login: null
 }
 
 
-export const usersReducer = (state:InitialStateType = initialState, action: UsersActionsTypes): InitialStateType => {
+export const authReducer = (state:InitialStateType = initialState, action: UsersActionsTypes): InitialStateType => {
 
     switch (action.type) {
         case 'FOLLOW':
