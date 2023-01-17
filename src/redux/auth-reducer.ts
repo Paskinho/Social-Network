@@ -28,18 +28,12 @@ export type InitialStateType = {
 }
 
 
-export const follow = (userId: string) => (
-    {type: "FOLLOW",  payload: userId} as const)
-export const unfollow = (userId: string) => (
-    {type: "UNFOLLOW", payload: userId} as const)
-
-
-type FollowType = ReturnType<typeof follow>
-type UnfollowType = ReturnType<typeof unfollow>
 
 
 
-type UsersActionsTypes = FollowType | UnfollowType
+
+
+type UsersActionsTypes = setUserDataACType
 
 const initialState: InitialStateType = {
     users:[],
@@ -52,27 +46,10 @@ const initialState: InitialStateType = {
 export const authReducer = (state:InitialStateType = initialState, action: UsersActionsTypes): InitialStateType => {
 
     switch (action.type) {
-        case 'FOLLOW':
+        case 'SET_USER_DATA':
             return {
                 ...state,
-                users: state.users.map((u: any) => {
-                        if (u.id === action.payload) {
-                            return {...u, followed: true}
-                        }
-                        return u;
-                    }
-                )
-            }
-        case 'UNFOLLOW':
-            return {
-                ...state,
-                users: state.users.map((u: any) => {
-                        if (u.id === action.payload) {
-                            return {...u, followed: false}
-                        }
-                        return u;
-                    }
-                )
+                ...action.payload
             }
 
         default:
@@ -81,4 +58,9 @@ export const authReducer = (state:InitialStateType = initialState, action: Users
 
 }
 
+type setUserDataACType = ReturnType<typeof setUserData>
+
+
+export const setUserData = (data: InitialStateType) => (
+    {type: "SET_USER_DATA",  payload: data} as const)
 
