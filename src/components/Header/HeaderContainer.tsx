@@ -5,6 +5,7 @@ import {Header} from "./Header";
 import axios from "axios";
 import {connect} from "react-redux";
 import {setAuthUserData} from "../../redux/auth-reducer";
+import {AppStateType} from "../../redux/redux-store";
 
 class HeaderContainer extends React.Component<any, any> {
     componentDidMount() {
@@ -24,6 +25,6 @@ class HeaderContainer extends React.Component<any, any> {
 }
 
 
-const mapStateToProps = (state: any) => ({})
+const mapStateToProps = (state: AppStateType) => ({})
 
 export default connect (mapStateToProps, {setAuthUserData}) (HeaderContainer);

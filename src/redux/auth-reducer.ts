@@ -24,6 +24,7 @@ export type InitialStateType = {
     email: any,
     login: any
     users: Array<UserType>
+    isAuth: boolean
 
 }
 
@@ -39,7 +40,8 @@ const initialState: InitialStateType = {
     users:[],
    userId: null,
     email: null,
-    login: null
+    login: null,
+    isAuth: false
 }
 
 
@@ -49,7 +51,8 @@ export const authReducer = (state:InitialStateType = initialState, action: Users
         case 'SET_USER_DATA':
             return {
                 ...state,
-                ...action.payload
+                ...action.payload,
+                isAuth: true
             }
 
         default:
