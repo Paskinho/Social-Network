@@ -33,7 +33,6 @@ import {Preloader} from "../common/Preloader/Preloader";
 
     // showMore = () => this.props.showMore()
 
-
     onPageChanged = (pageNumber: number) => {
         this.props.toggleIsFetching(true)
         this.props.setCurrentPage(pageNumber);
