@@ -12,9 +12,9 @@
 }
 
 .loginBlock {
+    display: flex;
     align-self: center;
     justify-self: center;
-
 }
 
 .loginBlock a {

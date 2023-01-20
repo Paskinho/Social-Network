@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../my_portfolio/my_portfolio/.idea/my_portfolio.iml" filepath="$PROJECT_DIR$/../my_portfolio/my_portfolio/.idea/my_portfolio.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/samurai-type.iml" filepath="$PROJECT_DIR$/.idea/samurai-type.iml" />
     </modules>
   </component>
