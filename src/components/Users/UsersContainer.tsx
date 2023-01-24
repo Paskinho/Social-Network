@@ -14,6 +14,7 @@ import {Users} from "./Users";
 import axios from "axios";
 
 import {Preloader} from "../common/Preloader/Preloader";
+import {getUsers} from "../../api/api";
 
 
 
@@ -23,11 +24,7 @@ import {Preloader} from "../common/Preloader/Preloader";
 
     componentDidMount() {
         this.props.toggleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}$count=${this.props.pageSize}`,
-        {
-            withCredentials: true
-        }
-        ).then((response) => {
+        getUsers().then((response) => {
             this.props.toggleIsFetching(false)
             this.props.setUsers(response.data.items)
             this.props.setTotalUsersCount(response.data.totalCount)
