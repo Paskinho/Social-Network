@@ -14,7 +14,7 @@ import {Users} from "./Users";
 import axios from "axios";
 
 import {Preloader} from "../common/Preloader/Preloader";
-import {getUsers} from "../../api/api";
+import { usersAPI} from "../../api/api";
 
 
 
@@ -24,7 +24,7 @@ import {getUsers} from "../../api/api";
 
     componentDidMount() {
         this.props.toggleIsFetching(true)
-        getUsers(this.props.currentPage, this.props.pageSize).then((data) => {
+        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then((data) => {
             this.props.toggleIsFetching(false)
             this.props.setUsers(data.items)
             this.props.setTotalUsersCount(data.totalCount)
@@ -37,7 +37,7 @@ import {getUsers} from "../../api/api";
     onPageChanged = (pageNumber: number) => {
         this.props.toggleIsFetching(true)
         this.props.setCurrentPage(pageNumber);
-        getUsers(pageNumber, this.props.pageSize)
+        usersAPI.getUsers(pageNumber, this.props.pageSize)
             .then((data) => {
             this.props.toggleIsFetching(false)
             this.props.setUsers(data.items);})
