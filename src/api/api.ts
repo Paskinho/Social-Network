@@ -1,15 +1,11 @@
 import axios from "axios";
 
-type GetUsersPropsType = {
-    currentPage: number,
-    pageSize: number
-}
 
-
-export const getUsers = (props: GetUsersPropsType) => {
-    return axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${props.currentPage}$count=${props.pageSize}`,
+export const getUsers = (currentPage: number, pageSize: number) => {
+    return axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}$count=${pageSize}`,
         {
             withCredentials: true
         }
     )
+        .then(response => response.data);
 }
