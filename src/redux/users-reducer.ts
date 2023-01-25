@@ -23,7 +23,7 @@ export type InitialStateType = {
     totalUsersCount: number
     currentPage: number
     isFetching: boolean
-
+followingIsProgress: boolean
 }
 
 
@@ -40,6 +40,9 @@ export const setTotalUsersCount = (totalCount: number) => (
 export const toggleIsFetching = (isFetching: boolean) => (
     {type: 'TOGGLE_IS_FETCHING', payload: isFetching} as const
 )
+export const toggleIsFollowingProgress = (followingIsProgress: boolean) => (
+    {type: 'TOGGLE_IS_FOLLOWING_PROGRESS', payload: followingIsProgress} as const
+)
 
 type FollowType = ReturnType<typeof follow>
 type UnfollowType = ReturnType<typeof unfollow>
@@ -47,15 +50,17 @@ type SetUsersType = ReturnType<typeof setUsers>
 type SetCurrentPageType = ReturnType<typeof setCurrentPage>
 type SetTotalUsersCountType = ReturnType<typeof setTotalUsersCount>
 type ToggleIsFetchingType = ReturnType<typeof toggleIsFetching>
+type ToggleIsFollowingProgressType = ReturnType<typeof toggleIsFollowingProgress>
 
-type UsersActionsTypes = FollowType | UnfollowType | SetUsersType | SetCurrentPageType | SetTotalUsersCountType | ToggleIsFetchingType
+type UsersActionsTypes = FollowType | UnfollowType | SetUsersType | SetCurrentPageType | SetTotalUsersCountType | ToggleIsFetchingType | ToggleIsFollowingProgressType
 
 const initialState: InitialStateType = {
     users: [],
     pageSize: 5,
     totalUsersCount: 0,
     currentPage: 1,
-    isFetching: true
+    isFetching: true,
+    followingIsProgress: false
 }
 
 
@@ -99,6 +104,10 @@ export const usersReducer = (state:InitialStateType = initialState, action: User
         case 'TOGGLE_IS_FETCHING' :
             return  {
                 ...state,isFetching: action.payload
+            }
+        case 'TOGGLE_IS_FOLLOWING_PROGRESS' :
+            return  {
+                ...state,followingIsProgress: action.payload
             }
         default:
             return state
