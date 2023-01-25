@@ -14,6 +14,7 @@ type UsersType = {
     follow: (userId: string) => void
     onPageChanged: (p: number) => void
     usersPage: InitialStateType
+    toggleIsFollowingProgress: []
 
 }
 
@@ -49,8 +50,8 @@ export const Users = (props: UsersType) => {
     </div>
     <div>
     {u.followed ?
-        <button onClick={() => {
-            toggleIsFollowingProgress(true);
+        <button disabled={props.toggleIsFollowingProgress.some(id=> id === u.id)}  onClick={() => {
+            toggleIsFollowingProgress(true, u.id);
             axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
                 withCredentials: true,
                 headers: {
@@ -60,14 +61,14 @@ export const Users = (props: UsersType) => {
                 if (response.data.resultCode == 0) {
                     props.unfollow(u.id)
                 }
-               toggleIsFollowingProgress(false);
+               toggleIsFollowingProgress(false, u.id);
             });
 
         }}>UnFollow</button>
 
 
-        : <button onClick={() => {
-            toggleIsFollowingProgress(true)
+        : <button disabled={props.toggleIsFollowingProgress.some(id=> id === u.id)} onClick={() => {
+            toggleIsFollowingProgress(true, u.id)
             axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
                 withCredentials: true,
                 headers: {
@@ -77,7 +78,7 @@ export const Users = (props: UsersType) => {
                 if (response.data.resultCode == 0) {
                     props.follow(u.id)
                 }
-                toggleIsFollowingProgress(false);
+                toggleIsFollowingProgress(false, u.id);
             });
 
 
