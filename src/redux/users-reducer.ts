@@ -23,7 +23,7 @@ export type InitialStateType = {
     totalUsersCount: number
     currentPage: number
     isFetching: boolean
-followingIsProgress: boolean
+followingInProgress: boolean
 }
 
 
@@ -60,7 +60,7 @@ const initialState: InitialStateType = {
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: true,
-    followingIsProgress: false
+    followingInProgress: false
 }
 
 
@@ -107,7 +107,7 @@ export const usersReducer = (state:InitialStateType = initialState, action: User
             }
         case 'TOGGLE_IS_FOLLOWING_PROGRESS' :
             return  {
-                ...state,followingIsProgress: action.payload
+                ...state,followingInProgress: action.payload
             }
         default:
             return state

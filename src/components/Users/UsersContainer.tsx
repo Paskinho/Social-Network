@@ -4,7 +4,7 @@ import {
     follow,
     InitialStateType,
     setCurrentPage, setTotalUsersCount,
-    setUsers, toggleIsFetching,
+    setUsers, toggleIsFetching, toggleIsFollowingProgress,
     unfollow,
     UserType
 } from "../../redux/users-reducer";
@@ -120,5 +120,6 @@ export default connect(mapStateToProps, {
     setUsers: setUsers,
     setCurrentPage: setCurrentPage,
     setTotalUsersCount: setTotalUsersCount,
-    toggleIsFetching: toggleIsFetching
+    toggleIsFetching: toggleIsFetching,
+    toggleIsFollowingProgress
 })(UsersContainer)
