@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./Users.module.css";
 import userPhoto from "../../assets/images/user.png";
-import {InitialStateType} from "../../redux/users-reducer";
+import {InitialStateType, toggleIsFetching, toggleIsFollowingProgress} from "../../redux/users-reducer";
 import {NavLink} from "react-router-dom";
 import axios from "axios";
 
@@ -14,6 +14,7 @@ type UsersType = {
     follow: (userId: string) => void
     onPageChanged: (p: number) => void
     usersPage: InitialStateType
+
 }
 
 export const Users = (props: UsersType) => {
@@ -49,7 +50,7 @@ export const Users = (props: UsersType) => {
     <div>
     {u.followed ?
         <button onClick={() => {
-
+            toggleIsFollowingProgress(true);
             axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
                 withCredentials: true,
                 headers: {
@@ -59,14 +60,14 @@ export const Users = (props: UsersType) => {
                 if (response.data.resultCode == 0) {
                     props.unfollow(u.id)
                 }
-
+               toggleIsFollowingProgress(false);
             });
 
-           }}>UnFollow</button>
+        }}>UnFollow</button>
 
 
         : <button onClick={() => {
-
+            toggleIsFollowingProgress(true)
             axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
                 withCredentials: true,
                 headers: {
@@ -76,10 +77,11 @@ export const Users = (props: UsersType) => {
                 if (response.data.resultCode == 0) {
                     props.follow(u.id)
                 }
+                toggleIsFollowingProgress(false);
             });
 
 
-       }}>Follow</button>
+        }}>Follow</button>
 
     }
         </div>
