@@ -53,7 +53,7 @@ import { usersAPI} from "../../api/api";
                       follow={this.props.unfollow}
                       onPageChanged={this.onPageChanged}
                       usersPage={this.props.usersPage}
-              toggleIsFollowingProgress={false}//захардкоженное значение НУЖНО УТОЧНИТЬ!!!!
+              toggleIsFollowingProgress={[]}//захардкоженное значение НУЖНО УТОЧНИТЬ!!!!
         />
 </>
        }

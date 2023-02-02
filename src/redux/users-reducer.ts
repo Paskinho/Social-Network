@@ -23,7 +23,7 @@ export type InitialStateType = {
     totalUsersCount: number
     currentPage: number
     isFetching: boolean
-followingInProgress: []
+followingInProgress: number []
 }
 
 
@@ -109,8 +109,8 @@ export const usersReducer = (state:InitialStateType = initialState, action: User
             return  {
                 ...state,
                 followingInProgress: action.payload ?
-                    [...state.followingInProgress, action.userId]
-                        : [...state.followingInProgress.filter(id=> id != action.userId)]
+                    [...state.followingInProgress, action.userId] :
+                        state.followingInProgress.filter(id=> id !== action.userId)
             }
         default:
             return state
