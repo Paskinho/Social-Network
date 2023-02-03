@@ -28,12 +28,12 @@ export const Users = (props: UsersType) => {
     }
 
 
-    const followHandler = () => {
+    const followHandler = (u:any) => {
         toggleIsFollowingProgress(true, u.id);
         axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
             withCredentials: true,
             headers: {
-                "API-KEY": ""
+                "API-KEY": "b1775b2f-c3a5-4509-8dc9-90b5629de7c3"
             }
         }).then((response) => {
             if (response.data.resultCode == 0) {
@@ -44,9 +44,9 @@ export const Users = (props: UsersType) => {
 
     }
 
-    const unFollowHandler = () => {
+    const unFollowHandler = (u:any) => {
         toggleIsFollowingProgress(true, u.id)
-        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
+        axios.post(`https://social-network.samuraijs.com/api/1.0/unfollow/${u.id}`, {}, {
             withCredentials: true,
             headers: {
                 "API-KEY": ""
@@ -63,6 +63,8 @@ export const Users = (props: UsersType) => {
 
 
     return <div>
+
+
         <div>
             <div>
                 {pages.map(p => {
@@ -84,10 +86,10 @@ export const Users = (props: UsersType) => {
     </div>
     <div>
     {u.followed ?
-        <button disabled={props.toggleIsFollowingProgress.some(id=> id === u.id)}  onClick={followHandler}>UnFollow</button>
+        <button disabled={props.toggleIsFollowingProgress.some(id=> id === u.id)}  onClick={unFollowHandler}>UnFollow</button>
 
 
-        : <button disabled={props.toggleIsFollowingProgress.some(id=> id === u.id)} onClick={unFollowHandler}>Follow</button>
+        : <button disabled={props.toggleIsFollowingProgress.some(id=> id === u.id)} onClick={followHandler}>Follow</button>
 
     }
         </div>
