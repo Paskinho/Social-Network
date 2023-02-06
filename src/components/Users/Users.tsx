@@ -31,7 +31,7 @@ export const Users = (props: UsersType) => {
 
     const followHandler = (u:any) => {
         props.toggleIsFollowingProgress(true, u.id);
-        usersAPI.follow(u.userId, u.id).then((response) => {
+        usersAPI.follow(u.userId).then((response) => {
             if (response.data.resultCode == 0) {
                 props.follow(u.id)
             }
@@ -41,7 +41,7 @@ export const Users = (props: UsersType) => {
 
     const unFollowHandler = (u:any) => {
         props.toggleIsFollowingProgress(true, u.id);
-        usersAPI.unfollow(u.userId, u.id).then((response) => {
+        usersAPI.unfollow(u.userId).then((response) => {
             if (response.data.resultCode == 0) {
                 props.follow(u.id)
             }

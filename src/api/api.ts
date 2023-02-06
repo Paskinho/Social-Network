@@ -16,12 +16,12 @@ export const usersAPI = {
         )
             .then(response => response.data);
     },
-    follow(userId: string, u: any) {
-        return instance.post(`https://social-network.samuraijs.com/api/1.0/unfollow/${u.id}`,
+    follow(userId: string) {
+        return instance.post(`https://social-network.samuraijs.com/api/1.0/unfollow/${userId}`,
         )
     },
-    unfollow(userId: string, u: any) {
-        return instance.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
+    unfollow(userId: string) {
+        return instance.delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`,
         )
     }
 }

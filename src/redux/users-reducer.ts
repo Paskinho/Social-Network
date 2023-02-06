@@ -28,9 +28,9 @@ followingInProgress: number []
 }
 
 
-export const follow = (userId: string) => (
+export const followSuccess = (userId: string) => (
     {type: "FOLLOW",  payload: userId} as const)
-export const unfollow = (userId: string) => (
+export const unfollowSuccess = (userId: string) => (
     {type: "UNFOLLOW", payload: userId} as const)
 export const setUsers = (users: Array<UserType>) => (
     {type: "SET_USERS",  payload: {newState: users} } as const)
@@ -57,14 +57,41 @@ export const getUsersThunkCreator = (props: getUsersThunkCreatorPropsType) => {
         })
     }}
 
+export const follow = (userId: any) => { // уточнить по типизации, в одном месте number, в другом string
+
+    return (dispatch: any) => {
+
+        dispatch(toggleIsFollowingProgress(true, userId));
+        usersAPI.follow(userId).then((response) => {
+            if (response.data.resultCode == 0) {
+                follow(userId)
+            }
+            toggleIsFollowingProgress(false, userId);
+        });
+    }}
+
+export const unfollow = (userId: any) => { // уточнить по типизации, в одном месте number, в другом string
+
+    return (dispatch: any) => {
+
+        dispatch(toggleIsFollowingProgress(true, userId));
+        usersAPI.unfollow(userId).then((response) => {
+            if (response.data.resultCode == 0) {
+                follow(userId)
+            }
+            toggleIsFollowingProgress(false, userId);
+        });
+    }}
+
+
 type getUsersThunkCreatorPropsType = {
     currentPage: number,
     pageSize: number
 }
 
 
-type FollowType = ReturnType<typeof follow>
-type UnfollowType = ReturnType<typeof unfollow>
+type FollowType = ReturnType<typeof followSuccess>
+type UnfollowType = ReturnType<typeof unfollowSuccess>
 type SetUsersType = ReturnType<typeof setUsers>
 type SetCurrentPageType = ReturnType<typeof setCurrentPage>
 type SetTotalUsersCountType = ReturnType<typeof setTotalUsersCount>
