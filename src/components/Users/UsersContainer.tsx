@@ -69,6 +69,7 @@ type MapDispatchToPropsType = {
     follow: (userId: string)=> void
     unfollow: (userId: string) => void
     setCurrentPage: (p: number)=> void
+    setUsers: (users: Array<UserType>)=> void
     getUsersThunkCreator: (currentPage: number, pageSize: number) => void
 
 }

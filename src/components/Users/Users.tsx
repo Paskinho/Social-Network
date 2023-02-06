@@ -4,6 +4,7 @@ import userPhoto from "../../assets/images/user.png";
 import {InitialStateType, toggleIsFetching, toggleIsFollowingProgress} from "../../redux/users-reducer";
 import {NavLink} from "react-router-dom";
 import axios from "axios";
+import {usersAPI} from "../../api/api";
 
 
 type UsersType = {
@@ -14,7 +15,7 @@ type UsersType = {
     follow: (userId: string) => void
     onPageChanged: (p: number) => void
     usersPage: InitialStateType
-    toggleIsFollowingProgress: []
+    toggleIsFollowingProgress: any// нужно будет уточнять
 
 }
 
@@ -29,35 +30,23 @@ export const Users = (props: UsersType) => {
 
 
     const followHandler = (u:any) => {
-        toggleIsFollowingProgress(true, u.id);
-        axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
-            withCredentials: true,
-            headers: {
-                "API-KEY": "b1775b2f-c3a5-4509-8dc9-90b5629de7c3"
-            }
-        }).then((response) => {
-            if (response.data.resultCode == 0) {
-                props.unfollow(u.id)
-            }
-            toggleIsFollowingProgress(false, u.id);
-        });
-
-    }
-
-    const unFollowHandler = (u:any) => {
-        toggleIsFollowingProgress(true, u.id)
-        axios.post(`https://social-network.samuraijs.com/api/1.0/unfollow/${u.id}`, {}, {
-            withCredentials: true,
-            headers: {
-                "API-KEY": ""
-            }
-        }).then((response) => {
+        props.toggleIsFollowingProgress(true, u.id);
+        usersAPI.follow(u.userId, u.id).then((response) => {
             if (response.data.resultCode == 0) {
                 props.follow(u.id)
             }
-            toggleIsFollowingProgress(false, u.id);
+            props.toggleIsFollowingProgress(false, u.id);
         });
+    }
 
+    const unFollowHandler = (u:any) => {
+        props.toggleIsFollowingProgress(true, u.id);
+        usersAPI.unfollow(u.userId, u.id).then((response) => {
+            if (response.data.resultCode == 0) {
+                props.follow(u.id)
+            }
+            props.toggleIsFollowingProgress(false, u.id);
+        });
 
     }
 
@@ -86,10 +75,10 @@ export const Users = (props: UsersType) => {
     </div>
     <div>
     {u.followed ?
-        <button disabled={props.toggleIsFollowingProgress.some(id=> id === u.id)}  onClick={unFollowHandler}>UnFollow</button>
+        <button disabled={props.toggleIsFollowingProgress.some((id: string) => id === u.id)}  onClick={unFollowHandler}>UnFollow</button>
 
 
-        : <button disabled={props.toggleIsFollowingProgress.some(id=> id === u.id)} onClick={followHandler}>Follow</button>
+        : <button disabled={props.toggleIsFollowingProgress.some((id: string)=> id === u.id)} onClick={followHandler}>Follow</button>
 
     }
         </div>
