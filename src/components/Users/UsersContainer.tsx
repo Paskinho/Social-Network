@@ -12,9 +12,9 @@ import {AppStateType} from "../../redux/redux-store";
 import { Dispatch } from "redux";
 import {Users} from "./Users";
 import axios from "axios";
-
 import {Preloader} from "../common/Preloader/Preloader";
 import { usersAPI} from "../../api/api";
+
 
 
 
@@ -23,7 +23,7 @@ import { usersAPI} from "../../api/api";
 
     componentDidMount() {
 
-        this.props.getUsersThunkCreator
+        this.props.getUsersThunkCreator(this.props.currentPage,this.props.pageSize);
 
         // this.props.toggleIsFetching(true)
         // usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then((data) => {
@@ -37,12 +37,7 @@ import { usersAPI} from "../../api/api";
     // showMore = () => this.props.showMore()
 
     onPageChanged = (pageNumber: number) => {
-        this.props.toggleIsFetching(true)
-        this.props.setCurrentPage(pageNumber);
-        usersAPI.getUsers(pageNumber, this.props.pageSize)
-            .then((data) => {
-            this.props.toggleIsFetching(false)
-            this.props.setUsers(data.items);})
+        this.props.getUsersThunkCreator(pageNumber, this.props.pageSize)
     }
 
     render() {
@@ -121,10 +116,11 @@ return {
 export default connect(mapStateToProps, {
     follow: follow,
     unfollow: unfollow,
-    setUsers: setUsers,
     setCurrentPage: setCurrentPage,
-    setTotalUsersCount: setTotalUsersCount,
-    toggleIsFetching: toggleIsFetching,
     toggleIsFollowingProgress,
-    getUsersThunkCreator
-})(UsersContainer)
+    getUsers: getUsersThunkCreator,
+})(UsersContainer);
+
+
+
+

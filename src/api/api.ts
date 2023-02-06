@@ -15,6 +15,17 @@ export const usersAPI = {
         return instance.get( `users?page=${currentPage}$count=${pageSize}`,
         )
             .then(response => response.data);
+    },
+    follow(userId: string) {
+
+    },
+    unfollow(userId: string, u: any) {
+        return axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
+            withCredentials: true,
+            headers: {
+                "API-KEY": "b1775b2f-c3a5-4509-8dc9-90b5629de7c3"
+            }
+        })
     }
 }
 
