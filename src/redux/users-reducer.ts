@@ -1,5 +1,6 @@
 import {v1} from "uuid";
 import {profilePageType} from "./profile-reducer";
+import {usersAPI} from "../api/api";
 
 
 
@@ -43,6 +44,7 @@ export const toggleIsFetching = (isFetching: boolean) => (
 export const toggleIsFollowingProgress = (followingIsProgress: boolean, userId: number) => (
     {type: 'TOGGLE_IS_FOLLOWING_PROGRESS', payload: followingIsProgress, userId} as const
 )
+
 
 type FollowType = ReturnType<typeof follow>
 type UnfollowType = ReturnType<typeof unfollow>
@@ -117,5 +119,18 @@ export const usersReducer = (state:InitialStateType = initialState, action: User
     }
 
 }
+
+export const getusersThunk = (dispatch: any) => {
+    this.props.toggleIsFetching(true)
+
+    usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then((data) => {
+        this.props.toggleIsFetching(false)
+        this.props.setUsers(data.items)
+        this.props.setTotalUsersCount(data.totalCount)
+    })
+}
+
+
+
 
 

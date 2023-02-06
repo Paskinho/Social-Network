@@ -21,8 +21,8 @@ import { usersAPI} from "../../api/api";
 
  class UsersContainer extends Component<UsersPropsType> {
 
-
     componentDidMount() {
+
         this.props.toggleIsFetching(true)
         usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then((data) => {
             this.props.toggleIsFetching(false)
