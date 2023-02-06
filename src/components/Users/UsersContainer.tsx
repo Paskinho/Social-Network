@@ -3,8 +3,7 @@ import {connect} from "react-redux";
 import {
     follow, getUsersThunkCreator,
     InitialStateType,
-    setCurrentPage, setTotalUsersCount,
-    setUsers, toggleIsFetching, toggleIsFollowingProgress,
+    setCurrentPage, toggleIsFollowingProgress,
     unfollow,
     UserType
 } from "../../redux/users-reducer";
@@ -50,7 +49,7 @@ import { usersAPI} from "../../api/api";
                       follow={this.props.unfollow}
                       onPageChanged={this.onPageChanged}
                       usersPage={this.props.usersPage}
-              // toggleIsFollowingProgress={[]}//захардкоженное значение НУЖНО УТОЧНИТЬ!!!!
+              toggleIsFollowingProgress={[]}//захардкоженное значение НУЖНО УТОЧНИТЬ!!!!
         />
 </>
        }
