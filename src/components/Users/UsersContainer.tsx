@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {
-    follow,
+    follow, getUsersThunkCreator,
     InitialStateType,
     setCurrentPage, setTotalUsersCount,
     setUsers, toggleIsFetching, toggleIsFollowingProgress,
@@ -23,12 +23,14 @@ import { usersAPI} from "../../api/api";
 
     componentDidMount() {
 
-        this.props.toggleIsFetching(true)
-        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then((data) => {
-            this.props.toggleIsFetching(false)
-            this.props.setUsers(data.items)
-            this.props.setTotalUsersCount(data.totalCount)
-        })
+        this.props.getUsersThunkCreator
+
+        // this.props.toggleIsFetching(true)
+        // usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then((data) => {
+        //     this.props.toggleIsFetching(false)
+        //     this.props.setUsers(data.items)
+        //     this.props.setTotalUsersCount(data.totalCount)
+        // })
 
     }
 
@@ -75,6 +77,7 @@ type MapDispatchToPropsType = {
     setCurrentPage: (p: number)=> void
     setTotalUsersCount:(count: number) => void
     toggleIsFetching: (isFetching: boolean) => void
+    getUsersThunkCreator: (currentPage: number, pageSize: number) => void
 
 }
 
@@ -122,5 +125,6 @@ export default connect(mapStateToProps, {
     setCurrentPage: setCurrentPage,
     setTotalUsersCount: setTotalUsersCount,
     toggleIsFetching: toggleIsFetching,
-    toggleIsFollowingProgress
+    toggleIsFollowingProgress,
+    getUsersThunkCreator
 })(UsersContainer)

@@ -45,6 +45,23 @@ export const toggleIsFollowingProgress = (followingIsProgress: boolean, userId: 
     {type: 'TOGGLE_IS_FOLLOWING_PROGRESS', payload: followingIsProgress, userId} as const
 )
 
+export const getUsersThunkCreator = (props: getUsersThunkCreatorPropsType) => {
+
+    return (dispatch: any) => {
+        dispatch (toggleIsFetching(true));
+
+        usersAPI.getUsers(props.currentPage, props.pageSize).then((data) => {
+            dispatch (toggleIsFetching(false))
+            dispatch (setUsers(data.items))
+            dispatch (setTotalUsersCount(data.totalCount))
+        })
+    }}
+
+type getUsersThunkCreatorPropsType = {
+    currentPage: number,
+    pageSize: number
+}
+
 
 type FollowType = ReturnType<typeof follow>
 type UnfollowType = ReturnType<typeof unfollow>
@@ -53,6 +70,7 @@ type SetCurrentPageType = ReturnType<typeof setCurrentPage>
 type SetTotalUsersCountType = ReturnType<typeof setTotalUsersCount>
 type ToggleIsFetchingType = ReturnType<typeof toggleIsFetching>
 type ToggleIsFollowingProgressType = ReturnType<typeof toggleIsFollowingProgress>
+
 
 type UsersActionsTypes = FollowType | UnfollowType | SetUsersType | SetCurrentPageType | SetTotalUsersCountType | ToggleIsFetchingType | ToggleIsFollowingProgressType
 
@@ -120,23 +138,8 @@ export const usersReducer = (state:InitialStateType = initialState, action: User
 
 }
 
-type getUsersThunkCreatorPropsType = {
-    currentPage: number,
-    pageSize: number
-}
 
 
-export const getUsersThunkCreator = (props: getUsersThunkCreatorPropsType) => {
-
- return (dispatch: any) => {
-    dispatch (toggleIsFetching(true));
-
-    usersAPI.getUsers(props.currentPage, props.pageSize).then((data) => {
-        dispatch (toggleIsFetching(false))
-        dispatch (setUsers(data.items))
-        dispatch (setTotalUsersCount(data.totalCount))
-    })
-}}
 
 
 
