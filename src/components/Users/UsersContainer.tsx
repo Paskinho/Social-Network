@@ -68,10 +68,7 @@ type MapStateToPropsType = {
 type MapDispatchToPropsType = {
     follow: (userId: string)=> void
     unfollow: (userId: string) => void
-    setUsers: (users: Array<UserType>)=> void
     setCurrentPage: (p: number)=> void
-    setTotalUsersCount:(count: number) => void
-    toggleIsFetching: (isFetching: boolean) => void
     getUsersThunkCreator: (currentPage: number, pageSize: number) => void
 
 }

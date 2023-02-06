@@ -16,16 +16,13 @@ export const usersAPI = {
         )
             .then(response => response.data);
     },
-    follow(userId: string) {
-
+    follow(userId: string, u: any) {
+        return instance.post(`https://social-network.samuraijs.com/api/1.0/unfollow/${u.id}`,
+        )
     },
     unfollow(userId: string, u: any) {
-        return axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
-            withCredentials: true,
-            headers: {
-                "API-KEY": "b1775b2f-c3a5-4509-8dc9-90b5629de7c3"
-            }
-        })
+        return instance.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
+        )
     }
 }
 
