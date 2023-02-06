@@ -64,9 +64,9 @@ export const follow = (userId: any) => { // уточнить по типизац
         dispatch(toggleIsFollowingProgress(true, userId));
         usersAPI.follow(userId).then((response) => {
             if (response.data.resultCode == 0) {
-                follow(userId)
+                dispatch(followSuccess(userId))
             }
-            toggleIsFollowingProgress(false, userId);
+            dispatch(toggleIsFollowingProgress(false, userId));
         });
     }}
 
@@ -77,9 +77,9 @@ export const unfollow = (userId: any) => { // уточнить по типиза
         dispatch(toggleIsFollowingProgress(true, userId));
         usersAPI.unfollow(userId).then((response) => {
             if (response.data.resultCode == 0) {
-                follow(userId)
+                dispatch(unfollowSuccess(userId))
             }
-            toggleIsFollowingProgress(false, userId);
+            dispatch(toggleIsFollowingProgress(false, userId));
         });
     }}
 
