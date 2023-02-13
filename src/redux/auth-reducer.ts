@@ -1,5 +1,6 @@
 import {v1} from "uuid";
 import {profilePageType} from "./profile-reducer";
+import {authAPI} from "../api/api";
 
 
 
@@ -61,3 +62,11 @@ type setUserDataACType = ReturnType<typeof setAuthUserData>
 export const setAuthUserData = (data: InitialStateType) => (
     {type: "SET_USER_DATA",  payload: data} as const)
 
+export const getAuthUserData = () => (dispatch: any)  => {
+    authAPI.me()
+        .then((response) => {
+            if (response.data.resultCode === 0) {
+                dispatch (setAuthUserData(response.data.data.login))
+            }
+        })
+}

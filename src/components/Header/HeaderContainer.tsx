@@ -3,7 +3,7 @@ import s from './Header.module.css'
 
 import {Header} from "./Header";
 import {connect} from "react-redux";
-import {setAuthUserData} from "../../redux/auth-reducer";
+import {getAuthUserData} from "../../redux/auth-reducer";
 import {AppStateType} from "../../redux/redux-store";
 import {authAPI} from "../../api/api";
 
@@ -13,12 +13,8 @@ import {authAPI} from "../../api/api";
 class HeaderContainer extends React.Component<HeaderContainerType> {
     componentDidMount() {
         // this.props.toggleIsFetching(true)
-        authAPI.me()
-            .then((response) => {
-            if (response.data.resultCode === 0) {
-                this.props.setAuthUserData(response.data.data.login)
-            }
-        })}
+       this.props.getAuthUserData();
+    }
 
     render () {
     return <Header {...this.props}/>
@@ -44,10 +40,10 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
 type MapDispatchToPropsType = typeof mapDispatchToProps
 
 const mapDispatchToProps = {
-    setAuthUserData
+    getAuthUserData
 }
 
 type HeaderContainerType= MapStateToPropsType & MapDispatchToPropsType
 
 
-export default connect (mapStateToProps, {setAuthUserData}) (HeaderContainer);
+export default connect (mapStateToProps, {getAuthUserData}) (HeaderContainer);
