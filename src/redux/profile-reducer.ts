@@ -1,3 +1,4 @@
+import {usersAPI} from "../api/api";
 
 
 export type addPostCreatorType = ReturnType<typeof addPostCreator>
@@ -95,20 +96,21 @@ export const addPostCreator = () => {
         type: "ADD_POST"
     } as const
 }
-
-
 export const updateNewPostTextCreator = (newText: string) => {
     return {
         type: "UPDATE_NEW_POST_TEXT",
         newText: newText
     } as const
 }
-
 export const setUserProfileCreator = (profile: string) => {
-
     return {
         type: "SET_USER_PROFILE",
         profile: profile
     } as const
 
+}
+export const getUserProfile = (userId: string) => (dispatch: any) => {
+    usersAPI.getProfile(userId).then((response) => {
+        dispatch(setUserProfileCreator(response.data))
+    })
 }

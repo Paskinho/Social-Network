@@ -4,7 +4,7 @@ import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
 import {Profile} from "./Profile";
 import axios from "axios";
 import {connect} from "react-redux";
-import {ServerProfileType, setUserProfileCreator} from "../../redux/profile-reducer";
+import {getUserProfile, ServerProfileType, setUserProfileCreator} from "../../redux/profile-reducer";
 import {AppStateType} from "../../redux/redux-store";
 import { useParams } from 'react-router-dom';
 import {usersAPI} from "../../api/api";
@@ -39,9 +39,7 @@ type PathParamsType = {
             userId = this.props.userId;
         }
 
-usersAPI.getProfile(userId).then((response) => {
-            this.props.setUserProfileCreator(response.data)
-        })
+this.props.getUserProfile(userId);
 
     }
 
@@ -59,7 +57,7 @@ type MapStateType = {
     profile: ServerProfileType | null
 }
 const actions = {
-    setUserProfileCreator
+    getUserProfile
 }
 
 type MapDispatchType = typeof actions
@@ -74,4 +72,4 @@ export type ProfileType = MapStateType
 
 const WithUrlDataContainerComponent = withRouter(ProfileContainer)
 
-export default connect(mapStateToProps, {setUserProfileCreator} ) (WithUrlDataContainerComponent)
+export default connect(mapStateToProps, {getUserProfile} ) (WithUrlDataContainerComponent)
