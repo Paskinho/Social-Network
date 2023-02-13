@@ -7,6 +7,7 @@ import {connect} from "react-redux";
 import {ServerProfileType, setUserProfileCreator} from "../../redux/profile-reducer";
 import {AppStateType} from "../../redux/redux-store";
 import { useParams } from 'react-router-dom';
+import {usersAPI} from "../../api/api";
 
 // type withRouterType = {
 //     Children: string
@@ -26,13 +27,12 @@ export function withRouter(Children:any) {
 
     componentDidMount() {
 
-        // let userId = this.props.match.params.userId;
-        // if(!userId) {
-        //     userId = 2;
-        // }
+        let userId = this.props.match.params.userId;
+        if(!userId) {
+            userId = 2;
+        }
 
-
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/userId`).then((response) => {
+usersAPI.getProfile(userId).then((response) => {
             this.props.setUserProfileCreator(response.data)
         })
 
