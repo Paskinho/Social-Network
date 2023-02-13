@@ -23,12 +23,15 @@ export function withRouter(Children:any) {
 
     class ProfileContainer extends React.Component<ProfileContainerType>{
 
- //    let userId = this.props.match.params.userId;
- //    if(!userId) {
- //        userId = ;
- // }
 
     componentDidMount() {
+
+        // let userId = this.props.match.params.userId;
+        // if(!userId) {
+        //     userId = 2;
+        // }
+
+
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/userId`).then((response) => {
             this.props.setUserProfileCreator(response.data)
         })

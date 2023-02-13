@@ -23,6 +23,9 @@ export const usersAPI = {
     unfollow(userId: string) {
         return instance.delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`,
         )
+    },
+    getProfile(userId: string) {
+        return axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId);
     }
 }
 
