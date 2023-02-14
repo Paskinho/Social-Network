@@ -8,6 +8,7 @@ import {getUserProfile, ServerProfileType, setUserProfileCreator} from "../../re
 import {AppStateType} from "../../redux/redux-store";
 import { useParams } from 'react-router-dom';
 import {usersAPI} from "../../api/api";
+import {Redirect} from "@reach/router";
 
 
 // type withRouterType = {
@@ -44,6 +45,8 @@ this.props.getUserProfile(userId);
     }
 
     render () {
+        if (this.props.isAuth) return <Redirect to='./login'/>
+
     return (
         <Profile profile={this.props.profile}/>
     )
@@ -55,6 +58,7 @@ this.props.getUserProfile(userId);
 
 type MapStateType = {
     profile: ServerProfileType | null
+    isAuth: boolean
 }
 const actions = {
     getUserProfile
@@ -63,7 +67,8 @@ const actions = {
 type MapDispatchType = typeof actions
 
 let mapStateToProps = (state: AppStateType) => ({
-    profile: state.profileReducer.profile
+    profile: state.profileReducer.profile,
+    isAuth: state.authReducer.isAuth
 })
 
 
