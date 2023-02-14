@@ -18,18 +18,11 @@ import { usersAPI} from "../../api/api";
 
 
 
- class UsersContainer extends Component<UsersPropsType> {
+ class UsersAPIComponent extends Component<UsersPropsType> {
 
     componentDidMount() {
 
         this.props.getUsersThunkCreator(this.props.currentPage,this.props.pageSize);
-
-        // this.props.toggleIsFetching(true)
-        // usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then((data) => {
-        //     this.props.toggleIsFetching(false)
-        //     this.props.setUsers(data.items)
-        //     this.props.setTotalUsersCount(data.totalCount)
-        // })
 
     }
 
@@ -49,7 +42,7 @@ import { usersAPI} from "../../api/api";
                       follow={this.props.unfollow}
                       onPageChanged={this.onPageChanged}
                       usersPage={this.props.usersPage}
-              toggleIsFollowingProgress={[]}//захардкоженное значение НУЖНО УТОЧНИТЬ!!!!
+              toggleIsFollowingProgress={this.props.isFetching}//захардкоженное значение НУЖНО УТОЧНИТЬ!!!!
         />
 </>
        }
@@ -81,43 +74,18 @@ return {
     pageSize: state.users.pageSize,
     totalUsersCount: state.users.totalUsersCount,
     currentPage: state.users.currentPage,
-    isFetching: state.users.isFetching
+    isFetching: state.users.isFetching,
 }
 }
 
-
-//
-// const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToPropsType => {
-// return {
-//     follow: (userId: string) => {
-//         dispatch(followAC(userId))
-//     },
-//     unfollow: (userId: string) => {
-//         dispatch(unfollowAC(userId))
-//     },
-//     setUsers: (users: Array<UserType>)  => {
-//         dispatch(setUsersAC(users))
-//     },
-//     setCurrentPage: (pageNumber:number)=> {
-//         dispatch(setCurrentPageAC(pageNumber))
-//     },
-//     setTotalUsersCount: (totalCount:number)=> {
-//         dispatch(setTotalUsersCountAC(totalCount))
-//     },
-//     toggleIsFetching: (isFetching: boolean) => {
-//         dispatch(toggleIsFetchingAC(isFetching))
-//     }
-// }
-// }
-
-export default connect(mapStateToProps, {
+const UsersContainer = connect(mapStateToProps, {
     follow: follow,
     unfollow: unfollow,
     setCurrentPage: setCurrentPage,
     toggleIsFollowingProgress,
     getUsers: getUsersThunkCreator,
-})(UsersContainer);
+})(UsersAPIComponent);
 
-
+export default UsersContainer
 
 

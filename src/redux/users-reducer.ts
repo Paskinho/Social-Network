@@ -84,7 +84,7 @@ export const unfollow = (userId: any) => { // уточнить по типиза
     }}
 
 
-type getUsersThunkCreatorPropsType = {
+export type getUsersThunkCreatorPropsType = {
     currentPage: number,
     pageSize: number
 }
