@@ -11,6 +11,7 @@ import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import {Login} from "./components/Login/Login";
+import {getUsersThunkCreator} from "./redux/users-reducer";
 
 //
 // export  type appPropsType = {
@@ -36,7 +37,7 @@ const App: React.FC = () => {
                         <Route path='/news' element={<News/>}/>
                         <Route path='/music' element={<Music/>}/>
                         <Route path='/settings' element={<Settings/>}/>
-                        <Route path='/users' element={<UsersContainer/>}/>
+                        <Route path='/users' element={<UsersContainer />}/>
                         <Route path='/login' element={<Login/>}/>
                     </Routes>
                 </div>

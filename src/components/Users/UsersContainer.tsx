@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {
     follow, getUsersThunkCreator,
     InitialStateType,
-    setCurrentPage, toggleIsFollowingProgress,
+    setCurrentPage, setUsers, toggleIsFollowingProgress,
     unfollow,
     UserType
 } from "../../redux/users-reducer";
@@ -83,6 +83,7 @@ const UsersContainer = connect(mapStateToProps, {
     unfollow: unfollow,
     setCurrentPage: setCurrentPage,
     toggleIsFollowingProgress,
+    setUsers: setUsers,
     getUsers: getUsersThunkCreator,
 })(UsersAPIComponent);
 
