@@ -48,7 +48,8 @@ this.props.getUserProfile(userId);
         if (this.props.isAuth) return <Redirect to='./login'/>
 
     return (
-        <Profile profile={this.props.profile}/>
+        <Profile profile={this.props.profile}
+        isAuth={this.props.isAuth}/>// уточнить по isAuth
     )
     }
 }

@@ -10,7 +10,8 @@ import {ProfileType} from "./ProfileContainer";
 export const Profile: React.FC<ProfileType>= (props) => {
     return (
         <div>
-            <ProfileInfo profile={props.profile}/>
+            <ProfileInfo profile={props.profile}
+            isAuth={props.isAuth}/> // уточнить по isAuth
            <MyPostsContainer/>
         </div>
     )
