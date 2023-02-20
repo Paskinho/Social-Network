@@ -9,6 +9,7 @@ import {AppStateType} from "../../redux/redux-store";
 import { useParams } from 'react-router-dom';
 import {usersAPI} from "../../api/api";
 import {Redirect} from "@reach/router";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 
 // type withRouterType = {
@@ -70,10 +71,7 @@ type MapDispatchType = typeof actions
 // }
 
 
-let AuthRedirectComponent = (props: any ) => {
-    if (!this.props.isAuth) return <Redirect to='./login'/>
-    return <ProfileContainer {...props}/>
-}
+let AuthRedirectComponent = withAuthRedirect(ProfileContainer)
 
 
 let mapStateToProps = (state: AppStateType) => ({
