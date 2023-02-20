@@ -45,8 +45,6 @@ this.props.getUserProfile(userId);
     }
 
     render () {
-        if (this.props.isAuth) return <Redirect to='./login'/>
-
     return (
         <Profile profile={this.props.profile}
         isAuth={this.props.isAuth}/>// уточнить по isAuth
@@ -67,6 +65,17 @@ const actions = {
 
 type MapDispatchType = typeof actions
 
+// type AuthRedirectComponentType = {
+//
+// }
+
+
+let AuthRedirectComponent = (props: any ) => {
+    if (!this.props.isAuth) return <Redirect to='./login'/>
+    return <ProfileContainer {...props}/>
+}
+
+
 let mapStateToProps = (state: AppStateType) => ({
     profile: state.profileReducer.profile,
     isAuth: state.authReducer.isAuth
@@ -76,6 +85,6 @@ let mapStateToProps = (state: AppStateType) => ({
 
 export type ProfileType = MapStateType
 
-const WithUrlDataContainerComponent = withRouter(ProfileContainer)
+const WithUrlDataContainerComponent = withRouter(AuthRedirectComponent)
 
 export default connect(mapStateToProps, {getUserProfile} ) (WithUrlDataContainerComponent)
