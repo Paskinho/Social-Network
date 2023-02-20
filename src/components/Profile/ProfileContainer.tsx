@@ -36,9 +36,9 @@ type PathParamsType = {
 
     componentDidMount() {
 
-        let userId = this.props.profile.userId; //this.props.match.params.userId
+        let userId = this.props.userId; //this.props.match.params.userId
         if(!userId) {
-            userId = this.props.profile.userId;
+            userId = this.props.userId;
         }
 
 this.props.getUserProfile(userId);
@@ -49,7 +49,7 @@ this.props.getUserProfile(userId);
     return (
         <Profile
             profile={this.props.profile}
-        isAuth={this.props.isAuth}/>// уточнить по isAuth
+        />// уточнить по isAuth
     )
     }
 }

@@ -46,4 +46,5 @@ const mapDispatchToProps = {
 type HeaderContainerType= MapStateToPropsType & MapDispatchToPropsType
 
 
+// @ts-ignore
 export default connect (mapStateToProps, {getAuthUserData}) (HeaderContainer);

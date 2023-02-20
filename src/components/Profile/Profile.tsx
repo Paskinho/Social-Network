@@ -11,7 +11,8 @@ export const Profile: React.FC<ProfileType>= (props) => {
     return (
         <div>
             <ProfileInfo profile={props.profile}
-            isAuth={props.isAuth}/> // уточнить по isAuth
+            // isAuth={props.isAuth} // уточнить по isAuth
+            />
            <MyPostsContainer/>
         </div>
     )

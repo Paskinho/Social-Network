@@ -37,7 +37,7 @@ const App: React.FC = () => {
                         <Route path='/news' element={<News/>}/>
                         <Route path='/music' element={<Music/>}/>
                         <Route path='/settings' element={<Settings/>}/>
-                        <Route path='/users' element={<UsersContainer />}/>
+                        <Route path='/users' element={<UsersContainer/>}/>
                         <Route path='/login' element={<Login/>}/>
                     </Routes>
                 </div>
