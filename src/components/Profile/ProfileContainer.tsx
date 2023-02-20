@@ -36,9 +36,9 @@ type PathParamsType = {
 
     componentDidMount() {
 
-        let userId = this.props.userId; //this.props.match.params.userId
+        let userId = this.props.profile.userId; //this.props.match.params.userId
         if(!userId) {
-            userId = this.props.userId;
+            userId = this.props.profile.userId;
         }
 
 this.props.getUserProfile(userId);
@@ -47,7 +47,8 @@ this.props.getUserProfile(userId);
 
     render () {
     return (
-        <Profile profile={this.props.profile}
+        <Profile
+            profile={this.props.profile}
         isAuth={this.props.isAuth}/>// уточнить по isAuth
     )
     }
@@ -55,7 +56,6 @@ this.props.getUserProfile(userId);
 
 type MapStateType = {
     profile: ServerProfileType | null
-    isAuth: boolean
 }
 const actions = {
     getUserProfile
