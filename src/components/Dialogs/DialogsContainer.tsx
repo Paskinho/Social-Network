@@ -21,10 +21,10 @@ type MapDispatchPropsType = {
 }
 
 
-const mapStateToProps = (state: AppStateType): MapStatePropsType => {
+let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
         dialogsState: state.dialogsReducer, // state.dialogsPage
-        isAuth: state.authReducer.isAuth
+        // isAuth: state.authReducer.isAuth
     }
 }
 

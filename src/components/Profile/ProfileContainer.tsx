@@ -70,11 +70,6 @@ type MapDispatchType = typeof actions
 
 let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
 
-let mapStateToPropsRedirect = (state: any) => {
-    isAuth: state.auth.isAuth
-};
-
-AuthRedirectComponent = connect(mapStateToPropsRedirect)(AuthRedirectComponent)
 
 
 let mapStateToProps = (state: AppStateType) => ({
