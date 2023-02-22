@@ -88,7 +88,7 @@ const UsersContainer = connect(mapStateToProps, {
     getUsers: getUsersThunkCreator,
 })(UsersAPIComponent);
 
-export default compose(withAuthRedirect,
+export default compose<React.ComponentType>(withAuthRedirect,
     connect(mapStateToProps, {
         follow: follow,
         unfollow: unfollow,

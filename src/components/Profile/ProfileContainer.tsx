@@ -85,7 +85,7 @@ export type ProfileType = MapStateType
 
 // const WithUrlDataContainerComponent = withRouter(AuthRedirectComponent)
 
-export default compose(
+export default compose<React.ComponentType>(
     connect(mapStateToProps, {getUserProfile}),
     withRouter,
     withAuthRedirect
