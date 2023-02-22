@@ -8,11 +8,12 @@ import {
     UserType
 } from "../../redux/users-reducer";
 import {AppStateType} from "../../redux/redux-store";
-import { Dispatch } from "redux";
+import {compose, Dispatch} from "redux";
 import {Users} from "./Users";
 import axios from "axios";
 import {Preloader} from "../common/Preloader/Preloader";
 import { usersAPI} from "../../api/api";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 
 
@@ -87,6 +88,14 @@ const UsersContainer = connect(mapStateToProps, {
     getUsers: getUsersThunkCreator,
 })(UsersAPIComponent);
 
-export default UsersContainer
+export default compose(withAuthRedirect,
+    connect(mapStateToProps, {
+        follow: follow,
+        unfollow: unfollow,
+        setCurrentPage: setCurrentPage,
+        toggleIsFollowingProgress,
+        setUsers: setUsers,
+        getUsers: getUsersThunkCreator}
+    ))(UsersContainer);
 
 
