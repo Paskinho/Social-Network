@@ -10,6 +10,7 @@ import { useParams } from 'react-router-dom';
 import {usersAPI} from "../../api/api";
 import {Redirect} from "@reach/router";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 
 // type withRouterType = {
@@ -68,7 +69,7 @@ type MapDispatchType = typeof actions
 // }
 
 
-let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
+// let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
 
 
 
@@ -79,8 +80,13 @@ let mapStateToProps = (state: AppStateType) => ({
 
 
 
+
 export type ProfileType = MapStateType
 
-const WithUrlDataContainerComponent = withRouter(AuthRedirectComponent)
+// const WithUrlDataContainerComponent = withRouter(AuthRedirectComponent)
 
-export default connect(mapStateToProps, {getUserProfile} ) (WithUrlDataContainerComponent)
+export default compose(
+    connect(mapStateToProps, {getUserProfile}),
+    withRouter,
+    withAuthRedirect
+)(ProfileContainer);
