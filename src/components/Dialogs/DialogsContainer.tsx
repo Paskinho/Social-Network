@@ -52,5 +52,5 @@ export type DialogsPropsType = MapStatePropsType & MapDispatchPropsType
 
  export default compose<React.ComponentType>
 (connect (mapStateToProps,mapDispatchToProps),
-    (withAuthRedirect)(Dialogs))
+    withAuthRedirect)(Dialogs)
 ;
