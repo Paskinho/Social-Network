@@ -7,16 +7,17 @@ type ProfileStatusType = {
     status: string
 }
 
-export const ProfileStatus: React.FC<ProfileStatusType>= (props) => {
-
+class ProfileStatus extends React.Component<ProfileStatusType>  {
+render() {
     return (
-        <>
         <div>
-<span>{props.status}</span>
+        <div>
+<span>{this.props.status}</span>
         </div>
             <div>
-                <input value={props.status}/>
+                <input value={this.props.status}/>
             </div>
-        </>
+        </div>
     )
+}
 }
