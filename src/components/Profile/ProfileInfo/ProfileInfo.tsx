@@ -19,7 +19,7 @@ export const ProfileInfo: React.FC<ProfileType>= (props) => {
                 <img src={props.profile.photos.large}/>
             </div>
             <div>
-               <ProfileStatus/>
+               <ProfileStatus status={"Hello!"}/>
             </div>
         </div>
 )
