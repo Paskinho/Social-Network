@@ -19,6 +19,11 @@ class ProfileStatus extends React.Component<ProfileStatusType>  {
         })
     }
 
+    deActivateMode () {
+        this.setState({
+            EditMode: false
+        })
+    }
 
 render() {
     return (
@@ -31,11 +36,10 @@ render() {
             }
             {this.state.EditMode &&
             <div>
-                <input value={this.props.status}/>
+                <input autoFocus={true} onBlur={this.deActivateMode.bind(this)} value={this.props.status}/>
             </div>
             }
         </div>
-
     )
 }
 }
