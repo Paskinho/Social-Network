@@ -133,8 +133,15 @@ export const getUserProfile = (userId: string) => (dispatch: any) => {
     })
 }
 
-export const getStatus = (status: string) => (dispatch: any) => {
-    profileAPI.getProfile(status).then((response) => {
+export const getStatus = (userId: string) => (dispatch: any) => {
+    profileAPI.getStatus(userId).then((response) => {
         dispatch(setStatusCreator(response.data))
     })
+}
+
+export const updateStatus = (status: string) => (dispatch: any) => {
+    profileAPI.updateStatus(status).then((response) => {
+        if (response.data.resultCode === 0) {
+        dispatch(setStatusCreator(status))
+        }})
 }

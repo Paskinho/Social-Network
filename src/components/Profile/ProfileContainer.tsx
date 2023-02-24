@@ -1,15 +1,15 @@
-import React, { ComponentType} from 'react';
-import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
-import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
+import React, {ComponentType} from 'react';
 import {Profile} from "./Profile";
-import axios from "axios";
 import {connect} from "react-redux";
-import {getStatus, getUserProfile, ServerProfileType, setUserProfileCreator} from "../../redux/profile-reducer";
+import {
+    getStatus,
+    getUserProfile,
+    ServerProfileType,
+    setUserProfileCreator,
+    updateStatus
+} from "../../redux/profile-reducer";
 import {AppStateType} from "../../redux/redux-store";
-import { useParams } from 'react-router-dom';
-import {usersAPI} from "../../api/api";
-import {Redirect} from "@reach/router";
-import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {useParams} from 'react-router-dom';
 import {compose} from "redux";
 
 
@@ -18,7 +18,7 @@ import {compose} from "redux";
 //
 // }
 
-export function withRouter(Children:any) {
+export function withRouter(Children: any) {
     return (props: any) => {
 
         const match = {params: useParams()};
@@ -32,26 +32,26 @@ type PathParamsType = {
     userId: string
 }
 
-    class ProfileContainer extends React.Component<ProfileContainerType>{
+class ProfileContainer extends React.Component<ProfileContainerType> {
 
     componentDidMount() {
 
         let userId = this.props.userId; //this.props.match.params.userId
-        if(!userId) {
+        if (!userId) {
             userId = this.props.userId;
         }
 
-this.props.getUserProfile(userId);
+        this.props.getUserProfile(userId);
         this.props.getStatus(userId)
 
     }
 
-    render () {
-    return (
-        <Profile
-            profile={this.props.profile}
-        />// уточнить по isAuth
-    )
+    render() {
+        return (
+            <Profile
+                profile={this.props.profile}
+            />// уточнить по isAuth
+        )
     }
 }
 
@@ -73,7 +73,7 @@ type MapDispatchType = typeof actions
 
 let mapStateToProps = (state: AppStateType) => ({
     profile: state.profileReducer.profile,
-    status:state.profileReducer.status
+    status: state.profileReducer.status
 
 })
 
@@ -82,6 +82,6 @@ export type ProfileType = MapStateType
 // const WithUrlDataContainerComponent = withRouter(AuthRedirectComponent)
 
 export default compose<React.ComponentType>(
-    connect(mapStateToProps, {getUserProfile}),
+    connect(mapStateToProps, {getUserProfile, getStatus, updateStatus}),
     withRouter
 )(ProfileContainer);
