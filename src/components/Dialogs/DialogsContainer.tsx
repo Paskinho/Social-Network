@@ -14,12 +14,10 @@ type MapStatePropsType = {
 
 }
 
-
 type MapDispatchPropsType = {
     addMessage: () => void
     onMessage: (message: string) => void
 }
-
 
 let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
@@ -39,8 +37,6 @@ const mapDispatchToProps = (dispatch: Dispatch) : MapDispatchPropsType => {
     }
 }
 //уточнить пропсы
-
-
 
 
 // let AuthRedirectComponent = withAuthRedirect(Dialogs)

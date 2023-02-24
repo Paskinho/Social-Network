@@ -5,9 +5,6 @@ import {ProfileType} from "./ProfileContainer";
 import ProfileStatus from "./ProfileInfo/ProfileStatus";
 
 
-
-
-
 export const Profile: React.FC<ProfileType>= (props) => {
     return (
         <div>
