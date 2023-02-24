@@ -26,7 +26,6 @@ export function withRouter(Children:any) {
     }
 }
 
-
 type ProfileContainerType = MapStateType & MapDispatchType & PathParamsType
 
 type PathParamsType = {
@@ -71,15 +70,10 @@ type MapDispatchType = typeof actions
 
 // let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
 
-
-
 let mapStateToProps = (state: AppStateType) => ({
     profile: state.profileReducer.profile,
     isAuth: state.authReducer.isAuth
 })
-
-
-
 
 export type ProfileType = MapStateType
 

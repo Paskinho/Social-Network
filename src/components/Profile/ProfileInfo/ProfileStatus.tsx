@@ -14,6 +14,7 @@ class ProfileStatus extends React.Component<ProfileStatusType>  {
     }
 
     activateMode = () => {
+        debugger
         this.setState({
             EditMode: true
         })
