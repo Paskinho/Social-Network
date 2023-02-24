@@ -1,4 +1,4 @@
-import {usersAPI} from "../api/api";
+import {profileAPI, usersAPI} from "../api/api";
 
 
 export type addPostCreatorType = ReturnType<typeof addPostCreator>
@@ -7,7 +7,9 @@ export type updateNewPostTextCreatorType = ReturnType<typeof updateNewPostTextCr
 
 export type setUserProfileType = ReturnType<typeof setUserProfileCreator>
 
-export type ProfileActionsType = addPostCreatorType | updateNewPostTextCreatorType | setUserProfileType
+export type setStatusCreatorType = ReturnType<typeof setStatusCreator>
+
+export type ProfileActionsType = addPostCreatorType | updateNewPostTextCreatorType | setUserProfileType | setStatusCreatorType
 
 
 export type PostDataType ={
@@ -50,7 +52,8 @@ const initialState = {
         {title: "This is my first post)", like: 10, id: 2},
     ],
     newPostText: "New message",
-    profile: ''
+    profile: '',
+    status: ''
 };
 
 export type InitialStateType = typeof initialState
@@ -82,6 +85,11 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
                 profile: action.profile
             }
         }
+        case 'SET_STATUS' : {
+            return {...state,
+            status: action.status
+            }
+        }
 
 
         default:
@@ -109,8 +117,24 @@ export const setUserProfileCreator = (profile: string) => {
     } as const
 
 }
+
+export const setStatusCreator = (status: string) => {
+    return {
+        type: "SET_STATUS",
+        status: status
+    } as const
+
+}
+
+
 export const getUserProfile = (userId: string) => (dispatch: any) => {
     usersAPI.getProfile(userId).then((response) => {
         dispatch(setUserProfileCreator(response.data))
+    })
+}
+
+export const getStatus = (status: string) => (dispatch: any) => {
+    profileAPI.getProfile(status).then((response) => {
+        dispatch(setStatusCreator(response.data))
     })
 }

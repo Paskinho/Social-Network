@@ -4,7 +4,7 @@ import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
 import {Profile} from "./Profile";
 import axios from "axios";
 import {connect} from "react-redux";
-import {getUserProfile, ServerProfileType, setUserProfileCreator} from "../../redux/profile-reducer";
+import {getStatus, getUserProfile, ServerProfileType, setUserProfileCreator} from "../../redux/profile-reducer";
 import {AppStateType} from "../../redux/redux-store";
 import { useParams } from 'react-router-dom';
 import {usersAPI} from "../../api/api";
@@ -42,6 +42,7 @@ type PathParamsType = {
         }
 
 this.props.getUserProfile(userId);
+        this.props.getStatus(userId)
 
     }
 
@@ -72,7 +73,8 @@ type MapDispatchType = typeof actions
 
 let mapStateToProps = (state: AppStateType) => ({
     profile: state.profileReducer.profile,
-    isAuth: state.authReducer.isAuth
+    status:state.profileReducer.status
+
 })
 
 export type ProfileType = MapStateType

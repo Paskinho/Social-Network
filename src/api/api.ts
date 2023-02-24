@@ -40,7 +40,7 @@ export const profileAPI = {
         return instance.get(`status/` + userId);
     },
     updateStatus(status: string) {
-        return instance.get(`status/`, {status: status});
+        return instance.put(`status/`, {status: status});
     }
 
 
