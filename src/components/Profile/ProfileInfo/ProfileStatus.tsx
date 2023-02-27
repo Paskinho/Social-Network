@@ -5,12 +5,18 @@ import {ProfileType} from "../ProfileContainer";
 
 type ProfileStatusType = {
     status: string
+    updateStatus: () => void
+
 }
 
 class ProfileStatus extends React.Component<ProfileStatusType>  {
 
+    statusInputRef = React.createRef()
+
     state = {
-        EditMode: false
+        EditMode: false,
+        status: this.props.status// нужно ли
+
     }
 
     activateMode = () => {
@@ -22,7 +28,8 @@ class ProfileStatus extends React.Component<ProfileStatusType>  {
     deActivateMode = () =>  {
         this.setState({
             EditMode: false
-        })
+        });
+        this.props.updateStatus();
     }
 
 render() {
@@ -36,7 +43,7 @@ render() {
             }
             {this.state.EditMode &&
             <div>
-                <input autoFocus={true} onBlur={this.deActivateMode} value={this.props.status}/>
+                <input ref={this.statusInputRef} autoFocus={true} onBlur={this.deActivateMode} value={this.props.status}/>
             </div>
             }
         </div>
