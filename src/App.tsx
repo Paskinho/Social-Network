@@ -31,14 +31,16 @@ const App: React.FC = () => {
                 <Navbar/>
                 <div className="app-wrapper-content">
                     <Routes>
+                        <Route path='/login' element={<Login/>}/>
+                        <Route path='/profile/userId?' element={<ProfileContainer/>}/>
                         <Route path='/dialogs' element={<DialogsContainer/>} // уточнить
                           />
-                        <Route path='/profile/userId?' element={<ProfileContainer/>}/>
+                        <Route path='/users' element={<UsersContainer/>}/>
                         <Route path='/news' element={<News/>}/>
                         <Route path='/music' element={<Music/>}/>
                         <Route path='/settings' element={<Settings/>}/>
-                        <Route path='/users' element={<UsersContainer/>}/>
-                        <Route path='/login' element={<Login/>}/>
+
+
                     </Routes>
                 </div>
 
