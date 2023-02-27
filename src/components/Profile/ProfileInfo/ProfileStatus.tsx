@@ -9,7 +9,7 @@ type ProfileStatusType = {
 
 }
 
-class ProfileStatus extends React.Component<ProfileType>  {
+class ProfileStatus extends React.Component<ProfileType> {
 
     state = {
         EditMode: false,
@@ -22,39 +22,43 @@ class ProfileStatus extends React.Component<ProfileType>  {
         })
     }
 
-    deActivateMode = () =>  {
+    deActivateMode = () => {
         this.setState({
             EditMode: false
         });
         this.props.updateStatus(this.state.status);
     }
 
-    onStatusChange = (e:any) => {
+    onStatusChange = (e: any) => {
         this.setState({
             status: e.currentTarget.value,
         })
     }
 
     componentDidUpdate(prevProps: Readonly<ProfileType>, prevState: Readonly<{}>, snapshot?: any) {
+this.setState({
+    status: this.props.status
+})
     }
 
 
     render() {
-    return (
-        <div>
-            {!this.state.EditMode &&
-        <div>
-<span onDoubleClick={this.activateMode}> {this.props.status || "-----"}</span>
-        </div>
-            }
-            {this.state.EditMode &&
+        return (
             <div>
-                <input onChange={this.onStatusChange} autoFocus={true} onBlur={this.deActivateMode} value={this.state.status}/>
+                {!this.state.EditMode &&
+                    <div>
+                        <span onDoubleClick={this.activateMode}> {this.props.status || "-----"}</span>
+                    </div>
+                }
+                {this.state.EditMode &&
+                    <div>
+                        <input onChange={this.onStatusChange} autoFocus={true} onBlur={this.deActivateMode}
+                               value={this.state.status}/>
+                    </div>
+                }
             </div>
-            }
-        </div>
-    )
-}
+        )
+    }
 }
 
 export default ProfileStatus
