@@ -40,8 +40,7 @@ render() {
         <div>
             {!this.state.EditMode &&
         <div>
-
-<span onDoubleClick={this.activateMode}> {this.props.status}</span>
+<span onDoubleClick={this.activateMode}> {this.props.status || "-----"}</span>
         </div>
             }
             {this.state.EditMode &&

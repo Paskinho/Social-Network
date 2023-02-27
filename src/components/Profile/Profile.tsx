@@ -13,7 +13,7 @@ export const Profile: React.FC<ProfileType>= (props) => {
                          updateStatus={props.updateStatus}
             // isAuth={props.isAuth} // уточнить по isAuth
             />
-            <ProfileStatus status={"Hello!"} updateStatus={() => {}}/> // уточнить
+            <ProfileStatus status={"Hello!"} updateStatus={() => {}}/>
            <MyPostsContainer/>
         </div>
     )
