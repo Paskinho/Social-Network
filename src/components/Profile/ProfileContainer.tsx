@@ -43,7 +43,6 @@ class ProfileContainer extends React.Component<ProfileContainerType> {
 
         this.props.getUserProfile(userId);
         this.props.getStatus(userId)
-
     }
 
     render() {
@@ -59,7 +58,8 @@ type MapStateType = {
     profile: ServerProfileType | null
 }
 const actions = {
-    getUserProfile
+    getUserProfile,
+    getStatus
 }
 
 type MapDispatchType = typeof actions
