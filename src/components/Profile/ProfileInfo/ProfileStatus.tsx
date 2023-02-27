@@ -11,12 +11,9 @@ type ProfileStatusType = {
 
 class ProfileStatus extends React.Component<ProfileStatusType>  {
 
-    statusInputRef = React.createRef()
-
     state = {
         EditMode: false,
-        status: this.props.status// нужно ли
-
+        status: this.props.status
     }
 
     activateMode = () => {
@@ -29,7 +26,13 @@ class ProfileStatus extends React.Component<ProfileStatusType>  {
         this.setState({
             EditMode: false
         });
-        this.props.updateStatus();
+        this.props.updateStatus(this.state.status);
+    }
+
+    onStatusChange = (e:any) => {
+        this.setState({
+            status: e.currentTarget.value,
+        })
     }
 
 render() {
@@ -43,7 +46,7 @@ render() {
             }
             {this.state.EditMode &&
             <div>
-                <input ref={this.statusInputRef} autoFocus={true} onBlur={this.deActivateMode} value={this.props.status}/>
+                <input onChange={this.onStatusChange}autoFocus={true} onBlur={this.deActivateMode} value={this.state.status}/>
             </div>
             }
         </div>

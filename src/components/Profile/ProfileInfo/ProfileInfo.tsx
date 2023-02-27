@@ -3,6 +3,7 @@ import s from './ProfileInfo.module.css'
 import {Preloader} from "../../common/Preloader/Preloader";
 import {ProfileType} from "../ProfileContainer";
 import ProfileStatus from "./ProfileStatus";
+import {updateStatus} from "../../../redux/profile-reducer";
 
 
 export const ProfileInfo: React.FC<ProfileType>= (props) => {
@@ -17,7 +18,7 @@ export const ProfileInfo: React.FC<ProfileType>= (props) => {
         </div>
             <div>
                 <img src={props.profile.photos.large}/>
-                <ProfileStatus status={props.status} updateStatus={()=> {}}/>//уточнить
+                <ProfileStatus status={props.status} updateStatus={()=> {updateStatus()}}/>//уточнить
             </div>
             <div>
 
