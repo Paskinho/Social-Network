@@ -9,6 +9,8 @@ export const Profile: React.FC<ProfileType>= (props) => {
     return (
         <div>
             <ProfileInfo profile={props.profile}
+                         status={props.status}
+                         updateStatus={props.updateStatus}
             // isAuth={props.isAuth} // уточнить по isAuth
             />
             <ProfileStatus status={"Hello!"}/>

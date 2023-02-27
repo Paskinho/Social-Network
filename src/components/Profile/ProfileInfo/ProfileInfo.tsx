@@ -2,6 +2,7 @@ import React from 'react';
 import s from './ProfileInfo.module.css'
 import {Preloader} from "../../common/Preloader/Preloader";
 import {ProfileType} from "../ProfileContainer";
+import ProfileStatus from "./ProfileStatus";
 
 
 export const ProfileInfo: React.FC<ProfileType>= (props) => {
@@ -16,6 +17,7 @@ export const ProfileInfo: React.FC<ProfileType>= (props) => {
         </div>
             <div>
                 <img src={props.profile.photos.large}/>
+                <ProfileStatus status={props.status}/>
             </div>
             <div>
 

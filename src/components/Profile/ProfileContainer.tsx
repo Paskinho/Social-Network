@@ -49,6 +49,8 @@ class ProfileContainer extends React.Component<ProfileContainerType> {
         return (
             <Profile
                 profile={this.props.profile}
+                status={this.props.status}
+                updateStatus={this.props.updateStatus}
             />// уточнить по isAuth
         )
     }
@@ -56,6 +58,8 @@ class ProfileContainer extends React.Component<ProfileContainerType> {
 
 type MapStateType = {
     profile: ServerProfileType | null
+    status: string
+    updateStatus: string
 }
 const actions = {
     getUserProfile,
