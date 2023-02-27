@@ -9,7 +9,7 @@ type ProfileStatusType = {
 
 }
 
-class ProfileStatus extends React.Component<ProfileStatusType>  {
+class ProfileStatus extends React.Component<ProfileType>  {
 
     state = {
         EditMode: false,
@@ -45,7 +45,7 @@ render() {
             }
             {this.state.EditMode &&
             <div>
-                <input onChange={this.onStatusChange}autoFocus={true} onBlur={this.deActivateMode} value={this.state.status}/>
+                <input onChange={this.onStatusChange} autoFocus={true} onBlur={this.deActivateMode} value={this.state.status}/>
             </div>
             }
         </div>

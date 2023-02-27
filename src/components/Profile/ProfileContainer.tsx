@@ -48,9 +48,7 @@ class ProfileContainer extends React.Component<ProfileContainerType> {
     render() {
         return (
             <Profile
-                profile={this.props.profile}
-                status={this.props.status}
-                updateStatus={this.props.updateStatus}
+                {...this.props}
             />// уточнить по isAuth
         )
     }
@@ -59,11 +57,12 @@ class ProfileContainer extends React.Component<ProfileContainerType> {
 type MapStateType = {
     profile: ServerProfileType | null
     status: string
-    updateStatus: string
+
 }
 const actions = {
     getUserProfile,
-    getStatus
+    getStatus,
+    updateStatus
 }
 
 type MapDispatchType = typeof actions
@@ -81,7 +80,7 @@ let mapStateToProps = (state: AppStateType) => ({
 
 })
 
-export type ProfileType = MapStateType
+export type ProfileType = MapStateType & MapDispatchType
 
 // const WithUrlDataContainerComponent = withRouter(AuthRedirectComponent)
 

@@ -18,7 +18,7 @@ export const ProfileInfo: React.FC<ProfileType>= (props) => {
         </div>
             <div>
                 <img src={props.profile.photos.large}/>
-                <ProfileStatus status={props.status} updateStatus={()=> {updateStatus()}}/>//уточнить
+                <ProfileStatus {...props}/>
             </div>
             <div>
 

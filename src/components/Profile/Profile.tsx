@@ -8,12 +8,10 @@ import ProfileStatus from "./ProfileInfo/ProfileStatus";
 export const Profile: React.FC<ProfileType>= (props) => {
     return (
         <div>
-            <ProfileInfo profile={props.profile}
-                         status={props.status}
-                         updateStatus={props.updateStatus}
+            <ProfileInfo {...props}
             // isAuth={props.isAuth} // уточнить по isAuth
             />
-            <ProfileStatus status={"Hello!"} updateStatus={() => {}}/>
+            <ProfileStatus {...props}/>
            <MyPostsContainer/>
         </div>
     )
