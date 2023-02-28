@@ -4,6 +4,7 @@ import {dialogsReducer} from "./dialogs-reducer";
 import {usersReducer} from "./users-reducer";
 import {authReducer} from "./auth-reducer";
 import thunkMiddleware from 'redux-thunk';
+import { reducer as formReducer } from 'redux-form'
 
 export const rootReducer = combineReducers({
     profileReducer, //profilePage: profileReducer
@@ -11,6 +12,7 @@ export const rootReducer = combineReducers({
 // sidebarReducer,
     users: usersReducer,
     authReducer,
+    form: formReducer
 
 })
 
