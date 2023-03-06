@@ -26,11 +26,11 @@ const LoginForm: FC<InjectedFormProps<LoginFormType>> = () => {
 
 const LoginReduxForm = reduxForm ({
      form: 'contact'
-})(ContactForm)
+})(LoginForm)
 
 export const Login = () => {
     return <div>
         <h1>LOGIN</h1>
-        <LoginForm/>
+        <LoginReduxForm/>
     </div>
 }
