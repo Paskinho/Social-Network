@@ -31,6 +31,14 @@ export const usersAPI = {
     }
 }
 
+export type LoginFormType = {
+    email: string
+    password: string
+    rememberMe: boolean
+    captcha?: boolean
+}
+
+
 export const profileAPI = {
 
     getProfile(userId: string) {

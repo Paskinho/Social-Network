@@ -1,8 +1,10 @@
-import React from 'react';
-import {reduxForm} from 'redux-form'
+import React, {FC} from 'react';
+import {InjectedFormProps, reduxForm} from 'redux-form'
+import { LoginFormType } from '../../api/api';
 
 
- const LoginForm = () => {
+
+const LoginForm: FC<InjectedFormProps<LoginFormType>> = () => {
     return (
         <form>
             <div>
