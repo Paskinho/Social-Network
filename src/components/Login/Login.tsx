@@ -1,20 +1,20 @@
 import React, {FC} from 'react';
-import {InjectedFormProps, reduxForm} from 'redux-form'
+import {Field, InjectedFormProps, reduxForm} from 'redux-form'
 import { LoginFormType } from '../../api/api';
 
 
 
-const LoginForm: FC<InjectedFormProps<LoginFormType>> = () => {
+const LoginForm: FC<InjectedFormProps<LoginFormType>> = (props: any) => {
     return (
         <form>
             <div>
-                <input placeholder={'Login'}/>
+                <Field component={'input'} placeholder={'Login'}/>
             </div>
             <div>
-                <input placeholder={'Password'}/>
+                <Field component={'input'}  placeholder={'Password'}/>
             </div>
             <div>
-                <input type={'checkbox'}/> remember me
+                <Field component={'input'}  type={'checkbox'}/> remember me
             </div>
             <div>
                 <button>Login</button>
@@ -25,7 +25,7 @@ const LoginForm: FC<InjectedFormProps<LoginFormType>> = () => {
 }
 
 const LoginReduxForm = reduxForm ({
-     form: 'contact'
+     form: 'login'
 })(LoginForm)
 
 export const Login = () => {
