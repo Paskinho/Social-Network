@@ -6,7 +6,7 @@ import { LoginFormType } from '../../api/api';
 
 const LoginForm: FC<InjectedFormProps<LoginFormType>> = (props: any) => {
     return (
-        <form>
+        <form onSubmit={props.handleSubmit}>
             <div>
                 <Field component={'input'} name={'login'} placeholder={'Login'}/>
             </div>
