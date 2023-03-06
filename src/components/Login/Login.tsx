@@ -8,13 +8,13 @@ const LoginForm: FC<InjectedFormProps<LoginFormType>> = (props: any) => {
     return (
         <form>
             <div>
-                <Field component={'input'} placeholder={'Login'}/>
+                <Field component={'input'} name={'login'} placeholder={'Login'}/>
             </div>
             <div>
-                <Field component={'input'}  placeholder={'Password'}/>
+                <Field component={'input'} name={'password'} placeholder={'Password'}/>
             </div>
             <div>
-                <Field component={'input'}  type={'checkbox'}/> remember me
+                <Field component={'input'} name={'rememberMe'} type={'checkbox'}/> remember me
             </div>
             <div>
                 <button>Login</button>
