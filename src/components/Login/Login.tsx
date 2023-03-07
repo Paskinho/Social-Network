@@ -1,7 +1,13 @@
 import React, {FC} from 'react';
 import {Field, InjectedFormProps, reduxForm} from 'redux-form'
-import { LoginFormType } from '../../api/api';
 
+
+export type LoginFormType = {
+    email: string
+    password: string
+    rememberMe: boolean
+    captcha?: boolean
+}
 
 
 const LoginForm: FC<InjectedFormProps<LoginFormType>> = (props: any) => {
@@ -26,12 +32,12 @@ const LoginForm: FC<InjectedFormProps<LoginFormType>> = (props: any) => {
 
 
 
-const LoginReduxForm = reduxForm ({
+const LoginReduxForm = reduxForm<LoginFormType> ({
      form: 'login'
 })(LoginForm)
 
 export const Login = () => {
-    const onSubmit = (formData:any) => {
+    const onSubmit = (formData:LoginFormType) => {
         console.log(formData)
     }
 
