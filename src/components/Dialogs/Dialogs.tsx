@@ -5,7 +5,7 @@ import {DialogItem} from "./DialogItem";
 import {Message} from "./Message/Message";
 import {DialogsPropsType} from "./DialogsContainer";
 import {Redirect} from "@reach/router";
-import {InjectedFormProps} from "redux-form";
+import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {LoginFormType} from "../Login/Login";
 
 
@@ -20,14 +20,14 @@ import {LoginFormType} from "../Login/Login";
 //
 // }
 
-export type DialogFormType = {
+export type AddMessageFormType = {
     newMessageText: string
     addMessage: () => void
     onMessage: () => void
 }
 
 
-export const DialogForm: FC<InjectedFormProps<DialogFormType>> = (props: any) => {
+export const AddMessageForm: FC<InjectedFormProps<AddMessageFormType>> = (props: any) => {
     const onClickAddMessage = () => {
         props.addMessage()
     }
@@ -36,8 +36,10 @@ export const DialogForm: FC<InjectedFormProps<DialogFormType>> = (props: any) =>
         props.onMessage(e.currentTarget.value)
     }
 
-return ( <form>
+return (
+    <form onSubmit={props.handleSubmit}>
     <div>
+        <Field component='textarea' name = 'newMessageText' placeholder="Enter you message..."/>
                         <textarea
                             value={props.newMessageText}
                             onChange={onMessagePost}
@@ -48,6 +50,10 @@ return ( <form>
 </form>
 )
 }
+
+const AddMessageReduxForm = reduxForm<AddMessageFormType> ({
+    form: 'AddMessage'
+})(AddMessageForm)
 
 export const Dialogs: React.FC<DialogsPropsType> = ({dialogsState,addMessage,onMessage}) => {
 
@@ -67,7 +73,7 @@ export const Dialogs: React.FC<DialogsPropsType> = ({dialogsState,addMessage,onM
             <div className={s.message}>
                 {message}
             </div>
-
+<AddMessageReduxForm/>
         </div>
     )
 }
