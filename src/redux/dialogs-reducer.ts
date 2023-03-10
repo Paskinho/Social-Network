@@ -22,8 +22,8 @@ export const onMessagePostCreator = (newMessageText: string) => {
 }
 
 export type addMessageCreatorType = ReturnType<typeof addMessageCreator>
-export const addMessageCreator = () => {
-    return {type: 'ADD_MESSAGE'} as const
+export const addMessageCreator = (newMessageText: string) => {
+    return {type: 'ADD_MESSAGE', newMessageText} as const
 }
 
 
@@ -36,7 +36,7 @@ const initialState = {
                 {name: "Roberto", id: 4},
                 {name: "Thiago", id: 5}
             ] as Array<DialogType>,
-            newMessageText: ""  ,
+            newMessageText: ""  , // УБИРАЕМ?
             messages: [
                 {message: "Hi", id: 1},
                 {message: "How are you IT-Kamasutra", id: 2},
@@ -58,7 +58,7 @@ export const dialogsReducer = (state: InitialStateType=initialState , action: Di
         case "ADD_MESSAGE":{
             let newMessage: MessagesType = {
                 id: state.messages.length + 1,
-                message: state.newMessageText
+                message: action.newMessageText
             }
             return {...state,
                 newMessageText: "",

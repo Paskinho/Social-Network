@@ -28,31 +28,23 @@ export type AddMessageFormType = {
 
 
 export const AddMessageForm: FC<InjectedFormProps<AddMessageFormType>> = (props: any) => {
-    const onClickAddMessage = () => {
-        props.addMessage()
-    }
 
-    const onMessagePost = (e:ChangeEvent<HTMLTextAreaElement>) => {
-        props.onMessage(e.currentTarget.value)
-    }
+
 
 return (
     <form onSubmit={props.handleSubmit}>
     <div>
         <Field component='textarea' name = 'newMessageText' placeholder="Enter you message..."/>
-                        <textarea
-                            value={props.newMessageText}
-                            onChange={onMessagePost}
-                            placeholder="Enter you message...">Hello</textarea></div>
+    </div>
     <div>
-        <button onClick={onClickAddMessage}>Add</button>
+        <button>Add</button>
     </div>
 </form>
 )
 }
 
 const AddMessageReduxForm = reduxForm<AddMessageFormType> ({
-    form: 'AddMessage'
+    form: 'dialogAddMessage'
 })(AddMessageForm)
 
 export const Dialogs: React.FC<DialogsPropsType> = ({dialogsState,addMessage,onMessage}) => {
@@ -62,7 +54,9 @@ export const Dialogs: React.FC<DialogsPropsType> = ({dialogsState,addMessage,onM
 
     // const newMessageElement = useRef<HTMLTextAreaElement>(null); //????
 
-
+const addNemMessage = (values: any) => {
+    addMessage(values.newMessageText)
+}
 
 
     return (
@@ -73,7 +67,7 @@ export const Dialogs: React.FC<DialogsPropsType> = ({dialogsState,addMessage,onM
             <div className={s.message}>
                 {message}
             </div>
-<AddMessageReduxForm/>
+<AddMessageReduxForm onSubmit={addNemMessage}/>
         </div>
     )
 }
