@@ -13,7 +13,7 @@ type myPostsFormType = {
 
 export const myPostsForm: FC<InjectedFormProps<myPostsFormType>> = (props: any) => {
     return (
-<form>
+<form onSubmit={props.handleSubmit}>
     <Field component='textarea' name='newPost' placeholder='New post'></Field>
     <div>
         <button>Add post</button>
@@ -57,7 +57,7 @@ const postsElements =
             {/*{props.posts.map(p=> <div><b>{p.postText}</b></div>)}*/}
             {/*    /!*key={p.i} добавить в дивку*!/*/}
             {/*</hr>*/}
-            <MyPostsReduxForm/>
+            <MyPostsReduxForm onSubmit={addPost}/>
             <div>
                 {postsElements}
             </div>
