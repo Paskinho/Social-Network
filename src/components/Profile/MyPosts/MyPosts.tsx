@@ -2,7 +2,26 @@ import React, {ChangeEvent} from 'react';
 import s from './Myposts.module.css'
 import {Post} from "./Post/Post";
 import {MyPostsType} from "./MyPostsContainer";
+import {Field} from "redux-form";
 
+
+type myPostsFormType = {
+
+}
+
+
+export const myPostsForm = () => {
+    return (
+<form>
+    <Field component='textarea' name='newPost' placeholder='New post'></Field>
+    <div>
+        <button>Add post</button>
+    </div>
+</form>
+
+
+    )
+}
 
 
 export const MyPosts: React.FC<MyPostsType> = ({posts, postText,addNewPost, onPost}) => {
@@ -34,12 +53,7 @@ const postsElements =
             {/*{props.posts.map(p=> <div><b>{p.postText}</b></div>)}*/}
             {/*    /!*key={p.i} добавить в дивку*!/*/}
             {/*</hr>*/}
-            <div>
-                <textarea placeholder='New post' onChange={onPostChangeCallBack}></textarea>
-            </div>
-            <div>
-                <button onClick={addPost}>Add post</button>
-            </div>
+
             <div>
                 {postsElements}
             </div>

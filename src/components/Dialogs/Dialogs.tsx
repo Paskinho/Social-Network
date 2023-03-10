@@ -7,6 +7,7 @@ import {DialogsPropsType} from "./DialogsContainer";
 import {Redirect} from "@reach/router";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {LoginFormType} from "../Login/Login";
+import {authReducer} from "../../redux/auth-reducer";
 
 
 // type DialogsPropsType = {
@@ -57,6 +58,8 @@ export const Dialogs: React.FC<DialogsPropsType> = ({dialogsState,addMessage}) =
 const addNemMessage = (values: any) => {
     addMessage(values.newMessageText)
 }
+
+// if (!authReducer.isAuth) return <Redirect to={'/login'}/>
 
 
     return (
