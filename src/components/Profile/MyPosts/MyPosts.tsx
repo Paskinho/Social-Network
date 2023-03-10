@@ -2,8 +2,8 @@ import React, {ChangeEvent, FC} from 'react';
 import s from './Myposts.module.css'
 import {Post} from "./Post/Post";
 import {MyPostsType} from "./MyPostsContainer";
-import {Field, InjectedFormProps} from "redux-form";
-import {AddMessageFormType} from "../../Dialogs/Dialogs";
+import {Field, InjectedFormProps, reduxForm} from "redux-form";
+import {AddMessageForm, AddMessageFormType} from "../../Dialogs/Dialogs";
 
 
 type myPostsFormType = {
@@ -19,10 +19,12 @@ export const myPostsForm: FC<InjectedFormProps<myPostsFormType>> = (props: any) 
         <button>Add post</button>
     </div>
 </form>
-
-
     )
 }
+
+const MyPostsReduxForm = reduxForm<myPostsFormType> ({
+    form: 'MyPost'
+})(myPostsForm)
 
 
 export const MyPosts: React.FC<MyPostsType> = ({posts, postText,addNewPost, onPost}) => {
@@ -49,16 +51,18 @@ const postsElements =
 
     return (
         <div className={s.postsBlock}>
+
             <h3>My posts</h3>
             {/*<hr>*/}
             {/*{props.posts.map(p=> <div><b>{p.postText}</b></div>)}*/}
             {/*    /!*key={p.i} добавить в дивку*!/*/}
             {/*</hr>*/}
-
+            <MyPostsReduxForm/>
             <div>
                 {postsElements}
             </div>
         </div>
+
     )
 }
 
