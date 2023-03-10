@@ -1,7 +1,7 @@
 import React, {useRef} from "react";
 import {Dialogs} from "./Dialogs";
 import {AppStateType, StoreType} from "../../redux/redux-store";
-import {addMessageCreator, InitialStateType, onMessagePostCreator} from "../../redux/dialogs-reducer";
+import {addMessageCreator, InitialStateType} from "../../redux/dialogs-reducer";
 import {connect} from "react-redux";
 import {compose, Dispatch} from "redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
@@ -16,7 +16,7 @@ type MapStatePropsType = {
 
 type MapDispatchPropsType = {
     addMessage: (newMessageText: string) => void
-    onMessage: (message: string) => void
+    // onMessage: (message: string) => void
 }
 
 let mapStateToProps = (state: AppStateType): MapStatePropsType => {
@@ -30,10 +30,10 @@ const mapDispatchToProps = (dispatch: Dispatch) : MapDispatchPropsType => {
     return {
         addMessage: (newMessageText: string)=> {
             dispatch(addMessageCreator(newMessageText))
-        },
-        onMessage: (message:string)=> {
-            dispatch(onMessagePostCreator(message))
         }
+        // onMessage: (message:string)=> {
+        //     dispatch(onMessagePostCreator(message))
+        // }
     }
 }
 //уточнить пропсы
