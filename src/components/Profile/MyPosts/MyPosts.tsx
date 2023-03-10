@@ -14,7 +14,7 @@ type myPostsFormType = {
 export const myPostsForm: FC<InjectedFormProps<myPostsFormType>> = (props: any) => {
     return (
 <form onSubmit={props.handleSubmit}>
-    <Field component='textarea' name='newPost' placeholder='New post'></Field>
+    <Field component='textarea' name='newPostText' placeholder='New post'></Field>
     <div>
         <button>Add post</button>
     </div>
@@ -38,15 +38,10 @@ const postsElements =
                         />)
 
 
-    const addPost = () => {
-        addNewPost()
+    const addPost = (values: any) => {
+        addNewPost(values.newPostText)
     }
 
-    const onPostChangeCallBack = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        // В пути самурая let text = newPostElement.current.value
-        // props.updateNewPostText(text)
-        onPost(e.currentTarget.value)
-    }
 
 
     return (

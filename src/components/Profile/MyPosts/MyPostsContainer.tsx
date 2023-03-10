@@ -34,8 +34,8 @@ const mapDispatchToProps = (dispatch: Dispatch):MapDispatchPropsType  => {
         onPost: (post: string) => {
             dispatch(updateNewPostTextCreator(post))
         },
-        addNewPost: () => {
-            dispatch(addPostCreator())
+        addNewPost: (newPostText: string) => {
+            dispatch(addPostCreator(newPostText))
         },
 
     }

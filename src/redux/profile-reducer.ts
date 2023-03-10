@@ -64,7 +64,7 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
         case "ADD_POST": {
             let newPost: PostDataType = {
                 id: state.postData.length + 1,
-                title: state.newPostText,
+                title: action.newPostText,
                 like: 0,
             }
             return {
@@ -99,9 +99,9 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
 }
 
 
-export const addPostCreator = () => {
+export const addPostCreator = (newPostText: string) => {
     return {
-        type: "ADD_POST"
+        type: "ADD_POST", newPostText
     } as const
 }
 export const updateNewPostTextCreator = (newText: string) => {
