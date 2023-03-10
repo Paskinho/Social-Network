@@ -1,8 +1,9 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, FC} from 'react';
 import s from './Myposts.module.css'
 import {Post} from "./Post/Post";
 import {MyPostsType} from "./MyPostsContainer";
-import {Field} from "redux-form";
+import {Field, InjectedFormProps} from "redux-form";
+import {AddMessageFormType} from "../../Dialogs/Dialogs";
 
 
 type myPostsFormType = {
@@ -10,7 +11,7 @@ type myPostsFormType = {
 }
 
 
-export const myPostsForm = () => {
+export const myPostsForm: FC<InjectedFormProps<myPostsFormType>> = (props: any) => {
     return (
 <form>
     <Field component='textarea' name='newPost' placeholder='New post'></Field>
