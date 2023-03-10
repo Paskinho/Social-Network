@@ -1,10 +1,12 @@
-import React, {ChangeEvent, useRef} from "react";
+import React, {ChangeEvent, FC, useRef} from "react";
 import s from './Dialogs.module.css';
 
 import {DialogItem} from "./DialogItem";
 import {Message} from "./Message/Message";
 import {DialogsPropsType} from "./DialogsContainer";
 import {Redirect} from "@reach/router";
+import {InjectedFormProps} from "redux-form";
+import {LoginFormType} from "../Login/Login";
 
 
 // type DialogsPropsType = {
@@ -18,6 +20,34 @@ import {Redirect} from "@reach/router";
 //
 // }
 
+export type DialogFormType = {
+    newMessageText: string
+    addMessage: () => void
+    onMessage: () => void
+}
+
+
+export const DialogForm: FC<InjectedFormProps<DialogFormType>> = (props: any) => {
+    const onClickAddMessage = () => {
+        props.addMessage()
+    }
+
+    const onMessagePost = (e:ChangeEvent<HTMLTextAreaElement>) => {
+        props.onMessage(e.currentTarget.value)
+    }
+
+return ( <form>
+    <div>
+                        <textarea
+                            value={props.newMessageText}
+                            onChange={onMessagePost}
+                            placeholder="Enter you message...">Hello</textarea></div>
+    <div>
+        <button onClick={onClickAddMessage}>Add</button>
+    </div>
+</form>
+)
+}
 
 export const Dialogs: React.FC<DialogsPropsType> = ({dialogsState,addMessage,onMessage}) => {
 
@@ -26,13 +56,7 @@ export const Dialogs: React.FC<DialogsPropsType> = ({dialogsState,addMessage,onM
 
     // const newMessageElement = useRef<HTMLTextAreaElement>(null); //????
 
-    const onClickAddMessage = () => {
-        addMessage()
-    }
 
-    const onMessagePost = (e:ChangeEvent<HTMLTextAreaElement>) => {
-        onMessage(e.currentTarget.value)
-    }
 
 
     return (
@@ -42,16 +66,6 @@ export const Dialogs: React.FC<DialogsPropsType> = ({dialogsState,addMessage,onM
             </div>
             <div className={s.message}>
                 {message}
-
-                <div>
-                    <div><textarea
-                        value={dialogsState.newMessageText}
-                        onChange={onMessagePost}
-                        placeholder="Enter you message...">Hello</textarea></div>
-                    <div>
-                        <button onClick={onClickAddMessage}>Add</button>
-                    </div>
-                </div>
             </div>
 
         </div>
