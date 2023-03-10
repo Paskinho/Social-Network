@@ -11,7 +11,7 @@ type myPostsFormType = {
 }
 
 
-export const myPostsForm: FC<InjectedFormProps<myPostsFormType>> = (props: any) => {
+export const addPostsForm: FC<InjectedFormProps<myPostsFormType>> = (props: any) => {
     return (
 <form onSubmit={props.handleSubmit}>
     <Field component='textarea' name='newPostText' placeholder='New post'></Field>
@@ -24,7 +24,7 @@ export const myPostsForm: FC<InjectedFormProps<myPostsFormType>> = (props: any) 
 
 const MyPostsReduxForm = reduxForm<myPostsFormType> ({
     form: 'MyPost'
-})(myPostsForm)
+})(addPostsForm)
 
 
 export const MyPosts: React.FC<MyPostsType> = ({posts, postText,addNewPost, onPost}) => {
