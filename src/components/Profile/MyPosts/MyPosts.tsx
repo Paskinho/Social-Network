@@ -10,7 +10,6 @@ type myPostsFormType = {
 
 }
 
-
 export const addPostsForm: FC<InjectedFormProps<myPostsFormType>> = (props: any) => {
     return (
 <form onSubmit={props.handleSubmit}>
