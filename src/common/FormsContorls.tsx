@@ -1,9 +1,10 @@
 import React from "react";
 
-export const TextArea = (props: any) => {
+
+export const TextArea = (input: any, meta: any, ...props: any) => {
     return (
     <div>
-        <textarea {...props}/>
+        <textarea {...input} {...props}/>
     </div>
     )
 }
