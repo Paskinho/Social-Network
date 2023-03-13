@@ -43,14 +43,15 @@ this.setState({
 
 
     render() {
+
         return (
             <div>
-                {!this.state.EditMode &&
+                {this.state.EditMode &&
                     <div>
-                        <span onDoubleClick={this.activateMode}> {this.props.status || "-----"}</span>
+                        <span onDoubleClick={this.activateMode}> {this.props.status || "Come on the reds"}</span>
                     </div>
                 }
-                {this.state.EditMode &&
+                {!this.state.EditMode &&
                     <div>
                         <input onChange={this.onStatusChange} autoFocus={true} onBlur={this.deActivateMode}
                                value={this.state.status}/>
