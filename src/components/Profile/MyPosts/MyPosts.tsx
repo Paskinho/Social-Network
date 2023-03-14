@@ -3,7 +3,7 @@ import s from './Myposts.module.css'
 import {Post} from "./Post/Post";
 import {MyPostsType} from "./MyPostsContainer";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
-import {AddMessageForm, AddMessageFormType} from "../../Dialogs/Dialogs";
+// import {AddMessageForm, AddMessageFormType} from "../../Dialogs/Dialogs";
 import {maxLengthCreator, required} from "../../../utils/validators/validators";
 import {TextArea} from "../../common/FormsControls/FormsControls";
 
