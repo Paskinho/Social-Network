@@ -1,6 +1,5 @@
 # Getting Started with Create React App
 
-My API-KEY aeefc5de-7fbe-47c0-93be-ce3a4d1e3ad8
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
