@@ -23,12 +23,6 @@ import {AddMessageForm, AddMessageReduxForm} from "./AddMessageForm/AddMessageFo
 // }
 
 
-
-
-
-
-
-
 export const Dialogs: React.FC<DialogsPropsType> = ({dialogsState,addMessage}) => {
 
     const dialogsItem = dialogsState.users.map((d:any) => <DialogItem key={d.id} name={d.name} id={d.id}/>)
@@ -41,7 +35,6 @@ const addNemMessage = (values: any) => {
 }
 
 // if (!authReducer.isAuth) return <Redirect to={'/login'}/>
-
 
     return (
         <div className={s.dialogs}>

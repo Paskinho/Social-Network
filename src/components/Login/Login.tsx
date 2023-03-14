@@ -12,7 +12,7 @@ export type LoginFormType = {
 }
 
 
-const LoginForm: FC<InjectedFormProps<LoginFormType>> = (props: any) => {
+const LoginForm: FC<InjectedFormProps<LoginFormType>> = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
@@ -37,7 +37,6 @@ const LoginForm: FC<InjectedFormProps<LoginFormType>> = (props: any) => {
                 <button>Login</button>
             </div>
         </form>
-
     )
 }
 
