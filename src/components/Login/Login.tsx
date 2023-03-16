@@ -11,7 +11,6 @@ export type LoginFormType = {
     captcha?: boolean
 }
 
-
 const LoginForm: FC<InjectedFormProps<LoginFormType>> = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
@@ -38,8 +37,6 @@ const LoginForm: FC<InjectedFormProps<LoginFormType>> = (props) => {
         </form>
     )
 }
-
-
 
 const LoginReduxForm = reduxForm<LoginFormType> ({
      form: 'login'

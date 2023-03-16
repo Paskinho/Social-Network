@@ -2,7 +2,6 @@ import {authAPI} from "../api/api";
 import {Dispatch} from "redux";
 
 
-
 export type UserType = {
     id: string,
     photoUrl: string,
@@ -18,7 +17,6 @@ type LocationType = {
 
 }
 
-
 export type InitialStateType = {
     userId: any,
     email: any,
@@ -27,7 +25,6 @@ export type InitialStateType = {
     isAuth: boolean
 
 }
-
 
 type UsersActionsTypes = setUserDataACType
 
@@ -38,7 +35,6 @@ const initialState: InitialStateType = {
     login: null,
     isAuth: false
 }
-
 
 export const authReducer = (state:InitialStateType = initialState, action: UsersActionsTypes): InitialStateType => {
 
@@ -75,6 +71,15 @@ export const login = ({email, password, rememberMe}: any) => (dispatch: any)  =>
         .then((response) => {
             if (response.data.resultCode === 0) {
                 dispatch(setAuthUserData)
+            }
+        })
+}
+
+export const logout = () => (dispatch: any)  => {
+    authAPI.logout()
+        .then((response) => {
+            if (response.data.resultCode === 0) {
+                dispatch(setAuthUserData)  // (null, null, null, false)
             }
         })
 }
