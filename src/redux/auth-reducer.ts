@@ -1,6 +1,5 @@
-import {v1} from "uuid";
-import {profilePageType} from "./profile-reducer";
 import {authAPI} from "../api/api";
+import {Dispatch} from "redux";
 
 
 
@@ -62,20 +61,20 @@ type setUserDataACType = ReturnType<typeof setAuthUserData>
 export const setAuthUserData = (data: InitialStateType) => (
     {type: "SET_USER_DATA",  payload: data} as const)
 
-export const getAuthUserData = () => (dispatch: any)  => {
+export const getAuthUserData = () => (dispatch: Dispatch)  => {
     authAPI.me()
         .then((response) => {
             if (response.data.resultCode === 0) {
-                dispatch (setAuthUserData(response.data.data.login))
+                dispatch (setAuthUserData({...response.data,isAuth: true}))
             }
         })
 }
 
-export const login = ({email, password, rememberMe}: any) => (dispatch: any)  => {
-    authAPI.me()
+export const login = ({email, password, rememberMe}: any) => (dispatch: Dispatch)  => {
+    authAPI.login(email, password, rememberMe)
         .then((response) => {
             if (response.data.resultCode === 0) {
-                dispatch (setAuthUserData(response.data.data.login))
+                dispatch(setAuthUserData))
             }
         })
 }
