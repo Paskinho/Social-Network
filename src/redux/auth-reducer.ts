@@ -70,11 +70,11 @@ export const getAuthUserData = () => (dispatch: Dispatch)  => {
         })
 }
 
-export const login = ({email, password, rememberMe}: any) => (dispatch: Dispatch)  => {
+export const login = ({email, password, rememberMe}: any) => (dispatch: any)  => {
     authAPI.login(email, password, rememberMe)
         .then((response) => {
             if (response.data.resultCode === 0) {
-                dispatch(setAuthUserData))
+                dispatch(setAuthUserData)
             }
         })
 }
