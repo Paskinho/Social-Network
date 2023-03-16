@@ -2,6 +2,8 @@ import React, {FC} from 'react';
 import {Field, InjectedFormProps, reduxForm} from 'redux-form'
 import {Input} from "../common/FormsControls/FormsControls";
 import {required} from "../../utils/validators/validators";
+import {connect} from "react-redux";
+import {login} from "../../redux/auth-reducer";
 
 
 export type LoginFormType = {
@@ -17,7 +19,7 @@ const LoginForm: FC<InjectedFormProps<LoginFormType>> = (props) => {
             <div>
                 <Field component={Input}
                        validate={[required]}
-                       name={'login'}
+                       name={'email'}
                        placeholder={'Login'}/>
             </div>
             <div>
@@ -42,7 +44,7 @@ const LoginReduxForm = reduxForm<LoginFormType> ({
      form: 'login'
 })(LoginForm)
 
-export const Login = () => {
+ const Login = () => {
     const onSubmit = (formData:LoginFormType) => {
         console.log(formData)
     }
@@ -52,3 +54,5 @@ export const Login = () => {
         <LoginReduxForm onSubmit={onSubmit}/>
     </div>
 }
+
+export default connect (null, {login})(Login)
