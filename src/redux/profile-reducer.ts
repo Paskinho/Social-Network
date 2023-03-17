@@ -1,4 +1,5 @@
 import {profileAPI, usersAPI} from "../api/api";
+import {Dispatch} from "redux";
 
 
 export type addPostCreatorType = ReturnType<typeof addPostCreator>
@@ -127,19 +128,19 @@ export const setStatusCreator = (status: string) => {
 }
 
 
-export const getUserProfile = (userId: string) => (dispatch: any) => {
+export const getUserProfile = (userId: string) => (dispatch: Dispatch) => {
     usersAPI.getProfile(userId).then((response) => {
         dispatch(setUserProfileCreator(response.data))
     })
 }
 
-export const getStatus = (userId: string) => (dispatch: any) => {
+export const getStatus = (userId: string) => (dispatch: Dispatch) => {
     profileAPI.getStatus(userId).then((response) => {
         dispatch(setStatusCreator(response.data))
     })
 }
 
-export const updateStatus = (status: string) => (dispatch: any) => {
+export const updateStatus = (status: string) => (dispatch: Dispatch) => {
     profileAPI.updateStatus(status).then((response) => {
         if (response.data.resultCode === 0) {
         dispatch(setStatusCreator(status))
