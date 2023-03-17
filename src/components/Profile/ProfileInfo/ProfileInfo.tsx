@@ -17,7 +17,7 @@ export const ProfileInfo: React.FC<ProfileType>= (props) => {
             <img className={s.img} src="https://backend.liverpoolfc.com/sites/default/files/styles/lg/public/2021-06/placeholder.jpg?itok=nhe1dpvk"/>
         </div>
             <div>
-                <img src={props.profile.photos.large}/>
+                {/*<img src={props.profile.photos.large}/>*/}
                 <ProfileStatus {...props}/>
             </div>
             <div>
