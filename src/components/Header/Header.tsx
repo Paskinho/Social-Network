@@ -12,7 +12,6 @@ export const Header = (props: MapStateToPropsType) => {
 <div className={s.loginBlock}>
     {props.isAuth ? props.login :
     <NavLink to={"/login"}>login</NavLink>}
-
 </div>
     </header>
 }

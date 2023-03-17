@@ -14,7 +14,7 @@
 .loginBlock {
     display: flex;
     align-self: center;
-    justify-self: center;
+    justify-self: flex-end;
 }
 
 .loginBlock a {
