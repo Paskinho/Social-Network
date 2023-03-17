@@ -20,7 +20,7 @@ const LoginForm: FC<InjectedFormProps<LoginFormType>> = (props) => {
                 <Field component={Input}
                        validate={[required]}
                        name={'email'}
-                       placeholder={'Login'}/>
+                       placeholder={'Email'}/>
             </div>
             <div>
                 <Field component={Input}
@@ -44,13 +44,13 @@ const LoginReduxForm = reduxForm<LoginFormType> ({
      form: 'login'
 })(LoginForm)
 
- const Login = () => {
+ const Login = (props: any) => {
     const onSubmit = (formData:LoginFormType) => {
-        console.log(formData)
+        props.login(formData.email, formData.password, formData.rememberMe)
     }
 
     return <div>
-        <h1>LOGIN</h1>
+        <h1>Login</h1>
         <LoginReduxForm onSubmit={onSubmit}/>
     </div>
 }
