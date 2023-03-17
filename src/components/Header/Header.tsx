@@ -1,16 +1,18 @@
 import React from 'react';
 import s from './Header.module.css'
 import {NavLink} from "react-router-dom";
-import {MapStateToPropsType} from "./HeaderContainer";
+import {HeaderContainerType, MapStateToPropsType} from "./HeaderContainer";
 ;
 
 
 
-export const Header = (props: MapStateToPropsType) => {
+export const Header = (props: HeaderContainerType) => {
     return <header className={s.header}>
         <img  src='https://logos-download.com/wp-content/uploads/2017/11/Liverpool_FC_Logo_2012.png'/>
 <div className={s.loginBlock}>
-    {props.isAuth ? props.login :
+    {props.isAuth
+        ? <div> {props.login} - <button onClick={() => props.logout}>LogOut</button>  </div>
+        :
     <NavLink to={"/login"}>login</NavLink>}
 </div>
     </header>
