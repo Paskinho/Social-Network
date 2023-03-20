@@ -6,6 +6,7 @@ import {connect} from "react-redux";
 import {login} from "../../redux/auth-reducer";
 import {AppStateType} from "../../redux/redux-store";
 import {Navigate} from "react-router-dom";
+import s from './../common/FormsControls/FormsControls.module.css'
 
 
 export type LoginFormType = {
@@ -38,6 +39,9 @@ const LoginForm: FC<InjectedFormProps<LoginFormType>> = (props) => {
                        type={'checkbox'}/> Remember me
             </div>
             <div>
+                <div className={s.formSummaryError}>
+                    ERROR
+                </div>
                 <button>Login</button>
             </div>
         </form>
