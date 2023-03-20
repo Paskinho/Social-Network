@@ -28,19 +28,16 @@ export const Users = (props: UsersType) => {
         pages.push(i)
     }
 
-
-    const followHandler = (u:any) => {
-       props.follow(u.id)
+    const followHandler = (u: any) => {
+        props.follow(u.id)
     }
 
-    const unFollowHandler = (u:any) => {
-       props.unfollow(u.id)
+    const unFollowHandler = (u: any) => {
+        props.unfollow(u.id)
 
     }
-
 
     return <div>
-
 
         <div>
             <div>
@@ -63,10 +60,10 @@ export const Users = (props: UsersType) => {
     </div>
     <div>
     {u.followed ?
-        <button disabled={props.toggleIsFollowingProgress.some((id: string) => id === u.id)}  onClick={unFollowHandler}>UnFollow</button>
-
-
-        : <button disabled={props.toggleIsFollowingProgress.some((id: string)=> id === u.id)} onClick={followHandler}>Follow</button>
+        <button disabled={props.toggleIsFollowingProgress.some((id: string) => id === u.id)}
+                onClick={unFollowHandler}>UnFollow</button>
+        : <button disabled={props.toggleIsFollowingProgress.some((id: string) => id === u.id)}
+                  onClick={followHandler}>Follow</button>
 
     }
         </div>
