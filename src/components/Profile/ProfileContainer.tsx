@@ -38,7 +38,7 @@ class ProfileContainer extends React.Component<ProfileContainerType> {
 
         let userId = this.props.userId; //this.props.match.params.userId
         if (!userId) {
-            userId = this.props.userId;
+            userId = this.props.userId; // authorizedUserId in SamuraiWay
         }
 
         this.props.getUserProfile(userId);
@@ -74,8 +74,9 @@ type MapDispatchType = typeof actions
 
 let mapStateToProps = (state: AppStateType) => ({
     profile: state.profileReducer.profile,
-    status: state.profileReducer.status
-
+    status: state.profileReducer.status,
+    authorizedUserId: state.authReducer.userId,
+    isAuth: state.authReducer.isAuth
 })
 
 export type ProfileType = MapStateType & MapDispatchType
