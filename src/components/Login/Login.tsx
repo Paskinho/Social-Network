@@ -39,9 +39,9 @@ const LoginForm: FC<InjectedFormProps<LoginFormType>> = (props) => {
                        type={'checkbox'}/> Remember me
             </div>
             <div>
-                <div className={s.formSummaryError}>
-                    ERROR
-                </div>
+                { props.error && <div className={s.formSummaryError}>
+                    {props.error}
+                </div>}
                 <button>Login</button>
             </div>
         </form>
