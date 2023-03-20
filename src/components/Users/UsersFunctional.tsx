@@ -6,9 +6,6 @@ import userPhoto from "../../assets/images/user.png"
 
 
 
-
-
-
 export const UsersFunctional = (props: UsersPropsType) => {
 
     const getUsers = () => {

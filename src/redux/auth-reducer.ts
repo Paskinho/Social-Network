@@ -1,5 +1,6 @@
 import {authAPI} from "../api/api";
 import {Dispatch} from "redux";
+import {stopSubmit} from "redux-form";
 
 
 export type UserType = {
@@ -66,6 +67,10 @@ export const getAuthUserData = () => (dispatch: Dispatch)  => {
 }
 
 export const login = ({email, password, rememberMe}: any) => (dispatch: any)  => {
+
+    let action = stopSubmit('login', {email: 'Email is wrong'});
+    dispatch(action)
+    return;
     authAPI.login(email, password, rememberMe)
         .then((response) => {
             if (response.data.resultCode === 0) {

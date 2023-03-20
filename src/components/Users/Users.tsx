@@ -3,8 +3,6 @@ import s from "./Users.module.css";
 import userPhoto from "../../assets/images/user.png";
 import {InitialStateType, toggleIsFetching, toggleIsFollowingProgress} from "../../redux/users-reducer";
 import {NavLink} from "react-router-dom";
-import axios from "axios";
-import {usersAPI} from "../../api/api";
 
 
 type UsersType = {
