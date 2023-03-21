@@ -1,5 +1,5 @@
 import {authAPI} from "../api/api";
-import {AnyAction, Dispatch} from "redux";
+import {Dispatch} from "redux";
 import {stopSubmit} from "redux-form";
 
 
