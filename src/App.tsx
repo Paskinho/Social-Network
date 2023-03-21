@@ -20,12 +20,9 @@ import {getUsersThunkCreator} from "./redux/users-reducer";
 //     // dispatch: (action: ActionsTypes) => void
 // }
 
-const App: React.FC = () => {
-
-
-
-    return (
-
+class App extends React.Component {
+    render() {
+        return (
             <div className="App">
                 <HeaderContainer/>
                 <Navbar/>
@@ -34,18 +31,16 @@ const App: React.FC = () => {
                         <Route path='/login' element={<Login/>}/>
                         <Route path='/profile/userId?' element={<ProfileContainer/>}/>
                         <Route path='/dialogs' element={<DialogsContainer/>} // уточнить
-                          />
+                        />
                         <Route path='/users' element={<UsersContainer/>}/>
                         <Route path='/news' element={<News/>}/>
                         <Route path='/music' element={<Music/>}/>
                         <Route path='/settings' element={<Settings/>}/>
                     </Routes>
                 </div>
-
-
             </div>
-
-    );
+        );
+    }
 }
 
 export default App;
