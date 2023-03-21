@@ -12,7 +12,7 @@ class HeaderContainer extends React.Component<HeaderContainerType> {
     }
 }
 
-export type MapStateToPropsType = {
+type MapStateToPropsType = {
     isAuth: boolean,
     id: number | null
     login: string | null

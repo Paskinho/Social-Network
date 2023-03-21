@@ -56,11 +56,11 @@ const mapStateToProps = {
 }
 
 type mapStateToPropsType =[
-    getAuthUserData: () => void
+    getAuthUserData: any
 ]
 
 type AppType = mapStateToPropsType
 
 
 
-export default compose(withRouter(connect({getAuthUserData})(App)));
+export default compose(withRouter, connect(null,{getAuthUserData}))(App);

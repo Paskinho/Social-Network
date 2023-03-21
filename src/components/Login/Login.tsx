@@ -7,7 +7,6 @@ import {login} from "../../redux/auth-reducer";
 import {AppStateType} from "../../redux/redux-store";
 import {Navigate} from "react-router-dom";
 import s from './../common/FormsControls/FormsControls.module.css'
-import {MapStateToPropsType} from "../Header/HeaderContainer";
 
 
 export type LoginFormType = {

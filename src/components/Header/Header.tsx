@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Header.module.css'
 import {NavLink} from "react-router-dom";
-import {HeaderContainerType, MapStateToPropsType} from "./HeaderContainer";
+import {HeaderContainerType} from "./HeaderContainer";
 ;
 
 
