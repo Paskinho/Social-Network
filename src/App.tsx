@@ -1,17 +1,18 @@
 import React from 'react';
 import './App.css';
 import {Navbar} from "./components/Navbar/Navbar";
-import {Profile} from "./components/Profile/Profile";
 import {Route, Routes} from "react-router-dom"
 import {Music} from "./components/Music/Music";
 import {News} from "./components/News/News";
 import {Settings} from "./components/Settings/Settings";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
-import ProfileContainer from "./components/Profile/ProfileContainer";
+import ProfileContainer, {withRouter} from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
-import {getUsersThunkCreator} from "./redux/users-reducer";
+import {connect} from "react-redux";
+import {getAuthUserData} from "./redux/auth-reducer";
+import {compose} from "redux";
 
 //
 // export  type appPropsType = {
@@ -20,7 +21,13 @@ import {getUsersThunkCreator} from "./redux/users-reducer";
 //     // dispatch: (action: ActionsTypes) => void
 // }
 
-class App extends React.Component {
+class App extends React.Component<any> {
+
+    componentDidMount() {
+        // this.props.toggleIsFetching(true)
+        this.props.getAuthUserData();
+    }
+
     render() {
         return (
             <div className="App">
@@ -43,4 +50,4 @@ class App extends React.Component {
     }
 }
 
-export default App;
+export default compose(withRouter(connect({getAuthUserData})(App)));
