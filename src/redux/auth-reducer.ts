@@ -57,7 +57,7 @@ type setUserDataACType = ReturnType<typeof setAuthUserData>
 export const setAuthUserData = (data: InitialStateType) => (
     {type: "SET_USER_DATA",  payload: data} as const)
 
-export const getAuthUserData = () => (dispatch: Dispatch<AnyAction>)  => {
+export const getAuthUserData = () => (dispatch: Dispatch)  => {
     authAPI.me()
         .then((response) => {
             if (response.data.resultCode === 0) {

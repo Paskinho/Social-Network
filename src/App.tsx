@@ -50,4 +50,17 @@ class App extends React.Component<any> {
     }
 }
 
+
+const mapStateToProps = {
+    getAuthUserData
+}
+
+type mapStateToPropsType =[
+    getAuthUserData: () => void
+]
+
+type AppType = mapStateToPropsType
+
+
+
 export default compose(withRouter(connect({getAuthUserData})(App)));
