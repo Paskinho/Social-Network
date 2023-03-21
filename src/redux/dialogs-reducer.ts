@@ -1,5 +1,3 @@
-
-
 type DialogsActionsType = onMessagePostCreatorType | addMessageCreatorType
 export type MessagesType = {
     message: string
@@ -10,7 +8,6 @@ export type DialogType = {
     id: number
     avatar: string
 }
-
 
 
 export type onMessagePostCreatorType = ReturnType<typeof onMessagePostCreator>
@@ -28,39 +25,44 @@ export const addMessageCreator = (newMessageText: string) => {
 
 
 const initialState = {
-            users: [
-                {name: "Trent",  id: 0, avatar: 'https://www.thisisanfield.com/wp-content/uploads/P2022-10-09-Arsenal_Liverpool-6.jpg' },
-                {name: "Virgil",  id: 1 },
-                {name: "Mohamed",  id: 2},
-                {name: "Darwin", id: 3},
-                {name: "Roberto", id: 4},
-                {name: "Thiago", id: 5}
-            ] as Array<DialogType>,
-            newMessageText: ""  , // УБИРАЕМ?
-            messages: [
-                {message: "Hi", id: 1},
-                {message: "How are you IT-Kamasutra", id: 2},
-                {message: "YO", id: 3}
+    users: [
+        {
+            name: "Trent",
+            id: 0,
+            avatar: 'https://www.thisisanfield.com/wp-content/uploads/P2022-10-09-Arsenal_Liverpool-6.jpg'
+        },
+        {name: "Virgil", id: 1},
+        {name: "Mohamed", id: 2},
+        {name: "Darwin", id: 3},
+        {name: "Roberto", id: 4},
+        {name: "Thiago", id: 5}
+    ] as Array<DialogType>,
+    newMessageText: "", // УБИРАЕМ?
+    messages: [
+        {message: "Hi", id: 1},
+        {message: "How are you IT-Kamasutra", id: 2},
+        {message: "YO", id: 3}
 
-            ] as Array<MessagesType>, // рекомендуемая типизация
+    ] as Array<MessagesType>, // рекомендуемая типизация
 
-        }
+}
 
-        // sidebar: {},
-        // }
+// sidebar: {},
+// }
 
 
 export type InitialStateType = typeof initialState
 
-export const dialogsReducer = (state: InitialStateType=initialState , action: DialogsActionsType) : InitialStateType => {
+export const dialogsReducer = (state: InitialStateType = initialState, action: DialogsActionsType): InitialStateType => {
 
     switch (action.type) {
-        case "ADD_MESSAGE":{
+        case "ADD_MESSAGE": {
             let newMessage: MessagesType = {
                 id: state.messages.length + 1,
                 message: action.newMessageText
             }
-            return {...state,
+            return {
+                ...state,
                 newMessageText: "",
                 messages: [...state.messages, newMessage]
             };
@@ -69,7 +71,10 @@ export const dialogsReducer = (state: InitialStateType=initialState , action: Di
         case "UPDATE_NEW_MESSAGE_TEXT":
             return {
                 ...state,
-                newMessageText: action.newMessageText}
-        default: return state;
+                newMessageText: action.newMessageText
+            }
+        default:
+            return state;
 
-}}
+    }
+}

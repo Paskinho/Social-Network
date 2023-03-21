@@ -10,16 +10,20 @@ export type setUserProfileType = ReturnType<typeof setUserProfileCreator>
 
 export type setStatusCreatorType = ReturnType<typeof setStatusCreator>
 
-export type ProfileActionsType = addPostCreatorType | updateNewPostTextCreatorType | setUserProfileType | setStatusCreatorType
+export type ProfileActionsType =
+    addPostCreatorType
+    | updateNewPostTextCreatorType
+    | setUserProfileType
+    | setStatusCreatorType
 
 
-export type PostDataType ={
+export type PostDataType = {
     id: number
     like: number
     title: string
 }
 export type profilePageType = {
-    postData:Array<PostDataType>
+    postData: Array<PostDataType>
     newPostText: string
 }
 
@@ -70,25 +74,28 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
             }
             return {
                 ...state,
-                newPostText : "",
+                newPostText: "",
                 postData: [...state.postData, newPost]
             }
 
 
         }
         case "UPDATE_NEW_POST_TEXT": {
-           return  {...state,
-               newPostText : action.newText
-           }
+            return {
+                ...state,
+                newPostText: action.newText
+            }
         }
         case "SET_USER_PROFILE": {
-            return {...state,
+            return {
+                ...state,
                 profile: action.profile
             }
         }
         case 'SET_STATUS' : {
-            return {...state,
-            status: action.status
+            return {
+                ...state,
+                status: action.status
             }
         }
 
@@ -143,6 +150,7 @@ export const getStatus = (userId: string) => (dispatch: Dispatch) => {
 export const updateStatus = (status: string) => (dispatch: Dispatch) => {
     profileAPI.updateStatus(status).then((response) => {
         if (response.data.resultCode === 0) {
-        dispatch(setStatusCreator(status))
-        }})
+            dispatch(setStatusCreator(status))
+        }
+    })
 }
