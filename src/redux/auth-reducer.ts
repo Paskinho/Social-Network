@@ -66,7 +66,6 @@ export const getAuthUserData = () => (dispatch: Dispatch)  => {
         })
 }
 
-
 export const login = ({email, password, rememberMe}: any) => (dispatch: any)  => {
     authAPI.login(email, password, rememberMe)
         .then((response) => {
@@ -75,7 +74,6 @@ export const login = ({email, password, rememberMe}: any) => (dispatch: any)  =>
             }
             else {
                 let message = response.data.messages.length > 0 ? response.data.messages[0] : 'Some error' ;
-
                 dispatch(stopSubmit('login', {_error: message}))
             }
 

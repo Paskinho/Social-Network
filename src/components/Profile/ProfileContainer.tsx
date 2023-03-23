@@ -6,7 +6,6 @@ import {AppStateType} from "../../redux/redux-store";
 import {useParams} from 'react-router-dom';
 import {compose} from "redux";
 
-
 // type withRouterType = {
 //     Children: string
 //
