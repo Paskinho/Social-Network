@@ -14,7 +14,6 @@ import {compose} from "redux";
 
 export function withRouter(Children: any) {
     return (props: any) => {
-
         const match = {params: useParams()};
         return <Children {...props} match={match}/>
     }
