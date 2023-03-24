@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import {Navbar} from "./components/Navbar/Navbar";
 import {Route, Routes} from "react-router-dom"
@@ -14,6 +14,8 @@ import {connect} from "react-redux";
 import {getAuthUserData} from "./redux/auth-reducer";
 import {compose} from "redux";
 import {initializeApp} from "./redux/app-reducer";
+import {Preloader} from "./components/common/Preloader/Preloader";
+import {AppStateType} from "./redux/redux-store";
 
 //
 // export  type appPropsType = {
@@ -26,10 +28,15 @@ class App extends React.Component<any> {
 
     componentDidMount() {
         // this.props.toggleIsFetching(true)
-        this.props.getAuthUserData();
+        this.props.initializeApp();
     }
 
     render() {
+
+        if(!this.props.initialized) {
+            return <Preloader/>
+        }
+
         return (
             <div className="App">
                 <HeaderContainer/>
@@ -52,9 +59,9 @@ class App extends React.Component<any> {
 }
 
 
-const mapStateToProps = {
-    getAuthUserData
-}
+const mapStateToProps = (state: AppStateType) => ({
+    initialized: state.app.initialized
+})
 
 type mapStateToPropsType =[
     getAuthUserData: any

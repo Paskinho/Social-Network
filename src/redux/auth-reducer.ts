@@ -58,7 +58,7 @@ export const setAuthUserData = (data: InitialStateType) => (
     {type: "SET_USER_DATA",  payload: data} as const)
 
 export const getAuthUserData = () => (dispatch: Dispatch)  => {
-    authAPI.me()
+   return authAPI.me()
         .then((response) => {
             if (response.data.resultCode === 0) {
                 dispatch (setAuthUserData({...response.data,isAuth: true}))
