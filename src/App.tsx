@@ -13,6 +13,7 @@ import Login from "./components/Login/Login";
 import {connect} from "react-redux";
 import {getAuthUserData} from "./redux/auth-reducer";
 import {compose} from "redux";
+import {initializeApp} from "./redux/app-reducer";
 
 //
 // export  type appPropsType = {
@@ -63,4 +64,4 @@ type AppType = mapStateToPropsType
 
 
 
-export default compose(withRouter, connect(null,{getAuthUserData}))(App);
+export default compose(withRouter, connect(null,{initializeApp}))(App);
