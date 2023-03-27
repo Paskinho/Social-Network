@@ -83,12 +83,10 @@ export const unfollow = (userId: any) => { // уточнить по типиза
         });
     }}
 
-
 export type getUsersThunkCreatorPropsType = {
     currentPage: number,
     pageSize: number
 }
-
 
 type FollowType = ReturnType<typeof followSuccess>
 type UnfollowType = ReturnType<typeof unfollowSuccess>
@@ -97,7 +95,6 @@ type SetCurrentPageType = ReturnType<typeof setCurrentPage>
 type SetTotalUsersCountType = ReturnType<typeof setTotalUsersCount>
 type ToggleIsFetchingType = ReturnType<typeof toggleIsFetching>
 type ToggleIsFollowingProgressType = ReturnType<typeof toggleIsFollowingProgress>
-
 
 type UsersActionsTypes = FollowType | UnfollowType | SetUsersType | SetCurrentPageType | SetTotalUsersCountType | ToggleIsFetchingType | ToggleIsFollowingProgressType
 
@@ -109,7 +106,6 @@ const initialState: InitialStateType = {
     isFetching: true,
     followingInProgress: []
 }
-
 
 export const usersReducer = (state:InitialStateType = initialState, action: UsersActionsTypes): InitialStateType => {
 
@@ -164,11 +160,3 @@ export const usersReducer = (state:InitialStateType = initialState, action: User
     }
 
 }
-
-
-
-
-
-
-
-
