@@ -71,4 +71,4 @@ type AppType = mapStateToPropsType
 
 
 
-export default compose(withRouter, connect(null,{initializeApp}))(App);
+export default compose(withRouter, connect(mapStateToProps,{initializeApp}))(App);

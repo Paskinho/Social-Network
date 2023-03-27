@@ -36,7 +36,7 @@ export const appReducer = (state: InitialStateType = initialState, action: Users
 export const initializedSuccess = () => (
     {type: SET_INITIALIZED} as const)
 
-export const initializeApp = () => (dispatch: Dispatch) => {
+export const initializeApp = () => (dispatch: any) => { //проверить типизацию диспатчей
     let promise = dispatch(getAuthUserData())
     promise.then(() => {
         dispatch(initializedSuccess())

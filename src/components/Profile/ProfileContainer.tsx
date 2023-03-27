@@ -27,12 +27,13 @@ type PathParamsType = {
 class ProfileContainer extends React.Component<ProfileContainerType> {
 
     componentDidMount() {
-
         let userId = this.props.userId; //this.props.match.params.userId
         if (!userId) {
             userId = this.props.userId; // authorizedUserId in SamuraiWay
+            // if (!userId) {
+            //     this.props.history.push('/login')
+            // }
         }
-
         this.props.getUserProfile(userId);
         this.props.getStatus(userId)
     }
