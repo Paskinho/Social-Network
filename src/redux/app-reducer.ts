@@ -42,4 +42,3 @@ export const initializeApp = () => (dispatch: any) => { //проверить т�
         dispatch(initializedSuccess())
     })
 }
-
