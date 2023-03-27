@@ -46,7 +46,6 @@ class UsersAPIComponent extends Component<UsersPropsType> {
     }
 }
 
-
 type MapStateToPropsType = {
     usersPage: InitialStateType
     pageSize: number
@@ -95,5 +94,3 @@ export default compose<React.ComponentType>(
             getUsers: getUsersThunkCreator
         }
     ))(UsersContainer);
-
-
