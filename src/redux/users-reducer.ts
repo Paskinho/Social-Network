@@ -22,7 +22,7 @@ export type InitialStateType = {
     users: Array<UserType>
     pageSize: number
     totalUsersCount: number
-    currentPage: number
+    page: number
     isFetching: boolean
 followingInProgress: number []
 }
@@ -50,7 +50,7 @@ export const getUsersThunkCreator = (props: getUsersThunkCreatorPropsType) => {
     return (dispatch: any) => {
         dispatch (toggleIsFetching(true));
 
-        usersAPI.requestUsers(props.currentPage, props.pageSize).then((data) => {
+        usersAPI.requestUsers(props.page, props.pageSize).then((data) => {
             dispatch (toggleIsFetching(false))
             dispatch (setUsers(data.items))
             dispatch (setTotalUsersCount(data.totalCount))
@@ -84,7 +84,7 @@ export const unfollow = (userId: any) => { // уточнить по типиза
     }}
 
 export type getUsersThunkCreatorPropsType = {
-    currentPage: number,
+    page: number,
     pageSize: number
 }
 
@@ -102,7 +102,7 @@ const initialState: InitialStateType = {
     users: [],
     pageSize: 5,
     totalUsersCount: 0,
-    currentPage: 1,
+    page: 1,
     isFetching: true,
     followingInProgress: []
 }
@@ -138,7 +138,7 @@ export const usersReducer = (state:InitialStateType = initialState, action: User
             }
         case "SET_CURRENT_PAGE":
             return {
-                ...state,currentPage: action.payload
+                ...state,page: action.payload
             }
         case "SET_TOTAL_USERS_COUNT" :
             return {
