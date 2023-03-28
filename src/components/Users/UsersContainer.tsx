@@ -15,14 +15,13 @@ import {compose} from "redux";
 import {Users} from "./Users";
 import {Preloader} from "../common/Preloader/Preloader";
 import {getCurrentPage, getIsFetching, getPageSize, getTotalUsersCounter, getUsers} from "../../redux/users-selectors";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 
 class UsersAPIComponent extends Component<UsersPropsType> {
 
     componentDidMount() {
-
         this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize);
-
     }
 
     // showMore = () => this.props.showMore()
@@ -94,4 +93,4 @@ export default compose<React.ComponentType>(
             setUsers: setUsers,
             getUsers: getUsersThunkCreator
         }
-    ))(UsersContainer);
+    ), withAuthRedirect)(UsersContainer);
