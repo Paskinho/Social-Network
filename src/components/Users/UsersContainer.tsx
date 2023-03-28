@@ -1,19 +1,20 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {
-    follow, getUsersThunkCreator,
+    follow,
+    getUsersThunkCreator,
     InitialStateType,
-    setCurrentPage, setUsers, toggleIsFollowingProgress,
+    setCurrentPage,
+    setUsers,
+    toggleIsFollowingProgress,
     unfollow,
     UserType
 } from "../../redux/users-reducer";
 import {AppStateType} from "../../redux/redux-store";
-import {compose, Dispatch} from "redux";
+import {compose} from "redux";
 import {Users} from "./Users";
-import axios from "axios";
 import {Preloader} from "../common/Preloader/Preloader";
-import {usersAPI} from "../../api/api";
-import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {getCurrentPage, getIsFetching, getPageSize, getTotalUsersCounter, getUsers} from "../../redux/users-selectors";
 
 
 class UsersAPIComponent extends Component<UsersPropsType> {
@@ -67,11 +68,11 @@ export type UsersPropsType = MapStateToPropsType & MapDispatchToPropsType
 
 const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     return {
-        usersPage: state.users,
-        pageSize: state.users.pageSize,
-        totalUsersCount: state.users.totalUsersCount,
-        currentPage: state.users.currentPage,
-        isFetching: state.users.isFetching,
+        usersPage: getUsers(state),
+        pageSize: getPageSize(state),
+        totalUsersCount: getTotalUsersCounter(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getIsFetching(state)
     }
 }
 
