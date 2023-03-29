@@ -21,6 +21,7 @@ import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 class UsersAPIComponent extends Component<UsersPropsType> {
 
     componentDidMount() {
+        debugger
         this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize);
     }
 
@@ -75,7 +76,8 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     }
 }
 
-const UsersContainer = connect(mapStateToProps, {
+const UsersContainer = connect
+(mapStateToProps, {
     follow: follow,
     unfollow: unfollow,
     setCurrentPage: setCurrentPage,

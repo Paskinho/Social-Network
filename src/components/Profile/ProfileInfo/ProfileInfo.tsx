@@ -25,4 +25,3 @@ export const ProfileInfo: React.FC<ProfileType>= (props) => {
         </div>
 )
 }
-
