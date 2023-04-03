@@ -50,7 +50,7 @@ export const Users:FC<UsersPropsType> = ({usersPage,totalUsersCount,currentPage,
             </div>
         </div>
         {
-            usersPage.users.map((u: any) => <div> key={u.id}
+            usersPage.map((u: any) => <div> key={u.id}
                 <span>
         <div>
             <NavLink to={'/profile/' + u.id}>
