@@ -4,34 +4,34 @@ import axios from 'axios';
 import {UsersPropsType} from "./UsersContainer";
 import userPhoto from "../../assets/images/user.png"
 
-
-
-export const UsersFunctional = (props: UsersPropsType) => {
+ const UsersFunctional = (props: UsersPropsType) => {
 
     const getUsers = () => {
-    if (props.usersPage.length === 0) {
+        if (props.usersPage.length === 0) {
 
-        axios.get('https://social-network.samuraijs.com/api/1.0/users').then((response:any)=> {
-            props.setUsers(response.data.items);
+            axios.get('https://social-network.samuraijs.com/api/1.0/users').then((response: any) => {
+                props.setUsers(response.data.items);
 
-        })
-
-
-    }
+            })
+        }
     }
 
     return <div>
         <button onClick={getUsers}>Get Users</button>
         {
-            props.usersPage.map ((u:any) => <div> key={u.id}
-<span>
+            props.usersPage.map((u: any) => <div> key={u.id}
+                <span>
 <div>
-    <img src ={u.photos.small != null ? u.photos.small : userPhoto} className={s.userPhoto}/>
+    <img src={u.photos.small != null ? u.photos.small : userPhoto} className={s.userPhoto}/>
 </div>
 <div>
     {u.followed ?
-        <button onClick={()=> {props.unfollow(u.id)}}>UnFollow</button>
-        : <button onClick={()=> {props.follow(u.id)}}>Follow</button>
+        <button onClick={() => {
+            props.unfollow(u.id)
+        }}>UnFollow</button>
+        : <button onClick={() => {
+            props.follow(u.id)
+        }}>Follow</button>
 
     }
 </div>
