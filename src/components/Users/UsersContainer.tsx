@@ -18,8 +18,7 @@ import {
     getCurrentPage,
     getIsFetching,
     getPageSize,
-    getTotalUsersCounter, getUsers,
-    getUsersSelector, getUsersSuperSelector
+    getTotalUsersCounter, getUsers
 } from "../../redux/users-selectors";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
@@ -37,28 +36,21 @@ class UsersAPIComponent extends Component<UsersPropsType> {
         this.props.getUsersThunkCreator(pageNumber, this.props.pageSize)
     }
 
-    render() {
-        return <>
-            {this.props.isFetching ? <Preloader/> : null}
-            <Users totalUsersCount={this.props.totalUsersCount}
-                   pageSize={this.props.pageSize}
-                   currentPage={this.props.currentPage}
-                   unfollow={this.props.unfollow}
-                   follow={this.props.unfollow}
-                   onPageChanged={this.onPageChanged}
-                   usersPage={this.props.usersPage}
-                   toggleIsFollowingProgress={this.props.isFetching}//захардкоженное значение НУЖНО УТОЧНИТЬ!!!!
-            />
-        </>
+    render= () => {
+        return (
+            this.props.isFetching ? <Preloader/> :
+            <Users {...this.props}/>
+        )
     }
 }
 
 type MapStateToPropsType = {
-    usersPage: InitialStateType
+    usersPage: UserType[]
     pageSize: number
     totalUsersCount: number
     currentPage: number
     isFetching: boolean
+    toggleIsFollowingProgress: any
 }
 
 type MapDispatchToPropsType = {
@@ -78,7 +70,8 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
         pageSize: getPageSize(state),
         totalUsersCount: getTotalUsersCounter(state),
         currentPage: getCurrentPage(state),
-        isFetching: getIsFetching(state)
+        isFetching: getIsFetching(state),
+        toggleIsFollowingProgress: ,
     }
 }
 

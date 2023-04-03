@@ -1,8 +1,9 @@
-import React from "react";
+import React, {FC} from "react";
 import s from "./Users.module.css";
 import userPhoto from "../../assets/images/user.png";
 import {InitialStateType, toggleIsFetching, toggleIsFollowingProgress} from "../../redux/users-reducer";
 import {NavLink} from "react-router-dom";
+import {UsersPropsType} from "./UsersContainer";
 
 
 type UsersType = {
@@ -17,9 +18,9 @@ type UsersType = {
 
 }
 
-export const Users = (props: UsersType) => {
+export const Users:FC<UsersPropsType> = ({usersPage,totalUsersCount,currentPage,pageSize,toggleIsFollowingProgress,...props}) => {
 
-    const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
+    const pagesCount = Math.ceil(totalUsersCount / pageSize)
 
     const pages = [];
     for (let i = 1; i <= pagesCount; i++) {
@@ -40,16 +41,16 @@ export const Users = (props: UsersType) => {
         <div>
             <div>
                 {pages.map(p => {
-                    return <span className={props.currentPage === p ? s.selectedPage : ""}
+                    return <span className={currentPage === p ? s.selectedPage : ""}
                                  onClick={(e) => {
-                                     props.onPageChanged(p)
+                                     onPageChanged(p)
                                  }}>{p}</span>
                 })}
 
             </div>
         </div>
         {
-            props.usersPage.users.map((u: any) => <div> key={u.id}
+            usersPage.users.map((u: any) => <div> key={u.id}
                 <span>
         <div>
             <NavLink to={'/profile/' + u.id}>
@@ -58,9 +59,9 @@ export const Users = (props: UsersType) => {
     </div>
     <div>
     {u.followed ?
-        <button disabled={props.toggleIsFollowingProgress.some((id: string) => id === u.id)}
+        <button disabled={toggleIsFollowingProgress.some((id: string) => id === u.id)}
                 onClick={unFollowHandler}>UnFollow</button>
-        : <button disabled={props.toggleIsFollowingProgress.some((id: string) => id === u.id)}
+        : <button disabled={toggleIsFollowingProgress.some((id: string) => id === u.id)}
                   onClick={followHandler}>Follow</button>
 
     }
