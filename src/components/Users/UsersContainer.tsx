@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import {
     follow,
-    getUsersThunkCreator,
+    getUsersThunkCreator, getUsersThunkCreatorPropsType,
     InitialStateType,
     setCurrentPage,
     setUsers,
@@ -59,6 +59,7 @@ type MapDispatchToPropsType = {
     setCurrentPage: (p: number) => void
     setUsers: (users: Array<UserType>) => void
     getUsersThunkCreator: (currentPage: number, pageSize: number) => void
+    onPageChanged: getUsersThunkCreatorPropsType
 
 }
 

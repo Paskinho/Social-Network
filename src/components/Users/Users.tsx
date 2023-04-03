@@ -43,7 +43,7 @@ export const Users:FC<UsersPropsType> = ({usersPage,totalUsersCount,currentPage,
                 {pages.map(p => {
                     return <span className={currentPage === p ? s.selectedPage : ""}
                                  onClick={(e) => {
-                                     onPageChanged(p)
+                                     props.onPageChanged(p, pageSize)
                                  }}>{p}</span>
                 })}
 

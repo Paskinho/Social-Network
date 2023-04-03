@@ -45,14 +45,14 @@ export const toggleIsFollowingProgress = (followingIsProgress: boolean, userId: 
     {type: 'TOGGLE_IS_FOLLOWING_PROGRESS', payload: followingIsProgress, userId} as const
 )
 
-export const getUsersThunkCreator = (props: getUsersThunkCreatorPropsType) => {
+export const getUsersThunkCreator: getUsersThunkCreatorPropsType = (page,pageSize) => {
 
     return (dispatch: any) => {
         dispatch (toggleIsFetching(true));
 
-        usersAPI.requestUsers(props.page, props.pageSize).then((data) => {
+        usersAPI.requestUsers(page, pageSize).then((data) => {
             dispatch (toggleIsFetching(false))
-            dispatch(setCurrentPage(props.page))
+            dispatch(setCurrentPage(page))
             dispatch (setUsers(data.items))
             dispatch (setTotalUsersCount(data.totalCount))
         })
@@ -84,10 +84,8 @@ export const unfollow = (userId: any) => { // уточнить по типиза
         });
     }}
 
-export type getUsersThunkCreatorPropsType = {
-    page: number,
-    pageSize: number
-}
+export type getUsersThunkCreatorPropsType = (page: number,  pageSize: number) => void
+
 
 type FollowType = ReturnType<typeof followSuccess>
 type UnfollowType = ReturnType<typeof unfollowSuccess>
