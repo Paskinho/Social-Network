@@ -15,7 +15,7 @@ import {compose} from "redux";
 import {Users} from "./Users";
 import {Preloader} from "../common/Preloader/Preloader";
 import {
-    getCurrentPage,
+    getCurrentPage, getFollowingInProgress,
     getIsFetching,
     getPageSize,
     getTotalUsersCounter, getUsers
@@ -72,7 +72,7 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
         totalUsersCount: getTotalUsersCounter(state),
         currentPage: getCurrentPage(state),
         isFetching: getIsFetching(state),
-        toggleIsFollowingProgress: ,
+        toggleIsFollowingProgress: getFollowingInProgress(state),
     }
 }
 
