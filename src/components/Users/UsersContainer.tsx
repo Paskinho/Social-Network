@@ -18,7 +18,7 @@ import {
     getCurrentPage,
     getIsFetching,
     getPageSize,
-    getTotalUsersCounter,
+    getTotalUsersCounter, getUsers,
     getUsersSelector, getUsersSuperSelector
 } from "../../redux/users-selectors";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
@@ -74,7 +74,7 @@ export type UsersPropsType = MapStateToPropsType & MapDispatchToPropsType
 
 const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     return {
-        usersPage: getUsersSelector(state),
+        usersPage: getUsers(state),
         pageSize: getPageSize(state),
         totalUsersCount: getTotalUsersCounter(state),
         currentPage: getCurrentPage(state),
