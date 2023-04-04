@@ -46,13 +46,13 @@ class ProfileStatus extends React.Component<ProfileType> {
             <div>
                 {this.state.EditMode &&
                     <div>
-                        <span onDoubleClick={this.activateMode}> {this.props.status || "Come on the reds"}</span>
+                        {/*<span onDoubleClick={this.activateMode}> {this.props.status || "Come on the reds"}</span>*/}
                     </div>
                 }
                 {!this.state.EditMode &&
                     <div>
-                        <input onChange={this.onStatusChange} autoFocus={true} onBlur={this.deActivateMode}
-                               value={this.state.status}/>
+                        {/*<input onChange={this.onStatusChange} autoFocus={true} onBlur={this.deActivateMode}*/}
+                        {/*       value={this.state.status}/>*/}
                     </div>
                 }
             </div>
@@ -60,4 +60,4 @@ class ProfileStatus extends React.Component<ProfileType> {
     }
 }
 
-export default ProfileStatus
+// export default ProfileStatus
