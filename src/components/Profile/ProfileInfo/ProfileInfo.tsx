@@ -7,9 +7,9 @@ import {ProfileStatusWithHooks} from "./ProfileStatusWithHooks";
 
 
 export const ProfileInfo: React.FC<ProfileType>= (props) => {
-    // if (!props.profile) {
-    //     return <Preloader/>
-    // }
+    if (props.profile) {
+        return <Preloader/>
+    }
 
     return (
         <div>

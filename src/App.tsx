@@ -16,6 +16,7 @@ import {compose} from "redux";
 import {initializeApp} from "./redux/app-reducer";
 import {Preloader} from "./components/common/Preloader/Preloader";
 import {AppStateType} from "./redux/redux-store";
+import UsersAPIComponent from "./components/Users/UsersContainer";
 
 //
 // export  type appPropsType = {
