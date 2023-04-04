@@ -3,7 +3,7 @@ import {ProfileType} from "../ProfileContainer";
 
 type ProfileStatusType = {
     status: string
-    updateStatus: () => void
+    updateStatus: (status: string) => void
 
 }
 
@@ -18,7 +18,7 @@ export const ProfileStatusWithHooks = (props: ProfileStatusType) => {
 
     const deActivateMode = () => {
         setEditMode(false)
-        //props.updateStatus(state.status);
+        props.updateStatus(status);
     }
 
 
@@ -28,15 +28,19 @@ export const ProfileStatusWithHooks = (props: ProfileStatusType) => {
 
     return (
         <div>
-            { !editMode &&
+            {!editMode &&
                 <div>
-                    <span onDoubleClick={activateEditMode}>{props.status ||"------"}</span>
+                    <span onDoubleClick={activateEditMode}>{props.status || "------"}</span>
                 </div>
             }
             {
                 editMode &&
                 <div>
-                    <input onChange={onStatusChange} autoFocus={true} onBlur={deActivateMode}/>
+                    <input onChange={onStatusChange}
+                           autoFocus={true}
+                           onBlur={deActivateMode}
+                           value={status}
+                    />
                 </div>
             }
         </div>
