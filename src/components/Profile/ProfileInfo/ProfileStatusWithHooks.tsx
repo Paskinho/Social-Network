@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {ProfileType} from "../ProfileContainer";
 
 type ProfileStatusType = {
@@ -7,13 +7,16 @@ type ProfileStatusType = {
 
 }
 
-export const ProfileStatusWithHooks = (props: ProfileType) => {
+export const ProfileStatusWithHooks = (props: ProfileStatusType) => {
+
+    useState()
+
 
     return (
         <div>
             {
                 <div>
-                    <span> </span>
+                    <span>"------"</span>
                 </div>
             }
             {
