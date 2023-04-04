@@ -46,24 +46,3 @@ export const ProfileStatusWithHooks = (props: ProfileStatusType) => {
         </div>
     )
 }
-
-
-// return (
-//             <div>
-//                 {
-//                     <div>
-//                         <span> </span>
-//                         // <span {props.status || "Come on the reds"}</span>
-//                     </div>
-//                 }
-// {
-//     false &&
-//     <div>
-//         <input autoFocus={true}/>
-//     </div>
-// }
-//             </div>
-//         )
-//     }
-
-
