@@ -32,38 +32,45 @@ const MyPostsReduxForm = reduxForm<myPostsFormType> ({
 })(addPostsForm)
 
 
-export const MyPosts: React.FC<MyPostsType> = ({posts, postText,addNewPost, onPost}) => {
+export class MyPosts extends React.Component<MyPostsType> {
 
-const postsElements =
-    posts.map(p=> <Post name={p.title}
-                        like={p.like}
-                        id={p.id}
-                        key={p.id}
-
-                        />)
-
-
-    const addPost = (values: any) => {
-        addNewPost(values.newPostText)
+    shouldComponentUpdate(nextProps: Readonly<MyPostsType>, nextState: Readonly<{}>, nextContext: any): boolean {
+        return false
     }
 
+    render() {
+        let {posts, postText, addNewPost, onPost} = this.props;
+
+        const postsElements =
+            posts.map(p => <Post name={p.title}
+                                 like={p.like}
+                                 id={p.id}
+                                 key={p.id}
+
+            />)
 
 
-    return (
-        <div className={s.postsBlock}>
+        const addPost = (values: any) => {
+            addNewPost(values.newPostText)
+        }
 
-            <h3>My posts</h3>
-            {/*<hr>*/}
-            {/*{props.posts.map(p=> <div><b>{p.postText}</b></div>)}*/}
-            {/*    /!*key={p.i} добавить в дивку*!/*/}
-            {/*</hr>*/}
-            <MyPostsReduxForm onSubmit={addPost}/>
-            <div>
-                {postsElements}
+
+        return (
+            <div className={s.postsBlock}>
+
+                <h3>My posts</h3>
+                {/*<hr>*/}
+                {/*{props.posts.map(p=> <div><b>{p.postText}</b></div>)}*/}
+                {/*    /!*key={p.i} добавить в дивку*!/*/}
+                {/*</hr>*/}
+                <MyPostsReduxForm onSubmit={addPost}/>
+                <div>
+                    {postsElements}
+                </div>
             </div>
-        </div>
 
-    )
+        )
+    }
 }
 
 // const allPosts = posts.map(p => <Post name={p.title}
