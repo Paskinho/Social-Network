@@ -3,7 +3,6 @@ import s from './Myposts.module.css'
 import {Post} from "./Post/Post";
 import {MyPostsType} from "./MyPostsContainer";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
-// import {AddMessageForm, AddMessageFormType} from "../../Dialogs/Dialogs";
 import {maxLengthCreator, required} from "../../../utils/validators/validators";
 import {TextArea} from "../../common/FormsControls/FormsControls";
 
@@ -32,14 +31,8 @@ const MyPostsReduxForm = reduxForm<myPostsFormType> ({
 })(addPostsForm)
 
 
-export class MyPosts extends React.Component<MyPostsType> {
+export const MyPosts: React.FC<MyPostsType> = React.memo(({posts, postText,addNewPost, onPost}) => {
 
-    shouldComponentUpdate(nextProps: Readonly<MyPostsType>, nextState: Readonly<{}>, nextContext: any): boolean {
-        return false
-    }
-
-    render() {
-        let {posts, postText, addNewPost, onPost} = this.props;
 
         const postsElements =
             posts.map(p => <Post name={p.title}
@@ -71,7 +64,7 @@ export class MyPosts extends React.Component<MyPostsType> {
 
         )
     }
-}
+)
 
 // const allPosts = posts.map(p => <Post name={p.title}
 //                                       description={p.description}
