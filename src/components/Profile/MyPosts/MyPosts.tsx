@@ -65,34 +65,3 @@ export const MyPosts: React.FC<MyPostsType> = React.memo(({posts, postText,addNe
         )
     }
 )
-
-// const allPosts = posts.map(p => <Post name={p.title}
-//                                       description={p.description}
-//                                       likesCount={p.likesCount}
-//                                       id={p.id}
-//                                       key={p.id}
-//                                       addLike={addLike}/>)
-//
-// const onSetPost = (e: ChangeEvent<HTMLTextAreaElement>) => {
-//     setPost(e.currentTarget.value)
-// }
-//
-// const onAddNewPost = () => {
-//     addNewPost()
-// }
-//
-// return (
-//     <div className={s.content}>
-//         <div className={s.postsBlock}>
-//             <h3>Posts</h3>
-//             <div>
-//                 <textarea cols={30} rows={5} value={newPostText} onChange={onSetPost}></textarea>
-//                 <button onClick={onAddNewPost}>Add post</button>
-//             </div>
-//             <div>
-//                 {allPosts}
-//             </div>
-//         </div>
-//     </div>
-// );
-// };
