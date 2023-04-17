@@ -104,7 +104,7 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
         case 'DELETE-POST' : {
             return {
                 ...state,
-                postData: state.postData.filter(p => p.id != action.id)
+                postData: state.postData.filter(p => p.id !== action.id)
             }
         }
 
@@ -142,7 +142,7 @@ export const setStatusCreator = (status: string) => {
 
 }
 
-export const deletePostCreator = (id: string) => {
+export const deletePostCreator = (id: number) => {
     return {
         type: "DELETE-POST", id
     } as const

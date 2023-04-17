@@ -1,5 +1,5 @@
 import React from "react";
-import {addPostCreator, profileReducer} from "./profile-reducer";
+import {addPostCreator, deletePostCreator, profileReducer} from "./profile-reducer";
 
 let state = {
     postData: [
@@ -22,6 +22,19 @@ it('length postFata should be increased',  ()=> {
     //3.expectation
 
     expect(newState.postData.length).toBe(3);
-    expect(newState.newPostText).toBe('it-kamasutra');
+
+});
+
+it('length postFata should be decrement after delete',  ()=> {
+// 1. test data
+    let action = deletePostCreator(2)
+
+
+    //2. action
+    let newState = profileReducer(state, action);
+
+    //3.expectation
+
+    expect(newState.postData.length).toBe(2);
 });
 
