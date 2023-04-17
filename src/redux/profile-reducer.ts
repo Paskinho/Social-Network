@@ -10,11 +10,14 @@ export type setUserProfileType = ReturnType<typeof setUserProfileCreator>
 
 export type setStatusCreatorType = ReturnType<typeof setStatusCreator>
 
+export type deletePostCreatorType = ReturnType<typeof deletePostCreator>
+
 export type ProfileActionsType =
     addPostCreatorType
     | updateNewPostTextCreatorType
     | setUserProfileType
     | setStatusCreatorType
+| deletePostCreatorType
 
 
 export type PostDataType = {
@@ -78,7 +81,6 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
                 postData: [...state.postData, newPost]
             }
 
-
         }
         case "UPDATE_NEW_POST_TEXT": {
             return {
@@ -99,6 +101,12 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
             }
         }
 
+        case 'DELETE-POST' : {
+            return {
+                ...state,
+                postData: state.postData.filter(p => p.id != action.id)
+            }
+        }
 
         default:
             return state
@@ -132,6 +140,12 @@ export const setStatusCreator = (status: string) => {
         status: status
     } as const
 
+}
+
+export const deletePostCreator = (id: string) => {
+    return {
+        type: "DELETE-POST", id
+    } as const
 }
 
 
