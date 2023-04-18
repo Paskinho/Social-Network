@@ -1,6 +1,7 @@
 import {v1} from "uuid";
 import {profilePageType} from "./profile-reducer";
 import {usersAPI} from "../api/api";
+import {Dispatch} from "redux";
 
 
 
@@ -55,24 +56,23 @@ export const getUsersThunkCreator: getUsersThunkCreatorPropsType = (page,pageSiz
             dispatch (setTotalUsersCount(data.totalCount))
     }}
 
+const followUnFollowFlow = async (dispatch: Dispatch, userId: any, apiMethod: any, actionCreator: any) => {
+    dispatch(toggleIsFollowingProgress(true, userId));
+    let response = await usersAPI.follow(userId)
+    if (response.data.resultCode == 0) {
+        dispatch(followSuccess(userId))
+    }
+    dispatch(toggleIsFollowingProgress(false, userId));
+}
+
 export const follow = (userId: any) => { // уточнить по типизации, в одном месте number, в другом string
     return async (dispatch: any) => {
-        dispatch(toggleIsFollowingProgress(true, userId));
-        let response = await usersAPI.follow(userId)
-            if (response.data.resultCode == 0) {
-                dispatch(followSuccess(userId))
-            }
-            dispatch(toggleIsFollowingProgress(false, userId));
+        followUnFollowFlow(dispatch, userId, usersAPI.follow.bind(usersAPI), followSuccess)
     }}
 
 export const unfollow = (userId: any) => { // уточнить по типизации, в одном месте number, в другом string
     return async (dispatch: any) => {
-        dispatch(toggleIsFollowingProgress(true, userId));
-       let response = await usersAPI.unfollow(userId)
-            if (response.data.resultCode == 0) {
-                dispatch(unfollowSuccess(userId))
-            }
-            dispatch(toggleIsFollowingProgress(false, userId));
+        followUnFollowFlow(dispatch, userId, usersAPI.unfollow.bind(usersAPI), unfollowSuccess)
     }}
 
 export type getUsersThunkCreatorPropsType = (page: number,  pageSize: number) => void
