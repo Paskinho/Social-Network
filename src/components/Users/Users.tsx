@@ -4,6 +4,7 @@ import userPhoto from "../../assets/images/user.png";
 import {InitialStateType, toggleIsFetching, toggleIsFollowingProgress} from "../../redux/users-reducer";
 import {NavLink} from "react-router-dom";
 import {UsersPropsType} from "./UsersContainer";
+import {Paginator} from "../common/Paginator/Paginator";
 
 
 type UsersType = {
@@ -38,19 +39,9 @@ export const Users:FC<UsersPropsType> = ({usersPage,totalUsersCount,currentPage,
 
     return <div>
 
-        <div>
-            <div>
-                {pages.map(p => {
-                    return <span className={currentPage === p ? s.selectedPage : ""}
-                                 onClick={(e) => {
-                                     props.onPageChanged(p, pageSize)
-                                 }}>{p}</span>
-                })}
-
-            </div>
-        </div>
+        <Paginator totalUsersCount={totalUsersCount} pageSize={pageSize} currentPage={currentPage} onPageChanged={props.onPageChanged}/>
         {
-            usersPage.map((u: any) => <div> key={u.id}
+            usersPage.users.map((u: any) => <div> key={u.id}
                 <span>
         <div>
             <NavLink to={'/profile/' + u.id}>

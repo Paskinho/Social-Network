@@ -59,7 +59,7 @@ type MapDispatchToPropsType = {
     setCurrentPage: (p: number) => void
     setUsers: (users: Array<UserType>) => void
     getUsersThunkCreator: (currentPage: number, pageSize: number) => void
-    onPageChanged: getUsersThunkCreatorPropsType
+    onPageChanged: (p: number) => void
 
 }
 
