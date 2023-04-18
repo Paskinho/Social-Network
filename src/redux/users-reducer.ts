@@ -46,45 +46,36 @@ export const toggleIsFollowingProgress = (followingIsProgress: boolean, userId: 
 )
 
 export const getUsersThunkCreator: getUsersThunkCreatorPropsType = (page,pageSize) => {
-
-    return (dispatch: any) => {
+    return  async (dispatch: any) => {
         dispatch (toggleIsFetching(true));
-        usersAPI.requestUsers(page, pageSize).then((data) => {
+        let data = await usersAPI.requestUsers(page, pageSize)
             dispatch (toggleIsFetching(false))
             dispatch(setCurrentPage(page))
             dispatch (setUsers(data.items))
             dispatch (setTotalUsersCount(data.totalCount))
-        })
     }}
 
 export const follow = (userId: any) => { // уточнить по типизации, в одном месте number, в другом string
-
-    return (dispatch: any) => {
-
+    return async (dispatch: any) => {
         dispatch(toggleIsFollowingProgress(true, userId));
-        usersAPI.follow(userId).then((response) => {
+        let response = await usersAPI.follow(userId)
             if (response.data.resultCode == 0) {
                 dispatch(followSuccess(userId))
             }
             dispatch(toggleIsFollowingProgress(false, userId));
-        });
     }}
 
 export const unfollow = (userId: any) => { // уточнить по типизации, в одном месте number, в другом string
-
-    return (dispatch: any) => {
-
+    return async (dispatch: any) => {
         dispatch(toggleIsFollowingProgress(true, userId));
-        usersAPI.unfollow(userId).then((response) => {
+       let response = await usersAPI.unfollow(userId)
             if (response.data.resultCode == 0) {
                 dispatch(unfollowSuccess(userId))
             }
             dispatch(toggleIsFollowingProgress(false, userId));
-        });
     }}
 
 export type getUsersThunkCreatorPropsType = (page: number,  pageSize: number) => void
-
 
 type FollowType = ReturnType<typeof followSuccess>
 type UnfollowType = ReturnType<typeof unfollowSuccess>
