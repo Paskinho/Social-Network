@@ -2,7 +2,7 @@ import {v1} from "uuid";
 import {profilePageType} from "./profile-reducer";
 import {usersAPI} from "../api/api";
 import {Dispatch} from "redux";
-
+import {updateObjectInArray} from "../utils/object-helpers";
 
 
 export type UserType = {
@@ -30,20 +30,19 @@ followingInProgress: number []
 
 
 export const followSuccess = (userId: string) => (
-    {type: "FOLLOW",  payload: userId} as const)
+    {type: "users/FOLLOW",  payload: userId} as const)
 export const unfollowSuccess = (userId: string) => (
-    {type: "UNFOLLOW", payload: userId} as const)
+    {type: "users/UNFOLLOW", payload: userId} as const)
 export const setUsers = (users: Array<UserType>) => (
-    {type: "SET_USERS",  payload: {newState: users} } as const)
+    {type: "users/SET_USERS",  payload: {newState: users} } as const)
 export const setCurrentPage = (currentPage: number) => (
-    {type: "SET_CURRENT_PAGE", payload: currentPage} as const)
+    {type: "users/SET_CURRENT_PAGE", payload: currentPage} as const)
 export const setTotalUsersCount = (totalCount: number) => (
-    {type: "SET_TOTAL_USERS_COUNT", payload: totalCount} as const)
+    {type: "users/SET_TOTAL_USERS_COUNT", payload: totalCount} as const)
 export const toggleIsFetching = (isFetching: boolean) => (
-    {type: 'TOGGLE_IS_FETCHING', payload: isFetching} as const
-)
+    {type: 'users/TOGGLE_IS_FETCHING', payload: isFetching} as const)
 export const toggleIsFollowingProgress = (followingIsProgress: boolean, userId: number) => (
-    {type: 'TOGGLE_IS_FOLLOWING_PROGRESS', payload: followingIsProgress, userId} as const
+    {type: 'users/TOGGLE_IS_FOLLOWING_PROGRESS', payload: followingIsProgress, userId} as const
 )
 
 export const getUsersThunkCreator: getUsersThunkCreatorPropsType = (page,pageSize) => {
@@ -99,9 +98,10 @@ const initialState: InitialStateType = {
 export const usersReducer = (state:InitialStateType = initialState, action: UsersActionsTypes): InitialStateType => {
 
     switch (action.type) {
-        case 'FOLLOW':
+        case 'users/FOLLOW':
             return {
                 ...state,
+                // users: updateObjectInArray(state.users, action.payload, 'id', {followed: true} )
                 users: state.users.map((u: any) => {
                         if (u.id === action.payload) {
                             return {...u, followed: true}
@@ -110,9 +110,10 @@ export const usersReducer = (state:InitialStateType = initialState, action: User
                     }
                 )
             }
-        case 'UNFOLLOW':
+        case 'users/UNFOLLOW':
             return {
                 ...state,
+                // users: updateObjectInArray(state.users, action.payload, 'id', {followed: false} )
                 users: state.users.map((u: any) => {
                         if (u.id === action.payload) {
                             return {...u, followed: false}
@@ -121,23 +122,23 @@ export const usersReducer = (state:InitialStateType = initialState, action: User
                     }
                 )
             }
-        case 'SET_USERS':
+        case 'users/SET_USERS':
             return {
                 ...state, users: action.payload.newState
             }
-        case "SET_CURRENT_PAGE":
+        case "users/SET_CURRENT_PAGE":
             return {
                 ...state,page: action.payload
             }
-        case "SET_TOTAL_USERS_COUNT" :
+        case "users/SET_TOTAL_USERS_COUNT" :
             return {
                 ...state,totalUsersCount: action.payload
             }
-        case 'TOGGLE_IS_FETCHING' :
+        case 'users/TOGGLE_IS_FETCHING' :
             return  {
                 ...state,isFetching: action.payload
             }
-        case 'TOGGLE_IS_FOLLOWING_PROGRESS' :
+        case 'users/TOGGLE_IS_FOLLOWING_PROGRESS' :
             return  {
                 ...state,
                 followingInProgress: action.payload ?
