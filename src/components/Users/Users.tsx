@@ -41,7 +41,7 @@ export const Users:FC<UsersPropsType> = ({usersPage,totalUsersCount,currentPage,
 
         <Paginator totalUsersCount={totalUsersCount} pageSize={pageSize} currentPage={currentPage} onPageChanged={props.onPageChanged}/>
         {
-            usersPage.users.map((u: any) => <div> key={u.id}
+           usersPage.map((u: any) => <div> key={u.id}
                 <span>
         <div>
             <NavLink to={'/profile/' + u.id}>
