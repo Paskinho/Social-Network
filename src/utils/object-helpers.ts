@@ -1,10 +1,10 @@
 import React from "react";
 import {AppStateType} from "../redux/redux-store";
 
-let updateObjectInArray = (state: AppStateType) => {
-    state.users.map((u: any) => {
-        if (u.id === action.payload) {
-            return {...u, followed: true}
+export const updateObjectInArray = (items: [], itemId: number, objPropName: string, newObjProps: any) => {
+    items.map((u: any) => {
+        if (u[objPropName] === itemId) {
+            return {...u, ...newObjProps}
         }
         return u;
     })
