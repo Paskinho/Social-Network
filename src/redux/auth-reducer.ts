@@ -40,7 +40,7 @@ const initialState: InitialStateType = {
 export const authReducer = (state:InitialStateType = initialState, action: UsersActionsTypes): InitialStateType => {
 
     switch (action.type) {
-        case 'SET_USER_DATA':
+        case SET_USER_DATA:
             return {
                 ...state,
                 ...action.payload
@@ -54,8 +54,10 @@ export const authReducer = (state:InitialStateType = initialState, action: Users
 
 type setUserDataACType = ReturnType<typeof setAuthUserData>
 
+const SET_USER_DATA = "social-network/auth/SET_USER_DATA"
+
 export const setAuthUserData = (data: InitialStateType) => (
-    {type: "SET_USER_DATA",  payload: data} as const)
+    {type: SET_USER_DATA,  payload: data} as const)
 
 
 export const getAuthUserData = () => (dispatch: Dispatch)  => {
