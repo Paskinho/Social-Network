@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
 import {Navbar} from "./components/Navbar/Navbar";
 import {Route, Routes} from "react-router-dom"
@@ -11,12 +11,10 @@ import ProfileContainer, {withRouter} from "./components/Profile/ProfileContaine
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
 import {connect} from "react-redux";
-import {getAuthUserData} from "./redux/auth-reducer";
 import {compose} from "redux";
 import {initializeApp} from "./redux/app-reducer";
 import {Preloader} from "./components/common/Preloader/Preloader";
 import {AppStateType} from "./redux/redux-store";
-import UsersAPIComponent from "./components/Users/UsersContainer";
 
 //
 // export  type appPropsType = {

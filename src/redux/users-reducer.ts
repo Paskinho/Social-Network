@@ -1,8 +1,5 @@
-import {v1} from "uuid";
-import {profilePageType} from "./profile-reducer";
 import {usersAPI} from "../api/api";
 import {Dispatch} from "redux";
-import {updateObjectInArray} from "../utils/object-helpers";
 
 
 export type UserType = {

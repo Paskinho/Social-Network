@@ -2,8 +2,8 @@ import React from 'react';
 import s from './ProfileInfo.module.css'
 import {Preloader} from "../../common/Preloader/Preloader";
 import {ProfileType} from "../ProfileContainer";
-
 import {ProfileStatusWithHooks} from "./ProfileStatusWithHooks";
+
 
 
 export const ProfileInfo: React.FC<ProfileType>= (props) => {
