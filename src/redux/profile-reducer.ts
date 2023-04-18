@@ -69,7 +69,7 @@ export type InitialStateType = typeof initialState
 export const profileReducer = (state: InitialStateType = initialState, action: ProfileActionsType) => {
 
     switch (action.type) {
-        case "ADD_POST": {
+        case "users/ADD_POST": {
             let newPost: PostDataType = {
                 id: state.postData.length + 1,
                 title: action.newPostText,
@@ -82,26 +82,26 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
             }
 
         }
-        case "UPDATE_NEW_POST_TEXT": {
+        case "users/UPDATE_NEW_POST_TEXT": {
             return {
                 ...state,
                 newPostText: action.newText
             }
         }
-        case "SET_USER_PROFILE": {
+        case "users/SET_USER_PROFILE": {
             return {
                 ...state,
                 profile: action.profile
             }
         }
-        case 'SET_STATUS' : {
+        case 'users/SET_STATUS' : {
             return {
                 ...state,
                 status: action.status
             }
         }
 
-        case 'DELETE-POST' : {
+        case 'users/DELETE-POST' : {
             return {
                 ...state,
                 postData: state.postData.filter(p => p.id !== action.id)
@@ -117,18 +117,18 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
 
 export const addPostCreator = (newPostText: string) => {
     return {
-        type: "ADD_POST", newPostText
+        type: "users/ADD_POST", newPostText
     } as const
 }
 export const updateNewPostTextCreator = (newText: string) => {
     return {
-        type: "UPDATE_NEW_POST_TEXT",
+        type: "users/UPDATE_NEW_POST_TEXT",
         newText: newText
     } as const
 }
 export const setUserProfileCreator = (profile: string) => {
     return {
-        type: "SET_USER_PROFILE",
+        type: "users/SET_USER_PROFILE",
         profile: profile
     } as const
 
@@ -136,7 +136,7 @@ export const setUserProfileCreator = (profile: string) => {
 
 export const setStatusCreator = (status: string) => {
     return {
-        type: "SET_STATUS",
+        type: "users/SET_STATUS",
         status: status
     } as const
 
@@ -144,7 +144,7 @@ export const setStatusCreator = (status: string) => {
 
 export const deletePostCreator = (id: number) => {
     return {
-        type: "DELETE-POST", id
+        type: "users/DELETE-POST", id
     } as const
 }
 
