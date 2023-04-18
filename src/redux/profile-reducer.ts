@@ -149,22 +149,19 @@ export const deletePostCreator = (id: number) => {
 }
 
 
-export const getUserProfile = (userId: string) => (dispatch: Dispatch) => {
-    usersAPI.getProfile(userId).then((response) => {
+export const getUserProfile = (userId: string) => async (dispatch: Dispatch) => {
+   let response = await usersAPI.getProfile(userId)
         dispatch(setUserProfileCreator(response.data))
-    })
 }
 
-export const getStatus = (userId: string) => (dispatch: Dispatch) => {
-    profileAPI.getStatus(userId).then((response) => {
+export const getStatus = (userId: string) => async (dispatch: Dispatch) => {
+    let response = await profileAPI.getStatus(userId)
         dispatch(setStatusCreator(response.data))
-    })
 }
 
-export const updateStatus = (status: string) => (dispatch: Dispatch) => {
-    profileAPI.updateStatus(status).then((response) => {
+export const updateStatus = (status: string) => async (dispatch: Dispatch) => {
+    let response = await profileAPI.updateStatus(status)
         if (response.data.resultCode === 0) {
             dispatch(setStatusCreator(status))
         }
-    })
 }

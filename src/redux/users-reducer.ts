@@ -49,7 +49,6 @@ export const getUsersThunkCreator: getUsersThunkCreatorPropsType = (page,pageSiz
 
     return (dispatch: any) => {
         dispatch (toggleIsFetching(true));
-
         usersAPI.requestUsers(page, pageSize).then((data) => {
             dispatch (toggleIsFetching(false))
             dispatch(setCurrentPage(page))
