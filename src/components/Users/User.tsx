@@ -8,19 +8,13 @@ import {Paginator} from "../common/Paginator/Paginator";
 
 
 type UserType = {
-    totalUsersCount: number
-    pageSize: number
-    currentPage: number
     unfollow: (userId: string) => void
     follow: (userId: string) => void
-    onPageChanged: (p: number) => void
-    usersPage: InitialStateType
     toggleIsFollowingProgress: any// нужно будет уточнять
-user: UserType
+    user: any
 }
 
-export const User:FC<UserType> = ({user, toggleIsFollowingProgress,...props}) => {
-
+export const User: FC<UserType> = ({user, toggleIsFollowingProgress, ...props}) => {
 
     const followHandler = (u: any) => {
         props.follow(u.id)
@@ -35,23 +29,23 @@ export const User:FC<UserType> = ({user, toggleIsFollowingProgress,...props}) =>
                 <span>
         <div>
             <NavLink to={'/profile/' + user.id}>
-            <img src={user.photos.small != null ? u.photos.small : userPhoto} className={s.userPhoto}/>
+            <img src={user.photos.small != null ? user.photos.small : userPhoto} className={s.userPhoto}/>
                 </NavLink>
     </div>
     <div>
-    {u.followed ?
-        <button disabled={toggleIsFollowingProgress.some((id: string) => id === u.id)}
+    {user.followed ?
+        <button disabled={toggleIsFollowingProgress.some((id: string) => id === user.id)}
                 onClick={unFollowHandler}>UnFollow</button>
-        : <button disabled={toggleIsFollowingProgress.some((id: string) => id === u.id)}
+        : <button disabled={toggleIsFollowingProgress.some((id: string) => id === user.id)}
                   onClick={followHandler}>Follow</button>
 
     }
         </div>
         </span>
-                <span>
         <span>
-            <div>{u.name}</div>
-        <div>{u.status}</div>
+        <span>
+            <div>{user.name}</div>
+        <div>{user.status}</div>
         </span>
         <span>
         <div>{"u.location.country"}</div>
@@ -59,5 +53,5 @@ export const User:FC<UserType> = ({user, toggleIsFollowingProgress,...props}) =>
         </span>
         </span>
 
-            </div>
+    </div>
 }

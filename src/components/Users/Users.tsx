@@ -5,6 +5,7 @@ import {InitialStateType, toggleIsFetching, toggleIsFollowingProgress} from "../
 import {NavLink} from "react-router-dom";
 import {UsersPropsType} from "./UsersContainer";
 import {Paginator} from "../common/Paginator/Paginator";
+import {User} from "./User";
 
 
 type UsersType = {
@@ -32,38 +33,14 @@ export const Users:FC<UsersPropsType> = ({usersPage,totalUsersCount,currentPage,
     }
 
     return <div>
-
         <Paginator totalUsersCount={totalUsersCount} pageSize={pageSize} currentPage={currentPage} onPageChanged={props.onPageChanged}/>
         {
-           usersPage.map((u: any) => <div> key={u.id}
-                <span>
-        <div>
-            <NavLink to={'/profile/' + u.id}>
-            <img src={u.photos.small != null ? u.photos.small : userPhoto} className={s.userPhoto}/>
-                </NavLink>
-    </div>
-    <div>
-    {u.followed ?
-        <button disabled={toggleIsFollowingProgress.some((id: string) => id === u.id)}
-                onClick={unFollowHandler}>UnFollow</button>
-        : <button disabled={toggleIsFollowingProgress.some((id: string) => id === u.id)}
-                  onClick={followHandler}>Follow</button>
-
-    }
-        </div>
-        </span>
-                <span>
-        <span>
-            <div>{u.name}</div>
-        <div>{u.status}</div>
-        </span>
-        <span>
-        <div>{"u.location.country"}</div>
-        <div>{"u.location.city"}</div>
-        </span>
-        </span>
-
-            </div>)
+           usersPage.map((u: any) => <User unfollow={u.unfollow}
+                                           follow={u.follow}
+                                           toggleIsFollowingProgress={toggleIsFollowingProgress}
+                                           user={u}
+                                           key={u.id}/>
+           )
         }
     </div>
 }
