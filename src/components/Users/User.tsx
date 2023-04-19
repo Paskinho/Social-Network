@@ -7,7 +7,7 @@ import {UsersPropsType} from "./UsersContainer";
 import {Paginator} from "../common/Paginator/Paginator";
 
 
-type UsersType = {
+type UserType = {
     totalUsersCount: number
     pageSize: number
     currentPage: number
@@ -16,10 +16,10 @@ type UsersType = {
     onPageChanged: (p: number) => void
     usersPage: InitialStateType
     toggleIsFollowingProgress: any// нужно будет уточнять
-
+user: UserType
 }
 
-export const Users:FC<UsersPropsType> = ({usersPage,totalUsersCount,currentPage,pageSize,toggleIsFollowingProgress,...props}) => {
+export const User:FC<UserType> = ({user, toggleIsFollowingProgress,...props}) => {
 
 
     const followHandler = (u: any) => {
@@ -32,14 +32,10 @@ export const Users:FC<UsersPropsType> = ({usersPage,totalUsersCount,currentPage,
     }
 
     return <div>
-
-        <Paginator totalUsersCount={totalUsersCount} pageSize={pageSize} currentPage={currentPage} onPageChanged={props.onPageChanged}/>
-        {
-           usersPage.map((u: any) => <div> key={u.id}
                 <span>
         <div>
-            <NavLink to={'/profile/' + u.id}>
-            <img src={u.photos.small != null ? u.photos.small : userPhoto} className={s.userPhoto}/>
+            <NavLink to={'/profile/' + user.id}>
+            <img src={user.photos.small != null ? u.photos.small : userPhoto} className={s.userPhoto}/>
                 </NavLink>
     </div>
     <div>
@@ -63,7 +59,5 @@ export const Users:FC<UsersPropsType> = ({usersPage,totalUsersCount,currentPage,
         </span>
         </span>
 
-            </div>)
-        }
-    </div>
+            </div>
 }
