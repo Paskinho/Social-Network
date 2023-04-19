@@ -1,8 +1,5 @@
 import React, {FC} from "react";
-import s from "./Users.module.css";
-import userPhoto from "../../assets/images/user.png";
-import {InitialStateType, toggleIsFetching, toggleIsFollowingProgress} from "../../redux/users-reducer";
-import {NavLink} from "react-router-dom";
+import {InitialStateType} from "../../redux/users-reducer";
 import {UsersPropsType} from "./UsersContainer";
 import {Paginator} from "../common/Paginator/Paginator";
 import {User} from "./User";
@@ -34,13 +31,15 @@ export const Users:FC<UsersPropsType> = ({usersPage,totalUsersCount,currentPage,
 
     return <div>
         <Paginator totalUsersCount={totalUsersCount} pageSize={pageSize} currentPage={currentPage} onPageChanged={props.onPageChanged}/>
+       <div>
         {
-           usersPage.map((u: any) => <User unfollow={u.unfollow}
-                                           follow={u.follow}
+           usersPage.map((u: any) => <User unfollow={props.unfollow}
+                                           follow={props.follow}
                                            toggleIsFollowingProgress={toggleIsFollowingProgress}
                                            user={u}
                                            key={u.id}/>
            )
         }
+       </div>
     </div>
 }
