@@ -1,14 +1,9 @@
-import React, {ChangeEvent, FC, useRef} from "react";
+import React from "react";
 import s from './Dialogs.module.css';
-
 import {DialogItem} from "./DialogItem";
 import {Message} from "./Message/Message";
 import {DialogsPropsType} from "./DialogsContainer";
-import {Redirect} from "@reach/router";
-import {Field, InjectedFormProps, reduxForm} from "redux-form";
-import {LoginFormType} from "../Login/Login";
-import {authReducer} from "../../redux/auth-reducer";
-import {AddMessageForm, AddMessageReduxForm} from "./AddMessageForm/AddMessageForm";
+import {AddMessageReduxForm} from "./AddMessageForm/AddMessageForm";
 
 
 // type DialogsPropsType = {

@@ -9,7 +9,6 @@ import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 type MapStatePropsType = {
     dialogsState: InitialStateType
-
 }
 
 type MapDispatchPropsType = {
