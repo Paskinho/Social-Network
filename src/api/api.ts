@@ -2,7 +2,6 @@ import axios from "axios";
 import {getUsersThunkCreator} from "../redux/users-reducer";
 
 
-
 const instance = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
     withCredentials: true,
@@ -13,7 +12,7 @@ const instance = axios.create({
 
 export const usersAPI = {
     requestUsers(page: number, pageSize: number) {
-        return instance.get( `users?page=${page}$count=${pageSize}`,
+        return instance.get(`users?page=${page}$count=${pageSize}`,
         )
             .then(response => response.data);
     },
@@ -30,8 +29,6 @@ export const usersAPI = {
         return profileAPI.getProfile(userId);
     }
 }
-
-
 
 
 export const profileAPI = {
@@ -52,10 +49,10 @@ export const profileAPI = {
 
 export const authAPI = {
     me() {
-    return instance.get(`auth/me`,)
+        return instance.get(`auth/me`,)
     },
     login(email: string, password: string, rememberMe = false) {
-        return instance.post(`auth/login`,{email, password, rememberMe})
+        return instance.post(`auth/login`, {email, password, rememberMe})
     },
     logout() {
         return instance.delete(`auth/login`)
