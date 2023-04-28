@@ -26,7 +26,7 @@ import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 class UsersAPIComponent extends Component<UsersPropsType> {
 
     componentDidMount() {
-        debugger
+
         this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize);
     }
 
