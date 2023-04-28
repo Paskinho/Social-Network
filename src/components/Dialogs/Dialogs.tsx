@@ -4,6 +4,7 @@ import {DialogItem} from "./DialogItem";
 import {Message} from "./Message/Message";
 import {DialogsPropsType} from "./DialogsContainer";
 import {AddMessageReduxForm} from "./AddMessageForm/AddMessageForm";
+import {Redirect} from "@reach/router";
 
 
 // type DialogsPropsType = {
