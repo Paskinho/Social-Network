@@ -1,5 +1,6 @@
 import axios from "axios";
 import {getUsersThunkCreator} from "../redux/users-reducer";
+import {LoginFormType} from "../components/Login/Login";
 
 
 const instance = axios.create({
@@ -49,7 +50,7 @@ export const profileAPI = {
 
 export const authAPI = {
     me() {
-        return instance.get(`auth/me`,)
+        return instance.get(`auth/me`).then()
     },
     login(email: string, password: string, rememberMe = false) {
         return instance.post(`auth/login`, {email, password, rememberMe})

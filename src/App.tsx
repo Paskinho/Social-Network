@@ -10,7 +10,7 @@ import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer, {withRouter} from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
-import {connect} from "react-redux";
+import {connect, MapStateToProps} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./redux/app-reducer";
 import {Preloader} from "./components/common/Preloader/Preloader";
@@ -62,11 +62,11 @@ const mapStateToProps = (state: AppStateType) => ({
     initialized: state.app.initialized
 })
 
-type mapStateToPropsType =[
-    getAuthUserData: any
+type MapStateToPropsType =[
+    initialized: boolean
 ]
 
-type AppType = mapStateToPropsType
+type AppType = MapStateToPropsType
 
 
 
