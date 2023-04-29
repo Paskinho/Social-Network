@@ -3,6 +3,13 @@ import {getUsersThunkCreator} from "../redux/users-reducer";
 import {LoginFormType} from "../components/Login/Login";
 
 
+type AuthMeResponseDataType = {
+    id: number
+    login: string
+    email: string
+}
+
+
 const instance = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
     withCredentials: true,
@@ -35,7 +42,7 @@ export const usersAPI = {
 export const profileAPI = {
 
     getProfile(userId: string) {
-        return instance.get(`profile/` + userId);
+        return instance.get(`profile/` + userId).then(res => res.data);
     },
     getStatus(userId: string) {
         return instance.get(`profile/status/` + userId);
