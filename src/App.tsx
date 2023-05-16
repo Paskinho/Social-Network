@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import {Navbar} from "./components/Navbar/Navbar";
-import {Route, Routes} from "react-router-dom"
+import {BrowserRouter, Route, Routes} from "react-router-dom"
 import {Music} from "./components/Music/Music";
 import {News} from "./components/News/News";
 import {Settings} from "./components/Settings/Settings";
@@ -10,11 +10,11 @@ import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer, {withRouter} from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
-import {connect, MapStateToProps} from "react-redux";
+import {connect, MapStateToProps, Provider} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./redux/app-reducer";
 import {Preloader} from "./components/common/Preloader/Preloader";
-import {AppStateType} from "./redux/redux-store";
+import store, {AppStateType} from "./redux/redux-store";
 
 //
 // export  type appPropsType = {
@@ -70,4 +70,14 @@ type AppType = MapStateToPropsType
 
 
 
-export default compose(withRouter, connect(mapStateToProps,{initializeApp}))(App);
+let AppContainer =  compose(withRouter, connect(mapStateToProps,{initializeApp}))(App);
+
+export const SamuraiTSApp = (props: any) => {
+    return (
+    <BrowserRouter>
+        <Provider store={store}>
+            <AppContainer/>
+        </Provider>
+    </BrowserRouter>
+    )
+}
