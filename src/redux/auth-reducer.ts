@@ -72,7 +72,6 @@ export const getAuthUserData = () => async (dispatch: Dispatch) => {
 
 export type AuthFromLogin = (loginData: LoginFormType) => void
 export const loginTC: AuthFromLogin = (loginData) => async (dispatch: AppDispatch) => {
-   debugger
     const response = await authAPI.login(loginData)
     if (response.data.resultCode === 0) {
         dispatch(getAuthUserData) // поменял. Ранее был setAuthUserData

@@ -1,10 +1,11 @@
-import React, {useMemo} from "react";
+import React, {ComponentType, useMemo} from "react";
 import {Dialogs} from "./Dialogs";
 import {AppStateType} from "../../redux/redux-store";
 import {addMessageCreator, InitialStateType} from "../../redux/dialogs-reducer";
 import {connect} from "react-redux";
 import {compose, Dispatch} from "redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {getDialogsPage} from "../../redux/dialogs-selectors";
 
 
 type MapStatePropsType = {
@@ -19,7 +20,8 @@ type MapDispatchPropsType = {
 
 let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
-        dialogsState: state.dialogsReducer, // state.dialogsPage
+        dialogsState: getDialogsPage(state)
+        // state.dialogsPage раньше было так
         // isAuth: state.authReducer.isAuth
     }
 }
@@ -51,6 +53,6 @@ export type DialogsPropsType = MapStatePropsType & MapDispatchPropsType
 //
 // const DialogsContainer = connect (mapStateToProps,mapDispatchToProps) (AuthRedirectComponent);
 
-export default compose<React.ComponentType>
+export default compose<ComponentType>
 (connect(mapStateToProps, mapDispatchToProps),
     withAuthRedirect)(Dialogs);
