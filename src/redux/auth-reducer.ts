@@ -67,14 +67,15 @@ export const getAuthUserData = () => async (dispatch: Dispatch) => {
     if (response.data.resultCode === 0) {
         dispatch(setAuthUserData({...response.data, isAuth: true}))
     }
-
-
 }
+
+
 export type AuthFromLogin = (loginData: LoginFormType) => void
 export const loginTC: AuthFromLogin = (loginData) => async (dispatch: AppDispatch) => {
+   debugger
     const response = await authAPI.login(loginData)
     if (response.data.resultCode === 0) {
-        dispatch(getAuthUserData()) // поменял. Ранее был setAuthUserData
+        dispatch(getAuthUserData) // поменял. Ранее был setAuthUserData
     } else {
         let message = response.data.messages.length > 0 ? response.data.messages[0] : 'Some error';
         dispatch(stopSubmit('login', {_error: message}))

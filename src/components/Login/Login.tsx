@@ -7,6 +7,7 @@ import {loginTC} from "../../redux/auth-reducer";
 import {AppStateType} from "../../redux/redux-store";
 import {Navigate} from "react-router-dom";
 import s from './../common/FormsControls/FormsControls.module.css'
+import {MapStateToProps} from "react-redux/es/exports";
 
 export type LoginFormType = {
     email: string
@@ -56,7 +57,7 @@ const LoginReduxForm = reduxForm<LoginFormType>({
 const Login = (props: any) => {
 
     const onSubmit = (formData: LoginFormType) => {
-        props.loginTC(formData.email)
+        props.loginTC(formData)
     }
 
     if (props.isAuth) {
@@ -77,9 +78,9 @@ const action = {
     loginTC: loginTC
 }
 
-type MapDispatchType = typeof loginTC
+type MapDispatchType = typeof action
 //
 //
 type MapStateToPropsType = ReturnType<typeof mapStateToProps>
 
-export default connect(mapStateToProps, {login: loginTC})(Login)
+export default connect(mapStateToProps, action)(Login)
