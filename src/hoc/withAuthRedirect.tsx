@@ -1,10 +1,7 @@
-import React, {ComponentType} from 'react';
+import React from 'react';
 import {connect} from "react-redux";
 import {AppStateType} from "../redux/redux-store";
 import {Navigate} from "react-router-dom";
-// import {Redirect} from "react-router-dom";
-
-
 
 // export function withAuthRedirect <T>(Component: ComponentType<T>)  {
 //
@@ -21,6 +18,7 @@ import {Navigate} from "react-router-dom";
 //     return ConnectAuthRedirectComponent
 // }
 
+
 export const withAuthRedirect = (Component: any) => { // УТОЧНИТЬ ТИП
 
     type MapStatePropsType = {
@@ -33,11 +31,12 @@ export const withAuthRedirect = (Component: any) => { // УТОЧНИТЬ ТИП
         }
     };
 
-    let RedirectComponent = (props: MapStatePropsType) =>  {
+    const RedirectComponent = (props: MapStatePropsType) =>  {
         if (!props.isAuth) return <Navigate to={'/login'} />
-          return <Component {...props} />
+        //Либо же Navigate from react-router-dom
+        return <Component {...props} />
     }
-    return RedirectComponent
+    // return RedirectComponent
     return connect(mapStateToPropsRedirect)(RedirectComponent)
 
 

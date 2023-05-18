@@ -18,7 +18,7 @@ type MapDispatchPropsType = {
     // onMessage: (message: string) => void
 }
 
-let mapStateToProps = (state: AppStateType): MapStatePropsType => {
+const mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
         dialogsState: getDialogsPage(state)
         // state.dialogsPage раньше было так
