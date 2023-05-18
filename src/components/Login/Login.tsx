@@ -52,8 +52,9 @@ const LoginReduxForm = reduxForm<LoginFormType> ({
 })(LoginForm)
 
  const Login = (props: any) => {
+    debugger
     const onSubmit = (formData:LoginFormType) => {
-        props.login(formData.email, formData.password, formData.rememberMe)
+        props.authFromLogin(formData.email)
     }
 
     if (props.isAuth) {
@@ -69,5 +70,14 @@ const LoginReduxForm = reduxForm<LoginFormType> ({
 const mapStateToProps = (state: AppStateType) => ({
     isAuth: state.authReducer.isAuth
 })
+
+const action = {
+    authFromLogin: login
+}
+
+// type MapDispatchType = typeof action
+//
+//
+// type MapStateToProps = ReturnType<typeof mapStateToProps>
 
 export default connect (mapStateToProps, {login})(Login)
