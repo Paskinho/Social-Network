@@ -3,7 +3,7 @@ import {Field, InjectedFormProps, reduxForm} from 'redux-form'
 import {Input} from "../common/FormsControls/FormsControls";
 import {required} from "../../utils/validators/validators";
 import {connect} from "react-redux";
-import {login} from "../../redux/auth-reducer";
+import {loginTC} from "../../redux/auth-reducer";
 import {AppStateType} from "../../redux/redux-store";
 import {Navigate} from "react-router-dom";
 import s from './../common/FormsControls/FormsControls.module.css'
@@ -16,6 +16,8 @@ export type LoginFormType = {
 }
 
 const LoginForm: FC<InjectedFormProps<LoginFormType>> = (props) => {
+    console.log('FORM RERENDERED')
+
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
@@ -29,7 +31,7 @@ const LoginForm: FC<InjectedFormProps<LoginFormType>> = (props) => {
                        validate={[required]}
                        name={'password'}
                        type={'password'}
-                       placeholder={'Password'}
+                       placeholder={'password'}
                 />
             </div>
             <div>
@@ -54,7 +56,7 @@ const LoginReduxForm = reduxForm<LoginFormType>({
 const Login = (props: any) => {
     debugger
     const onSubmit = (formData: LoginFormType) => {
-        props.authFromLogin(formData.email)
+        props.loginTC(formData.email)
     }
 
     if (props.isAuth) {
@@ -72,12 +74,12 @@ const mapStateToProps = (state: AppStateType) => ({
 })
 
 const action = {
-    authFromLogin: login
+    loginTC: loginTC
 }
 
-type MapDispatchType = typeof login
+type MapDispatchType = typeof loginTC
 //
 //
 type MapStateToPropsType = ReturnType<typeof mapStateToProps>
 
-export default connect(mapStateToProps, {login})(Login)
+export default connect(mapStateToProps, {login: loginTC})(Login)

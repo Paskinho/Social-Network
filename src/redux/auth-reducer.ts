@@ -67,7 +67,7 @@ export const getAuthUserData = () => async (dispatch: Dispatch) => {
     }
 }
 
-export const login = ({email, password, rememberMe}: any) => async (dispatch: any) => {
+export const loginTC = ({email, password, rememberMe}: any) => async (dispatch: any) => {
     dispatch(setAuthUserData)
     let response = await authAPI.login(email, password, rememberMe)
     if (response.data.resultCode === 0) {
