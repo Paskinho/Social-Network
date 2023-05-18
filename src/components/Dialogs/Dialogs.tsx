@@ -20,7 +20,7 @@ import {Redirect} from "@reach/router";
 
 
 export const Dialogs: React.FC<DialogsPropsType> = ({dialogsState,addMessage}) => {
-
+debugger
     const dialogsItem = dialogsState.users.map((d:any) => <DialogItem key={d.id} name={d.name} id={d.id}/>)
     const message = dialogsState.messages.map((m: any) => <Message key={m.id} message={m.message} id={m.id}/>)
 

@@ -38,7 +38,7 @@ const LoginForm: FC<InjectedFormProps<LoginFormType>> = (props) => {
                        type={'checkbox'}/> Remember me
             </div>
             <div>
-                { props.error && <div className={s.formSummaryError}>
+                {props.error && <div className={s.formSummaryError}>
                     {props.error}
                 </div>}
                 <button>Login</button>
@@ -47,13 +47,13 @@ const LoginForm: FC<InjectedFormProps<LoginFormType>> = (props) => {
     )
 }
 
-const LoginReduxForm = reduxForm<LoginFormType> ({
-     form: 'login'
+const LoginReduxForm = reduxForm<LoginFormType>({
+    form: 'login'
 })(LoginForm)
 
- const Login = (props: any) => {
+const Login = (props: any) => {
     debugger
-    const onSubmit = (formData:LoginFormType) => {
+    const onSubmit = (formData: LoginFormType) => {
         props.authFromLogin(formData.email)
     }
 
@@ -75,9 +75,9 @@ const action = {
     authFromLogin: login
 }
 
-// type MapDispatchType = typeof action
+type MapDispatchType = typeof login
 //
 //
-// type MapStateToProps = ReturnType<typeof mapStateToProps>
+type MapStateToPropsType = ReturnType<typeof mapStateToProps>
 
-export default connect (mapStateToProps, {login})(Login)
+export default connect(mapStateToProps, {login})(Login)
