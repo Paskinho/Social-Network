@@ -1,6 +1,7 @@
 import {authAPI} from "../api/api";
 import {Dispatch} from "redux";
 import {stopSubmit} from "redux-form";
+import {LoginFormType} from "../components/Login/Login";
 
 
 export type UserType = {
@@ -65,13 +66,14 @@ export const getAuthUserData = () => async (dispatch: Dispatch) => {
     if (response.data.resultCode === 0) {
         dispatch(setAuthUserData({...response.data, isAuth: true}))
     }
-}
 
-export const loginTC = ({email, password, rememberMe}: any) => async (dispatch: any) => {
-    dispatch(setAuthUserData)
-    let response = await authAPI.login(email, password, rememberMe)
+
+}
+export type AuthFromLogin = (loginData: LoginFormType) => void
+export const loginTC: AuthFromLogin = (loginData: LoginFormType) => async (dispatch: any) => {
+    const response = await authAPI.login(loginData)
     if (response.data.resultCode === 0) {
-        dispatch(setAuthUserData)
+        dispatch(getAuthUserData()) // поменял. Ранее был setAuthUserData
     } else {
         let message = response.data.messages.length > 0 ? response.data.messages[0] : 'Some error';
         dispatch(stopSubmit('login', {_error: message}))

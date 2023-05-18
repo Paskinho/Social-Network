@@ -54,7 +54,7 @@ const LoginReduxForm = reduxForm<LoginFormType>({
 })(LoginForm)
 
 const Login = (props: any) => {
-    debugger
+
     const onSubmit = (formData: LoginFormType) => {
         props.loginTC(formData.email)
     }
