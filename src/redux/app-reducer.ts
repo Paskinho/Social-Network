@@ -1,15 +1,16 @@
 import {Dispatch} from "redux";
 import {getAuthUserData} from "./auth-reducer";
+import {AppDispatch} from "./redux-store";
 
 
 type InitialStateType = {
-    initialized: boolean
+    isInitialized: boolean
 }
 
 type UsersActionsTypes = setUserDataACType
 
 const initialState: InitialStateType = {
-    initialized: false
+    isInitialized: false
 }
 
 type setUserDataACType = ReturnType<typeof initializedSuccess>
@@ -22,7 +23,7 @@ export const appReducer = (state: InitialStateType = initialState, action: Users
         case SET_INITIALIZED:
             return {
                 ...state,
-                initialized: true
+                isInitialized: action.payload
             }
 
         default:
@@ -36,7 +37,7 @@ export const appReducer = (state: InitialStateType = initialState, action: Users
 export const initializedSuccess = (isInitialized: boolean) => (
     {type: SET_INITIALIZED, payload: isInitialized} as const)
 
-export const initializeApp = () => (dispatch: any) => { //проверить типизацию диспатчей
+export const initializeApp = () => (dispatch: AppDispatch) => { //проверить типизацию диспатчей
     let promise = dispatch(getAuthUserData())
     promise.then(() => {
         dispatch(initializedSuccess(true))
