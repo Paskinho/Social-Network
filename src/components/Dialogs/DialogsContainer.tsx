@@ -1,4 +1,4 @@
-import React, {ComponentType, useMemo} from "react";
+import React, {ComponentType} from "react";
 import {Dialogs} from "./Dialogs";
 import {AppStateType} from "../../redux/redux-store";
 import {addMessageCreator, InitialStateType} from "../../redux/dialogs-reducer";
@@ -54,5 +54,5 @@ export type DialogsPropsType = MapStatePropsType & MapDispatchPropsType
 // const DialogsContainer = connect (mapStateToProps,mapDispatchToProps) (AuthRedirectComponent);
 
 export default compose<ComponentType>
-(connect(mapStateToProps, mapDispatchToProps),
-    withAuthRedirect)(Dialogs);
+(connect(mapStateToProps, mapDispatchToProps),withAuthRedirect
+)(Dialogs);

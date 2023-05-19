@@ -24,6 +24,7 @@ export type AppStateType = ReturnType<typeof rootReducer>
 
 export type StoreType = typeof store
 
+
 // const composeEnhancers = window.REDUX_DEVTOOLS_EXTENSION_COMPOSE || compose;
 
 

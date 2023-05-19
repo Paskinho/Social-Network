@@ -33,12 +33,12 @@ export const appReducer = (state: InitialStateType = initialState, action: Users
 // export const initializedSuccess = (data: InitialStateType) => (
 //     {type: SET_INITIALIZED,  payload: data} as const)
 
-export const initializedSuccess = () => (
-    {type: SET_INITIALIZED} as const)
+export const initializedSuccess = (isInitialized: boolean) => (
+    {type: SET_INITIALIZED, payload: isInitialized} as const)
 
 export const initializeApp = () => (dispatch: any) => { //проверить типизацию диспатчей
     let promise = dispatch(getAuthUserData())
     promise.then(() => {
-        dispatch(initializedSuccess())
+        dispatch(initializedSuccess(true))
     })
 }
