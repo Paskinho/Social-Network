@@ -10,7 +10,7 @@ import {getDialogsPage} from "../../redux/dialogs-selectors";
 
 type MapStatePropsType = {
     dialogsState: InitialStateType
-    // isAuth: boolean
+    isAuth: boolean
 }
 
 type MapDispatchPropsType = {
@@ -20,9 +20,9 @@ type MapDispatchPropsType = {
 
 const mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
-        dialogsState: getDialogsPage(state)
+        dialogsState: getDialogsPage(state),
         // state.dialogsPage раньше было так
-        // isAuth: state.authReducer.isAuth
+        isAuth: state.authReducer.isAuth
     }
 }
 
@@ -36,7 +36,7 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => {
 
 const mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropsType => {
     return {
-        addMessage: (newMessageText: string) => {
+        addMessage: (newMessageText) => {
             dispatch(addMessageCreator(newMessageText))
         }
         // onMessage: (message:string)=> {
