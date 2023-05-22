@@ -2,8 +2,7 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import {
     follow,
-    getUsersThunkCreator, getUsersThunkCreatorPropsType,
-    InitialStateType,
+    getUsersThunkCreator,
     setCurrentPage,
     setUsers,
     toggleIsFollowingProgress,
@@ -15,10 +14,12 @@ import {compose} from "redux";
 import {Users} from "./Users";
 import {Preloader} from "../common/Preloader/Preloader";
 import {
-    getCurrentPage, getFollowingInProgress,
+    getCurrentPage,
+    getFollowingInProgress,
     getIsFetching,
     getPageSize,
-    getTotalUsersCounter, getUsers
+    getTotalUsersCounter,
+    getUsers
 } from "../../redux/users-selectors";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
@@ -26,7 +27,6 @@ import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 class UsersAPIComponent extends Component<UsersPropsType> {
 
     componentDidMount() {
-
         this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize);
     }
 

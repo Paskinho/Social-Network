@@ -17,7 +17,14 @@ type UsersType = {
 
 }
 
-export const Users:FC<UsersPropsType> = ({usersPage,totalUsersCount,currentPage,pageSize,toggleIsFollowingProgress,...props}) => {
+export const Users: FC<UsersPropsType> = ({
+                                              usersPage,
+                                              totalUsersCount,
+                                              currentPage,
+                                              pageSize,
+                                              toggleIsFollowingProgress,
+                                              ...props
+                                          }) => {
 
 
     const followHandler = (u: any) => {
@@ -30,16 +37,17 @@ export const Users:FC<UsersPropsType> = ({usersPage,totalUsersCount,currentPage,
     }
 
     return <div>
-        <Paginator totalUsersCount={totalUsersCount} pageSize={pageSize} currentPage={currentPage} onPageChanged={props.onPageChanged}/>
-       <div>
-        {
-           usersPage.map((u: any) => <User unfollow={props.unfollow}
-                                           follow={props.follow}
-                                           toggleIsFollowingProgress={toggleIsFollowingProgress}
-                                           user={u}
-                                           key={u.id}/>
-           )
-        }
-       </div>
+        <Paginator totalUsersCount={totalUsersCount} pageSize={pageSize} currentPage={currentPage}
+                   onPageChanged={props.onPageChanged}/>
+        <div>
+            {
+                usersPage.map((u: any) => <User unfollow={props.unfollow}
+                                                follow={props.follow}
+                                                toggleIsFollowingProgress={toggleIsFollowingProgress}
+                                                user={u}
+                                                key={u.id}/>
+                )
+            }
+        </div>
     </div>
 }
