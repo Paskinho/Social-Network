@@ -37,11 +37,11 @@ class UsersAPIComponent extends Component<UsersPropsType> {
         this.props.getUsersThunkCreator(pageNumber, this.props.pageSize)
     }
 
-    render= () => {
+    render = () => {
         return (
 
             this.props.isFetching ? <Preloader/> :
-            <Users {...this.props}/>
+                <Users {...this.props}/>
         )
     }
 }
@@ -55,17 +55,6 @@ type MapStateToPropsType = {
     toggleIsFollowingProgress: any
 }
 
-type MapDispatchToPropsType = {
-    follow: (userId: string) => void
-    unfollow: (userId: string) => void
-    setCurrentPage: (p: number) => void
-    setUsers: (users: Array<UserType>) => void
-    getUsersThunkCreator: getUsersThunkCreatorPropsType
-    onPageChanged: (p: number) => void
-
-}
-
-export type UsersPropsType = MapStateToPropsType & MapDispatchToPropsType
 
 const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     return {
@@ -78,23 +67,45 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     }
 }
 
-const UsersContainer = connect
-(mapStateToProps, {
-    follow: follow,
-    unfollow: unfollow,
-    setCurrentPage: setCurrentPage,
-    toggleIsFollowingProgress,
-    setUsers: setUsers,
-    getUsers: getUsersThunkCreator,
-})(UsersAPIComponent);
+type MapDispatchToPropsType = {
+    follow: (userId: string) => void
+    unfollow: (userId: string) => void
+    setCurrentPage: (p: number) => void
+    setUsers: (users: Array<UserType>) => void
+    getUsersThunkCreator: getUsersThunkCreatorPropsType
+    onPageChanged: (p: number) => void
+}
+
+
+// const mapDispatchToProps: MapDispatchToPropsType = {
+//     follow: follow,
+//     unfollow: unfollow,
+//     setCurrentPage: setCurrentPage,
+//     setUsers: setUsers,
+//     getUsersThunkCreator: getUsersThunkCreator,
+//
+// }
+
+export type UsersPropsType = MapStateToPropsType & MapDispatchToPropsType
+
+
+// const UsersContainer = connect
+// (mapStateToProps, {
+//     follow: follow,
+//     unfollow: unfollow,
+//     setCurrentPage: setCurrentPage,
+//     toggleIsFollowingProgress,
+//     setUsers: setUsers,
+//     getUsers: getUsersThunkCreator,
+// })(UsersAPIComponent);
 
 export default compose<React.ComponentType>(
     connect(mapStateToProps, {
             follow: follow,
             unfollow: unfollow,
             setCurrentPage: setCurrentPage,
-            toggleIsFollowingProgress,
+            toggleIsFollowingProgress, // нужен ли
             setUsers: setUsers,
             getUsers: getUsersThunkCreator
         }
-    ), withAuthRedirect)(UsersContainer);
+    ), withAuthRedirect)(UsersAPIComponent);
