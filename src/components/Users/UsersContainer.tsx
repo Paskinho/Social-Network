@@ -70,8 +70,7 @@ class UsersAPIComponent extends Component<UsersPropsType> {
 
 
     componentDidMount() {
-        console.log('Users are inside DOM')
-        this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize);// ОШИБКА ЗДЕСЬ!
+        this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize);
     }
 
     // showMore = () => this.props.showMore()
