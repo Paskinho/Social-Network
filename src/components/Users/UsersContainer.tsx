@@ -23,28 +23,6 @@ import {
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 
-class UsersAPIComponent extends Component<UsersPropsType> {
-
-
-    componentDidMount() {
-        this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize);
-    }
-
-    // showMore = () => this.props.showMore()
-
-    onPageChanged = (pageNumber: number) => {
-        this.props.getUsersThunkCreator(pageNumber, this.props.pageSize)
-    }
-
-    render = () => {
-        return (
-
-            this.props.isFetching ? <Preloader/> :
-                <Users {...this.props}/>
-        )
-    }
-}
-
 type MapStateToPropsType = {
     usersPage: UserType[]
     pageSize: number
@@ -76,16 +54,39 @@ type MapDispatchToPropsType = {
 }
 
 
-// const mapDispatchToProps: MapDispatchToPropsType = {
-//     follow: follow,
-//     unfollow: unfollow,
-//     setCurrentPage: setCurrentPage,
-//     setUsers: setUsers,
-//     getUsersThunkCreator: getUsersThunkCreator,
-//
-// }
+const mapDispatchToProps: MapDispatchToPropsType = {
+    follow: follow,
+    unfollow: unfollow,
+    setCurrentPage: setCurrentPage,
+    setUsers: setUsers,
+    getUsersThunkCreator: getUsersThunkCreator,
+    onPageChanged: p => {
+    }
+}
 
 export type UsersPropsType = MapStateToPropsType & MapDispatchToPropsType
+
+class UsersAPIComponent extends Component<UsersPropsType> {
+
+
+    componentDidMount() {
+        console.log('Users are inside DOM')
+        this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize);// ОШИБКА ЗДЕСЬ!
+    }
+
+    // showMore = () => this.props.showMore()
+
+    onPageChanged = (pageNumber: number) => {
+        this.props.getUsersThunkCreator(pageNumber, this.props.pageSize)
+    }
+
+    render = () => {
+        return (
+            this.props.isFetching ? <Preloader/> :
+                <Users {...this.props}/>
+        )
+    }
+}
 
 
 // const UsersContainer = connect
@@ -99,12 +100,5 @@ export type UsersPropsType = MapStateToPropsType & MapDispatchToPropsType
 // })(UsersAPIComponent);
 
 export default compose<React.ComponentType>(
-    connect(mapStateToProps, {
-            follow: follow,
-            unfollow: unfollow,
-            setCurrentPage: setCurrentPage,
-            toggleIsFollowingProgress, // нужен ли
-            setUsers: setUsers,
-            getUsers: getUsersThunkCreator
-        }
+    connect(mapStateToProps, mapDispatchToProps
     ), withAuthRedirect)(UsersAPIComponent);
