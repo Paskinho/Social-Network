@@ -2,12 +2,11 @@ import {AppStateType} from "./redux-store";
 import {createSelector} from 'reselect'
 
 
-export const getUsersSelector = (state: AppStateType) => {
+ const getUsers = (state: AppStateType) => {
     return state.authReducer.users
 }
 
-
-export const getUsers= createSelector(getUsersSelector,(users) => {
+export const getUsersSelector= createSelector(getUsers,(users) => {
     return users.filter(u => true)
 })
 

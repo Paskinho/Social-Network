@@ -47,7 +47,6 @@ export const toggleIsFollowingProgress = (followingIsProgress: boolean, userId: 
 export type getUsersThunkCreatorPropsType = (page: number,  pageSize: number) => void
 export const getUsersThunkCreator: getUsersThunkCreatorPropsType = (page,pageSize) => {
     return  async (dispatch: Dispatch) => {
-
         dispatch (toggleIsFetching(true));
         let data = await usersAPI.getUsers(page, pageSize)
             dispatch (toggleIsFetching(false))
@@ -59,7 +58,7 @@ export const getUsersThunkCreator: getUsersThunkCreatorPropsType = (page,pageSiz
 const followUnFollowFlow = async (dispatch: Dispatch, userId: any, apiMethod: any, actionCreator: any) => {
     dispatch(toggleIsFollowingProgress(true, userId));
     let response = await usersAPI.follow(userId)
-    if (response.data.resultCode == 0) {
+    if (response.data.resultCode === 0) {
         dispatch(followSuccess(userId))
     }
     dispatch(toggleIsFollowingProgress(false, userId));
