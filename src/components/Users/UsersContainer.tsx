@@ -60,8 +60,7 @@ const mapDispatchToProps: MapDispatchToPropsType = {
     setCurrentPage: setCurrentPage,
     setUsers: setUsers,
     getUsersThunkCreator: getUsersThunkCreator,
-    onPageChanged: p => {
-    }
+    onPageChanged: p => {}
 }
 
 export type UsersPropsType = MapStateToPropsType & MapDispatchToPropsType

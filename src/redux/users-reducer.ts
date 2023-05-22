@@ -55,7 +55,7 @@ export const getUsersThunkCreator: getUsersThunkCreatorPropsType = (page,pageSiz
             dispatch (setTotalUsersCount(data.totalCount))
     }}
 
-const followUnFollowFlow = async (dispatch: Dispatch, userId: any, apiMethod: any, actionCreator: any) => {
+const followUnFollowFlow = async (dispatch: AppDispatch, userId: any, apiMethod: any, actionCreator: any) => {
     dispatch(toggleIsFollowingProgress(true, userId));
     let response = await usersAPI.follow(userId)
     if (response.data.resultCode === 0) {
