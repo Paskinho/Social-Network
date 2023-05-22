@@ -1,5 +1,6 @@
 import {usersAPI} from "../api/api";
 import {Dispatch} from "redux";
+import {AppDispatch} from "./redux-store";
 
 
 export type UserType = {
@@ -42,10 +43,13 @@ export const toggleIsFollowingProgress = (followingIsProgress: boolean, userId: 
     {type: 'users/TOGGLE_IS_FOLLOWING_PROGRESS', payload: followingIsProgress, userId} as const
 )
 
+
+export type getUsersThunkCreatorPropsType = (page: number,  pageSize: number) => void
 export const getUsersThunkCreator: getUsersThunkCreatorPropsType = (page,pageSize) => {
-    return  async (dispatch: any) => {
+    return  async (dispatch: Dispatch) => {
+
         dispatch (toggleIsFetching(true));
-        let data = await usersAPI.requestUsers(page, pageSize)
+        let data = await usersAPI.getUsers(page, pageSize)
             dispatch (toggleIsFetching(false))
             dispatch(setCurrentPage(page))
             dispatch (setUsers(data.items))
@@ -71,7 +75,7 @@ export const unfollow = (userId: any) => { // уточнить по типиза
         followUnFollowFlow(dispatch, userId, usersAPI.unfollow.bind(usersAPI), unfollowSuccess)
     }}
 
-export type getUsersThunkCreatorPropsType = (page: number,  pageSize: number) => void
+
 
 type FollowType = ReturnType<typeof followSuccess>
 type UnfollowType = ReturnType<typeof unfollowSuccess>
@@ -93,7 +97,6 @@ const initialState: InitialStateType = {
 }
 
 export const usersReducer = (state:InitialStateType = initialState, action: UsersActionsTypes): InitialStateType => {
-
     switch (action.type) {
         case 'users/FOLLOW':
             return {

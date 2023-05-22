@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import {
     follow,
-    getUsersThunkCreator,
+    getUsersThunkCreator, getUsersThunkCreatorPropsType,
     setCurrentPage,
     setUsers,
     toggleIsFollowingProgress,
@@ -26,6 +26,7 @@ import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 class UsersAPIComponent extends Component<UsersPropsType> {
 
+
     componentDidMount() {
         this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize);
     }
@@ -38,6 +39,7 @@ class UsersAPIComponent extends Component<UsersPropsType> {
 
     render= () => {
         return (
+
             this.props.isFetching ? <Preloader/> :
             <Users {...this.props}/>
         )
@@ -58,7 +60,7 @@ type MapDispatchToPropsType = {
     unfollow: (userId: string) => void
     setCurrentPage: (p: number) => void
     setUsers: (users: Array<UserType>) => void
-    getUsersThunkCreator: (currentPage: number, pageSize: number) => void
+    getUsersThunkCreator: getUsersThunkCreatorPropsType
     onPageChanged: (p: number) => void
 
 }
