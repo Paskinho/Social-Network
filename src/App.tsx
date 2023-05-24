@@ -26,6 +26,7 @@ import {Dialogs} from "./components/Dialogs/Dialogs";
 
 class App extends React.Component<any> {
 
+
     componentDidMount() {
         // this.props.toggleIsFetching(true)
         this.props.initializeApp();
