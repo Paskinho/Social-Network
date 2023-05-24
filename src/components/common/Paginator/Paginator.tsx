@@ -38,15 +38,17 @@ export const Paginator: FC<PaginatorType> = ({
             <div>
                 {pages.filter(p=> p >= leftPortionPageNumber && p <= rightPortionPageNumber)
                     .map(p => {
-                        return <span className={currentPage === p ? s.selectedPage : ""}
+                        return <span className={
+                            currentPage === p ? s.selectedPage : ""}
                                      onClick={(e) => {
                                          onPageChanged(p)
                                      }}>{p}</span>
                     })}
+
+
                 {portionCount > portionNumber &&
                 <button onClick={() => {setPortionNumber(portionNumber + 1)}
                 }>NEXT</button>}
-
             </div>
         </div>
     </div>
