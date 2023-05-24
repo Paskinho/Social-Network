@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React, {FC, useState} from "react";
 import s from "./Paginator.module.css";
 
 
@@ -18,7 +18,14 @@ export const Paginator:FC<PaginatorType> = ({totalUsersCount,pageSize,currentPag
         pages.push(i)
     }
 
+    const portionCount = Math.ceil(pagesCount / portionSize)
+    const [portionNumber, setPortionNumber] = useState(0)
+    const leftPortionPageNumber = (portionNumber - 1 ) * portionSize + 1;
+    const rightPortionPageNumber = portionNumber * portionSize
+
     return <div>
+        {portionNumber > 1 &&
+        <button></button>}
         <div>
             <div>
                 {pages.map(p => {
