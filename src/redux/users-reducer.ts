@@ -88,7 +88,7 @@ type UsersActionsTypes = FollowType | UnfollowType | SetUsersType | SetCurrentPa
 
 const initialState: InitialStateType = {
     users: [],
-    pageSize: 5,
+    pageSize: 10,
     totalUsersCount: 0,
     page: 1,
     isFetching: true,
