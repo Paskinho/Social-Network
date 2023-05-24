@@ -30,6 +30,7 @@ type MapStateToPropsType = {
     currentPage: number
     isFetching: boolean
     toggleIsFollowingProgress: any
+    portionSize: number
 }
 
 
@@ -41,6 +42,7 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
         currentPage: getCurrentPage(state),
         isFetching: getIsFetching(state),
         toggleIsFollowingProgress: getFollowingInProgress(state),
+        portionSize: 10
     }
 }
 

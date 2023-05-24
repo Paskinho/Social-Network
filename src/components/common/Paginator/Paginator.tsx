@@ -7,9 +7,10 @@ type PaginatorType = {
     pageSize: number
     currentPage: number
     onPageChanged: (p: number) => void
+    portionSize: number
 }
 
-export const Paginator:FC<PaginatorType> = ({totalUsersCount,pageSize,currentPage,onPageChanged}) => {
+export const Paginator:FC<PaginatorType> = ({totalUsersCount,pageSize,currentPage,onPageChanged, portionSize=10}) => {
     const pagesCount = Math.ceil(totalUsersCount / pageSize)
 
     const pages = [];

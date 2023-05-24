@@ -22,6 +22,7 @@ export const Users: FC<UsersPropsType> = ({
                                               totalUsersCount,
                                               currentPage,
                                               pageSize,
+    portionSize,
                                               toggleIsFollowingProgress,
                                               ...props
                                           }) => {
@@ -38,7 +39,7 @@ export const Users: FC<UsersPropsType> = ({
 
     return <div>
         <Paginator totalUsersCount={totalUsersCount} pageSize={pageSize} currentPage={currentPage}
-                   onPageChanged={props.onPageChanged}/>
+                   onPageChanged={props.onPageChanged} portionSize={portionSize}/>
         <div>
             {
                 usersPage.map((u: any) => <User unfollow={props.unfollow}
