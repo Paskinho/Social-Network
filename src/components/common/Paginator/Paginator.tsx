@@ -44,8 +44,6 @@ export const Paginator: FC<PaginatorType> = ({
                                          onPageChanged(p)
                                      }}>{p}</span>
                     })}
-
-
                 {portionCount > portionNumber &&
                 <button onClick={() => {setPortionNumber(portionNumber + 1)}
                 }>NEXT</button>}
