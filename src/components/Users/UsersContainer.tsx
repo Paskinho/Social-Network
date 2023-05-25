@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component, ComponentType} from "react";
 import {connect} from "react-redux";
 import {
     follow,
@@ -99,6 +99,6 @@ class UsersAPIComponent extends Component<UsersPropsType> {
 //     getUsers: getUsersThunkCreator,
 // })(UsersAPIComponent);
 
-export default compose<React.ComponentType>(
+export default compose<ComponentType>(
     connect(mapStateToProps, mapDispatchToProps
     ), withAuthRedirect)(UsersAPIComponent);
