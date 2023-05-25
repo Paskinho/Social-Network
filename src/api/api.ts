@@ -64,7 +64,7 @@ export const profileAPI = {
 
 export const authAPI = {
     me() {
-        return instance.get<ResponseType<AuthMeResponseDataType>>(`auth/me`)
+        return instance.get(`auth/me`).then(response => response.data)
     },
     login(loginData: LoginFormType) {
         return instance.post(`auth/login`, loginData)
