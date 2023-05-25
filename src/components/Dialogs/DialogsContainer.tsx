@@ -19,7 +19,7 @@ type MapDispatchPropsType = {
 }
 
 const mapStateToProps = (state: AppStateType): MapStatePropsType => {
-    debugger
+
     return {
         dialogsState: getDialogsPage(state),
         // state.dialogsPage раньше было так

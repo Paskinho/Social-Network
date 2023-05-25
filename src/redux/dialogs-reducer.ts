@@ -54,24 +54,23 @@ const initialState = {
 export type InitialStateType = typeof initialState
 
 export const dialogsReducer = (state: InitialStateType = initialState, action: DialogsActionsType): InitialStateType => {
-    debugger
+
 
     switch (action.type) {
         case "ADD_MESSAGE": {
-
-            let newMessage: MessagesType = {
-                id: state.messages.length + 1,
-                message: action.newMessageText
+            if (action.newMessageText.trim() !== '') {
+                let newMessage: MessagesType = {
+                    id: state.messages.length + 1,
+                    message: action.newMessageText
+                }
+                return {
+                    ...state,
+                    newMessageText: "",
+                    messages: [...state.messages, newMessage]
+                }}
+            else return state
             }
-            return {
-                ...state,
-                newMessageText: "",
-                messages: [...state.messages, newMessage]
-            };
-
-        }
         case "UPDATE_NEW_MESSAGE_TEXT":
-
             return {
                 ...state,
                 newMessageText: action.newMessageText
@@ -79,5 +78,5 @@ export const dialogsReducer = (state: InitialStateType = initialState, action: D
         default:
             return state;
 
+        }
     }
-}
