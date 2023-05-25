@@ -9,6 +9,13 @@ type AuthMeResponseDataType = {
     email: string
 }
 
+type ResponseType<D={}> = {
+    data: D
+    messages: string[]
+    fieldsErrors: string[]
+    resultCode: number
+}
+
 
 const instance = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
@@ -57,7 +64,7 @@ export const profileAPI = {
 
 export const authAPI = {
     me() {
-        return instance.get(`auth/me`)
+        return instance.get<ResponseType<AuthMeResponseDataType>>(`auth/me`)
     },
     login(loginData: LoginFormType) {
         return instance.post(`auth/login`, loginData)
