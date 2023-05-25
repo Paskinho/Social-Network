@@ -16,7 +16,6 @@ export const rootReducer = combineReducers({
     authReducer,
     form: formReducer,
     app: appReducer
-
 })
 
 
@@ -34,3 +33,5 @@ const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
 export type AppDispatch = ThunkDispatch<AppStateType, any, AnyAction>
 export default store;
+
+

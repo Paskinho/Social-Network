@@ -6,16 +6,16 @@ import {DialogsPropsType} from "./DialogsContainer";
 import {AddMessageReduxForm} from "./AddMessageForm/AddMessageForm";
 
 
-export const Dialogs: React.FC<DialogsPropsType> = ({dialogsState,addMessage}) => {
+export const Dialogs: React.FC<DialogsPropsType> = ({dialogsState, addMessage}) => {
 
-    const dialogsItem = dialogsState.users.map((d:any) => <DialogItem key={d.id} name={d.name} id={d.id}/>)
+    const dialogsItem = dialogsState.users.map((d: any) => <DialogItem key={d.id} name={d.name} id={d.id}/>)
     const message = dialogsState.messages.map((m: any) => <Message key={m.id} message={m.message} id={m.id}/>)
 
     // const newMessageElement = useRef<HTMLTextAreaElement>(null); //????
 
-const addNemMessage = (values: any) => {
-    addMessage(values.newMessageText)
-}
+    const addNemMessage = (values: any) => {
+        addMessage(values.newMessageText)
+    }
 
 // if (!authReducer.isAuth) return <Redirect to={'/login'}/>
 
@@ -27,7 +27,7 @@ const addNemMessage = (values: any) => {
             <div className={s.message}>
                 {message}
             </div>
-<AddMessageReduxForm onSubmit={addNemMessage}/>
+            <AddMessageReduxForm onSubmit={addNemMessage}/>
         </div>
     )
 }

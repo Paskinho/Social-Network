@@ -19,7 +19,6 @@ type MapDispatchPropsType = {
 }
 
 const mapStateToProps = (state: AppStateType): MapStatePropsType => {
-
     debugger
     return {
         dialogsState: getDialogsPage(state),

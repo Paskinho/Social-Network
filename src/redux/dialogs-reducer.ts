@@ -58,7 +58,7 @@ export const dialogsReducer = (state: InitialStateType = initialState, action: D
 
     switch (action.type) {
         case "ADD_MESSAGE": {
-            debugger
+
             let newMessage: MessagesType = {
                 id: state.messages.length + 1,
                 message: action.newMessageText
@@ -71,7 +71,7 @@ export const dialogsReducer = (state: InitialStateType = initialState, action: D
 
         }
         case "UPDATE_NEW_MESSAGE_TEXT":
-            debugger
+
             return {
                 ...state,
                 newMessageText: action.newMessageText
