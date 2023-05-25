@@ -1,4 +1,4 @@
-import React from "react";
+import React, {ChangeEvent} from "react";
 import {ProfileType} from "../ProfileContainer";
 
 type ProfileStatusType = {
@@ -27,7 +27,7 @@ class ProfileStatus extends React.Component<ProfileType> {
         this.props.updateStatus(this.state.status);
     }
 
-    onStatusChange = (e: any) => {
+    onStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
         this.setState({
             status: e.currentTarget.value,
         })
@@ -41,7 +41,7 @@ class ProfileStatus extends React.Component<ProfileType> {
 
 
     render() {
-
+debugger
         return (
             <div>
                 {this.state.EditMode &&
@@ -60,4 +60,4 @@ class ProfileStatus extends React.Component<ProfileType> {
     }
 }
 
-// export default ProfileStatus
+export default ProfileStatus
