@@ -21,7 +21,7 @@ const AddMessageForm: FC<InjectedFormProps<AddMessageFormType>> = (props) => {
                        name = {'newMessageText'}
                        placeholder={"Enter you message..."}
                        >
-                    {/*validate={[maxLength50, minLength5]}был в форме, но из-за него постоянный rerender*/}
+                    {/*validate={[required,maxLength50, minLength5]}был в форме, но из-за него постоянный rerender*/}
                 </Field>
             </div>
             <div>
