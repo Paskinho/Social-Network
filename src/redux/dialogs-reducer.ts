@@ -55,7 +55,6 @@ export type InitialStateType = typeof initialState
 
 export const dialogsReducer = (state: InitialStateType = initialState, action: DialogsActionsType): InitialStateType => {
 
-
     switch (action.type) {
         case "ADD_MESSAGE": {
             if (action.newMessageText.trim() !== '') {

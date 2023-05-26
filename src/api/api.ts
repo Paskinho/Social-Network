@@ -1,5 +1,4 @@
 import axios from "axios";
-import {getUsersThunkCreator} from "../redux/users-reducer";
 import {LoginFormType} from "../components/Login/Login";
 
 
@@ -57,8 +56,6 @@ export const profileAPI = {
     updateStatus(status: string) {
         return instance.put(`profile/status/`, {status: status});
     }
-
-
 }
 
 
