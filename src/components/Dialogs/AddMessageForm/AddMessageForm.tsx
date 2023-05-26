@@ -20,7 +20,8 @@ const AddMessageForm: FC<InjectedFormProps<AddMessageFormType>> = (props) => {
                 <Field component={TextArea}
                        name = {'newMessageText'}
                        placeholder={"Enter you message..."}
-                       validate={[required, maxLength50, minLength5]}>
+                       >
+                    {/*validate={[maxLength50, minLength5]}был в форме, но из-за него постоянный rerender*/}
                 </Field>
             </div>
             <div>
