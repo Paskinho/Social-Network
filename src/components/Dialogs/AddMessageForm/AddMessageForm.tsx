@@ -25,7 +25,8 @@ const AddMessageForm: FC<InjectedFormProps<AddMessageFormType>> = (props) => {
                 </Field>
             </div>
             <div>
-                <button onClick={props.reset}>Add</button>
+                <button>Add</button>
+                <button onClick={props.reset}>Reset</button>
             </div>
         </form>
     )
