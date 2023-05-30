@@ -6,7 +6,6 @@ import {maxLengthCreator, minLengthCreator, required} from "../../../utils/valid
 
 export type AddMessageFormType = {
     newMessageText: string
-
 }
 
 const AddMessageForm: FC<InjectedFormProps<AddMessageFormType>> = (props) => {

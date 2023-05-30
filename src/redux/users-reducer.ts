@@ -44,6 +44,7 @@ export const toggleIsFollowingProgress = (followingIsProgress: boolean, userId: 
 )
 
 
+
 export type getUsersThunkCreatorPropsType = (page: number, pageSize: number) => void
 export const getUsersThunkCreator: getUsersThunkCreatorPropsType = (page, pageSize) => {
     return async (dispatch: Dispatch) => {
