@@ -71,7 +71,6 @@ class UsersAPIComponent extends Component<UsersPropsType> {
 
 
     componentDidMount() {
-
         this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize);
     }
 
