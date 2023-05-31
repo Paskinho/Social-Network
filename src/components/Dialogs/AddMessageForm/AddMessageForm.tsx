@@ -2,7 +2,7 @@ import React, {FC} from "react";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {TextArea} from "../../common/FormsControls/FormsControls";
 import {maxLengthCreator, minLengthCreator, required} from "../../../utils/validators/validators";
-
+import s from './AddMessageForm.module.css';
 
 export type AddMessageFormType = {
     newMessageText: string
@@ -24,8 +24,8 @@ const AddMessageForm: FC<InjectedFormProps<AddMessageFormType>> = (props) => {
                 </Field>
             </div>
             <div>
-                <button>Add</button>
-                <button onClick={props.reset}>Reset</button>
+                <button className={s.button}>Add</button>
+                <button className={s.button} onClick={props.reset}>Reset</button>
             </div>
         </form>
     )
