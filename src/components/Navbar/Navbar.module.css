@@ -4,6 +4,7 @@
     padding: 20px;
     border-radius: 5px;
     max-width: 100%;
+    scroll-behavior: smooth;
 }
 
 .item {

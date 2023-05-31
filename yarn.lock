@@ -3049,7 +3049,7 @@ check-types@^11.1.1:
   resolved "https://registry.npmjs.org/check-types/-/check-types-11.1.2.tgz"
   integrity sha512-tzWzvgePgLORb9/3a0YenggReLKAIb2owL03H2Xdoe5pKcUyWRSEQ8xfCar8t2SIAuEDwtmx2da1YB52YuHQMQ==
 
-chokidar@^3.4.2, chokidar@^3.5.3:
+"chokidar@>=3.0.0 <4.0.0", chokidar@^3.4.2, chokidar@^3.5.3:
   version "3.5.3"
   resolved "https://registry.npmjs.org/chokidar/-/chokidar-3.5.3.tgz"
   integrity sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==
@@ -4970,6 +4970,11 @@ immer@^9.0.7:
   version "9.0.15"
   resolved "https://registry.npmjs.org/immer/-/immer-9.0.15.tgz"
   integrity sha512-2eB/sswms9AEUSkOm4SbV5Y7Vmt/bKRwByd52jfLkW4OLYeaTP3EEiJ9agqU0O/tq6Dk62Zfj+TJSqfm1rLVGQ==
+
+immutable@^4.0.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/immutable/-/immutable-4.3.0.tgz#eb1738f14ffb39fd068b1dbe1296117484dd34be"
+  integrity sha512-0AOCmOip+xgJwEVTQj1EfiDDOkPmuyllDuTuEX+DDXUgapLAsBIfkg3sxCYyCEA8mQqZrrxPUGjcOQ2JS3WLkg==
 
 import-fresh@^3.0.0, import-fresh@^3.1.0, import-fresh@^3.2.1:
   version "3.3.0"
@@ -7395,6 +7400,11 @@ react-fast-compare@^2.0.1:
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
   integrity sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==
 
+"react-is@^16.12.0 || ^17.0.0 || ^18.0.0", react-is@^18.0.0, react-is@^18.2.0:
+  version "18.2.0"
+  resolved "https://registry.npmjs.org/react-is/-/react-is-18.2.0.tgz"
+  integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
+
 react-is@^16.13.1, react-is@^16.4.2, react-is@^16.7.0:
   version "16.13.1"
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
@@ -7404,11 +7414,6 @@ react-is@^17.0.1:
   version "17.0.2"
   resolved "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
-
-react-is@^18.0.0:
-  version "18.2.0"
-  resolved "https://registry.npmjs.org/react-is/-/react-is-18.2.0.tgz"
-  integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
 
 react-redux@^8.0.5:
   version "8.0.5"
@@ -7496,6 +7501,23 @@ react-scripts@5.0.1:
     workbox-webpack-plugin "^6.4.1"
   optionalDependencies:
     fsevents "^2.3.2"
+
+react-shallow-renderer@^16.15.0:
+  version "16.15.0"
+  resolved "https://registry.yarnpkg.com/react-shallow-renderer/-/react-shallow-renderer-16.15.0.tgz#48fb2cf9b23d23cde96708fe5273a7d3446f4457"
+  integrity sha512-oScf2FqQ9LFVQgA73vr86xl2NaOIX73rh+YFqcOp68CWj56tSfgtGKrEbyhCj0rSijyG9M1CYprTh39fBi5hzA==
+  dependencies:
+    object-assign "^4.1.1"
+    react-is "^16.12.0 || ^17.0.0 || ^18.0.0"
+
+react-test-renderer@^18.2.0:
+  version "18.2.0"
+  resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-18.2.0.tgz#1dd912bd908ff26da5b9fca4fd1c489b9523d37e"
+  integrity sha512-JWD+aQ0lh2gvh4NM3bBM42Kx+XybOxCpgYK7F8ugAlpaTSnWsX+39Z4XkOykGZAHrjwwTZT3x3KxswVWxHPUqA==
+  dependencies:
+    react-is "^18.2.0"
+    react-shallow-renderer "^16.15.0"
+    scheduler "^0.23.0"
 
 react@^18.2.0:
   version "18.2.0"
@@ -7820,6 +7842,15 @@ sass-loader@^12.3.0:
     klona "^2.0.4"
     neo-async "^2.6.2"
 
+sass@^1.62.1:
+  version "1.62.1"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.62.1.tgz#caa8d6bf098935bc92fc73fa169fb3790cacd029"
+  integrity sha512-NHpxIzN29MXvWiuswfc1W3I0N8SXBd8UR26WntmDlRYf0bSADnwnOjsyMZ3lMezSlArD33Vs3YFhp7dWvL770A==
+  dependencies:
+    chokidar ">=3.0.0 <4.0.0"
+    immutable "^4.0.0"
+    source-map-js ">=0.6.2 <2.0.0"
+
 sax@~1.2.4:
   version "1.2.4"
   resolved "https://registry.npmjs.org/sax/-/sax-1.2.4.tgz"
@@ -8026,7 +8057,7 @@ source-list-map@^2.0.0, source-list-map@^2.0.1:
   resolved "https://registry.npmjs.org/source-list-map/-/source-list-map-2.0.1.tgz"
   integrity sha512-qnQ7gVMxGNxsiL4lEuJwe/To8UnK7fAnmbGEEH8RpLouuKbeEm0lhbQVFIrNSuB+G7tVrAlVsZgETT5nljf+Iw==
 
-source-map-js@^1.0.1, source-map-js@^1.0.2:
+"source-map-js@>=0.6.2 <2.0.0", source-map-js@^1.0.1, source-map-js@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/source-map-js/-/source-map-js-1.0.2.tgz"
   integrity sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==
