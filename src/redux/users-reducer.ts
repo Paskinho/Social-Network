@@ -32,7 +32,7 @@ export const followSuccess = (userId: string) => (
 export const unfollowSuccess = (userId: string) => (
     {type: "users/UNFOLLOW", payload: userId} as const)
 export const setUsers = (users: Array<UserType>) => (
-    {type: "users/SET_USERS", payload: {newState: users}} as const)
+    {type: "users/SET_USERS", payload: {users}} as const)
 export const setCurrentPage = (currentPage: number) => (
     {type: "users/SET_CURRENT_PAGE", payload: currentPage} as const)
 export const setTotalUsersCount = (totalCount: number) => (
@@ -68,13 +68,13 @@ const followUnFollowFlow = async (dispatch: AppDispatch, userId: any, apiMethod:
 
 export const follow = (userId: any) => { // уточнить по типизации, в одном месте number, в другом string
     return async (dispatch: any) => {
-        followUnFollowFlow(dispatch, userId, usersAPI.follow.bind(usersAPI), followSuccess)
+        await  followUnFollowFlow(dispatch, userId, usersAPI.follow.bind(usersAPI), followSuccess)
     }
 }
 
 export const unfollow = (userId: any) => { // уточнить по типизации, в одном месте number, в другом string
     return async (dispatch: any) => {
-        followUnFollowFlow(dispatch, userId, usersAPI.unfollow.bind(usersAPI), unfollowSuccess)
+        await followUnFollowFlow(dispatch, userId, usersAPI.unfollow.bind(usersAPI), unfollowSuccess)
     }
 }
 
@@ -133,7 +133,7 @@ export const usersReducer = (state: InitialStateType = initialState, action: Use
             }
         case 'users/SET_USERS':
             return {
-                ...state, users: action.payload.newState
+                ...state, users: action.payload.users
             }
         case "users/SET_CURRENT_PAGE":
             return {

@@ -7,6 +7,7 @@ import userPhoto from "../../assets/images/user.png"
  const UsersFunctional = (props: UsersPropsType) => {
 
     const getUsers = () => {
+        debugger
         if (props.usersPage.length === 0) {
 
             axios.get('https://social-network.samuraijs.com/api/1.0/users').then((response: any) => {
