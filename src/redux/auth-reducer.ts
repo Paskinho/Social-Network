@@ -66,7 +66,7 @@ export const setAuthUserData = (data: InitialStateType) => (
 export const getAuthUserData = () => async (dispatch: Dispatch) => {
     let response = await authAPI.me()
     if (response.resultCode === 0) {
-        dispatch(setAuthUserData({...response.data, isAuth: true}))
+        dispatch(setAuthUserData({...response.data.users, isAuth: true}))
     }
 }
 
