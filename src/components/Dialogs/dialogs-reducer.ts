@@ -29,7 +29,6 @@ const initialState = {
         {
             name: "Trent",
             id: 0,
-            avatar: 'https://www.thisisanfield.com/wp-content/uploads/P2022-10-09-Arsenal_Liverpool-6.jpg'
         },
         {name: "Virgil", id: 1},
         {name: "Mohamed", id: 2},

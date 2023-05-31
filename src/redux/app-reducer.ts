@@ -1,5 +1,5 @@
 import {Dispatch} from "redux";
-import {getAuthUserData} from "./auth-reducer";
+import {getAuthUserData} from "../components/Login/auth-reducer";
 import {AppDispatch} from "./redux-store";
 
 

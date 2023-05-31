@@ -1,7 +1,7 @@
 import React, {ComponentType} from "react";
 import {Dialogs} from "./Dialogs";
 import {AppStateType} from "../../redux/redux-store";
-import {addMessageCreator, InitialStateType} from "../../redux/dialogs-reducer";
+import {addMessageCreator, InitialStateType} from "./dialogs-reducer";
 import {connect} from "react-redux";
 import {compose, Dispatch} from "redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";

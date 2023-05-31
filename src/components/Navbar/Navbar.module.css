@@ -4,13 +4,15 @@
     padding: 20px;
     border-radius: 5px;
     max-width: 100%;
-    scroll-behavior: smooth;
+
 }
 
 .item {
     color: red;
+    transition-duration: 1s;
 }
 
 .item a.active {
     color: gold;
+
 }

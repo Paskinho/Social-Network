@@ -1,8 +1,8 @@
 import {AnyAction, applyMiddleware, combineReducers, compose, createStore} from "redux"
 import {profileReducer} from "./profile-reducer";
-import {dialogsReducer} from "./dialogs-reducer";
+import {dialogsReducer} from "../components/Dialogs/dialogs-reducer";
 import {usersReducer} from "./users-reducer";
-import {authReducer} from "./auth-reducer";
+import {authReducer} from "../components/Login/auth-reducer";
 import thunkMiddleware, {ThunkDispatch} from 'redux-thunk';
 import {reducer as formReducer} from 'redux-form';
 import {appReducer} from "./app-reducer";

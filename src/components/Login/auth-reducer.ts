@@ -1,8 +1,8 @@
-import {authAPI} from "../api/api";
+import {authAPI} from "../../api/api";
 import {Dispatch} from "redux";
 import {stopSubmit} from "redux-form";
-import {LoginFormType} from "../components/Login/Login";
-import {AppDispatch} from "./redux-store";
+import {LoginFormType} from "./Login";
+import {AppDispatch} from "../../redux/redux-store";
 
 
 export type UserType = {
