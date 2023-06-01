@@ -16,11 +16,12 @@ const AddMessageForm: FC<InjectedFormProps<AddMessageFormType>> = (props) => {
 
     return (
         <form onSubmit={props.handleSubmit}>
-            <div>
-                <Field component={TextArea}
-                       name = {'newMessageText'}
-                       placeholder={"Enter you message..."}
-                       >
+            <div className={s.form}>
+                <Field
+                    component={TextArea}
+                    name={'newMessageText'}
+                    placeholder={"Enter you message..."}
+                >
                     {/*validate={[required,maxLength50, minLength5]}был в форме, но из-за него постоянный rerender*/}
                 </Field>
             </div>
@@ -32,6 +33,6 @@ const AddMessageForm: FC<InjectedFormProps<AddMessageFormType>> = (props) => {
     )
 }
 
-export const AddMessageReduxForm = reduxForm<AddMessageFormType> ({
+export const AddMessageReduxForm = reduxForm<AddMessageFormType>({
     form: 'dialogAddMessage'
 })(AddMessageForm)
