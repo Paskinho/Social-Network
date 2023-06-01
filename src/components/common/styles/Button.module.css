@@ -1,0 +1,18 @@
+.button {
+    background-color: #5e9e9f;
+    color: black;
+    border: 1px solid black;
+    height: 25px;
+    width: 70px;
+    font-style: italic;
+    margin-top: 5px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 7px;
+}
+
+
+.button:hover{
+    background-color: #28e7b3;
+    color: #767676 ;
+}
