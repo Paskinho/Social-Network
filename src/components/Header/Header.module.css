@@ -4,17 +4,26 @@
     padding: 10px;
     display: flex;
     border-radius: 5px;
-
+    display: flex;
+    justify-content: flex-end;
 }
+
 .header img {
     width: 40px;
+}
 
+
+.img {
+    display: flex;
+    justify-content: flex-start;
 }
 
 .loginBlock {
     display: flex;
     align-self: center;
     justify-self: flex-end;
+
+
 }
 
 .loginBlock a {
