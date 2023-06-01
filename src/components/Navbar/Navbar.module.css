@@ -8,11 +8,8 @@
 }
 
 .item {
-    color: red;
     transition-duration: 1s;
 }
 
 .item a.active {
-    color: gold;
-
 }
