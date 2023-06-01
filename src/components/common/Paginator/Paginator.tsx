@@ -1,5 +1,6 @@
 import React, {FC, useEffect, useState} from "react";
 import s from "./Paginator.module.css";
+import btn from '../../common/styles/Button.module.css'
 
 
 type PaginatorType = {
@@ -36,7 +37,7 @@ export const Paginator: FC<PaginatorType> = ({
 
     return <div>
         {portionNumber > 1 &&
-            <button onClick={() => {
+            <button className={btn.button} onClick={() => {
                 setPortionNumber(portionNumber - 1)
             }}>PREV</button>}
         <div>
@@ -50,7 +51,7 @@ export const Paginator: FC<PaginatorType> = ({
                                      }}>{p}</span>
                     })}
                 {portionCount > portionNumber &&
-                <button onClick={() => {setPortionNumber(portionNumber + 1)}
+                <button className={btn.button} onClick={() => {setPortionNumber(portionNumber + 1)}
                 }>NEXT</button>}
             </div>
         </div>

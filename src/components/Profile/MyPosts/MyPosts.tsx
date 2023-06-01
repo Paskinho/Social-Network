@@ -5,7 +5,7 @@ import {MyPostsType} from "./MyPostsContainer";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../../utils/validators/validators";
 import {TextArea} from "../../common/FormsControls/FormsControls";
-
+import btn from '../../common/styles/Button.module.css'
 
 type myPostsFormType = {
 
@@ -20,7 +20,7 @@ export const addPostsForm: FC<InjectedFormProps<myPostsFormType>> = (props: any)
      name='newPostText' placeholder='New post' validate={[required, maxLength10]}
     ></Field>
     <div>
-        <button>Add post</button>
+        <button className={btn.button}>Add post</button>
     </div>
 </form>
     )
