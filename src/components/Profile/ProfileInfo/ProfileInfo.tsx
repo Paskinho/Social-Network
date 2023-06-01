@@ -15,11 +15,9 @@ export const ProfileInfo: React.FC<ProfileType>= (props) => {
     return (
         <div>
         <div >
-            <Tilt options={{
-                max: 150,
-            }}>
+
             <img className={s.img} src="https://backend.liverpoolfc.com/sites/default/files/styles/lg/public/2021-06/placeholder.jpg?itok=nhe1dpvk"/>
-            </Tilt>
+
             </div>
             <div>
                 {/*<img src={props.profile.photos.large}/>*/}
