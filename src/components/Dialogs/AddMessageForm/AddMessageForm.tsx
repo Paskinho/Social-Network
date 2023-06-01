@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React, {FC, useState} from "react";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {TextArea} from "../../common/FormsControls/FormsControls";
 import {maxLengthCreator, minLengthCreator, required} from "../../../utils/validators/validators";
@@ -13,6 +13,11 @@ const AddMessageForm: FC<InjectedFormProps<AddMessageFormType>> = (props) => {
 
     const maxLength50 = maxLengthCreator(50)
     const minLength5 = minLengthCreator(5)
+    const [resetMessage, setResetMessage] = useState('')
+
+    const addMessage = (e: any) => {
+        return ''
+    }
 
     return (
         <form onSubmit={props.handleSubmit}>
@@ -26,7 +31,7 @@ const AddMessageForm: FC<InjectedFormProps<AddMessageFormType>> = (props) => {
                 </Field>
             </div>
             <div>
-                <button className={btn.button}>Add</button>
+                <button className={btn.button} onClick={addMessage}>Add</button>
                 <button className={btn.button} onClick={props.reset}>Reset</button>
             </div>
         </form>
