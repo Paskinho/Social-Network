@@ -21,3 +21,9 @@
 
 .user {
 }
+
+.user:hover {
+    background-color: darkgrey; /* Green */
+    color: black;
+    border-radius: 5px;
+}

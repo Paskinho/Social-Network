@@ -1,6 +1,8 @@
 import React, {useRef} from "react";
 import s from './Dialogs.module.css';
 import {NavLink} from "react-router-dom"
+import {Message} from "./Message/Message";
+import {Dialogs} from "./Dialogs";
 
 export type DialogItemPropsType = {
     id: number
