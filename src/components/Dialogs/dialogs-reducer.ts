@@ -32,9 +32,9 @@ const initialState = {
             avatar: 'https://media.cnn.com/api/v1/images/stellar/prod/220804093610-01-trent-alexander-arnold-file.jpg?c=original',
         },
         {name: "Virgil", id: 1, avatar: 'https://resources.premierleague.com/premierleague/photos/players/250x250/p97032.png'},
-        {name: "Darwin", id: 3},
-        {name: "Roberto", id: 4},
-        {name: "Thiago", id: 5}
+        {name: "Darwin", id: 3, avatar: 'https://resources.premierleague.com/premierleague/photos/players/250x250/p447203.png'},
+        {name: "Roberto", id: 4, avatar: 'https://resources.premierleague.com/premierleague/photos/players/250x250/p92217.png'},
+        {name: "Thiago", id: 5, avatar: 'https://resources.premierleague.com/premierleague/photos/players/250x250/p61558.png' }
     ] as Array<DialogType>,
     newMessageText: "", // УБИРАЕМ?
     messages: [
