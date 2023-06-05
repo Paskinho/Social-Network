@@ -14,7 +14,11 @@ export const Header = (props: HeaderContainerType) => {
         </div>
 <div className={s.loginBlock}>
     {props.isAuth
-        ? <div> {props.login} <button className={btn.button} onClick={() => props.logoutTC()}>LogOut</button>  </div>
+        ? <div> {props.login}
+            <div className={s.loginBlock}>
+            <button className={btn.button} onClick={() => props.logoutTC()}>LogOut</button>
+            </div>
+            </div>
         :
     <NavLink to={"/login"}>login</NavLink>}
 </div>
