@@ -5,6 +5,7 @@
 
 .dialogsItems {
     padding-top: 10px;
+    padding-left: 10px
 }
 
 .dialogsItems .active {
@@ -16,21 +17,21 @@
 }
 
 .message {
-
-    padding-top: 10px;
+    padding-top: 40px;
 }
 
 .user {
 }
 
 .user:hover {
-    background-color: darkgrey; /* Green */
+    background-color: darkcyan; /* Green */
     color: black;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .dialog {
-color: darkcyan;
+    color: darkcyan;
 }
 
 .avatar {
