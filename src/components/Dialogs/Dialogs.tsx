@@ -8,7 +8,7 @@ import {AddMessageReduxForm} from "./AddMessageForm/AddMessageForm";
 
 export const Dialogs: React.FC<DialogsPropsType> = ({dialogsState, addMessage}) => {
 
-    const dialogsItem = dialogsState.users.map((d: any) => <DialogItem key={d.id} id={d.id} name={d.name} />)
+    const dialogsItem = dialogsState.users.map((d: any) => <DialogItem key={d.id} id={d.id} name={d.name} avatar={d.avatar}/>)
     const message = dialogsState.messages.map((m: any) => <Message key={m.id} id={m.id} message={m.message} />)
 
     // const newMessageElement = useRef<HTMLTextAreaElement>(null); //????

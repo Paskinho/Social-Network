@@ -29,9 +29,9 @@ const initialState = {
         {
             name: "Trent",
             id: 0,
+            avatar: 'https://media.cnn.com/api/v1/images/stellar/prod/220804093610-01-trent-alexander-arnold-file.jpg?c=original',
         },
-        {name: "Virgil", id: 1},
-        {name: "Mohamed", id: 2},
+        {name: "Virgil", id: 1, avatar: 'https://resources.premierleague.com/premierleague/photos/players/250x250/p97032.png'},
         {name: "Darwin", id: 3},
         {name: "Roberto", id: 4},
         {name: "Thiago", id: 5}
