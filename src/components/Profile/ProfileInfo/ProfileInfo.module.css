@@ -5,9 +5,17 @@
 }
 
 .img {
+    padding-left: 10px;
+    padding-top: 10px;
     width: 400px;
     height: 250px;
     border-radius: 5px;
+}
+
+.status {
+    padding-left: 10px;
+    color: darkred;
+
 }
 
 
