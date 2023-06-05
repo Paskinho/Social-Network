@@ -5,3 +5,8 @@
 .posts {
     margin-top: 10px;
 }
+
+.font {
+    font-family: 'Poppins', sans-serif;
+    color: darkcyan;
+}

@@ -51,7 +51,7 @@ export const MyPosts: React.FC<MyPostsType> = React.memo(({posts, postText,addNe
         return (
             <div className={s.postsBlock}>
 
-                <h3>My posts</h3>
+                <h3 className={s.font}>My posts</h3>
                 {/*<hr>*/}
                 {/*{props.posts.map(p=> <div><b>{p.postText}</b></div>)}*/}
                 {/*    /!*key={p.i} добавить в дивку*!/*/}
