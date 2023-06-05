@@ -12,7 +12,7 @@ export type DialogItemPropsType = {
 
 
 export const DialogItem = (props: DialogItemPropsType) => {
-    let path = "/dialogs/1" + props.id;
+    let path = "/dialogs/" + props.id;
     return (
         <div className={s.user}>
         <div className={s.dialog + " " + s.active}>

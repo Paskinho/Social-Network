@@ -46,6 +46,7 @@ export const ProfileStatusWithHooks = (props: ProfileStatusType) => {
                            autoFocus={true}
                            onBlur={deActivateMode}
                            value={status}
+                           className={s.status}
                     />
                 </div>
             }
