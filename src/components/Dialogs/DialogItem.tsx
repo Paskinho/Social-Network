@@ -17,7 +17,7 @@ export const DialogItem = (props: DialogItemPropsType) => {
         <div className={s.user}>
         <div className={s.dialog + " " + s.active}>
             <NavLink to={path} style={(params)=> {
-                return {color: params.isActive ? "red" : "darkcyan", textDecoration:'none'
+                return {color: params.isActive ? "red" : "darkred", textDecoration:'none'
                 }
             }}> {props.name} </NavLink>
         </div>

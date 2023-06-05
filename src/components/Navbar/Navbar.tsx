@@ -13,41 +13,41 @@ export const Navbar = () => {
         <div className={s.item}>
             <NavLink to="/profile"
             style={(params)=> {
-                return {color: params.isActive ? "red" : "darkcyan",
+                return {color: params.isActive ? "darkred" : "darkcyan",
                 textDecoration:'none'}
             }
             }>Profile</NavLink>
         </div>
         <div className={s.item}>
             <NavLink to="/dialogs" style={(params)=> {
-                return {color: params.isActive ? "red" : "darkcyan",
+                return {color: params.isActive ? "darkred" : "darkcyan",
                     textDecoration:'none'}
             }
             }>Message</NavLink>
         </div>
         <div className={s.item}>
             <NavLink to="/users" style={(params)=> {
-                return {color: params.isActive ? "red" : "darkcyan", textDecoration:'none'
+                return {color: params.isActive ? "darkred" : "darkcyan", textDecoration:'none'
                 }
             }
             }>Users</NavLink>
         </div>
         <div className={s.item}>
             <NavLink to="/news" style={(params)=> {
-                return {color: params.isActive ? "red" : "darkcyan",
+                return {color: params.isActive ? "darkred" : "darkcyan",
                     textDecoration:'none'}
             }
             }>News</NavLink>
         </div>
         <div className={s.item}>
             <NavLink to="/music" style={(params)=> {
-                return {color: params.isActive ? "red" : "darkcyan", textDecoration:'none'}
+                return {color: params.isActive ? "darkred" : "darkcyan", textDecoration:'none'}
             }
             }>Music</NavLink>
         </div>
         <div className={s.item}>
             <NavLink to="/settings" style={(params)=> {
-                return {color: params.isActive ? "red" : "darkcyan",  textDecoration:'none'}
+                return {color: params.isActive ? "darkred" : "darkcyan",  textDecoration:'none'}
             }
             }>Settings</NavLink>
         </div>

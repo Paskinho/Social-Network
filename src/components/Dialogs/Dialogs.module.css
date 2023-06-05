@@ -4,7 +4,7 @@
 }
 
 .dialogsItems {
-    padding: 10px;
+    /*padding: 10px;*/
 }
 
 .dialogsItems .active {
@@ -26,4 +26,8 @@
     background-color: darkgrey; /* Green */
     color: black;
     border-radius: 5px;
+}
+
+.dialog {
+color: darkcyan;
 }
