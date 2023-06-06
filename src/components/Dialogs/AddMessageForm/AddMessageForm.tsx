@@ -23,6 +23,7 @@ const AddMessageForm: FC<InjectedFormProps<AddMessageFormType>> = (props) => {
         <form onSubmit={props.handleSubmit}>
             <div className={s.form}>
                 <Field
+                    className={s.form}
                     component={TextArea}
                     name={'newMessageText'}
                     placeholder={"Enter you message..."}

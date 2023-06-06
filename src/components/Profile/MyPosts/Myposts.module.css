@@ -14,3 +14,8 @@
 .like {
     ;
 }
+
+
+.form:focus {
+color: #61dafb;
+}
