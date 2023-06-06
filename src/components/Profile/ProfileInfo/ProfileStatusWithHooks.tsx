@@ -32,6 +32,12 @@ export const ProfileStatusWithHooks = (props: ProfileStatusType) => {
         setStatus(e.currentTarget.value)
     }
 
+
+    const handleKeyDown = (e: any) => {
+        if (e.code === "Enter") {
+            onStatusChange(e.currentTarget.value);
+        }
+    };
     return (
         <div>
             {!editMode &&
@@ -47,6 +53,7 @@ export const ProfileStatusWithHooks = (props: ProfileStatusType) => {
                            onBlur={deActivateMode}
                            value={status}
                            className={s.status}
+                           onKeyDown={handleKeyDown}
                     />
                 </div>
             }
