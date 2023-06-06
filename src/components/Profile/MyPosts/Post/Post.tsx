@@ -20,7 +20,7 @@ export const Post = (props: MessagePostType) => {
             <div className={s.itemText}>
                 {props.name}
             </div>
-        <div>
+        <div className={s.like}>
         <span>{props.like} likes</span>
     </div>
         </div>
