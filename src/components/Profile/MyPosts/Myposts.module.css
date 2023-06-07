@@ -9,6 +9,9 @@
 .font {
     font-family: Century, sans-serif ;
     color: darkcyan;
+    display: flex;
+    justify-content: flex-start;
+    padding-bottom: 15px;
 }
 
 .like {
