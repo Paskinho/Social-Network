@@ -1,4 +1,4 @@
-import React, {ChangeEvent, FC} from 'react';
+import React, {ChangeEvent, FC, useState} from 'react';
 import s from './Myposts.module.css'
 import {Post} from "./Post/Post";
 import {MyPostsType} from "./MyPostsContainer";
@@ -13,7 +13,14 @@ type myPostsFormType = {
 
 const maxLength10 = maxLengthCreator(100)
 
+
+
 export const addPostsForm: FC<InjectedFormProps<myPostsFormType>> = (props: any) => {
+
+
+
+
+
     return (
 <form onSubmit={props.handleSubmit}>
     <Field className={s.form} component={TextArea}
@@ -42,8 +49,12 @@ export const MyPosts: React.FC<MyPostsType> = React.memo(({posts, postText,addNe
             />)
 
 
+    const [post, setPost] = useState('')
+
+
         const addPost = (values: any) => {
             addNewPost(values.newPostText)
+            setPost(post)
         }
 
 
@@ -55,7 +66,7 @@ export const MyPosts: React.FC<MyPostsType> = React.memo(({posts, postText,addNe
                 {/*{props.posts.map(p=> <div><b>{p.postText}</b></div>)}*/}
                 {/*    /!*key={p.i} добавить в дивку*!/*/}
                 {/*</hr>*/}
-                <MyPostsReduxForm onSubmit={addPost}/>
+                <MyPostsReduxForm onSubmit={addPost} />
                 <div>
                     {postsElements}
                 </div>
