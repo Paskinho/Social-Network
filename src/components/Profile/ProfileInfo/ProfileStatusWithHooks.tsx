@@ -35,7 +35,7 @@ export const ProfileStatusWithHooks = (props: ProfileStatusType) => {
 
     const handleKeyDown = (e: any) => {
         if (e.key === "Enter") {
-            onStatusChange(e.currentTarget.value)
+            return onStatusChange(e.currentTarget.value)
         }
     };
 
