@@ -50,14 +50,14 @@ class App extends React.Component<any> {
                 <div className="app-wrapper-content">
                     <Routes>
                         <Route path='/login' element={<Login/>}/>
-                        <Route path='/profile/userId?' element={ <React.Suspense fallback={<div>Loading...</div>}>
-                            return <ProfileContainer/>
+                        <Route path='/profile/userId?' element={ <React.Suspense fallback={<Preloader/>}>
+                             <ProfileContainer/>
                         </React.Suspense>}/>
                         <Route path='/dialogs' element={
-                                <React.Suspense fallback={<div>Loading...</div>}>
-                               return <DialogsContainer/>
+                                <React.Suspense fallback={<Preloader/>}>
+                                <DialogsContainer/>
                                 </React.Suspense>
-                           } // уточнить
+                           } // уточнить (добавить withSuspence вызовом функции)
                         />
                         <Route path='/users' element={<UsersContainer/>}/>
                         <Route path='/news' element={<News/>}/>
