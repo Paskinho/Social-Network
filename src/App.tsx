@@ -50,8 +50,14 @@ class App extends React.Component<any> {
                 <div className="app-wrapper-content">
                     <Routes>
                         <Route path='/login' element={<Login/>}/>
-                        <Route path='/profile/userId?' element={<ProfileContainer/>}/>
-                        <Route path='/dialogs' element={<DialogsContainer/>} // уточнить
+                        <Route path='/profile/userId?' element={ <React.Suspense fallback={<div>Loading...</div>}>
+                            return <ProfileContainer/>
+                        </React.Suspense>}/>
+                        <Route path='/dialogs' element={
+                                <React.Suspense fallback={<div>Loading...</div>}>
+                               return <DialogsContainer/>
+                                </React.Suspense>
+                           } // уточнить
                         />
                         <Route path='/users' element={<UsersContainer/>}/>
                         <Route path='/news' element={<News/>}/>
