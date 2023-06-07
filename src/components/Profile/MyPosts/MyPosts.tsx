@@ -2,10 +2,12 @@ import React, {ChangeEvent, FC, useState} from 'react';
 import s from './Myposts.module.css'
 import {Post} from "./Post/Post";
 import {MyPostsType} from "./MyPostsContainer";
-import {Field, InjectedFormProps, reduxForm} from "redux-form";
+import {Field, InjectedFormProps, reduxForm, reset} from "redux-form";
 import {maxLengthCreator, required} from "../../../utils/validators/validators";
 import {TextArea} from "../../common/FormsControls/FormsControls";
 import btn from '../../common/styles/Button.module.css'
+import {useFormik} from "formik";
+import { useForm } from 'react-hook-form';
 
 type myPostsFormType = {
 
@@ -16,10 +18,6 @@ const maxLength10 = maxLengthCreator(100)
 
 
 export const addPostsForm: FC<InjectedFormProps<myPostsFormType>> = (props: any) => {
-
-
-
-
 
     return (
 <form onSubmit={props.handleSubmit}>
@@ -57,6 +55,14 @@ export const MyPosts: React.FC<MyPostsType> = React.memo(({posts, postText,addNe
             setPost(post)
         }
 
+ //    const { register, handleSubmit, reset } = useForm({
+ //        resetOnS: false // отключаем автоматическое сброс поля после отправки
+ //    });
+ //
+ // const OnSubmit = () => {
+ //            reset()
+ // }
+
 
         return (
             <div className={s.postsBlock}>
@@ -66,7 +72,7 @@ export const MyPosts: React.FC<MyPostsType> = React.memo(({posts, postText,addNe
                 {/*{props.posts.map(p=> <div><b>{p.postText}</b></div>)}*/}
                 {/*    /!*key={p.i} добавить в дивку*!/*/}
                 {/*</hr>*/}
-                <MyPostsReduxForm onSubmit={addPost} />
+                <MyPostsReduxForm onSubmit={addPost}/>
                 <div>
                     {postsElements}
                 </div>
