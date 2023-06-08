@@ -150,7 +150,7 @@ export const deletePostCreator = (id: number) => {
 
 
 export const getUserProfile = (userId: string) => async (dispatch: Dispatch) => {
-   let response = await usersAPI.getProfile(userId)
+   let response = await profileAPI.getProfile(userId)
         dispatch(setUserProfileCreator(response.data))
 }
 
