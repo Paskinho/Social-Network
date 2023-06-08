@@ -21,9 +21,9 @@ type LocationType = {
 }
 
 export type InitialStateType = {
-    userId: any,
-    email: any,
-    login: any
+    userId: number | null,
+    email: string | null,
+    login: string | null
     users: Array<UserType>
     isAuth: boolean
 
