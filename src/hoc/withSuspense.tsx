@@ -8,7 +8,7 @@ import {Preloader} from "../components/common/Preloader/Preloader";
 export const withSuspense = (Component: any) => { // УТОЧНИТЬ ТИП
 
     return (props: any) => {
-       <React.Suspense fallback={<Preloader/>}>
+       return <React.Suspense fallback={<Preloader/>}>
             <Component/>
         </React.Suspense>
     }

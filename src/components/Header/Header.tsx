@@ -20,7 +20,7 @@ export const Header = (props: HeaderContainerType) => {
             </div>
             </div>
         :
-    <NavLink to={"/login"}>login</NavLink>}
+    <NavLink className={btn.button} to={"/login"}>login</NavLink>}
 </div>
     </header>
 }

@@ -6,8 +6,9 @@ import {connect} from "react-redux";
 import {loginTC} from "./auth-reducer";
 import {AppStateType} from "../../redux/redux-store";
 import {Navigate} from "react-router-dom";
-import s from './../common/FormsControls/FormsControls.module.css'
 import {MapStateToProps} from "react-redux/es/exports";
+import btn from '../common/styles/Button.module.css';
+import s from '../Login/Login.module.css'
 
 export type LoginFormType = {
     email: string
@@ -21,13 +22,14 @@ const LoginForm: FC<InjectedFormProps<LoginFormType>> = (props) => {
 
     return (
         <form onSubmit={props.handleSubmit}>
-            <div>
-                <Field component={Input}
+            <div className={s.input}>
+                <Field
+                    component={Input}
                        validate={[required]}
                        name={'email'}
                        placeholder={'Email'}/>
             </div>
-            <div>
+            <div className={s.input}>
                 <Field component={Input}
                        validate={[required]}
                        name={'password'}
@@ -44,7 +46,7 @@ const LoginForm: FC<InjectedFormProps<LoginFormType>> = (props) => {
                 {props.error && <div className={s.formSummaryError}>
                     {props.error}
                 </div>}
-                <button>Login</button>
+                <button className={btn.button}>Login</button>
             </div>
         </form>
     )

@@ -9,6 +9,9 @@
     cursor: pointer;
     border-radius: 7px;
     transition-duration: 1s;
+    text-decoration: none;
+    /*display: flex;*/
+    /*justify-content: space-around;*/
 }
 
 
