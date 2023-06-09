@@ -7,7 +7,6 @@ import {useParams} from 'react-router-dom';
 import {compose} from "redux";
 import router from 'react-router-dom';
 
-
 // type withRouterType = {
 //     Children: string
 //
