@@ -5,6 +5,8 @@ import {getStatus, getUserProfile, ServerProfileType, updateStatus} from "../../
 import {AppStateType} from "../../redux/redux-store";
 import {useParams} from 'react-router-dom';
 import {compose} from "redux";
+import router from 'react-router-dom';
+
 
 // type withRouterType = {
 //     Children: string
@@ -71,7 +73,7 @@ type MapDispatchType = typeof actions
 let mapStateToProps = (state: AppStateType) => ({
     profile: state.profileReducer.profile,
     status: state.profileReducer.status,
-    authorizedUserId: state.authReducer.userId,
+    authorizedUserId: state.authReducer.id,
     // isAuth: state.authReducer.isAuth
 })
 

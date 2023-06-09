@@ -21,7 +21,7 @@ type MapStateToPropsType = {
 const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     return {
         isAuth: state.authReducer.isAuth,
-        id: state.authReducer.userId,
+        id: state.authReducer.id,
         login: state.authReducer.login
     }
 }

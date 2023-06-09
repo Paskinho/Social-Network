@@ -21,7 +21,7 @@ type LocationType = {
 }
 
 export type InitialStateType = {
-    userId: number | null,
+    id: number | null,
     email: string | null,
     login: string | null
     users: Array<UserType>
@@ -33,7 +33,7 @@ type UsersActionsTypes = setUserDataACType
 
 const initialState: InitialStateType = {
     users: [],
-    userId: null,
+    id: null,
     email: null,
     login: null,
     isAuth: false

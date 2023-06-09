@@ -17,8 +17,8 @@ type ResponseType<D={}> = {
 
 
 const instance = axios.create({
-    baseURL: 'https://social-network.samuraijs.com/api/1.0/',
     withCredentials: true,
+    baseURL: `https://social-network.samuraijs.com/api/1.0/`,
     headers: {
         "API-KEY": "e5eef998-dbd1-4963-8ecd-6e24ccd9950d"
     }
@@ -37,10 +37,10 @@ export const usersAPI = {
         return instance.delete(`follow/${userId}`,
         )
     },
-    getProfile(userId: string) {
-        console.warn('Obsolete method. Please profileAPI object.')
-        return profileAPI.getProfile(userId);
-    }
+    // getProfile(userId: string) {
+    //     // console.warn('Obsolete method. Please profileAPI object.')
+    //     return profileAPI.getProfile(userId);
+    // }
 }
 
 
