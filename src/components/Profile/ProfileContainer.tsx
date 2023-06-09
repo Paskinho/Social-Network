@@ -28,9 +28,10 @@ class ProfileContainer extends React.Component<ProfileContainerType> {
 
     componentDidMount() {
 
-        let userId = this.props.userId; //this.props.match.params.userId
+        let userId: any = this.props.userId; //this.props.match.params.userId либо
+        // this.props.match.params.userId as PathParamsType
         if (!userId) {
-            userId = this.props.userId; // authorizedUserId in SamuraiWay
+            userId = this.props.authorizedUserId; // authorizedUserId in SamuraiWay
         }
         this.props.getUserProfile(userId);
         this.props.getStatus(userId)
@@ -51,6 +52,7 @@ class ProfileContainer extends React.Component<ProfileContainerType> {
 type MapStateType = {
     profile: ServerProfileType | null
     status: string
+    authorizedUserId: number | null
 }
 
 const actions = {
