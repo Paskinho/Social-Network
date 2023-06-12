@@ -149,16 +149,16 @@ export const deletePostCreator = (id: number) => {
 }
 
 
-export const _getUserProfile = (userId: string) => async (dispatch: Dispatch) => {
+export const getUserProfile = (userId: string) => async (dispatch: Dispatch) => {
    let response = await profileAPI.getProfile(userId)
         dispatch(setUserProfileCreator(response.data))
 }
 
-export const getUserProfile = (userId: string) => async (dispatch: Dispatch) => {
-    profileAPI.getProfile(userId).then((response)=>{
-        dispatch(setUserProfileCreator(response.data))
-    })
-}
+// export const getUserProfile = (userId: string) => async (dispatch: Dispatch) => {
+//     profileAPI.getProfile(userId).then((response)=>{
+//         dispatch(setUserProfileCreator(response.data))
+//     })
+// }
 
 export const _getStatus = (userId: string) => async (dispatch: Dispatch) => {
     let response = await profileAPI.getStatus(userId)
