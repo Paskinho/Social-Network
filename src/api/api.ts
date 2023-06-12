@@ -29,13 +29,13 @@ export const usersAPI = {
         return instance.get(`users?page=${page}$count=${pageSize}`)
             .then(response => response.data);
     },
-    follow(userId: string) {
-        return instance.post(`follow/${userId}`,
-        )
+    follow(id: number) {
+        return instance.post(`follow/${id}`,
+        ).then(response => response.data);
     },
-    unfollow(userId: string) {
-        return instance.delete(`follow/${userId}`,
-        )
+    unfollow(id: number) {
+        return instance.delete(`follow/${id}`,
+        ).then(response => response.data);
     },
     // getProfile(userId: string) {
     //     // console.warn('Obsolete method. Please profileAPI object.')
