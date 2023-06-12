@@ -30,7 +30,7 @@ export const usersAPI = {
             .then(response => response.data);
     },
     follow(userId: string) {
-        return instance.post(`unfollow/${userId}`,
+        return instance.post(`follow/${userId}`,
         )
     },
     unfollow(userId: string) {
