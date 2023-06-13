@@ -5,6 +5,7 @@ import {ProfileType} from "../ProfileContainer";
 import {ProfileStatusWithHooks} from "./ProfileStatusWithHooks";
 import { Tilt } from 'react-tilt';
 import userPhoto from "../../../assets/images/user.png";
+import {savePhoto} from "../../../redux/profile-reducer";
 
 
 
@@ -12,6 +13,13 @@ export const ProfileInfo: React.FC<ProfileType>= (props) => {
     if (props.profile) {
         return <Preloader/>
     }
+
+    const onMainPhotoSelected = (e: any) => { // УТОЧНИТЬ ТИП
+        if (e.target.files.length) {
+            savePhoto(e.target.fules[0])
+        }
+    }
+
 
     return (
         <div>
@@ -22,7 +30,7 @@ export const ProfileInfo: React.FC<ProfileType>= (props) => {
             </div>
             <div>
                 {/*<img src={props?.profile?.photos.large || userPhoto} className={s.img}/>*/}
-                {props.isOwner && <input type={'file'}/>}
+                {props.isOwner && <input type={'file'} onChange={onMainPhotoSelected}/>}
                 <ProfileStatusWithHooks status={props.status} updateStatus={()=>{}}/>
             </div>
             <div>
