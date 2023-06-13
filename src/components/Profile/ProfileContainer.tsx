@@ -42,6 +42,7 @@ class ProfileContainer extends React.Component<ProfileContainerType> {
     }
 
     componentDidUpdate(prevProps: Readonly<ProfileContainerType>, prevState: Readonly<{}>, snapshot?: any) {
+        if (this.props.userId != prevProps.userId)
         this.refreshProfile()
     }
 
@@ -50,6 +51,7 @@ class ProfileContainer extends React.Component<ProfileContainerType> {
         return (
             <Profile
                 {...this.props}
+                isOwner={!this.props.userId}
                 profile={this.props.profile}
                 status={this.props.status}
                 updateStatus={this.props.updateStatus}
@@ -62,6 +64,7 @@ type MapStateType = {
     profile: ServerProfileType | null
     status: string
     authorizedUserId: number | null
+    isOwner: boolean
 }
 
 const actions = {
