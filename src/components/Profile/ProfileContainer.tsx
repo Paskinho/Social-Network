@@ -71,7 +71,8 @@ type MapStateType = {
 const actions = {
     getUserProfile,
     getStatus,
-    updateStatus
+    updateStatus,
+    savePhoto
 }
 
 type MapDispatchType = typeof actions

@@ -12,12 +12,15 @@ export type setStatusCreatorType = ReturnType<typeof setStatusCreator>
 
 export type deletePostCreatorType = ReturnType<typeof deletePostCreator>
 
+export type savePhotoSuccessCreatorType = ReturnType<typeof savePhotoSuccessCreator>
+
 export type ProfileActionsType =
     addPostCreatorType
     | updateNewPostTextCreatorType
     | setUserProfileType
     | setStatusCreatorType
 | deletePostCreatorType
+| savePhotoSuccessCreatorType
 
 
 export type PostDataType = {
@@ -100,14 +103,18 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
                 status: action.status
             }
         }
-
         case 'profile/DELETE-POST' : {
             return {
                 ...state,
                 postData: state.postData.filter(p => p.id !== action.id)
             }
         }
-
+        case "profile/SAVE_PHOTO_SUCCESS" : {
+            return {
+                ...state,
+                profile: {...state.profile, photos: action.photos})
+            }
+        }
         default:
             return state
     }
@@ -133,7 +140,6 @@ export const setUserProfileCreator = (profile: string) => {
     } as const
 
 }
-
 export const setStatusCreator = (status: string) => {
     return {
         type: "profile/SET_STATUS",
@@ -141,18 +147,17 @@ export const setStatusCreator = (status: string) => {
     } as const
 
 }
-
 export const deletePostCreator = (id: number) => {
     return {
         type: "profile/DELETE-POST", id
     } as const
 }
-
 export const savePhotoSuccessCreator = (file: string) => {
     return {
-        type: "profile/SAVE-PHOTO-SUCCESS", file
+        type: "profile/SAVE_PHOTO_SUCCESS", file
     } as const
 }
+
 
 
 export const getUserProfile = (userId: string) => async (dispatch: Dispatch) => {
@@ -186,9 +191,9 @@ export const updateStatus = (status: string) => async (dispatch: Dispatch) => {
         }
 }
 
-export const savePhoto = (file: string) => async (dispatch: Dispatch) => {
+export const savePhoto = (file: any) => async (dispatch: Dispatch) => {
     let response = await profileAPI.savePhoto(file)
     if (response.data.resultCode === 0) {
-        dispatch(savePhotoSuccessCreator(file))
+        dispatch(savePhotoSuccessCreator(response.data.photos))
     }
 }
