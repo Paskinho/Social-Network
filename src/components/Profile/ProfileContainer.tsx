@@ -27,8 +27,7 @@ type PathParamsType = {
 
 class ProfileContainer extends React.Component<ProfileContainerType> {
 
-    componentDidMount() {
-
+    refreshProfile () {
         let userId: any = this.props.userId; //this.props.match.params.userId либо
         // this.props.match.params.userId as PathParamsType
         if (!userId) {
@@ -38,14 +37,12 @@ class ProfileContainer extends React.Component<ProfileContainerType> {
         this.props.getStatus(userId)
     }
 
+    componentDidMount() {
+        this.refreshProfile()
+    }
+
     componentDidUpdate(prevProps: Readonly<ProfileContainerType>, prevState: Readonly<{}>, snapshot?: any) {
-        let userId: any = this.props.userId; //this.props.match.params.userId либо
-        // this.props.match.params.userId as PathParamsType
-        if (!userId) {
-            userId = this.props.authorizedUserId; // authorizedUserId in SamuraiWay
-        }
-        this.props.getUserProfile(userId);
-        this.props.getStatus(userId)
+        this.refreshProfile()
     }
 
 
