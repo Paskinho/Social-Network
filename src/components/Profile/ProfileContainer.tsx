@@ -66,7 +66,6 @@ type MapStateType = {
     status: string
     authorizedUserId: number | null
     isOwner: boolean
-
 }
 
 const actions = {

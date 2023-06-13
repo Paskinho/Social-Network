@@ -148,9 +148,9 @@ export const deletePostCreator = (id: number) => {
     } as const
 }
 
-export const savePhotoSuccessCreator = (photos: number) => {
+export const savePhotoSuccessCreator = (file: string) => {
     return {
-        type: "profile/SAVE-PHOTO-SUCCESS", photos
+        type: "profile/SAVE-PHOTO-SUCCESS", file
     } as const
 }
 
@@ -186,9 +186,9 @@ export const updateStatus = (status: string) => async (dispatch: Dispatch) => {
         }
 }
 
-export const savePhoto = (photos: string) => async (dispatch: Dispatch) => {
-    let response = await profileAPI.updateStatus(photos)
+export const savePhoto = (file: string) => async (dispatch: Dispatch) => {
+    let response = await profileAPI.savePhoto(file)
     if (response.data.resultCode === 0) {
-        dispatch(setStatusCreator(photos))
+        dispatch(savePhotoSuccessCreator(file))
     }
 }
