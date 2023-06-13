@@ -148,6 +148,12 @@ export const deletePostCreator = (id: number) => {
     } as const
 }
 
+export const savePhotoSuccessCreator = (photos: number) => {
+    return {
+        type: "profile/SAVE-PHOTO-SUCCESS", photos
+    } as const
+}
+
 
 export const getUserProfile = (userId: string) => async (dispatch: Dispatch) => {
    let response = await profileAPI.getProfile(userId)
@@ -178,4 +184,11 @@ export const updateStatus = (status: string) => async (dispatch: Dispatch) => {
         if (response.data.resultCode === 0) {
             dispatch(setStatusCreator(status))
         }
+}
+
+export const savePhoto = (photos: string) => async (dispatch: Dispatch) => {
+    let response = await profileAPI.updateStatus(photos)
+    if (response.data.resultCode === 0) {
+        dispatch(setStatusCreator(photos))
+    }
 }

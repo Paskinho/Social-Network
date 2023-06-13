@@ -1,7 +1,7 @@
 import React from 'react';
 import {Profile} from "./Profile";
 import {connect} from "react-redux";
-import {getStatus, getUserProfile, ServerProfileType, updateStatus} from "../../redux/profile-reducer";
+import {getStatus, getUserProfile, savePhoto, ServerProfileType, updateStatus} from "../../redux/profile-reducer";
 import {AppStateType} from "../../redux/redux-store";
 import {useParams} from 'react-router-dom';
 import {compose} from "redux";
@@ -55,6 +55,7 @@ class ProfileContainer extends React.Component<ProfileContainerType> {
                 profile={this.props.profile}
                 status={this.props.status}
                 updateStatus={this.props.updateStatus}
+                savePhoto={this.props.savePhoto}
             />// уточнить по isAuth
         )
     }
@@ -65,6 +66,7 @@ type MapStateType = {
     status: string
     authorizedUserId: number | null
     isOwner: boolean
+
 }
 
 const actions = {
@@ -92,6 +94,6 @@ export type ProfileType = MapStateType & MapDispatchType
 // const WithUrlDataContainerComponent = withRouter(AuthRedirectComponent)
 
 export default compose<React.ComponentType>(
-    connect(mapStateToProps, {getUserProfile, getStatus, updateStatus}),
+    connect(mapStateToProps, {getUserProfile, getStatus, updateStatus, savePhoto}),
     withRouter
 )(ProfileContainer);
