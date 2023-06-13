@@ -21,7 +21,7 @@ export const ProfileInfo: React.FC<ProfileType>= (props) => {
 
             </div>
             <div>
-                <img src={props.profile.photos.large || userPhoto} className={s.img}/>
+                {/*<img src={props?.profile?.photos.large || userPhoto} className={s.img}/>*/}
                 <ProfileStatusWithHooks status={props.status} updateStatus={()=>{}}/>
             </div>
             <div>
