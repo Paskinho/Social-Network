@@ -109,10 +109,10 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
                 postData: state.postData.filter(p => p.id !== action.id)
             }
         }
-        case "profile/SAVE_PHOTO_SUCCESS" :
-            return {
-                ...state,
-                profile:{ ...state.profile, photos: action.photos}}
+        // case "profile/SAVE_PHOTO_SUCCESS" :
+        //     return {
+        //         ...state,
+        //         profile:{ ...state.postData, photos: action.photos}}
         default:
             return state
     }
