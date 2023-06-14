@@ -27,6 +27,7 @@ type PathParamsType = {
 
 class ProfileContainer extends React.Component<ProfileContainerType> {
 
+
     refreshProfile () {
         let userId: any = this.props.userId; //this.props.match.params.userId либо
         // this.props.match.params.userId as PathParamsType

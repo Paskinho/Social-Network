@@ -1,5 +1,6 @@
 import {profileAPI, usersAPI} from "../api/api";
 import {Dispatch} from "redux";
+import {ProfileType} from "../components/Profile/ProfileContainer";
 
 
 export type addPostCreatorType = ReturnType<typeof addPostCreator>
@@ -54,7 +55,7 @@ export type ServerProfileType = {
     photos: {
         small: string
         large: string
-    }
+    } | null
 }
 
 const initialState = {
@@ -112,7 +113,7 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
         // case "profile/SAVE_PHOTO_SUCCESS" :
         //     return {
         //         ...state,
-        //         profile:{ ...state.postData, photos: action.photos}}
+        //         profile:{ ...state.postData, photos: action.payload.photos} as ProfileType} //РАЗОБРАТЬСЯ!!!!!
         default:
             return state
     }
@@ -169,10 +170,10 @@ export const getUserProfile = (userId: string) => async (dispatch: Dispatch) => 
 //     })
 // }
 
-export const _getStatus = (userId: string) => async (dispatch: Dispatch) => {
-    let response = await profileAPI.getStatus(userId)
-        dispatch(setStatusCreator(response.data))
-}
+// export const _getStatus = (userId: string) => async (dispatch: Dispatch) => {
+//     let response = await profileAPI.getStatus(userId)
+//         dispatch(setStatusCreator(response.data))
+// }
 
 export const getStatus = (userId: string) => (dispatch: Dispatch) => {
     profileAPI.getStatus(userId).then((response)=> {
