@@ -46,7 +46,7 @@ export const usersAPI = {
 
 export const profileAPI = {
     getProfile(userId: string) {
-        return instance.get(`profile/${userId}`).then(res => res.data);
+        return instance.get(`profile/` + userId).then(res => res.data);
     },
     getStatus(userId: string) {
         return instance.get(`profile/status/${userId}`).then(res => res.data);
@@ -58,7 +58,6 @@ export const profileAPI = {
     savePhoto(photoFile: string) {
         const formData = new FormData();
         formData.append('image', photoFile)
-
         return instance.put('/profile/photo', formData, {
             headers: {
                 'Content-Type': "multipart/form-data"
