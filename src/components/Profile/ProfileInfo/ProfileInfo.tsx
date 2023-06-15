@@ -29,13 +29,15 @@ export const ProfileInfo: React.FC<ProfileType>= (props) => {
 
             </div>
             <div>
-                {/*<img src={props?.profile?.photos.large || userPhoto} className={s.img}/>*/}
+                {/*<img src={props.profile.photos.large || userPhoto} className={s.img}/>*/}
                 {props.isOwner && <input type={'file'} onChange={onMainPhotoSelected}/>}
                 <div>
                     <div>
                         <b>Looking for a job</b>: {props.profile.lookingForAJob ? 'yes' : 'no'}
                     </div>
-
+                    <div>
+                        <b>About me</b>: {props.profile.aboutMe ? 'yes' : 'no'}
+                    </div>
                 </div>
 
                 <ProfileStatusWithHooks status={props.status} updateStatus={()=>{}}/>

@@ -63,7 +63,7 @@ class ProfileContainer extends React.Component<ProfileContainerType> {
 }
 
 type MapStateType = {
-    profile: ServerProfileType | null
+    profile: any // должно быть ServerProfileType | null НАДО РАЗОБРАТЬСЯ!
     status: string
     authorizedUserId: number | null
     isOwner: boolean

@@ -70,7 +70,7 @@ const initialState = {
 
 export type InitialStateType = typeof initialState
 
-export const profileReducer = (state: InitialStateType = initialState, action: ProfileActionsType) => {
+export const profileReducer = (state: InitialStateType = initialState, action: ProfileActionsType): InitialStateType => {
 
     switch (action.type) {
         case "profile/ADD_POST": {
@@ -160,6 +160,7 @@ export const savePhotoSuccessCreator = (file: string) => {
 
 
 export const getUserProfile = (userId: string) => async (dispatch: Dispatch) => {
+    debugger
    let response = await profileAPI.getProfile(userId)
         dispatch(setUserProfileCreator(response.data))
 }
