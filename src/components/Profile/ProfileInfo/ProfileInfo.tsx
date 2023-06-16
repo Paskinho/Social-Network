@@ -46,6 +46,9 @@ export const ProfileInfo: React.FC<ProfileType>= (props) => {
                     <div>
                         <b>About me</b>: {props.profile.aboutMe}
                     </div>
+                    <div>
+                        <b>Contacts</b>: {props.profile.contacts}
+                    </div>
                 </div>
 
                 <ProfileStatusWithHooks status={props.status} updateStatus={()=>{}}/>
@@ -55,4 +58,11 @@ export const ProfileInfo: React.FC<ProfileType>= (props) => {
             </div>
         </div>
 )
+}
+
+
+const Contact = ({contactTitle, contactValue}: any) => {
+return <div>
+    <b>{contactTitle}</b>: {contactValue}
+</div>
 }
