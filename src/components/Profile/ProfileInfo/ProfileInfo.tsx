@@ -3,13 +3,12 @@ import s from './ProfileInfo.module.css'
 import {Preloader} from "../../common/Preloader/Preloader";
 import {ProfileType} from "../ProfileContainer";
 import {ProfileStatusWithHooks} from "./ProfileStatusWithHooks";
-import { Tilt } from 'react-tilt';
+import {Tilt} from 'react-tilt';
 import userPhoto from "../../../assets/images/user.png";
 import {savePhoto} from "../../../redux/profile-reducer";
 
 
-
-export const ProfileInfo: React.FC<ProfileType>= (props) => {
+export const ProfileInfo: React.FC<ProfileType> = (props) => {
     if (props.profile) {
         return <Preloader/>
     }
@@ -23,9 +22,10 @@ export const ProfileInfo: React.FC<ProfileType>= (props) => {
 
     return (
         <div>
-        <div >
+            <div>
 
-            <img className={s.img} src="https://backend.liverpoolfc.com/sites/default/files/styles/lg/public/2021-06/placeholder.jpg?itok=nhe1dpvk"/>
+                <img className={s.img}
+                     src="https://backend.liverpoolfc.com/sites/default/files/styles/lg/public/2021-06/placeholder.jpg?itok=nhe1dpvk"/>
 
             </div>
             <div>
@@ -46,25 +46,25 @@ export const ProfileInfo: React.FC<ProfileType>= (props) => {
                     <div>
                         <b>About me</b>: {props.profile.aboutMe}
                     </div>
-                    <div>
-                        <b>Contacts</b>: {Object.keys(props.profile.contacts).map(key => {
-                            <Contact contactTitle={key} contactValue={profile.contacts[key]}/>
-                    }) }
-                    </div>
+                    {/*<div>*/}
+                    {/*    <b>Contacts</b>: {Object.keys(props.profile.contacts).map(key => {*/}
+                    {/*    return <Contact key={key} contactTitle={key} contactValue={props.profile.contacts[key]}/>*/}
+                    {/*})}*/}
+                    {/*</div>*/}
                 </div>
-
-                <ProfileStatusWithHooks status={props.status} updateStatus={()=>{}}/>
+                <ProfileStatusWithHooks status={props.status} updateStatus={() => {
+                }}/>
             </div>
             <div>
 
             </div>
         </div>
-)
+    )
 }
 
 
 const Contact = ({contactTitle, contactValue}: any) => {
-return <div>
-    <b>{contactTitle}</b>: {contactValue}
-</div>
+    return <div>
+        <b>{contactTitle}</b>: {contactValue}
+    </div>
 }
