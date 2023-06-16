@@ -47,7 +47,9 @@ export const ProfileInfo: React.FC<ProfileType>= (props) => {
                         <b>About me</b>: {props.profile.aboutMe}
                     </div>
                     <div>
-                        <b>Contacts</b>: {props.profile.contacts}
+                        <b>Contacts</b>: {Object.keys(props.profile.contacts).map(key => {
+                            <Contact contactTitle={key} contactValue={profile.contacts[key]}/>
+                    }) }
                     </div>
                 </div>
 
