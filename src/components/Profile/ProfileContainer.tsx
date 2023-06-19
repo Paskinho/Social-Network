@@ -6,6 +6,7 @@ import {AppStateType} from "../../redux/redux-store";
 import {useParams} from 'react-router-dom';
 import {compose} from "redux";
 import router from 'react-router-dom';
+import {RouteComponentProps} from "@reach/router";
 
 // type withRouterType = {
 //     Children: string
@@ -22,14 +23,16 @@ export function withRouter(Children: any) {
 type ProfileContainerType = MapStateType & MapDispatchType & PathParamsType
 
 type PathParamsType = {
-    userId: string
+    userId: number
 }
 
-class ProfileContainer extends React.Component<ProfileContainerType> {
+class ProfileContainer extends React.Component<ProfileContainerType & RouteComponentProps> {
 
 
     refreshProfile () {
-        let userId: any = this.props.userId; //this.props.match.params.userId либо
+        debugger
+        let _userId: any = this.props.userId; //this.props.match.params.userId либо
+        let userId: any  = (this.props.match.params as PathParamsType).userId ; //this.props.match.params.userId либо
         // this.props.match.params.userId as PathParamsType
         if (!userId) {
             userId = this.props.authorizedUserId; // authorizedUserId in SamuraiWay
