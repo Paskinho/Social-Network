@@ -133,7 +133,7 @@ export const usersReducer = (state: InitialStateType = initialState, action: Use
             }
         case 'users/SET_USERS':
             return {
-                ...state, users: action.payload.users
+                ...state, users: [action.payload.users]
             }
         case "users/SET_CURRENT_PAGE":
             return {

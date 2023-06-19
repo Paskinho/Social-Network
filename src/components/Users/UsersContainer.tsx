@@ -77,6 +77,7 @@ class UsersAPIComponent extends Component<UsersPropsType> {
     // showMore = () => this.props.showMore()
 
     onPageChanged = (pageNumber: number) => {
+        this.props.setCurrentPage(pageNumber)
         this.props.getUsersThunkCreator(pageNumber, this.props.pageSize)
     }
 

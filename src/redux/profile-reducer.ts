@@ -160,7 +160,6 @@ export const savePhotoSuccessCreator = (file: string) => {
 
 
 export const getUserProfile = (userId: string) => async (dispatch: Dispatch) => {
-    debugger
    let response = await profileAPI.getProfile(userId)
         dispatch(setUserProfileCreator(response.data))
 }
