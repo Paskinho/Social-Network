@@ -18,4 +18,10 @@
     font-family: Century, sans-serif;
 }
 
+.fileButton {
 
+}
+
+.fileButton:hover {
+color: #28e7b3;
+}
