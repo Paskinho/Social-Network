@@ -1,6 +1,7 @@
 import {ServerProfileType} from "../../../redux/profile-reducer";
 import React from "react";
 import s from "./ProfileInfo.module.css";
+import {createField} from "../../common/FormsControls/FormsControls";
 
 type ProfileDataFormPropsType = {
     profile: ServerProfileType;
@@ -15,7 +16,7 @@ export  const ProfileDataForm: React.FC<ProfileDataFormPropsType> = (props) => {
             <b>Full Name</b>: {props.profile.fullName}
         </div>
         <div className={s.status}>
-            <b>Looking for a job</b>: {props.profile.lookingForAJob ? 'yes' : 'no'}
+            <b>Looking for a job</b>: {createField('FullName', 'fullName', [], Input)}
         </div>
         {props.profile.lookingForAJob &&
             <div className={s.status}>
