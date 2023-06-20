@@ -3,8 +3,6 @@ import s from './ProfileInfo.module.css'
 import {Preloader} from "../../common/Preloader/Preloader";
 import {ProfileType} from "../ProfileContainer";
 import {ProfileStatusWithHooks} from "./ProfileStatusWithHooks";
-import {Tilt} from 'react-tilt';
-import userPhoto from "../../../assets/images/user.png";
 import {savePhoto, ServerProfileType} from "../../../redux/profile-reducer";
 import {ProfileDataFormReduxForm} from "./ProfileDataForm";
 
@@ -36,16 +34,16 @@ export const ProfileInfo: React.FC<ProfileType> = (props) => {
                 {/*<img src={props.profile.photos.large || userPhoto} className={s.img}/>*/}
                 {props.isOwner && <input className={s.fileButton} type={'file'} onChange={onMainPhotoSelected}/>}
                 {editMode ? <ProfileDataFormReduxForm profile={props.profile} isOwner={props.isOwner}
-                                             goToEditMode={()=> {
-                                                 return setEditMode(true)
-                                             }}/>
+                                                      goToEditMode={() => {
+                                                          return setEditMode(true)
+                                                      }}/>
                     :
                     <ProfileData profile={props.profile}
-                isOwner={props.isOwner}
-                goToEditMode={()=> {
-                    return setEditMode(true)
-                }}
-                />}
+                                 isOwner={props.isOwner}
+                                 goToEditMode={() => {
+                                     return setEditMode(true)
+                                 }}
+                    />}
                 <ProfileStatusWithHooks status={props.status} updateStatus={() => {
                 }}/>
             </div>
@@ -66,7 +64,9 @@ type ProfileDataPropsType = {
 
 const ProfileData: React.FC<ProfileDataPropsType> = (props) => {
     return <div>
-        {props.isOwner && <div><button onClick={props.goToEditMode}>Edit</button> </div>}
+        {props.isOwner && <div>
+            <button onClick={props.goToEditMode}>Edit</button>
+        </div>}
         <div className={s.status}>
             <b>Full Name</b>: {props.profile.fullName}
         </div>
@@ -88,7 +88,6 @@ const ProfileData: React.FC<ProfileDataPropsType> = (props) => {
         {/*</div>*/}
     </div>
 }
-
 
 
 const Contact = ({contactTitle, contactValue}: any) => {

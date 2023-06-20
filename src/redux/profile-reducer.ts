@@ -1,6 +1,5 @@
-import {profileAPI, usersAPI} from "../api/api";
+import {profileAPI} from "../api/api";
 import {Dispatch} from "redux";
-import {ProfileType} from "../components/Profile/ProfileContainer";
 
 
 export type addPostCreatorType = ReturnType<typeof addPostCreator>
