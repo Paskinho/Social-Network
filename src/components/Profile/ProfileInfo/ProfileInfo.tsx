@@ -6,7 +6,7 @@ import {ProfileStatusWithHooks} from "./ProfileStatusWithHooks";
 import {Tilt} from 'react-tilt';
 import userPhoto from "../../../assets/images/user.png";
 import {savePhoto, ServerProfileType} from "../../../redux/profile-reducer";
-import {ProfileDataForm} from "./ProfileDataForm";
+import {ProfileDataFormReduxForm} from "./ProfileDataForm";
 
 
 export const ProfileInfo: React.FC<ProfileType> = (props) => {
@@ -35,7 +35,7 @@ export const ProfileInfo: React.FC<ProfileType> = (props) => {
             <div>
                 {/*<img src={props.profile.photos.large || userPhoto} className={s.img}/>*/}
                 {props.isOwner && <input className={s.fileButton} type={'file'} onChange={onMainPhotoSelected}/>}
-                {editMode ? <ProfileDataForm profile={props.profile} isOwner={props.isOwner}
+                {editMode ? <ProfileDataFormReduxForm profile={props.profile} isOwner={props.isOwner}
                                              goToEditMode={()=> {
                                                  return setEditMode(true)
                                              }}/>

@@ -2,6 +2,7 @@ import {ServerProfileType} from "../../../redux/profile-reducer";
 import React from "react";
 import s from "./ProfileInfo.module.css";
 import {createField, Input} from "../../common/FormsControls/FormsControls";
+import {reduxForm} from "redux-form";
 
 type ProfileDataFormPropsType = {
     profile: ServerProfileType;
@@ -9,9 +10,9 @@ type ProfileDataFormPropsType = {
     goToEditMode: () => void
 }
 
-export  const ProfileDataForm: React.FC<ProfileDataFormPropsType> = (props) => {
+const ProfileDataForm: React.FC<ProfileDataFormPropsType> = (props) => {
     return <form>
-        {props.isOwner && <div><button onClick={props.goToEditMode}>Edit</button> </div>}
+        {props.isOwner && <div><button onClick={()=> {}}>Edit</button> </div>}
         <div className={s.status}>
             <b>Full Name</b>: {createField('FullName', 'fullName', [], Input)}
         </div>
@@ -33,3 +34,5 @@ export  const ProfileDataForm: React.FC<ProfileDataFormPropsType> = (props) => {
         {/*</div>*/}
     </form>
 }
+
+export const ProfileDataFormReduxForm = reduxForm<ServerProfileType,ProfileDataFormPropsType>({form: 'edit profile'})(ProfileDataForm);
