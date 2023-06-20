@@ -32,18 +32,18 @@ export const ProfileInfo: React.FC<ProfileType> = (props) => {
                 {/*<img src={props.profile.photos.large || userPhoto} className={s.img}/>*/}
                 {props.isOwner && <input type={'file'} onChange={onMainPhotoSelected}/>}
                 <div>
-                    <div>
+                    <div className={s.status}>
                         <b>Full Name</b>: {props.profile.fullName}
                     </div>
-                    <div>
+                    <div className={s.status}>
                         <b>Looking for a job</b>: {props.profile.lookingForAJob ? 'yes' : 'no'}
                     </div>
                     {props.profile.lookingForAJob &&
-                        <div>
+                        <div className={s.status}>
                             <b>My professional skills</b>: {props.profile.lookingForAJobDescription}
                         </div>
                     }
-                    <div>
+                    <div className={s.status}>
                         <b>About me</b>: {props.profile.aboutMe}
                     </div>
                     {/*<div>*/}
