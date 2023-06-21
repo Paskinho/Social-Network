@@ -15,8 +15,6 @@ export type deletePostCreatorType = ReturnType<typeof deletePostCreator>
 
 export type savePhotoSuccessCreatorType = ReturnType<typeof savePhotoSuccessCreator>
 
-export type saveProfileCreatorType = ReturnType<typeof saveProfileCreator>
-
 export type ProfileActionsType =
     addPostCreatorType
     | updateNewPostTextCreatorType
@@ -24,7 +22,7 @@ export type ProfileActionsType =
     | setStatusCreatorType
 | deletePostCreatorType
 | savePhotoSuccessCreatorType
-| saveProfileCreatorType
+
 
 
 export type PostDataType = {
@@ -218,10 +216,10 @@ export const savePhoto = (file: any) => async (dispatch: Dispatch) => {
     }
 }
 
-export const saveProfile = (profile: any) => async (dispatch: Dispatch, getState:any) => { // УТОЧНИТЬ ПО ТИПИЗАЦИИ PROFILE
-    const userId = getState.authReducer.userId
+export const saveProfile = (profile: any) => async (dispatch: Dispatch<any>, getState:any) => { // УТОЧНИТЬ ПО ТИПИЗАЦИИ PROFILE
+    const userId = getState().authReducer.userId
     let response = await profileAPI.saveProfile(profile)
     if (response.data.resultCode === 0) {
-        dispatch(getUserProfile(userId))) // Утчонить
+        dispatch(getUserProfile(userId)) // Утчонить
     }
 }
