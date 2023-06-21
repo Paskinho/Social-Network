@@ -195,3 +195,10 @@ export const savePhoto = (file: any) => async (dispatch: Dispatch) => {
         dispatch(savePhotoSuccessCreator(response.data.data.photos))
     }
 }
+
+export const saveProfile = (profile: any) => async (dispatch: Dispatch) => {
+    let response = await profileAPI.saveProfile(profile)
+    if (response.data.resultCode === 0) {
+        dispatch(savePhotoSuccessCreator(response.data.data.photos))
+    }
+}

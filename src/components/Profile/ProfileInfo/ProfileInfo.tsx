@@ -5,6 +5,7 @@ import {ProfileType} from "../ProfileContainer";
 import {ProfileStatusWithHooks} from "./ProfileStatusWithHooks";
 import {savePhoto, ServerProfileType} from "../../../redux/profile-reducer";
 import {ProfileDataFormReduxForm} from "./ProfileDataForm";
+import {LoginFormType} from "../../Login/Login";
 
 
 export const ProfileInfo: React.FC<ProfileType> = (props) => {
@@ -21,6 +22,11 @@ export const ProfileInfo: React.FC<ProfileType> = (props) => {
         }
     }
 
+    const onSubmit = (formData: LoginFormType) => {
+        props.saveProfile(formData)
+    }
+
+
 
     return (
         <div>
@@ -36,7 +42,9 @@ export const ProfileInfo: React.FC<ProfileType> = (props) => {
                 {editMode ? <ProfileDataFormReduxForm profile={props.profile} isOwner={props.isOwner}
                                                       goToEditMode={() => {
                                                           return setEditMode(true)
-                                                      }}/>
+                                                      }}
+                    onSubmit={props.onSubmit}
+                    />
                     :
                     <ProfileData profile={props.profile}
                                  isOwner={props.isOwner}

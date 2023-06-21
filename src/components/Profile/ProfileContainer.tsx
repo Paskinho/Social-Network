@@ -7,6 +7,7 @@ import {useParams} from 'react-router-dom';
 import {compose} from "redux";
 import router from 'react-router-dom';
 import {MatchRenderProps, RouteComponentProps} from "@reach/router";
+import {LoginFormType} from "../Login/Login";
 
 // type withRouterType = {
 //     Children: string
@@ -69,6 +70,8 @@ type MapStateType = {
     status: string
     authorizedUserId: number | null
     isOwner: boolean
+    onSubmit: () => void
+    saveProfile: (formData:LoginFormType) => void
 }
 
 const actions = {
