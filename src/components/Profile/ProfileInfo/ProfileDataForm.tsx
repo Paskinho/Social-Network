@@ -21,13 +21,11 @@ const ProfileDataForm: React.FC<ProfileDataFormPropsType> = (props) => {
 
         </div>
             <div className={s.status}>
-                <b>My professional skills</b>: {props.profile.lookingForAJobDescription}
-                {createField('My professional skills', 'lookingForAJobDescription', [], TextArea)}
+                <b>My professional skills</b>: {createField('My professional skills', 'lookingForAJobDescription', [], TextArea)}
             </div>
 
         <div className={s.status}>
-            <b>About me</b>: {props.profile.aboutMe}
-            {createField('About me', 'aboutMe', [], TextArea)}
+            <b>About me</b>: {createField('About me', 'aboutMe', [], TextArea)}
         </div>
         {/*<div>*/}
         {/*    <b>Contacts</b>: {Object.keys(props.profile.contacts).map(key => {*/}
