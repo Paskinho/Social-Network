@@ -24,6 +24,7 @@ export const ProfileInfo: React.FC<ProfileType> = (props) => {
 
     const onSubmit = (formData: LoginFormType) => {
         props.saveProfile(formData)
+        setEditMode(false)
     }
 
 
@@ -40,8 +41,7 @@ export const ProfileInfo: React.FC<ProfileType> = (props) => {
                 {/*<img src={props.profile.photos.large || userPhoto} className={s.img}/>*/}
                 {props.isOwner && <input className={s.fileButton} type={'file'} onChange={onMainPhotoSelected}/>}
                 {editMode ? <ProfileDataFormReduxForm profile={props.profile} isOwner={props.isOwner}
-
-                    onSubmit={props.onSubmit}
+                    // onSubmit={onSubmit}
                     />
                     :
                     <ProfileData profile={props.profile}

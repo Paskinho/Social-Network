@@ -1,6 +1,7 @@
 import {profileAPI} from "../api/api";
 import {Dispatch} from "redux";
 import {ProfileType} from "../components/Profile/ProfileContainer";
+import {stopSubmit} from "redux-form";
 
 
 export type addPostCreatorType = ReturnType<typeof addPostCreator>
@@ -221,5 +222,7 @@ export const saveProfile = (profile: any) => async (dispatch: Dispatch<any>, get
     let response = await profileAPI.saveProfile(profile)
     if (response.data.resultCode === 0) {
         dispatch(getUserProfile(userId)) // Утчонить
+    } else {
+        dispatch(stopSubmit('login', {_error: response.data.message[0]}))
     }
 }

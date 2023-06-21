@@ -4,6 +4,7 @@ import s from "./ProfileInfo.module.css";
 import {createField, Input, TextArea} from "../../common/FormsControls/FormsControls";
 import {InjectedFormProps, reduxForm} from "redux-form";
 import {ProfileType} from "../ProfileContainer";
+import btn from "../../common/styles/Button.module.css";
 
 type ProfileDataFormPropsType = {
     profile: ServerProfileType;
@@ -12,9 +13,14 @@ type ProfileDataFormPropsType = {
     // onSubmit: () => void
 }
 
-const ProfileDataForm: FC<InjectedFormProps<ProfileDataFormPropsType>> = (props) => {
-    return <form onSubmit={props.handleSubmit}>
+const ProfileDataForm: FC<ProfileDataFormPropsType> = (props) => {
+    //нужен сабмит формы onSubmit={props.handleSubmit} и типа InjectedProps, но с ними error
+    return <form>
         <div><button onClick={()=> {}}>save</button> </div>
+        {/*{props.error && <div className={s.formSummaryError}>*/}
+        {/*    {props.error}*/}
+        {/*</div>}*/}
+        <button className={btn.button}>Login</button>
         <div className={s.status}>
             <b>Full Name</b>: {createField('FullName', 'fullName', [], Input)}
         </div>
@@ -29,11 +35,13 @@ const ProfileDataForm: FC<InjectedFormProps<ProfileDataFormPropsType>> = (props)
         <div className={s.status}>
             <b>About me</b>: {createField('About me', 'aboutMe', [], TextArea)}
         </div>
-        {/*<div>*/}
-        {/*    <b>Contacts</b>: {Object.keys(props.profile.contacts).map(key => {*/}
-        {/*    return <Contact key={key} contactTitle={key} contactValue={props.profile.contacts[key]}/>*/}
-        {/*})}*/}
-        {/*</div>*/}
+        <div>
+            <b>Contacts</b>: {Object.keys(props.profile.contacts).map(key => {
+            return <div>
+                <b>{key}: {createField(key,'contacts.' + key, [], Input)}</b>
+            </div>
+        })}
+        </div>
     </form>
 }
 
