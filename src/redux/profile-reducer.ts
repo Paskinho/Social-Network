@@ -118,13 +118,13 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
         //         ...state,
         //         profile:{ ...state.postData, photos: action.payload.photos} as ProfileType} //РАЗОБРАТЬСЯ!!!!!
 
-        case "profile/SAVE_PROFILE_SUCCESS": {
-            return {
-                ...state,
-                profile: action.profile
-            }
-
-        }
+        // case "profile/SAVE_PROFILE_SUCCESS": {
+        //     return {
+        //         ...state,
+        //         profile: action.profile
+        //     }
+        //
+        // }
 
         default:
             return state
@@ -169,12 +169,12 @@ export const savePhotoSuccessCreator = (file: string) => {
     } as const
 }
 
-export const saveProfileCreator = (profile: any) => {
-    return {
-        type: "profile/SAVE_PROFILE_SUCCESS", profile
-    } as const
-}
-
+// export const saveProfileCreator = (profile: any) => {
+//     return {
+//         type: "profile/SAVE_PROFILE_SUCCESS", profile
+//     } as const
+// }
+//
 
 
 
@@ -218,9 +218,10 @@ export const savePhoto = (file: any) => async (dispatch: Dispatch) => {
     }
 }
 
-export const saveProfile = (profile: any) => async (dispatch: Dispatch) => { // УТОЧНИТЬ ПО ТИПИЗАЦИИ PROFILE
+export const saveProfile = (profile: any) => async (dispatch: Dispatch, getState:any) => { // УТОЧНИТЬ ПО ТИПИЗАЦИИ PROFILE
+    const userId = getState.authReducer.userId
     let response = await profileAPI.saveProfile(profile)
     if (response.data.resultCode === 0) {
-        dispatch(saveProfileCreator(response.data.data.photos))
+        dispatch(getUserProfile(userId))) // Утчонить
     }
 }
