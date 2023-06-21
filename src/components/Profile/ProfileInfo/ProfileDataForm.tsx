@@ -1,16 +1,18 @@
 import {ServerProfileType} from "../../../redux/profile-reducer";
-import React from "react";
+import React, {FC} from "react";
 import s from "./ProfileInfo.module.css";
 import {createField, Input, TextArea} from "../../common/FormsControls/FormsControls";
 import {InjectedFormProps, reduxForm} from "redux-form";
+import {ProfileType} from "../ProfileContainer";
 
 type ProfileDataFormPropsType = {
     profile: ServerProfileType;
     isOwner: boolean;
-    goToEditMode: () => void
+    // goToEditMode: () => void
+    // onSubmit: () => void
 }
 
-const ProfileDataForm: React.FC<InjectedFormProps<ProfileDataFormPropsType>> = (props) => {
+const ProfileDataForm: FC<InjectedFormProps<ProfileDataFormPropsType>> = (props) => {
     return <form onSubmit={props.handleSubmit}>
         <div><button onClick={()=> {}}>save</button> </div>
         <div className={s.status}>
@@ -35,4 +37,4 @@ const ProfileDataForm: React.FC<InjectedFormProps<ProfileDataFormPropsType>> = (
     </form>
 }
 
-export const ProfileDataFormReduxForm = reduxForm<ServerProfileType,ProfileDataFormPropsType, InjectedFormProps>({form: 'edit profile'})(ProfileDataForm);
+export const ProfileDataFormReduxForm = reduxForm<ProfileDataFormPropsType, ServerProfileType>({form: 'edit profile'})(ProfileDataForm);
