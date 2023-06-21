@@ -1,5 +1,6 @@
 import {profileAPI} from "../api/api";
 import {Dispatch} from "redux";
+import {ProfileType} from "../components/Profile/ProfileContainer";
 
 
 export type addPostCreatorType = ReturnType<typeof addPostCreator>
@@ -14,6 +15,8 @@ export type deletePostCreatorType = ReturnType<typeof deletePostCreator>
 
 export type savePhotoSuccessCreatorType = ReturnType<typeof savePhotoSuccessCreator>
 
+export type saveProfileCreatorType = ReturnType<typeof saveProfileCreator>
+
 export type ProfileActionsType =
     addPostCreatorType
     | updateNewPostTextCreatorType
@@ -21,6 +24,7 @@ export type ProfileActionsType =
     | setStatusCreatorType
 | deletePostCreatorType
 | savePhotoSuccessCreatorType
+| saveProfileCreatorType
 
 
 export type PostDataType = {
@@ -113,6 +117,15 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
         //     return {
         //         ...state,
         //         profile:{ ...state.postData, photos: action.payload.photos} as ProfileType} //РАЗОБРАТЬСЯ!!!!!
+
+        case "profile/SAVE_PROFILE_SUCCESS": {
+            return {
+                ...state,
+                profile: action.profile
+            }
+
+        }
+
         default:
             return state
     }
@@ -156,6 +169,15 @@ export const savePhotoSuccessCreator = (file: string) => {
     } as const
 }
 
+export const saveProfileCreator = (profile: any) => {
+    return {
+        type: "profile/SAVE_PROFILE_SUCCESS", profile
+    } as const
+}
+
+
+
+
 
 
 export const getUserProfile = (userId: string) => async (dispatch: Dispatch) => {
@@ -196,9 +218,9 @@ export const savePhoto = (file: any) => async (dispatch: Dispatch) => {
     }
 }
 
-export const saveProfile = (profile: any) => async (dispatch: Dispatch) => {
+export const saveProfile = (profile: any) => async (dispatch: Dispatch) => { // УТОЧНИТЬ ПО ТИПИЗАЦИИ PROFILE
     let response = await profileAPI.saveProfile(profile)
     if (response.data.resultCode === 0) {
-        dispatch(savePhotoSuccessCreator(response.data.data.photos))
+        dispatch(saveProfileCreator(response.data.data.photos))
     }
 }
