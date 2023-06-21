@@ -32,11 +32,11 @@ export const followSuccess = (userId: string) => (
 export const unfollowSuccess = (userId: string) => (
     {type: "users/UNFOLLOW", payload: userId} as const)
 export const setUsers = (users: Array<UserType>) => {
-  return   {type: "users/SET_USERS", payload: {users}} as const}
+  return   {type: "users/SET_USERS", payload: {users},} as const}
 export const setCurrentPage = (currentPage: number) => (
-    {type: "users/SET_CURRENT_PAGE", payload: currentPage} as const)
+    {type: "users/SET_CURRENT_PAGE", payload: {currentPage}} as const)
 export const setTotalUsersCount = (totalCount: number) => (
-    {type: "users/SET_TOTAL_USERS_COUNT", payload: totalCount} as const)
+    {type: "users/SET_TOTAL_USERS_COUNT", payload: {totalCount}} as const)
 export const toggleIsFetching = (isFetching: boolean) => (
     {type: 'users/TOGGLE_IS_FETCHING', payload: isFetching} as const)
 export const toggleIsFollowingProgress = (followingIsProgress: boolean, userId: number) => (
@@ -136,11 +136,11 @@ export const usersReducer = (state: InitialStateType = initialState, action: Use
             }
         case "users/SET_CURRENT_PAGE":
             return {
-                ...state, page: action.payload
+                ...state, page: action.payload.currentPage
             }
         case "users/SET_TOTAL_USERS_COUNT" :
             return {
-                ...state, totalUsersCount: action.payload
+                ...state, totalUsersCount: action.payload.totalCount
             }
         case 'users/TOGGLE_IS_FETCHING' :
             return {
