@@ -40,9 +40,7 @@ export const ProfileInfo: React.FC<ProfileType> = (props) => {
                 {/*<img src={props.profile.photos.large || userPhoto} className={s.img}/>*/}
                 {props.isOwner && <input className={s.fileButton} type={'file'} onChange={onMainPhotoSelected}/>}
                 {editMode ? <ProfileDataFormReduxForm profile={props.profile} isOwner={props.isOwner}
-                                                      goToEditMode={() => {
-                                                          return setEditMode(true)
-                                                      }}
+
                     onSubmit={props.onSubmit}
                     />
                     :
@@ -64,7 +62,7 @@ export const ProfileInfo: React.FC<ProfileType> = (props) => {
 
 // ОТДЕЛЬНАЯ КОМПОНЕНТА ДЛЯ данных профиля
 
-type ProfileDataPropsType = {
+export type ProfileDataPropsType = {
     profile: ServerProfileType;
     isOwner: boolean;
     goToEditMode: () => void

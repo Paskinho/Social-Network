@@ -37,4 +37,4 @@ const ProfileDataForm: FC<InjectedFormProps<ProfileDataFormPropsType>> = (props)
     </form>
 }
 
-export const ProfileDataFormReduxForm = reduxForm<ProfileDataFormPropsType, ServerProfileType>({form: 'edit profile'})(ProfileDataForm);
+export const ProfileDataFormReduxForm = reduxForm<ServerProfileType,ProfileDataFormPropsType>({form: 'edit profile'})(ProfileDataForm);
