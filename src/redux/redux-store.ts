@@ -27,11 +27,10 @@ export type StoreType = typeof store
 // const composeEnhancers = window.REDUX_DEVTOOLS_EXTENSION_COMPOSE || compose;
 
 
-const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
+export const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 //
 // window.store = store;
 
 export type AppDispatch = ThunkDispatch<AppStateType, any, AnyAction>
-export default store;
 
 

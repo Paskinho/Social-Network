@@ -14,7 +14,7 @@ import {connect, MapStateToProps, Provider} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./redux/app-reducer";
 import {Preloader} from "./components/common/Preloader/Preloader";
-import store, {AppStateType} from "./redux/redux-store";
+import {store, AppStateType} from "./redux/redux-store";
 import {Dialogs} from "./components/Dialogs/Dialogs";
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
