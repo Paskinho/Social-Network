@@ -100,7 +100,6 @@ const ProfileData: React.FC<ProfileDataPropsType> = (props) => {
     </div>
 }
 
-
 const Contact = ({contactTitle, contactValue}: any) => {
     return <div>
         <b>{contactTitle}</b>: {contactValue}
