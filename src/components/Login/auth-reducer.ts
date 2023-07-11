@@ -83,7 +83,6 @@ export const loginTC: AuthFromLogin = (loginData) => async (dispatch: AppDispatc
 }
 
     export const logoutTC = () => async (dispatch: any) => {
-    debugger
         let response = await authAPI.logout()
                 if (response.data.resultCode === 0) {
                     dispatch(setAuthUserData)  // (null, null, null, false)
