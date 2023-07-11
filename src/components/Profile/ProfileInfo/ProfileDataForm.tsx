@@ -37,7 +37,7 @@ const ProfileDataForm: FC<ProfileDataFormPropsType> = (props) => {
         </div>
         <div>
             <b>Contacts</b>: {Object.keys(props.profile.contacts).map(key => {
-            return <div>
+            return <div key={key}>
                 <b>{key}: {createField(key,'contacts.' + key, [], Input)}</b>
             </div>
         })}
@@ -45,4 +45,4 @@ const ProfileDataForm: FC<ProfileDataFormPropsType> = (props) => {
     </form>
 }
 
-export const ProfileDataFormReduxForm = reduxForm<ServerProfileType,ProfileDataFormPropsType>({form: 'edit profile'})(ProfileDataForm);
+export const ProfileDataFormReduxForm = reduxForm<ServerProfileType,ProfileDataFormPropsType>({form: 'edit-profile'})(ProfileDataForm);

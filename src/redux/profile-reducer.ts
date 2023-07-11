@@ -223,6 +223,6 @@ export const saveProfile = (profile: any) => async (dispatch: Dispatch<any>, get
     if (response.data.resultCode === 0) {
         dispatch(getUserProfile(userId)) // Утчонить
     } else {
-        dispatch(stopSubmit('login', {_error: response.data.message[0]}))
+        dispatch(stopSubmit('edit-profile', {_error: response.data.message[0]}))
     }
 }
