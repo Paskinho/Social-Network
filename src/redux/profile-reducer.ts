@@ -224,5 +224,7 @@ export const saveProfile = (profile: any) => async (dispatch: Dispatch<any>, get
         dispatch(getUserProfile(userId)) // Утчонить
     } else {
         dispatch(stopSubmit('edit-profile', {_error: response.data.message[0]}))
+        return Promise.reject(response.data.message[0])
+        //{'contacts': {'facebook': response.data.messages[0]}})) распарсить
     }
 }

@@ -22,9 +22,14 @@ export const ProfileInfo: React.FC<ProfileType> = (props) => {
         }
     }
 
-    const onSubmit = (formData: LoginFormType) => {
-        props.saveProfile(formData)
+    const onSubmit = async (formData: LoginFormType) => {
+        await props.saveProfile(formData)
         setEditMode(false)
+        //  props.saveProfile(formData).then(
+        //             () => {
+        //                 setEditMode(false)
+        //             }
+        //         )
     }
 
 
