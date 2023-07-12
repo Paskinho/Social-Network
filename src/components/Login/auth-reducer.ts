@@ -48,6 +48,12 @@ export const authReducer = (state: InitialStateType = initialState, action: User
                 ...state,
                 ...action.payload
             }
+        case GET_CAPTCHA_URL_SUCCESS:
+            return  {
+                ...state,
+                ...action.payload
+            }
+
 
         default:
             return state

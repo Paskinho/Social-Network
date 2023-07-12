@@ -14,7 +14,7 @@ export type LoginFormType = {
     email: string
     password: string
     rememberMe: boolean
-    captcha?: boolean
+    captchaUrl?: string | null
 }
 
 const LoginForm: FC<InjectedFormProps<LoginFormType>> = (props) => {
@@ -42,6 +42,7 @@ const LoginForm: FC<InjectedFormProps<LoginFormType>> = (props) => {
                        name={'rememberMe'}
                        type={'checkbox'}/> Remember me
             </div>
+            {props.captchaUrl && <img src={props.captchaUrl}/>}
             <div>
                 {props.error && <div className={s.formSummaryError}>
                     {props.error}
@@ -68,7 +69,7 @@ const Login = (props: any) => {
 
     return <div>
         <h1>Login</h1>
-        <LoginReduxForm onSubmit={onSubmit}/>
+        <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl}/>
     </div>
 }
 
