@@ -98,7 +98,7 @@ type MapDispatchType = typeof actions
 let mapStateToProps = (state: AppStateType) => ({
     profile: state.profileReducer.profile,
     status: state.profileReducer.status,
-    authorizedUserId: state.authReducer.id,
+    authorizedUserId: state.authReducer.userId,
     // isAuth: state.authReducer.isAuth
 })
 

@@ -21,7 +21,7 @@ type LocationType = {
 }
 
 export type InitialStateType = {
-    id: number | null,
+    userId: number | null,
     email: string | null,
     login: string | null
     users: Array<UserType>
@@ -33,7 +33,7 @@ type UsersActionsTypes = setUserDataACType | getCaptchaUrlACType
 
 const initialState: InitialStateType = {
     users: [],
-    id: null,
+    userId: null,
     email: null,
     login: null,
     isAuth: false,
