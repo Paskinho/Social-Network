@@ -73,6 +73,7 @@ const Login = (props: any) => {
 }
 
 const mapStateToProps = (state: AppStateType) => ({
+    captchaUrl: state.authReducer.captchaUrl,
     isAuth: state.authReducer.isAuth
 })
 
