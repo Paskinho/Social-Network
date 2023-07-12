@@ -42,7 +42,14 @@ const LoginForm: FC<InjectedFormProps<LoginFormType>> = (props) => {
                        name={'rememberMe'}
                        type={'checkbox'}/> Remember me
             </div>
-            {props.captchaUrl && <img src={props.captchaUrl}/>}
+            {/*{props.captchaUrl && <img src={props.captchaUrl}/>}
+            props.captchaUrl && <Field component={Input}
+                       validate={[required]}
+                       name={'captcha'}
+                       type={'captcha'}
+                       placeholder={'Symbols from image'}/>
+            */}
+
             <div>
                 {props.error && <div className={s.formSummaryError}>
                     {props.error}
@@ -69,9 +76,10 @@ const Login = (props: any) => {
 
     return <div>
         <h1>Login</h1>
-        <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl}/>
+        <LoginReduxForm onSubmit={onSubmit}/>
     </div>
 }
+//дополнительно в форму captchaUrl={props.captchaUrl}
 
 const mapStateToProps = (state: AppStateType) => ({
     captchaUrl: state.authReducer.captchaUrl,
