@@ -1,6 +1,5 @@
 import {profileAPI} from "../api/api";
 import {Dispatch} from "redux";
-import {ProfileType} from "../components/Profile/ProfileContainer";
 import {stopSubmit} from "redux-form";
 
 
@@ -174,9 +173,6 @@ export const savePhotoSuccessCreator = (file: string) => {
 //     } as const
 // }
 //
-
-
-
 
 
 export const getUserProfile = (userId: string) => async (dispatch: Dispatch) => {

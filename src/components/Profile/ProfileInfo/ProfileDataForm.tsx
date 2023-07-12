@@ -2,8 +2,7 @@ import {ServerProfileType} from "../../../redux/profile-reducer";
 import React, {FC} from "react";
 import s from "./ProfileInfo.module.css";
 import {createField, Input, TextArea} from "../../common/FormsControls/FormsControls";
-import {InjectedFormProps, reduxForm} from "redux-form";
-import {ProfileType} from "../ProfileContainer";
+import {reduxForm} from "redux-form";
 import btn from "../../common/styles/Button.module.css";
 
 type ProfileDataFormPropsType = {
