@@ -1,4 +1,4 @@
-import {authAPI} from "../../api/api";
+import {authAPI, securityAPI} from "../../api/api";
 import {Dispatch} from "redux";
 import {stopSubmit} from "redux-form";
 import {LoginFormType} from "./Login";
@@ -26,17 +26,18 @@ export type InitialStateType = {
     login: string | null
     users: Array<UserType>
     isAuth: boolean
-
+    captchaUrl: string | null
 }
 
-type UsersActionsTypes = setUserDataACType
+type UsersActionsTypes = setUserDataACType | getCaptchaUrlACType
 
 const initialState: InitialStateType = {
     users: [],
     id: null,
     email: null,
     login: null,
-    isAuth: false
+    isAuth: false,
+    captchaUrl: null
 }
 
 export const authReducer = (state: InitialStateType = initialState, action: UsersActionsTypes): InitialStateType => {
@@ -55,11 +56,19 @@ export const authReducer = (state: InitialStateType = initialState, action: User
 }
 
 type setUserDataACType = ReturnType<typeof setAuthUserData>
+type getCaptchaUrlACType = ReturnType<typeof getCaptchaUrlSuccess>
 
 const SET_USER_DATA = "social-network/auth/SET_USER_DATA"
+const GET_CAPTCHA_URL_SUCCESS = 'social-network/auth/GET_CAPTCHA_URL_SUCCESS'
+
 
 export const setAuthUserData = (data: InitialStateType) => (
     {type: SET_USER_DATA, payload: data} as const)
+
+export const getCaptchaUrlSuccess = (captchaURL: string) => (
+    {type: GET_CAPTCHA_URL_SUCCESS, payload:{captchaURL}}
+)
+
 
 
 
@@ -81,6 +90,13 @@ export const loginTC: AuthFromLogin = (loginData) => async (dispatch: AppDispatc
         dispatch(stopSubmit('login', {_error: message}))
     }
 }
+
+export const getCaptchaUrlTC = () => async (dispatch: AppDispatch) => {
+    const response = await securityAPI.getCaptchaUrl()
+    const captchaUtl = response.data.url
+    dispatch(getCaptchaUrlSuccess(captchaUtl))
+}
+
 
     export const logoutTC = () => async (dispatch: any) => {
         let response = await authAPI.logout()
