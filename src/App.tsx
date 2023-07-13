@@ -63,6 +63,7 @@ class App extends React.Component<any> {
                         <Route path='/news' element={<News/>}/>
                         <Route path='/music' element={<Music/>}/>
                         <Route path='/settings' element={<Settings/>}/>
+                        <Route path={'*'} element={'404 NOT FOUND'}/>
                     </Routes>
                 </div>
             </div>
