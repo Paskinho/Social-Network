@@ -98,6 +98,7 @@ export const loginTC: AuthFromLogin = (loginData) => async (dispatch: AppDispatc
         let message = response.data.messages.length > 0 ? response.data.messages[0] : 'Some error';
         dispatch(stopSubmit('login', {_error: message}))
     }
+    console.log(response)
 }
 
 export const getCaptchaUrlTC = () => async (dispatch: AppDispatch) => {
