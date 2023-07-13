@@ -79,7 +79,7 @@ const ProfileData: React.FC<ProfileDataPropsType> = (props) => {
             <button onClick={props.goToEditMode}>Edit</button>
         </div>}
         <div className={s.status}>
-            <b>Full Name</b>: {props.profile.fullName}
+            {/*<b>Full Name</b>: {props.profile.fullName}*/}
         </div>
         <div className={s.status}>
             <b>Looking for a job</b>: {props.profile.lookingForAJob ? 'yes' : 'no'}
