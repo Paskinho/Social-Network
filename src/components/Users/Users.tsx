@@ -14,8 +14,8 @@ type UsersType = {
     onPageChanged: (p: number) => void
     usersPage: InitialStateType
     toggleIsFollowingProgress: any// нужно будет уточнять
-
 }
+
 
 export const Users: FC<UsersPropsType> = ({
                                               usersPage,

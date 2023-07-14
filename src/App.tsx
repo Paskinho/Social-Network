@@ -50,7 +50,7 @@ class App extends React.Component<any> {
                 <div className="app-wrapper-content">
                     <Routes>
                         <Route path='/login' element={<Login/>}/>
-                        <Route path='/profile/userId?' element={ <React.Suspense fallback={<Preloader/>}>
+                        <Route path='/profile' element={ <React.Suspense fallback={<Preloader/>}>
                              <ProfileContainer/>
                         </React.Suspense>}/>
                         <Route path='/dialogs' element={
