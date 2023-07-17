@@ -1,6 +1,7 @@
 import {profileAPI} from "../api/api";
 import {Dispatch} from "redux";
 import {stopSubmit} from "redux-form";
+import {ProfileType} from "../components/Profile/ProfileContainer";
 
 
 export type addPostCreatorType = ReturnType<typeof addPostCreator>
@@ -96,7 +97,7 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
         case "profile/SET_USER_PROFILE": {
             return {
                 ...state,
-                profile: action.profile
+                profile: action.type
             }
         }
         case 'profile/SET_STATUS' : {
@@ -142,7 +143,7 @@ export const updateNewPostTextCreator = (newText: string) => {
         newText: newText
     } as const
 }
-export const setUserProfileCreator = (profile: any) => { // УТОЧНИТЬ ТИП
+export const setUserProfileCreator = (profile: ProfileType) => { // УТОЧНИТЬ ТИП
     return {
         type: "profile/SET_USER_PROFILE",
         profile: profile
