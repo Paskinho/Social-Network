@@ -43,7 +43,6 @@ componentWillUnmount() {
     window.removeEventListener('unhandledrejection', this.catchAllUnhandledErrors)
 }
 
-
     render() {
 
         if (!this.props.initialized) {
