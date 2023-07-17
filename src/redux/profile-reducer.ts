@@ -1,7 +1,7 @@
 import {profileAPI} from "../api/api";
 import {Dispatch} from "redux";
 import {stopSubmit} from "redux-form";
-import {ProfileType} from "../components/Profile/ProfileContainer";
+import {PathParamsType, ProfileType} from "../components/Profile/ProfileContainer";
 
 
 export type addPostCreatorType = ReturnType<typeof addPostCreator>
@@ -175,8 +175,17 @@ export const savePhotoSuccessCreator = (file: string) => {
 // }
 //
 
+// export type ActionProfileTypes = InferActionTypes<typeof profileReducer>;
+//
+// export type ThunkProfileType = BaseThunkType<
+//     ActionProfileTypes | ReturnType<typeof stopSubmit>
+//     >;
+
+
+
 
 export const getUserProfile = (userId: string) => async (dispatch: Dispatch) => {
+    debugger
    let response = await profileAPI.getProfile(userId)
         dispatch(setUserProfileCreator(response))
 }
