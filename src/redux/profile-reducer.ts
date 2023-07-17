@@ -142,7 +142,7 @@ export const updateNewPostTextCreator = (newText: string) => {
         newText: newText
     } as const
 }
-export const setUserProfileCreator = (profile: string) => {
+export const setUserProfileCreator = (profile: any) => { // УТОЧНИТЬ ТИП
     return {
         type: "profile/SET_USER_PROFILE",
         profile: profile
