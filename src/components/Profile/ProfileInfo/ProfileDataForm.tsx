@@ -2,8 +2,9 @@ import {ServerProfileType} from "../../../redux/profile-reducer";
 import React, {FC} from "react";
 import s from "./ProfileInfo.module.css";
 import {createField, Input, TextArea} from "../../common/FormsControls/FormsControls";
-import {reduxForm} from "redux-form";
+import {InjectedFormProps, reduxForm} from "redux-form";
 import btn from "../../common/styles/Button.module.css";
+import {Preloader} from "../../common/Preloader/Preloader";
 
 type ProfileDataFormPropsType = {
     profile: ServerProfileType;
@@ -12,9 +13,13 @@ type ProfileDataFormPropsType = {
     // onSubmit: () => void
 }
 
-const ProfileDataForm: FC<ProfileDataFormPropsType> = (props) => {
+const ProfileDataForm: FC<InjectedFormProps<ServerProfileType, ProfileDataFormPropsType> & ProfileDataFormPropsType> = (props ) => {
     //нужен сабмит формы onSubmit={props.handleSubmit} и типа InjectedProps, но с ними error
-    return <form>
+    if (!props.profile) {
+        return <Preloader />;
+    }
+
+    return <form onSubmit={props.handleSubmit}>
         <div><button onClick={()=> {}}>save</button> </div>
         {/*{props.error && <div className={s.formSummaryError}>*/}
         {/*    {props.error}*/}
