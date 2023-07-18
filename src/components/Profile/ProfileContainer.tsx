@@ -28,7 +28,7 @@ export function withRouter(Children: any) {
     }
 }
 
-type ProfileContainerType = MapStateType & MapDispatchType & PathParamsType
+export type ProfileContainerType = MapStateType & MapDispatchType & PathParamsType
 
 export type PathParamsType = {
     userId: number

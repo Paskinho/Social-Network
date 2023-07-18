@@ -1,6 +1,6 @@
 import axios from "axios";
 import {LoginFormType} from "../components/Login/Login";
-import {ProfileType} from "../components/Profile/ProfileContainer";
+import {ProfileContainerType, ProfileType} from "../components/Profile/ProfileContainer";
 
 
 type AuthMeResponseDataType = {
