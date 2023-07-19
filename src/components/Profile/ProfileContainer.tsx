@@ -12,8 +12,6 @@ import {
 import {AppStateType} from "../../redux/redux-store";
 import {useParams} from 'react-router-dom';
 import {compose} from "redux";
-import router from 'react-router-dom';
-import {MatchRenderProps, RouteComponentProps} from "@reach/router";
 import {LoginFormType} from "../Login/Login";
 
 // type withRouterType = {
@@ -21,12 +19,12 @@ import {LoginFormType} from "../Login/Login";
 //
 // }
 
-// export function withRouter(Children: any) {
-//     return (props: any) => {
-//         const match = {params: useParams()};
-//         return <Children {...props} match={match}/>
-//     }
-// }
+export function withRouter(Children: any) {
+    return (props: any) => {
+        const match = {params: useParams()};
+        return <Children {...props} match={match}/>
+    }
+}
 
 export type WrappedComponentWithRouterPropsType = {
     userId: string;
@@ -34,25 +32,25 @@ export type WrappedComponentWithRouterPropsType = {
 };
 
 
-export const withRouter =
-    (WrappedComponent: any) => (props: WrappedComponentWithRouterPropsType) => {
-        const params = useParams<'userId'>();
-        // const location = useLocation();
-        return <WrappedComponent {...props} userId={params.userId}/>;
-    };
+// export const withRouter =
+//     (WrappedComponent: any) => (props: WrappedComponentWithRouterPropsType) => {
+//         const params = useParams<'userId'>();
+//         // const location = useLocation();
+//         return <WrappedComponent {...props} userId={params.userId}/>;
+//     };
 
 export type ProfileContainerType = MapStateType & MapDispatchType & PathParamsType
 
 export type PathParamsType = {
-    userId: number
+    userId: string
 }
 
-class ProfileContainer extends React.Component<ProfileContainerType & MatchRenderProps<any>> {
+class ProfileContainer extends React.Component<ProfileContainerType> {
 
 
-    refreshProfile () {
+    refreshProfile (): void {
         let _userId: any = this.props.userId; //this.props.match.params.userId либо
-        let userId = this.props.match.params.userId; //this.props.match.params.userId либо //
+        let {userId} = this.props; //this.props.match.params.userId либо //
         // this.props.match.params.userId as PathParamsType
         if (!userId) {
             userId = this.props.authorizedUserId; // authorizedUserId in SamuraiWay
@@ -85,10 +83,12 @@ class ProfileContainer extends React.Component<ProfileContainerType & MatchRende
     }
 }
 
+type Nullable<T> = T | null;
+
 type MapStateType = {
-    profile: any // должно быть ServerProfileType | null НАДО РАЗОБРАТЬСЯ!
+    profile: ServerProfileType // должно быть ServerProfileType | null НАДО РАЗОБРАТЬСЯ!
     status: string
-    authorizedUserId: number | null
+    authorizedUserId: string //Nullable<String>
     isOwner: boolean
     onSubmit: () => void
     saveProfile: (formData:LoginFormType) => void
