@@ -83,7 +83,7 @@ class ProfileContainer extends React.Component<ProfileContainerType> {
     }
 }
 
-type Nullable<T> = T | null;
+export type Nullable<T> = T | null;
 
 type MapStateType = {
     profile: ServerProfileType // должно быть ServerProfileType | null НАДО РАЗОБРАТЬСЯ!

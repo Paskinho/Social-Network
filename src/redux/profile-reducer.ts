@@ -1,7 +1,7 @@
 import {profileAPI} from "../api/api";
 import {Dispatch} from "redux";
 import {stopSubmit} from "redux-form";
-import {PathParamsType, ProfileType} from "../components/Profile/ProfileContainer";
+import {Nullable, PathParamsType, ProfileType} from "../components/Profile/ProfileContainer";
 
 
 export type addPostCreatorType = ReturnType<typeof addPostCreator>
@@ -54,10 +54,12 @@ export type ServerProfileType = {
     lookingForAJobDescription: string
     fullName: string
     userId: number
-    photos: {
-        small: string
-        large: string
-    } | null
+    photos: PhotosType | null
+}
+
+type PhotosType = {
+    small: string
+    large: string
 }
 
 const initialState = {

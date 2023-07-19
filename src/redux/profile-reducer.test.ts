@@ -1,5 +1,6 @@
 import React from "react";
 import {addPostCreator, deletePostCreator, profileReducer} from "./profile-reducer";
+import {Nullable, ProfileType} from "../components/Profile/ProfileContainer";
 
 let state = {
     postData: [
