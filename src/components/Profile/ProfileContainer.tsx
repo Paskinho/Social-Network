@@ -21,12 +21,25 @@ import {LoginFormType} from "../Login/Login";
 //
 // }
 
-export function withRouter(Children: any) {
-    return (props: any) => {
-        const match = {params: useParams()};
-        return <Children {...props} match={match}/>
-    }
-}
+// export function withRouter(Children: any) {
+//     return (props: any) => {
+//         const match = {params: useParams()};
+//         return <Children {...props} match={match}/>
+//     }
+// }
+
+export type WrappedComponentWithRouterPropsType = {
+    userId: string;
+    // location: locationType;
+};
+
+
+export const withRouter =
+    (WrappedComponent: any) => (props: WrappedComponentWithRouterPropsType) => {
+        const params = useParams<'userId'>();
+        // const location = useLocation();
+        return <WrappedComponent {...props} userId={params.userId}/>;
+    };
 
 export type ProfileContainerType = MapStateType & MapDispatchType & PathParamsType
 
