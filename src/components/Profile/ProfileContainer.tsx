@@ -49,8 +49,7 @@ class ProfileContainer extends React.Component<ProfileContainerType> {
 
 
     refreshProfile (): void {
-        let _userId: any = this.props.userId; //this.props.match.params.userId либо
-        let {userId} = this.props; //this.props.match.params.userId либо //
+        let userId = this.props.userId; //this.props.match.params.userId либо //
         // this.props.match.params.userId as PathParamsType
         if (!userId) {
             userId = this.props.authorizedUserId; // authorizedUserId in SamuraiWay
