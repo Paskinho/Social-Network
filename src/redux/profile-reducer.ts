@@ -97,6 +97,7 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
             }
         }
         case "profile/SET_USER_PROFILE": {
+            console.log('SET_USER_PROFILE')
             return {
                 ...state,
                 profile: action.type
@@ -145,8 +146,10 @@ export const updateNewPostTextCreator = (newText: string) => {
         newText: newText
     } as const
 }
-export const setUserProfileCreator = (profile: ProfileType) => { // УТОЧНИТЬ ТИП
+export const setUserProfileCreator = (profile: ProfileType) => {
+    console.log('getUserProfileCreator')// УТОЧНИТЬ ТИП
     return {
+
         type: "profile/SET_USER_PROFILE",
         profile: profile
     } as const
@@ -187,6 +190,7 @@ export const savePhotoSuccessCreator = (file: string) => {
 
 
 export const getUserProfile = (userId: string) => async (dispatch: Dispatch) => {
+    console.log('getUserProfile')
    let response = await profileAPI.getProfile(userId)
         dispatch(setUserProfileCreator(response))
 }
