@@ -149,12 +149,11 @@ export const updateNewPostTextCreator = (newText: string) => {
 export const setUserProfileCreator = (profile: ProfileType) => {
     console.log('getUserProfileCreator')// УТОЧНИТЬ ТИП
     return {
-
         type: "profile/SET_USER_PROFILE",
         profile: profile
     } as const
-
 }
+
 export const setStatusCreator = (status: string) => {
     return {
         type: "profile/SET_STATUS",
